@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rimraf .next && npm run dev",
+    "clean:build": "rimraf .next && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "playwright": "^1.56.1"
+    "playwright": "^1.56.1",
+    "rimraf": "^6.1.0"
   }
 }

@@ -2,6 +2,7 @@
 
 import AnimatedText from './AnimatedText'
 import Image from 'next/image'
+import Button from './ui/Button'
 
 export default function Hero() {
   return (
@@ -48,30 +49,9 @@ export default function Hero() {
 
             {/* CTA Button */}
             <div className="animate-slide-in-up mt-5" style={{ animationDelay: '1.4s' }}>
-              <a
-                href="#"
-                className="group inline-flex rounded-full p-[1px] transition-shadow duration-300"
-                style={{
-                  backgroundImage: 'linear-gradient(135deg, #8b5cf6, #22d3ee)',
-                  boxShadow: '0 10px 30px rgba(139,92,246,.25)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 14px 34px rgba(139,92,246,.35)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(139,92,246,.25)';
-                }}
-              >
-                <span
-                  className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-white font-semibold transition-transform duration-300 will-change-transform group-hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/60"
-                  style={{
-                    backgroundColor: '#121216',
-                    fontSize: '15px',
-                  }}
-                >
-                  Boka en demo
-                </span>
-              </a>
+              <Button variant="primary" size="md" href="#">
+                Boka en demo
+              </Button>
             </div>
           </div>
 

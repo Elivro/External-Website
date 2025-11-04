@@ -11,6 +11,13 @@
 
 :root {
   --font-plex-serif: 'IBM Plex Serif', serif;
+
+  /* Button design tokens */
+  --btn-fill: #121216;
+  --grad-start: #8b5cf6;
+  --grad-end: #22d3ee;
+  --glow: 0 10px 40px rgba(139,92,246,.4), 0 0 20px rgba(139,92,246,.2);
+  --glow-hover: 0 15px 50px rgba(139,92,246,.5), 0 0 30px rgba(139,92,246,.3);
 }
 
 * {
@@ -71,6 +78,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
