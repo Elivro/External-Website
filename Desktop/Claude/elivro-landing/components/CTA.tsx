@@ -21,17 +21,16 @@ export default function CTA() {
   }
 
   return (
-    <section className="w-full py-40 sm:py-56 bg-zinc-900 relative overflow-hidden">
+    <section id="cta-section" className="w-full py-20 md:py-32 bg-zinc-900 relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute -top-48 left-1/4 w-96 h-96 bg-violet-500 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-violet-500 rounded-full blur-3xl opacity-30"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center w-full">
-        <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-          {/* Main CTA Card */}
-          <div className="glass rounded-2xl p-10 sm:p-16 lg:p-20 text-center border border-slate-800 shadow-md">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
+        {/* Main CTA Card */}
+        <div className="glass rounded-2xl p-10 sm:p-12 md:p-16 text-center border border-slate-800 shadow-md mx-auto max-w-4xl">
           <div className="mb-16 animate-slide-in-up flex flex-col items-center justify-center">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-8">
               Boka din personliga demo idag
@@ -92,12 +91,11 @@ export default function CTA() {
           </div>
         </div>
 
-          {/* Footer note */}
-          <div className="text-center mt-20 animate-fade-in" style={{ animationDelay: '1s' }}>
-            <p className="text-zinc-500 text-sm">
-              Elivro - Det bästa rekryteringsverktyget i assistansbranschen
-            </p>
-          </div>
+        {/* Footer note */}
+        <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '1s' }}>
+          <p className="text-zinc-500 text-sm">
+            Elivro - Det bästa rekryteringsverktyget i assistansbranschen
+          </p>
         </div>
       </div>
     </section>

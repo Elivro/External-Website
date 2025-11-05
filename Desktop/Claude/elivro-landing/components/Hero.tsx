@@ -6,16 +6,11 @@ import Button from './ui/Button'
 
 export default function Hero() {
   return (
-    <section className="w-full h-screen flex items-center justify-center bg-zinc-900 relative overflow-hidden">
+    <section className="mt-[-1px] w-full h-screen flex items-center justify-center bg-zinc-900 relative overflow-hidden">
       {/* Background gradient elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500 rounded-full blur-3xl opacity-30"></div>
-      </div>
-
-      {/* Logo - Top Left */}
-      <div className="absolute top-6 sm:top-8 left-6 sm:left-8 z-20 animate-fade-in">
-        <p className="text-violet-500 text-lg sm:text-xl font-semibold tracking-widest">ELIVRO</p>
       </div>
 
       {/* Content - Two Column Layout */}
