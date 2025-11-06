@@ -25,6 +25,7 @@ export default function Hero() {
                   text="Det bästa rekryteringsverktyget"
                   className="block"
                   delay={200}
+                  gradientWord="bästa"
                 />
                 <AnimatedText
                   text="i assistansbranschen."

@@ -45,7 +45,7 @@ export default function Navbar() {
               onClick={() => scrollToSection('features-title')}
               className="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-300 relative group"
             >
-              Funktioner
+              Varför välja Elivro?
               <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0"></span>
             </button>
 
@@ -115,7 +115,7 @@ export default function Navbar() {
               onClick={() => scrollToSection('features-title')}
               className="block w-full text-left px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
             >
-              Funktioner
+              Varför välja Elivro?
             </button>
             <button
               onClick={() => scrollToSection('cta-section')}
