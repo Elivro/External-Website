@@ -17,7 +17,14 @@ export default function Navbar() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const navbarHeight = 64 // 16 * 4 = 64px (h-16 in Tailwind)
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - navbarHeight - 20 // Extra 20px padding
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
       setMobileMenuOpen(false)
     }
   }

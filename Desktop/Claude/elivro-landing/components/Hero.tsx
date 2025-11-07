@@ -1,11 +1,16 @@
 'use client'
 
+import { useState } from 'react'
 import AnimatedText from './AnimatedText'
 import Image from 'next/image'
 import Button from './ui/Button'
+import DemoModal from './DemoModal'
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
+    <>
     <section className="mt-[-1px] w-full h-screen flex items-center justify-center bg-zinc-900 relative overflow-hidden">
       {/* Background gradient elements */}
       <div className="absolute inset-0 opacity-20">
@@ -45,9 +50,23 @@ export default function Hero() {
 
             {/* CTA Button */}
             <div className="animate-slide-in-up mt-5" style={{ animationDelay: '1.4s' }}>
-              <Button variant="primary" size="md" href="#">
-                Boka en demo
-              </Button>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="group inline-flex items-center gap-2 rounded-full p-[1px] transition-shadow duration-300"
+                style={{
+                  backgroundImage: 'linear-gradient(135deg, var(--grad-start), var(--grad-end))',
+                  boxShadow: 'var(--glow)',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'var(--glow-hover)'}
+                onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'var(--glow)'}
+              >
+                <span
+                  className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[16px] text-white font-semibold transition-transform duration-300 will-change-transform group-hover:-translate-y-0.5"
+                  style={{ backgroundColor: 'var(--btn-fill)' }}
+                >
+                  Boka en demo
+                </span>
+              </button>
             </div>
           </div>
 
@@ -73,5 +92,9 @@ export default function Hero() {
       <div className="absolute bottom-20 left-20 w-3 h-3 bg-violet-500 rounded-full opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
       <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-violet-400 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
     </section>
+
+    {/* Demo Modal */}
+    <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   )
 }
