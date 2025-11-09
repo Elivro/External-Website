@@ -50,9 +50,9 @@ export default function CTA() {
   }
 
   return (
-    <section id="cta-section" className="w-full py-24 md:py-32 bg-zinc-900 relative overflow-hidden">
+    <section id="cta-section" className="w-full py-24 md:py-32 bg-black relative overflow-hidden">
       {/* Enhanced purple radial glow - matching hero */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500 rounded-full blur-3xl"></div>
         <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600 rounded-full blur-3xl opacity-40"></div>
       </div>
@@ -60,14 +60,11 @@ export default function CTA() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main CTA Card */}
         <div className="mx-auto max-w-4xl">
-          {/* Headline & Subcopy */}
+          {/* Headline - CONDENSED */}
           <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Boka din personliga demo idag
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              Se Elivro i aktion
             </h2>
-            <p className="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-              Se hur Elivro kan transformera din rekryteringsprocess. Spara tid, hitta bättre kandidater, och automatisera det som tar längst tid.
-            </p>
           </div>
 
           {/* Form */}
@@ -182,12 +179,6 @@ export default function CTA() {
           </div>
         </div>
 
-        {/* Footer tagline */}
-        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <p className="text-zinc-500 text-sm">
-            Elivro - Det bästa rekryteringsverktyget i assistansbranschen
-          </p>
-        </div>
       </div>
     </section>
   )

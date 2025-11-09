@@ -49,10 +49,10 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             <button
-              onClick={() => scrollToSection('features-title')}
+              onClick={() => scrollToSection('three-pillars')}
               className="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-300 relative group"
             >
-              Varför välja Elivro?
+              Hur det fungerar
               <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0"></span>
             </button>
 
@@ -60,12 +60,12 @@ export default function Navbar() {
               onClick={() => scrollToSection('cta-section')}
               className="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-300 relative group"
             >
-              Kontakta oss
+              Boka demo
               <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0"></span>
             </button>
 
             <Button variant="primary" size="sm" href="#cta-section">
-              Boka en demo
+              Kom igång
             </Button>
           </div>
 
@@ -119,20 +119,20 @@ export default function Navbar() {
         <div className="md:hidden bg-zinc-900/95 backdrop-blur-md">
           <div className="space-y-1 px-4 pb-3 pt-2">
             <button
-              onClick={() => scrollToSection('features-title')}
+              onClick={() => scrollToSection('three-pillars')}
               className="block w-full text-left px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
             >
-              Varför välja Elivro?
+              Hur det fungerar
             </button>
             <button
               onClick={() => scrollToSection('cta-section')}
               className="block w-full text-left px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
             >
-              Kontakta oss
+              Boka demo
             </button>
             <div className="pt-2">
               <Button variant="primary" size="sm" href="#cta-section" className="w-full justify-center">
-                Boka en demo
+                Kom igång
               </Button>
             </div>
           </div>
