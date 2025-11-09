@@ -1,17 +1,32 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function CTA() {
   const [name, setName] = useState('')
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
+  const [honeypot, setHoneypot] = useState('') // Anti-bot honeypot field
   const [isLoading, setIsLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
+  const formMountTimeRef = useRef<number>(0)
+
+  // Silent timer - track when form loads for bot detection
+  useEffect(() => {
+    formMountTimeRef.current = Date.now()
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Honeypot check - if filled, it's a bot
+    if (honeypot) {
+      console.log('Bot detected via honeypot')
+      return
+    }
+
     setIsLoading(true)
 
     try {
@@ -25,6 +40,8 @@ export default function CTA() {
           company,
           email,
           phone,
+          honeypot, // Send to API for server-side validation too
+          timestamp: formMountTimeRef.current,
         }),
       })
 
@@ -41,6 +58,7 @@ export default function CTA() {
       setCompany('')
       setEmail('')
       setPhone('')
+      setHoneypot('')
 
       // Reset submitted state after 5 seconds
       setTimeout(() => setSubmitted(false), 5000)
@@ -187,6 +205,29 @@ export default function CTA() {
                       transition-all duration-300 text-base backdrop-blur-sm"
                   />
                 </div>
+              </div>
+
+              {/* Honeypot field - hidden from humans, visible to bots */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  width: '1px',
+                  height: '1px',
+                  overflow: 'hidden',
+                }}
+                aria-hidden="true"
+              >
+                <label htmlFor="cta-website">Website</label>
+                <input
+                  id="cta-website"
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
 
               {/* Submit Button */}

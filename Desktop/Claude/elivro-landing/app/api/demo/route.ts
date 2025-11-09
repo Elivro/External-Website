@@ -33,7 +33,32 @@ export async function POST(request: NextRequest) {
   try {
     // Parse request body
     const body = await request.json()
-    const { name, company, email, phone } = body
+    const { name, company, email, phone, honeypot, timestamp } = body
+
+    // SECURITY: Honeypot check - if filled, it's a bot
+    if (honeypot) {
+      console.log('Bot detected via honeypot field')
+      // Return success to not alert the bot
+      return NextResponse.json(
+        { success: true, message: 'Demo-förfrågan skickad!' },
+        { status: 200 }
+      )
+    }
+
+    // SECURITY: Timestamp check - ensure minimum time has passed (3 seconds)
+    // Most humans take at least 3 seconds to fill a form, bots are instant
+    if (timestamp) {
+      const timeDiff = Date.now() - timestamp
+      const minTimeMs = 3000 // 3 seconds - silent check, user won't notice
+      if (timeDiff < minTimeMs) {
+        console.log(`Bot suspected - submission too fast: ${timeDiff}ms (minimum: ${minTimeMs}ms)`)
+        // Return success to not alert sophisticated bots
+        return NextResponse.json(
+          { success: true, message: 'Demo-förfrågan skickad!' },
+          { status: 200 }
+        )
+      }
+    }
 
     // Validate required fields
     if (!name || !company || !email || !phone) {

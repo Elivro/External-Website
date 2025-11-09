@@ -12,11 +12,13 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
+  const [honeypot, setHoneypot] = useState('') // Anti-bot honeypot field
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
   const modalRef = useRef<HTMLDivElement>(null)
   const firstInputRef = useRef<HTMLInputElement>(null)
+  const formOpenTimeRef = useRef<number>(0)
 
   // Handle ESC key
   useEffect(() => {
@@ -49,8 +51,22 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     }
   }, [isOpen])
 
+  // Silent timer - track when modal opens for bot detection
+  useEffect(() => {
+    if (isOpen) {
+      formOpenTimeRef.current = Date.now()
+    }
+  }, [isOpen])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // Honeypot check - if filled, it's a bot
+    if (honeypot) {
+      console.log('Bot detected via honeypot')
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -64,6 +80,8 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
           company,
           email,
           phone,
+          honeypot, // Send to API for server-side validation too
+          timestamp: formOpenTimeRef.current,
         }),
       })
 
@@ -83,6 +101,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
         setCompany('')
         setEmail('')
         setPhone('')
+        setHoneypot('')
         setSubmitted(false)
         onClose()
       }, 3000)
@@ -216,6 +235,29 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                       focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
                       transition-all duration-300 text-base"
                     placeholder="Telefonnummer"
+                  />
+                </div>
+
+                {/* Honeypot field - hidden from humans, visible to bots */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '-9999px',
+                    width: '1px',
+                    height: '1px',
+                    overflow: 'hidden',
+                  }}
+                  aria-hidden="true"
+                >
+                  <label htmlFor="modal-website">Website</label>
+                  <input
+                    id="modal-website"
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
                   />
                 </div>
 
