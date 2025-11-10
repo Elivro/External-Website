@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Button from './ui/Button'
+import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scroll-utils'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -14,59 +14,94 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      const navbarHeight = 64 // 16 * 4 = 64px (h-16 in Tailwind)
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - navbarHeight - 20 // Extra 20px padding
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault()
+    scrollTo(id)
+    setMobileMenuOpen(false)
+  }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-      setMobileMenuOpen(false)
-    }
+  const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    scrollTop()
   }
 
   return (
     <nav
       data-scrolled={scrolled}
-      className="fixed top-0 inset-x-0 z-50 bg-zinc-900/80 backdrop-blur-xl transition-[background,box-shadow] supports-[backdrop-filter]:bg-zinc-900/60"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-in-out ${
+        scrolled
+          ? 'bg-zinc-900/60 backdrop-blur-xl shadow-lg shadow-black/5'
+          : 'bg-transparent'
+      }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-violet-500 text-xl font-semibold tracking-widest hover:text-violet-400 transition-colors duration-300"
+            <a
+              href="#top"
+              onClick={handleScrollToTop}
+              className="text-violet-500 text-xl font-bold tracking-tight hover:text-violet-400 transition-colors duration-300"
             >
               ELIVRO
-            </button>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <button
-              onClick={() => scrollToSection('three-pillars')}
-              className="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-300 relative group"
+            <a
+              href="#problem"
+              onClick={(e) => handleScrollToSection(e, 'problem')}
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+            >
+              Utmaningar
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+
+            <a
+              href="#how-it-works"
+              onClick={(e) => handleScrollToSection(e, 'how-it-works')}
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
             >
               Hur det fungerar
-              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0"></span>
-            </button>
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
 
-            <button
-              onClick={() => scrollToSection('cta-section')}
-              className="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-300 relative group"
+            <a
+              href="#three-pillars"
+              onClick={(e) => handleScrollToSection(e, 'three-pillars')}
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+            >
+              Funktioner
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+
+            <a
+              href="#about"
+              onClick={(e) => handleScrollToSection(e, 'about')}
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+            >
+              Om oss
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+
+            <a
+              href="#faq"
+              onClick={(e) => handleScrollToSection(e, 'faq')}
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+            >
+              FAQ
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
+
+            <a
+              href="#cta-section"
+              onClick={(e) => handleScrollToSection(e, 'cta-section')}
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
             >
               Boka demo
-              <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full group-hover:left-0"></span>
-            </button>
-
-            <Button variant="primary" size="sm" href="#cta-section">
-              Kom igång
-            </Button>
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -118,23 +153,48 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-zinc-900/95 backdrop-blur-md">
           <div className="space-y-1 px-4 pb-3 pt-2">
-            <button
-              onClick={() => scrollToSection('three-pillars')}
-              className="block w-full text-left px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            <a
+              href="#problem"
+              onClick={(e) => handleScrollToSection(e, 'problem')}
+              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            >
+              Utmaningar
+            </a>
+            <a
+              href="#how-it-works"
+              onClick={(e) => handleScrollToSection(e, 'how-it-works')}
+              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
             >
               Hur det fungerar
-            </button>
-            <button
-              onClick={() => scrollToSection('cta-section')}
-              className="block w-full text-left px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            </a>
+            <a
+              href="#three-pillars"
+              onClick={(e) => handleScrollToSection(e, 'three-pillars')}
+              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            >
+              Funktioner
+            </a>
+            <a
+              href="#about"
+              onClick={(e) => handleScrollToSection(e, 'about')}
+              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            >
+              Om oss
+            </a>
+            <a
+              href="#faq"
+              onClick={(e) => handleScrollToSection(e, 'faq')}
+              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            >
+              FAQ
+            </a>
+            <a
+              href="#cta-section"
+              onClick={(e) => handleScrollToSection(e, 'cta-section')}
+              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
             >
               Boka demo
-            </button>
-            <div className="pt-2">
-              <Button variant="primary" size="sm" href="#cta-section" className="w-full justify-center">
-                Kom igång
-              </Button>
-            </div>
+            </a>
           </div>
         </div>
       )}
