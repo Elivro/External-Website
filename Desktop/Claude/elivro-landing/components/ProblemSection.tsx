@@ -1,12 +1,13 @@
 'use client'
 
-import { XCircle } from 'lucide-react'
+import { UserX, AlertTriangle, FileWarning } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import FadeSection from './FadeSection'
 
 interface PainPoint {
   problem: string
   consequences: string[]
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
 }
 
 export default function ProblemSection() {
@@ -19,7 +20,8 @@ export default function ProblemSection() {
         'Kortare anställningstider när person och roll inte passar',
         'Missnöjda kunder som inte får den kontinuitet de behöver',
         'Rekryteringsprocessen börjar om – igen och igen'
-      ]
+      ],
+      icon: UserX
     },
     {
       problem: 'Schemaläggning riskerar att gå över budget och bryta mot avtal',
@@ -27,7 +29,8 @@ export default function ProblemSection() {
         'Budgetöverskridningar som kommer som överraskningar',
         'Risk att bryta mot ATL och kundavtal',
         'Omläggningar som stressar både assistenter och kunder'
-      ]
+      ],
+      icon: AlertTriangle
     },
     {
       problem: 'Krångliga system gör det svårt att följa alla regler',
@@ -35,7 +38,8 @@ export default function ProblemSection() {
         'Tid som kunde spenderas med kunder går till administration',
         'Risk för granskningar från Inspektionen för vård och omsorg (IVO)',
         'Dokumentation som inte håller måttet när det gäller'
-      ]
+      ],
+      icon: FileWarning
     }
   ]
 
@@ -92,9 +96,9 @@ export default function ProblemSection() {
                 {/* Hover gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 via-purple-500/0 to-violet-500/0 group-hover:from-red-500/5 group-hover:via-purple-500/5 group-hover:to-violet-500/5 transition-all duration-500 pointer-events-none" />
 
-                {/* Icon - Red X for problems */}
+                {/* Icon - Content-specific */}
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  <XCircle className="w-12 h-12 text-red-400" strokeWidth={1.5} />
+                  <point.icon className="w-12 h-12 text-red-400" strokeWidth={1.5} />
                 </div>
 
                 {/* Problem Statement */}

@@ -1,38 +1,30 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { ArrowRight, Users, CalendarCheck, FileText } from 'lucide-react'
+import { scrollToSection } from '@/lib/scroll-utils'
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import FadeSection from './FadeSection'
 
 interface Pillar {
   title: string
   headline: string
   benefits: string[]
-  icon: string
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
 }
 
 export default function Features() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.1 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
 
   const pillars: Pillar[] = [
     {
       title: 'Rekrytera rätt',
       headline: 'Matchning som bygger relationer',
       benefits: [
-        'AI matchar på personkemi, inte bara CV',
+        'Intelligent matchning på personkemi, inte bara CV',
         'Längre anställningstid när matchningen är rätt',
         'Djupare förståelse för kundens behov över tid'
       ],
-      icon: '👥'
+      icon: Users
     },
     {
       title: 'Schemalägg smart',
@@ -42,7 +34,7 @@ export default function Features() {
         'Se omedelbart om schema följer avtal och ATL',
         'Stabilt schema = samma assistenter = tryggare kunder'
       ],
-      icon: '📅'
+      icon: CalendarCheck
     },
     {
       title: 'Rapportera enkelt',
@@ -52,7 +44,7 @@ export default function Features() {
         'Assistenter mentalt närvarande, inte stressade',
         'Transparent dokumentation skapar förtroende'
       ],
-      icon: '📊'
+      icon: FileText
     }
   ]
 
@@ -80,7 +72,7 @@ export default function Features() {
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 0.8s ease-out'
+                transition: 'all 0.3s ease-out'
               }}
             >
               Tre pelare för bättre assistans
@@ -104,15 +96,15 @@ export default function Features() {
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-                  transition: `all 0.8s ease-out ${(index + 1) * 150}ms`
+                  transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
                 }}
               >
                 {/* Hover gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-violet-500/0 to-purple-600/0 group-hover:from-purple-500/5 group-hover:via-violet-500/5 group-hover:to-purple-600/5 transition-all duration-500 pointer-events-none" />
 
                 {/* Icon */}
-                <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  {pillar.icon}
+                <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                  <pillar.icon className="w-14 h-14 text-violet-400" strokeWidth={1.5} />
                 </div>
 
                 {/* Title */}
@@ -121,12 +113,12 @@ export default function Features() {
                 </h3>
 
                 {/* Headline */}
-                <p className="text-lg text-purple-300 mb-6 font-medium">
+                <p className="text-lg text-purple-200 mb-6 font-medium">
                   {pillar.headline}
                 </p>
 
                 {/* Benefits - Bullets */}
-                <ul className="space-y-3">
+                <ul className="space-y-3 mb-6">
                   {pillar.benefits.map((benefit, i) => (
                     <li
                       key={i}
@@ -137,6 +129,21 @@ export default function Features() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Learn More CTA */}
+                <button
+                  onClick={() => scrollToSection('cta-section')}
+                  className="
+                    group/btn relative flex items-center gap-2
+                    text-purple-400 hover:text-purple-300
+                    transition-all duration-300
+                    text-sm font-medium
+                  "
+                  title="Boka demo för att lära mer"
+                >
+                  <span>Läs mer</span>
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                </button>
               </div>
             ))}
           </div>
