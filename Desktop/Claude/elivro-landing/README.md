@@ -1,6 +1,6 @@
 # Elivro Landing Page
 
-A modern landing page for Elivro - AI-powered recruiting tool for the Swedish assistant care industry.
+A modern landing page for Elivro - Intelligent recruiting tool for the Swedish assistant care industry.
 
 ## Quick Start
 

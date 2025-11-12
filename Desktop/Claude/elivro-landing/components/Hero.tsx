@@ -98,15 +98,15 @@ export default function Hero() {
                 <ul className="space-y-2 text-lg sm:text-xl text-white">
                   <li className="flex items-center gap-3">
                     <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Rekrytera rätt</span>
+                    <span>Lättare rekrytering</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Schemalägg smart</span>
+                    <span>Snabbare schemaläggning</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Rapportera enkelt</span>
+                    <span>Enklare rapportering</span>
                   </li>
                 </ul>
               </div>

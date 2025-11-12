@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Elivro - AI Rekryteringsverktyg för Assistansbranschen',
-  description: 'Det bästa rekryteringsverktyget i assistansbranschen. Använd AI för att effektivisera din rekrytering.',
+  title: 'Elivro - Allt-i-ett plattform för Assistansbranschen',
+  description: 'Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering. För assistans som förändrar liv.',
   icons: {
     icon: '/favicon.ico',
   },

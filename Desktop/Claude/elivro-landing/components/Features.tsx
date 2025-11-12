@@ -1,9 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import { ArrowRight, Users, CalendarCheck, FileText } from 'lucide-react'
 import { scrollToSection } from '@/lib/scroll-utils'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import FadeSection from './FadeSection'
+import DemoModal from './DemoModal'
 
 interface Pillar {
   title: string
@@ -14,6 +16,7 @@ interface Pillar {
 
 export default function Features() {
   const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const pillars: Pillar[] = [
     {
@@ -118,7 +121,7 @@ export default function Features() {
                 </p>
 
                 {/* Benefits - Bullets */}
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-3">
                   {pillar.benefits.map((benefit, i) => (
                     <li
                       key={i}
@@ -129,26 +132,41 @@ export default function Features() {
                     </li>
                   ))}
                 </ul>
-
-                {/* Learn More CTA */}
-                <button
-                  onClick={() => scrollToSection('cta-section')}
-                  className="
-                    group/btn relative flex items-center gap-2
-                    text-purple-400 hover:text-purple-300
-                    transition-all duration-300
-                    text-sm font-medium
-                  "
-                  title="Boka demo för att lära mer"
-                >
-                  <span>Läs mer</span>
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </button>
               </div>
             ))}
           </div>
+
+          {/* Centralized CTA Button */}
+          <div
+            className="mt-10 md:mt-16 lg:mt-20 flex justify-center"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.6s ease-out 600ms'
+            }}
+          >
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="
+                group relative px-8 py-4
+                bg-gradient-to-r from-violet-600 to-purple-600
+                text-white text-lg font-semibold rounded-xl
+                shadow-lg shadow-violet-500/40
+                hover:shadow-xl hover:shadow-violet-500/60
+                transition-all duration-300
+                hover:scale-[1.02]
+                flex items-center gap-3
+              "
+            >
+              <span>Boka gratis demo</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* Demo Modal */}
+      <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </FadeSection>
   )
 }

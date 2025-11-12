@@ -41,7 +41,7 @@ export default function FounderStory() {
         id="about"
         ref={sectionRef}
         aria-labelledby="founder-title"
-        className="w-full bg-black py-20 md:py-32 relative overflow-hidden"
+        className="w-full bg-black pt-20 md:pt-32 pb-0 relative overflow-hidden"
       >
         {/* Background gradient elements - Green/Emerald theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -165,12 +165,12 @@ export default function FounderStory() {
                   <span className="text-emerald-400 font-semibold">lyssna, improvisera och leverera under press</span>.
                 </p>
                 <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-                  Den kreativitet och tajmning vi tränade på scen har format hur vi bygger
+                  Den kreativitet och lyhördheten vi utvecklade på scen har format hur vi bygger
                   produkter idag – med fokus på användarupplevelse och genuint samarbete.
                 </p>
                 <blockquote className="border-l-4 border-emerald-400 pl-6 italic">
                   <p className="text-base md:text-lg text-zinc-400">
-                    "Ett bra team låter bra tillsammans, oavsett om det är på scen eller i koden."
+                    "Ett fantastiskt team låter bra tillsammans, oavsett om det är på scen eller i koden."
                   </p>
                   <footer className="text-sm text-emerald-400 mt-2 not-italic">– Jimmy</footer>
                 </blockquote>
@@ -194,10 +194,10 @@ export default function FounderStory() {
           >
             <div className="space-y-6 text-center">
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-                Trots att jag bara har jobbat i branchen i två år så kunde jag snabbt känna att det finns en frustration som ligger under ytan. Den är outtalad men ständigt närvarande. Där jag först märkte av det, var självklart i mjukvaran som användes. Det jag letade efter fanns inte där jag trodde det skulle vara, tryckte jag på fel ställe så kastades jag ut från det jag höll på med och när jag skulle söka efter någonting då... gick det inte att söka. Knapparna och spakarna gjorde helt enkelt inte det som kändes naturligt.
+                Efter två år i branschen såg jag samma frustration överallt: mjukvara som hindrar istället för hjälper. System där det enkla blir svårt.
               </p>
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-                Om du känner igen dig så tror jag att du kommer känna dig hemma i Elivro. Vi har (med er hjälp) åstadkommit något som jag är otroligt stolt över - ett system som ger oss alla en superkraft. Och den superkraften är att kunna{' '}
+                Därför skapade vi Elivro – ett system som ger er en superkraft: att{' '}
                 <span className="text-emerald-400 font-semibold">fokusera på kvalitet och relationer</span>
                 {' '}– inte administration.
               </p>
@@ -216,17 +216,14 @@ export default function FounderStory() {
           }}
         >
           {/* Fullscreen Image Container */}
-          <div className="relative w-full overflow-hidden">
-            {/* Subtle gradient overlay for depth */}
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent z-10 pointer-events-none" />
-
+          <div className="relative w-full overflow-hidden shadow-2xl shadow-emerald-500/20">
             {/* MacBook Image */}
             <Image
               src="/elivro-macbook-color.webp"
               alt="Elivro kandidatöversikt på MacBook - matchning som bygger relationer"
               width={1920}
               height={1200}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover block"
               priority={false}
               sizes="100vw"
             />

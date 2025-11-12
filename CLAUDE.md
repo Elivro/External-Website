@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is the **Elivro landing page** - a Swedish B2B SaaS landing page for an assistant care platform. The project emphasizes **human-centered messaging** and **quality over efficiency** in personal assistance services.
 
-**Core Value Proposition**: "Rekrytera rätt. Schemalägg smart. Rapportera enkelt. För assistans som förändrar liv - inte bara administrerar dem."
+**Core Value Proposition**: "Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering. För assistans som förändrar liv - inte bara administrerar dem."
 
 ## Tech Stack
 
@@ -37,7 +37,7 @@ The landing page follows a **vertical scroll structure** with these main section
 1. **Navbar** - Fixed navigation with smooth scroll to sections
 2. **Hero** - Primary value proposition with dual CTAs
 3. **ProblemSection** - 2 pain points (validates customer challenges)
-4. **Features** - "Three Pillars" with bullet-format benefits (Rekrytera, Schemalägg, Rapportera)
+4. **Features** - "Three Pillars" with bullet-format benefits (Lättare rekrytering, Snabbare schemaläggning, Enklare rapportering)
 5. **HowItWorks** - 3-step process flow
 6. **FAQSection** - 4 Q&As with accordion
 7. **CTA** - Demo booking form
@@ -127,7 +127,7 @@ The landing page follows **B2B SaaS conversion optimization principles**:
 2. **Quality over efficiency** - Emphasize relationships, trust, and human outcomes
 3. **Swedish B2B tone** - Professional but warm, not overly technical
 4. **Human-centered language** - "För assistans som förändrar liv" not "För assistans som effektiviserar processer"
-5. **Three-pillar structure** - Always maintain: Rekrytera, Schemalägg, Rapportera
+5. **Three-pillar structure** - Always maintain: Lättare rekrytering, Snabbare schemaläggning, Enklare rapportering
 6. **Scannable format** - Bullets, short sentences, clear hierarchy
 7. **Brevity is clarity** - Remove unnecessary words, get to the point quickly
 

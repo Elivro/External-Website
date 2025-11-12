@@ -6,6 +6,7 @@ export default function CTA() {
   const [name, setName] = useState('')
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -23,6 +24,7 @@ export default function CTA() {
           name,
           company,
           email,
+          phone,
         }),
       })
 
@@ -38,6 +40,7 @@ export default function CTA() {
       setName('')
       setCompany('')
       setEmail('')
+      setPhone('')
 
       // Reset submitted state after 5 seconds
       setTimeout(() => setSubmitted(false), 5000)
@@ -50,21 +53,51 @@ export default function CTA() {
   }
 
   return (
-    <section id="cta-section" className="w-full py-24 md:py-32 bg-black relative overflow-hidden">
-      {/* Enhanced purple radial glow - matching hero */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600 rounded-full blur-3xl opacity-40"></div>
+    <section id="cta-section" className="w-full py-24 md:py-32 bg-zinc-950 relative overflow-hidden">
+      {/* Enhanced green/emerald radial glow */}
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-green-400 rounded-full blur-3xl opacity-40"></div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* ========================================
+            PRICING SECTION - TEMPORARILY REMOVED
+            Date: 2025-11-12
+            Reason: Shifting focus to demo booking only per user request
+            Note: Keep code for potential future use
+            ======================================== */}
+        {/* PRICING CODE COMMENTED OUT - Lines 62-179
+        <div className="mx-auto max-w-7xl mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+            Transparent prissättning
+          </h2>
+          ... [pricing tiers removed for brevity]
+        </div>
+        */}
+
         {/* Main CTA Card */}
         <div className="mx-auto max-w-4xl">
-          {/* Headline - CONDENSED */}
-          <div className="text-center mb-12 animate-fade-in">
+          {/* Headline */}
+          <div className="text-center mb-8 animate-fade-in">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-              Se Elivro i aktion
+              Boka demo
             </h2>
+            <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
+              Vi visar hur Elivro kan hjälpa er med bättre rekrytering, snabbare schemaläggning och enklare rapportering. Kostnadsfritt och utan förpliktelser.
+            </p>
+          </div>
+
+          {/* Trust Signals */}
+          <div className="flex items-center justify-center gap-8 mb-8 text-zinc-300">
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400 text-lg">✓</span>
+              <span className="text-sm">Kostnadsfritt</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-400 text-lg">✓</span>
+              <span className="text-sm">Svar inom 24h</span>
+            </div>
           </div>
 
           {/* Form */}
@@ -74,7 +107,7 @@ export default function CTA() {
             style={{ animationDelay: '0.1s' }}
           >
             <div className="max-w-2xl mx-auto space-y-4">
-              {/* Name and Company Name - Two columns on desktop */}
+              {/* Row 1: Name and Phone */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Name Input */}
                 <div>
@@ -90,12 +123,34 @@ export default function CTA() {
                     required
                     aria-label="Ditt namn"
                     className="w-full px-6 py-4 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
+                      focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20
                       transition-all duration-300 text-base backdrop-blur-sm"
                   />
                 </div>
 
-                {/* Company Name Input */}
+                {/* Phone Input */}
+                <div>
+                  <label htmlFor="phone-input" className="sr-only">
+                    Telefonnummer
+                  </label>
+                  <input
+                    id="phone-input"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="Telefonnummer"
+                    required
+                    aria-label="Telefonnummer för kontakt"
+                    className="w-full px-6 py-4 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
+                      focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20
+                      transition-all duration-300 text-base backdrop-blur-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Row 2: Company and Email */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Company Input */}
                 <div>
                   <label htmlFor="company-input" className="sr-only">
                     Företagsnamn
@@ -109,16 +164,13 @@ export default function CTA() {
                     required
                     aria-label="Företagsnamn"
                     className="w-full px-6 py-4 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
+                      focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20
                       transition-all duration-300 text-base backdrop-blur-sm"
                   />
                 </div>
-              </div>
 
-              {/* Email and Submit Button */}
-              <div className="flex flex-col md:flex-row gap-4">
-                {/* Email Input with accessible label */}
-                <div className="flex-1">
+                {/* Email Input */}
+                <div>
                   <label htmlFor="email-input" className="sr-only">
                     E-postadress
                   </label>
@@ -131,52 +183,37 @@ export default function CTA() {
                     required
                     aria-label="E-postadress för att boka demo"
                     className="w-full px-6 py-4 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
+                      focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20
                       transition-all duration-300 text-base backdrop-blur-sm"
                   />
                 </div>
-
-                {/* Submit Button with purple glow */}
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className={`
-                    px-8 py-4 font-semibold rounded-xl transition-all duration-300 whitespace-nowrap text-base
-                    ${
-                      submitted
-                        ? 'bg-green-500 text-white shadow-lg shadow-green-500/30'
-                        : 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/40 hover:shadow-xl hover:shadow-violet-500/60 hover:scale-[1.02] active:scale-[0.98]'
-                    }
-                    ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}
-                    disabled:hover:scale-100
-                  `}
-                >
-                  {isLoading ? 'Skickar...' : submitted ? '✓ Skickad!' : 'Boka en demo'}
-                </button>
               </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`
+                  w-full px-8 py-4 font-semibold rounded-xl transition-all duration-300 text-base
+                  ${
+                    submitted
+                      ? 'bg-green-500 text-white shadow-lg shadow-green-500/30'
+                      : 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-lg shadow-emerald-500/40 hover:shadow-xl hover:shadow-emerald-500/60 hover:scale-[1.02] active:scale-[0.98]'
+                  }
+                  ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}
+                  disabled:hover:scale-100
+                `}
+              >
+                {isLoading ? 'Skickar...' : submitted ? '✓ Skickad!' : 'Boka en demo'}
+              </button>
             </div>
 
             {/* Reassurance text */}
             <p className="text-zinc-400 text-sm text-center mt-4">
-              Vi kontaktar dig inom 24 timmar.
+              Vi kontaktar dig inom 24 timmar för att boka en personlig demo.
             </p>
           </form>
 
-          {/* Stats/Proof section with icons */}
-          <div className="flex justify-center pt-12 border-t border-zinc-800/50 max-w-3xl mx-auto">
-            {/* Stat 1 - Clock icon */}
-            <div className="text-center animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-violet-500/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-5xl font-bold text-violet-400 mb-2">24h</div>
-              <p className="text-zinc-400 text-sm leading-relaxed">Personligt möte inom en dag</p>
-            </div>
-          </div>
         </div>
 
       </div>

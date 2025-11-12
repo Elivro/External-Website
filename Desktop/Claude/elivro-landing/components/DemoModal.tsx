@@ -11,6 +11,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const [name, setName] = useState('')
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -62,6 +63,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
           name,
           company,
           email,
+          phone,
         }),
       })
 
@@ -80,6 +82,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
         setName('')
         setCompany('')
         setEmail('')
+        setPhone('')
         setSubmitted(false)
         onClose()
       }, 3000)
@@ -137,7 +140,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   Boka en demo
                 </h2>
                 <p className="text-zinc-400 text-sm">
-                  Fyll i dina uppgifter så kontaktar vi dig inom 24 timmar.
+                  Fyll i dina uppgifter så kontaktar vi dig.
                 </p>
               </div>
 
@@ -165,7 +168,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 {/* Company */}
                 <div>
                   <label htmlFor="modal-company" className="block text-sm font-medium text-zinc-300 mb-2">
-                    Företagsnamn
+                    Företag
                   </label>
                   <input
                     id="modal-company"
@@ -195,6 +198,24 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                       focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
                       transition-all duration-300 text-base"
                     placeholder="E-post"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label htmlFor="modal-phone" className="block text-sm font-medium text-zinc-300 mb-2">
+                    Telefonnummer
+                  </label>
+                  <input
+                    id="modal-phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
+                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
+                      transition-all duration-300 text-base"
+                    placeholder="Telefonnummer"
                   />
                 </div>
 

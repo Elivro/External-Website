@@ -1,20 +1,10 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 export default function ShowcaseSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.1 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
 
   return (
     <section
@@ -35,12 +25,12 @@ export default function ShowcaseSection() {
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
-              transition: 'all 0.8s ease-out 0.2s'
+              transition: 'all 0.3s ease-out 0.2s'
             }}
           >
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-violet-500/10 border border-violet-500/20 rounded-full mb-6">
-              <span className="text-violet-400 text-sm font-medium">👥 Rekrytera rätt</span>
+              <span className="text-violet-400 text-sm font-medium">👥 Lättare rekrytering</span>
             </div>
 
             {/* Headline */}
@@ -50,14 +40,14 @@ export default function ShowcaseSection() {
 
             {/* Description */}
             <p className="text-lg text-zinc-300 mb-8 leading-relaxed">
-              Elivro använder AI för att matcha på personkemi, inte bara CV.
-              Se kandidater, hantera ansökningar och hitta perfekta assistenter – allt i en mobil app.
+              Elivro använder er kunds önskemål för att automatiskt matcha på personkemi, inte bara CV.
+              Se kandidater, hantera ansökningar och hitta perfekta assistenter – allt i ett system.
             </p>
 
             {/* Features list */}
             <ul className="space-y-4">
               {[
-                'AI-driven matchning baserad på personlighet och kemi',
+                'Intelligent matchning baserad på personlighet och kemi',
                 'Mobil översikt över alla kandidater och processer',
                 'Real-time notifikationer för nya ansökningar',
               ].map((feature, i) => (
@@ -87,7 +77,7 @@ export default function ShowcaseSection() {
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
-              transition: 'all 0.8s ease-out 0.4s'
+              transition: 'all 0.3s ease-out 0.4s'
             }}
           >
             <div className="relative">

@@ -25,15 +25,11 @@ export default function FAQSection() {
     },
     {
       question: 'Vad kostar Elivro?',
-      answer: 'Vi har tre nivåer: Grund från 349 kr/brukare/månad, Standard från 499 kr/brukare/månad, och Premium med AI-rekrytering (kontakta för offert). Alla nivåer är per brukare/månad, exkl. moms, utan bindningstid. Boka demo för en personlig offert anpassad efter era behov.'
+      answer: 'Varje företag har olika behov och förutsättningar. Vi erbjuder konkurrenskraftig prissättning som anpassas efter er verksamhets storlek och specifika behov. Kontakta oss för en skräddarsydd offert som passar er situation.'
     },
     {
       question: 'Hur säkras personuppgifter enligt GDPR?',
       answer: 'Elivro är GDPR-compliant med kryptering, rollbaserade behörigheter och servrar i Sverige. GDPR & PUB-stöd ingår.'
-    },
-    {
-      question: 'Kan Elivro integreras med befintliga system?',
-      answer: 'Ja, vi har API-integration med de flesta lönesystem och kan importera befintlig data. Diskutera era behov i demon.'
     },
     {
       question: 'Hur får vi support?',

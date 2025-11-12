@@ -1,44 +1,91 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder_key_for_build')
+// Fail fast if API key is missing (not just at runtime)
+if (!process.env.RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY environment variable is required')
+}
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+/**
+ * Escapes HTML special characters to prevent XSS attacks
+ */
+function escapeHtml(str: string): string {
+  const htmlEscapeMap: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }
+  return str.replace(/[&<>"']/g, (char) => htmlEscapeMap[char] || char)
+}
+
+/**
+ * Sanitizes user input by trimming whitespace and removing dangerous characters
+ */
+function sanitizeInput(input: string, maxLength: number = 200): string {
+  return input.trim().slice(0, maxLength)
+}
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'placeholder_key_for_build') {
-      return NextResponse.json(
-        { error: 'Email service not configured. Please contact support.' },
-        { status: 503 }
-      )
-    }
-
     // Parse request body
     const body = await request.json()
-    const { name, company, email } = body
+    const { name, company, email, phone } = body
 
     // Validate required fields
-    if (!name || !company || !email) {
+    if (!name || !company || !email || !phone) {
       return NextResponse.json(
         { error: 'Alla fält är obligatoriska' },
         { status: 400 }
       )
     }
 
+    // Sanitize inputs (trim whitespace, limit length)
+    const sanitizedName = sanitizeInput(name, 100)
+    const sanitizedCompany = sanitizeInput(company, 100)
+    const sanitizedEmail = sanitizeInput(email, 100).toLowerCase()
+    const sanitizedPhone = sanitizeInput(phone, 20)
+
+    // Validate minimum length for name and company
+    if (sanitizedName.length < 2 || sanitizedCompany.length < 2) {
+      return NextResponse.json(
+        { error: 'Namn och företag måste vara minst 2 tecken' },
+        { status: 400 }
+      )
+    }
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(sanitizedEmail)) {
       return NextResponse.json(
         { error: 'Ogiltig e-postadress' },
         { status: 400 }
       )
     }
 
+    // Validate phone format (flexible Swedish/international format)
+    const phoneRegex = /^[\d\s\-\+\(\)]{7,20}$/
+    if (!phoneRegex.test(sanitizedPhone)) {
+      return NextResponse.json(
+        { error: 'Ogiltigt telefonnummer' },
+        { status: 400 }
+      )
+    }
+
+    // Escape HTML for safe interpolation in email templates
+    const safeName = escapeHtml(sanitizedName)
+    const safeCompany = escapeHtml(sanitizedCompany)
+    const safeEmail = escapeHtml(sanitizedEmail)
+    const safePhone = escapeHtml(sanitizedPhone)
+
     // Send notification email to admin
     const adminEmail = await resend.emails.send({
       from: 'Elivro Demo <notify@notify.elivro.se>',
       to: ['daniel@elivro.se'],
-      subject: `Ny demo-förfrågan från ${name}`,
+      subject: `Ny demo-förfrågan från ${safeName}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -101,21 +148,26 @@ export async function POST(request: NextRequest) {
 
               <div class="info-row">
                 <div class="label">Namn</div>
-                <div class="value">${name}</div>
+                <div class="value">${safeName}</div>
               </div>
 
               <div class="info-row">
                 <div class="label">Företag</div>
-                <div class="value">${company}</div>
+                <div class="value">${safeCompany}</div>
               </div>
 
               <div class="info-row">
                 <div class="label">E-post</div>
-                <div class="value"><a href="mailto:${email}" style="color: #8b5cf6; text-decoration: none;">${email}</a></div>
+                <div class="value"><a href="mailto:${safeEmail}" style="color: #8b5cf6; text-decoration: none;">${safeEmail}</a></div>
+              </div>
+
+              <div class="info-row">
+                <div class="label">Telefon</div>
+                <div class="value"><a href="tel:${safePhone}" style="color: #8b5cf6; text-decoration: none;">${safePhone}</a></div>
               </div>
 
               <div class="footer">
-                <p><strong>Nästa steg:</strong> Kontakta kunden inom 24 timmar för att boka ett personligt möte.</p>
+                <p><strong>Nästa steg:</strong> Kontakta kunden för att boka ett personligt möte.</p>
                 <p style="margin-top: 15px; font-size: 12px; color: #9ca3af;">
                   Detta meddelande skickades automatiskt från Elivro's landing page.
                 </p>
@@ -129,7 +181,7 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to user
     const userEmail = await resend.emails.send({
       from: 'Elivro <notify@notify.elivro.se>',
-      to: [email],
+      to: [sanitizedEmail],
       subject: 'Tack för din demo-förfrågan!',
       html: `
         <!DOCTYPE html>
@@ -191,11 +243,11 @@ export async function POST(request: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h1>Tack för din förfrågan, ${name}! 🎉</h1>
+              <h1>Tack för din förfrågan, ${safeName}! 🎉</h1>
               <p>Vi har mottagit din demo-förfrågan och uppskattar ditt intresse för Elivro.</p>
 
               <div class="highlight-box">
-                <h2>⏰ Vi hör av oss inom 24 timmar</h2>
+                <h2>⏰ Vi hör av oss snart</h2>
                 <p style="margin: 10px 0 0 0; font-size: 14px; opacity: 0.9;">
                   Ett personligt möte kommer att bokas in så snart som möjligt.
                 </p>
@@ -203,21 +255,22 @@ export async function POST(request: NextRequest) {
 
               <p><strong>Dina uppgifter:</strong></p>
               <ul style="color: #4b5563;">
-                <li>Namn: ${name}</li>
-                <li>Företag: ${company}</li>
-                <li>E-post: ${email}</li>
+                <li>Namn: ${safeName}</li>
+                <li>Företag: ${safeCompany}</li>
+                <li>E-post: ${safeEmail}</li>
+                <li>Telefon: ${safePhone}</li>
               </ul>
 
               <p>Under tiden kan du:</p>
               <ul style="color: #4b5563;">
                 <li>Besöka vår hemsida för mer information</li>
                 <li>Förbereda frågor du vill diskutera under demon</li>
-                <li>Tänka på era specifika rekryteringsbehov</li>
+                <li>Tänka på era specifika behov inom rekrytering, schemaläggning och rapportering</li>
               </ul>
 
               <div class="footer">
                 <p><strong>Elivro</strong><br>
-                Det bästa rekryteringsverktyget i assistansbranschen</p>
+                Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering.</p>
                 <p style="margin-top: 15px; font-size: 12px; color: #9ca3af;">
                   Om du har några direkta frågor, tveka inte att svara på detta mail.
                 </p>

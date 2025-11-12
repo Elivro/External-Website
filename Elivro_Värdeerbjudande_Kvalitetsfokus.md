@@ -1,14 +1,14 @@
 # ELIVRO - KVALITETSFOKUSERAT VÄRDEERBJUDANDE
 
-**Senast uppdaterad:** 2025-11-09
-**Version:** 1.3 - Kvalitetsfokus (Kund istället för Brukare | Schemaläggning: Kontroll och översikt | Statistik renad från osäkrade siffror)
+**Senast uppdaterad:** 2025-11-11
+**Version:** 1.4 - Implementeringsstatus (Uppdaterad med faktisk hemsideimplementering och 3-nivå prissättning)
 
 ---
 
 ## HUVUDVÄRDEERBJUDANDE
 
 ### Primär Tagline
-**"Rekrytera rätt. Schemalägg smart. Rapportera enkelt."**
+**"Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering."**
 
 ### Kvalitetslöfte
 **"Bättre matchning. Tryggare assistans. Högre livskvalitet."**
@@ -20,7 +20,7 @@
 
 ## MESSAGING FRAMEWORK
 
-### 1. REKRYTERA RÄTT = BÄTTRE ASSISTANS
+### 1. LÄTTARE REKRYTERING = BÄTTRE ASSISTANS
 
 **Kvalitetslöfte:**
 *"Rätt assistent på rätt plats höjer kvaliteten för både kunden och samordnare."*
@@ -36,7 +36,7 @@
 
 ---
 
-### 2. SCHEMALÄGG SMART = TRYGGARE VARDAG
+### 2. SNABBARE SCHEMALÄGGNING = TRYGGARE VARDAG
 
 **Kvalitetslöfte:**
 *"Förutsägbarhet och kontinuitet är grundpelarna i god assistans."*
@@ -52,7 +52,7 @@
 
 ---
 
-### 3. RAPPORTERA ENKELT = FOKUS PÅ DET SOM BETYDER NÅGOT
+### 3. ENKLARE RAPPORTERING = FOKUS PÅ DET SOM BETYDER NÅGOT
 
 **Kvalitetslöfte:**
 *"Mindre administration betyder mer tid för relationer och omsorg."*
@@ -71,24 +71,58 @@
 
 ## KOMPLETT VÄRDEERBJUDANDE - HEMSIDA HERO SECTION
 
-### Huvudrubrik
-# "Rekrytera rätt. Schemalägg smart. Rapportera enkelt."
+### ✅ IMPLEMENTERAT PÅ HEMSIDAN
 
-### Subheading
-### "För assistans som förändrar liv - inte bara administrerar dem."
+**Eyebrow:** "Assistansplanering"
 
-### Beskrivande stycke
-*"Elivro är det första systemet som förstår att personlig assistans handlar om människor, inte teknisk kunskap. Vår AI matchar assistenter och kunder baserat på det som verkligen betyder något: kompetens, personkemi och kontinuitet. Resultatet? Tryggare kunder, gladare assistenter och högre kvalitet på assistansen."*
+### Huvudrubrik (AKTUELL)
+# "Få tid till kvalitet"
 
-### Call-to-Action
-- **Primär:** "Se hur det fungerar" (Video demo)
-- **Sekundär:** "Starta gratis idag"
+**Note:** Ursprunglig rekommendation var "Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering." men implementeringen använder en mer fokuserad, känslomässig headline som direkt talar till kärnvärdet.
+
+### Tre Pelare (visas som checklist under headline)
+- ✓ Lättare rekrytering
+- ✓ Snabbare schemaläggning
+- ✓ Enklare rapportering
+
+### Subheading (AKTUELL)
+### "God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det."
+
+**Note:** Ursprunglig rekommendation var "För assistans som förändrar liv - inte bara administrerar dem."
+
+### Call-to-Action (AKTUELL)
+- **Primär:** "Boka gratis demo"
+- **Sekundär:** "Se hur det fungerar"
+- **Reassurance:** "Inget kreditkort krävs"
+
+---
+
+## PROBLEM SECTION - TRE UTMANINGAR
+
+### ✅ IMPLEMENTERAT PÅ HEMSIDAN
+
+**Heading:** "Tre utmaningar för assistansföretag idag"
+
+#### 1. Matchning som misslyckas
+- Kortare anställningstider när person och roll inte passar
+- Missnöjda kunder som inte får den kontinuitet de behöver
+- Rekryteringsprocessen börjar om – igen och igen
+
+#### 2. Schemaläggning riskerar att gå över budget och bryta mot avtal
+- Budgetöverskridningar som kommer som överraskningar
+- Risk att bryta mot ATL och kundavtal
+- Omläggningar som stressar både assistenter och kunder
+
+#### 3. Krångliga system gör det svårt att följa alla regler
+- Tid som kunde spenderas med kunder går till administration
+- Risk för granskningar från Inspektionen för vård och omsorg (IVO)
+- Dokumentation som inte håller måttet när det gäller
 
 ---
 
 ## TRE-KOLUMNS BENEFITS
 
-### 🎯 REKRYTERA RÄTT
+### 🎯 LÄTTARE REKRYTERING
 **Huvudrubrik:** Matchning som bygger relationer
 
 **Beskrivning:**
@@ -101,7 +135,7 @@
 
 ---
 
-### 📅 SCHEMALÄGG SMART
+### 📅 SNABBARE SCHEMALÄGGNING
 **Huvudrubrik:** Kontinuitet som skapar trygghet
 
 **Beskrivning:**
@@ -114,7 +148,7 @@
 
 ---
 
-### ✅ RAPPORTERA ENKELT
+### ✅ ENKLARE RAPPORTERING
 **Huvudrubrik:** Automation som frigör tid för omsorg
 
 **Beskrivning:**
@@ -244,7 +278,7 @@
 ## SAMMANFATTNING - CORE BELIEFS
 
 ### Värdeerbjudande
-"Rekrytera rätt. Schemalägg smart. Rapportera enkelt."
+"Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering."
 
 ### Kvalitetslöfte
 "Bättre matchning. Tryggare assistans. Högre livskvalitet."
@@ -253,17 +287,174 @@
 Elivro är inte ett administrativt system - det är en **kvalitetsplattform för personlig assistans**. Vi använder AI för att säkerställa att rätt personer möts, att relationer får tid att växa, och att administration aldrig står i vägen för det mänskliga mötet.
 
 ### Core belief
-*"God assistans handlar om relationer, inte rutiner. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det."*
+*"God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det."*
+
+
+---
+
+## FOUNDER STORY - ORIGIN
+
+### ✅ IMPLEMENTERAT PÅ HEMSIDAN
+
+**Section Heading:** "Grundat av experter inom assistans och teknologi"
+
+**Founders:**
+- **Jimmy** (VD) - Assistansbranschen sedan 2014
+- **Filiph** (System) - Systemutveckling
+- **Daniel** (Server/Säkerhet) - Backend och säkerhet
+
+**Band Background:** "Kreativitet och samarbete – sedan 2012"
+
+**Jimmy's Origin Story:**
+
+> "Trots att jag bara har jobbat i branchen i två år så kunde jag snabbt känna att det finns en frustration som ligger under ytan. Det är outtalat men ständigt närvarande. Där jag först märkte av det, var självklart i mjukvaran som användes. Det jag letade efter fanns inte där jag trodde det skulle vara, tröck jag på fel ställe så kastades jag ut från det jag höll på med och när jag skulle söka efter någonting då....gick det inte att söka. Knapparna och spakarna gjorde helt enkelt inte det som kändes naturligt.
+
+> Om du känner igen dig så tror jag att du kommer känna dig hemma i Elivro. Vi har (med er hjälp) åstadkommit något som jag är otroligt stolt över - ett system som ger oss alla en superkraft. Och den superkraften är att kunna fokusera på kvalitet och relationer – inte administration."
+
+---
+
+## PRISSÄTTNING - TRE NIVÅER
+
+### ✅ IMPLEMENTERAT PÅ HEMSIDAN
+
+**Section Heading:** "Transparent prissättning"
+
+**Källa:** Affärsplan-v2.md (feature-baserad prissättning per brukare/månad)
+
+---
+
+### GRUND - 349 kr/brukare/månad
+**För grundläggande schema och rapportering**
+
+**Inkluderat:**
+- ✓ Grundläggande schemaläggning
+- ✓ Tidrapportering med BankID
+- ✓ FK-integration
+- ✓ Mobilapp för assistenter
+- ✓ E-poststöd
+
+**Målgrupp:** Organisationer med stabila team och låg personalrotation
+
+**Exempel:** 10 brukare = 3,490 kr/månad (41,880 kr/år)
+
+---
+
+### STANDARD - 499 kr/brukare/månad ⭐ REKOMMENDERAS
+**För avancerad automation och kontroll**
+
+**Allt i Grund, plus:**
+- ✓ Avancerad schemaläggning (ATL-övervakning)
+- ✓ Automatisk OB/jour-beräkning
+- ✓ Analytics och dashboards
+- ✓ Lex Sarah-hantering
+- ✓ Prioriterad support
+
+**Målgrupp:** Växande organisationer som behöver automation och kvalitetsverktyg
+
+**Exempel:** 10 brukare = 4,990 kr/månad (59,880 kr/år)
+
+---
+
+### PREMIUM - Kontakta oss för offert
+**För AI-driven rekrytering och premium-support**
+
+**Allt i Standard, plus:**
+- ✓ AI-driven rekrytering och matchning
+- ✓ Integration med Arbetsförmedlingen
+- ✓ 99.9% SLA
+- ✓ Dedikerad kundansvarig
+- ✓ API-access
+
+**Målgrupp:** Organisationer med hög personalrotation som behöver AI-matchning
+
+**Typiskt pris:** Från ~750-800 kr/brukare/månad
+
+**Exempel:** 50 brukare = ~37,500-40,000 kr/månad (~450,000-480,000 kr/år)
+
+---
+
+### Trust Signals (visas under prissättning)
+- ✓ Ingen bindningstid
+- ✓ 30 dagars pengarna-tillbaka
+- ✓ Onboarding ingår
+
+---
+
+## FAQ - VANLIGA FRÅGOR
+
+### ✅ IMPLEMENTERAT PÅ HEMSIDAN (7 frågor)
+
+**Section Heading:** "Vanliga frågor"
+
+**Note:** Pilot-frågor har tagits bort. Vi erbjuder inte publikt "gratis pilot" (endast för early adopters internt).
+
+#### 1. Hur lång tid tar det att komma igång?
+Från första demo till go-live tar det vanligtvis 2-4 veckor. Vi hjälper er med konfiguration, dataimport och utbildning av teamet.
+
+#### 2. Finns det någon risk att testa Elivro?
+Nej. Vi erbjuder 30 dagars pengarna-tillbaka-garanti. Ingen bindningstid. Ni kan avsluta när som helst och får full återbetalning om ni inte är nöjda första månaden.
+
+#### 3. Vad kostar Elivro?
+Vi har tre nivåer: Grund från 349 kr/brukare/månad, Standard från 499 kr/brukare/månad, och Premium med AI-rekrytering (kontakta för offert). Alla nivåer är per brukare/månad, exkl. moms, utan bindningstid. Boka demo för en personlig offert anpassad efter era behov.
+
+#### 4. Hur säkras personuppgifter enligt GDPR?
+Elivro är GDPR-compliant med kryptering, rollbaserade behörigheter och servrar i Sverige. GDPR & PUB-stöd ingår.
+
+#### 5. Kan Elivro integreras med befintliga system?
+Ja, vi har API-integration med de flesta lönesystem och kan importera befintlig data. Diskutera era behov i demon.
+
+#### 6. Hur får vi support?
+All support sker på svenska via e-post (daniel@elivro.se) och telefon. Vi erbjuder dedikerad onboarding-support och löpande hjälp. Support ingår i alla abonnemang.
+
+#### 7. Vad händer med vår data om vi avslutar?
+Er data är er egendom. Vid uppsägning får ni en fullständig export av all data i vanliga format (Excel/CSV). Vi raderar era personuppgifter enligt GDPR inom 30 dagar efter avslut.
+
+**Contact Fallback:** "Hittar du inte svar? Kontakta oss: daniel@elivro.se"
+
+---
+
+## HOW IT WORKS - TRE STEG
+
+### ✅ IMPLEMENTERAT PÅ HEMSIDAN
+
+**Section Heading:** "Hur det fungerar"
+**Subheading:** "Från demo till live på 2-4 veckor"
+
+**Note:** Pilot-program erbjuds INTE publikt (endast internt för early adopters enligt affärsplan).
+
+#### Steg 1: Boka demo
+Vi visar hur Elivro fungerar anpassat efter era behov och processer
+
+#### Steg 2: Konfigurera och importera
+Vi hjälper er konfigurera systemet och importera befintlig data
+
+#### Steg 3: Gå live
+Utbildning av teamet, aktivering av första scheman och tidrapporter. 30 dagars pengarna-tillbaka-garanti
+
+---
+
+## HEMSIDESTRUKTUR - IMPLEMENTERAD ORDNING
+
+### ✅ Aktuell Sektion Ordning:
+1. **Navbar** - Fixed navigation med smooth scroll
+2. **Hero** - "Få tid till kvalitet" med tre pelare
+3. **ProblemSection** - Tre utmaningar för assistansföretag
+4. **HowItWorks** - Tre steg från demo till live
+5. **Features (Tre Pelare)** - Lättare rekrytering, Snabbare schemaläggning, Enklare rapportering
+6. **FounderStory** - Team background och origin story
+7. **CTA** - Prissättning (3 tiers) + Demo booking form
+8. **FAQSection** - 8 frågor och svar
+9. **Footer** - Navigation och trust signals
 
 ---
 
 ## NÄSTA STEG - ITERATIONSPUNKTER
 
 ### Områden att vidareutveckla:
-- [ ] Konkret copy för hero-sektion
-- [ ] Feature-beskrivningar för produktsida
-- [ ] Pricing page messaging
-- [ ] FAQ-innehåll
+- [x] Konkret copy för hero-sektion ✅
+- [x] Feature-beskrivningar för produktsida ✅
+- [x] Pricing page messaging ✅ (3-tier structure implementerad)
+- [x] FAQ-innehåll ✅ (8 frågor implementerade)
 - [ ] Email marketing sequences
 - [ ] Sales deck presentationer
 - [ ] Case studies templates
