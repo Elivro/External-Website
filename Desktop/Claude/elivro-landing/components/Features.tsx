@@ -17,7 +17,7 @@ export default function Features() {
 
   const pillars: Pillar[] = [
     {
-      title: 'Rekrytera rätt',
+      title: 'Lättare rekrytering',
       headline: 'Matchning som bygger relationer',
       benefits: [
         'Intelligent matchning på personkemi, inte bara CV',
@@ -27,7 +27,7 @@ export default function Features() {
       icon: Users
     },
     {
-      title: 'Schemalägg smart',
+      title: 'Snabbare schemaläggning',
       headline: 'Kontinuitet som skapar trygghet',
       benefits: [
         'Real-time budgetöversikt – inga överraskningar',
@@ -37,7 +37,7 @@ export default function Features() {
       icon: CalendarCheck
     },
     {
-      title: 'Rapportera enkelt',
+      title: 'Enklare rapportering',
       headline: 'Automation som frigör tid för omsorg',
       benefits: [
         'Mindre administration = mer tid med kunden',

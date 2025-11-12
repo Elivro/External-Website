@@ -33,7 +33,7 @@ export default function ProblemSection() {
       icon: AlertTriangle
     },
     {
-      problem: 'Krångliga system gör det svårt att följa alla regler',
+      problem: 'Krångliga system gör det svårt att följa lagar och regler',
       consequences: [
         'Tid som kunde spenderas med kunder går till administration',
         'Risk för granskningar från Inspektionen för vård och omsorg (IVO)',
