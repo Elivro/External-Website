@@ -6,7 +6,7 @@ import { NormalBufferAttributes } from 'three'
 interface FadeSectionProps {
   children: ReactNode
   className?: string
-  fadeIntensity?: 0.8 // 0-1, how strong the fade effect is
+  fadeIntensity?: number // 0-1, how strong the fade effect is
 }
 
 export default function FadeSection({

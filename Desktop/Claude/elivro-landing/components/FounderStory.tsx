@@ -194,10 +194,10 @@ export default function FounderStory() {
           >
             <div className="space-y-6 text-center">
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-                Efter två år i branschen såg jag samma frustration överallt: mjukvara som hindrar istället för hjälper. System där det enkla blir svårt.
+                Som assistent tröttnade jag på att använda omoderna system. Program där det enkla blev något svårt.
               </p>
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-                Därför skapade vi Elivro – ett system som ger er en superkraft: att{' '}
+                Därför skapade vi Elivro – ett system som ger oss alla superkraften att kunna{' '}
                 <span className="text-emerald-400 font-semibold">fokusera på kvalitet och relationer</span>
                 {' '}– inte administration.
               </p>

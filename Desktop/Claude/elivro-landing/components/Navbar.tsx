@@ -41,7 +41,7 @@ export default function Navbar() {
             <a
               href="#top"
               onClick={handleScrollToTop}
-              className="text-zinc-300 text-xl font-bold tracking-wide hover:text-zinc-200 transition-colors duration-300"
+              className="text-zinc-300 text-xl font-bold tracking-widest hover:text-zinc-200 transition-colors duration-300"
               style={{ fontFamily: 'var(--font-nunito)' }}
             >
               ELIVRO

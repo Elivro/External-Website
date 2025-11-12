@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-1">
             <div
-              className="text-zinc-300 text-2xl font-bold tracking-wide mb-4"
+              className="text-zinc-300 text-2xl font-bold tracking-widest mb-4"
               style={{ fontFamily: 'var(--font-nunito)' }}
             >
               ELIVRO

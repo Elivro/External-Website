@@ -7,7 +7,7 @@ import { useRef, useEffect, useState, RefObject } from 'react'
  * @returns An object containing the ref to attach to the element and the visibility state
  */
 export function useIntersectionObserver(threshold: number = 0.1): {
-  ref: RefObject<HTMLDivElement>
+  ref: RefObject<HTMLDivElement | null>
   isVisible: boolean
 } {
   const [isVisible, setIsVisible] = useState(false)

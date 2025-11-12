@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Elivro - Allt-i-ett plattform för Assistansbranschen',
-  description: 'Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering. För assistans som förändrar liv.',
+  title: 'Elivro - Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering',
+  description: 'God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det.',
   icons: {
     icon: '/favicon.ico',
   },
