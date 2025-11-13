@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import FadeSection from './FadeSection'
 
 interface FAQ {
   question: string
@@ -46,7 +45,6 @@ export default function FAQSection() {
   }
 
   return (
-    <FadeSection>
       <section
         id="faq"
         ref={sectionRef}
@@ -151,6 +149,5 @@ export default function FAQSection() {
           </div>
         </div>
       </section>
-    </FadeSection>
   )
 }

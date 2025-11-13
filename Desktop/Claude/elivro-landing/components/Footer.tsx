@@ -60,16 +60,10 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Juridiskt</h3>
             <nav className="space-y-3">
               <a
-                href="/privacy"
+                href="/integritetspolicy"
                 className="block text-zinc-400 hover:text-emerald-400 transition-colors duration-200 text-sm"
               >
                 Integritetspolicy
-              </a>
-              <a
-                href="/terms"
-                className="block text-zinc-400 hover:text-emerald-400 transition-colors duration-200 text-sm"
-              >
-                Användarvillkor
               </a>
             </nav>
           </div>

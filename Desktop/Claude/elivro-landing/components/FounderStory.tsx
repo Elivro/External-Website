@@ -215,8 +215,30 @@ export default function FounderStory() {
             transition: 'all 1.2s ease-out 900ms'
           }}
         >
-          {/* Fullscreen Image Container */}
-          <div className="relative w-full overflow-hidden shadow-2xl shadow-emerald-500/20">
+          {/* Fullscreen Image Container with Glassmorphic Frame & Fade Effect */}
+          <div
+            className="relative w-full overflow-hidden border border-emerald-500/20 backdrop-blur-sm"
+            style={{
+              boxShadow: `
+                0 25px 50px -12px rgba(16, 185, 129, 0.25),
+                0 10px 40px rgba(139, 92, 246, 0.15),
+                0 0 0 1px rgba(16, 185, 129, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05)
+              `,
+              maskImage: `linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 15%,
+                black 100%
+              )`,
+              WebkitMaskImage: `linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 15%,
+                black 100%
+              )`
+            }}
+          >
             {/* MacBook Image */}
             <Image
               src="/elivro-macbook-color.webp"

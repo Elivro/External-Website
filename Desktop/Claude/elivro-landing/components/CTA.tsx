@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 export default function CTA() {
+  const isVisible = useIntersectionObserver(0.1)
   const [name, setName] = useState('')
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
@@ -71,14 +73,14 @@ export default function CTA() {
   }
 
   return (
-    <section id="cta-section" className="w-full py-24 md:py-32 bg-zinc-950 relative overflow-hidden">
-      {/* Enhanced green/emerald radial glow */}
-      <div className="absolute inset-0 opacity-15 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-green-400 rounded-full blur-3xl opacity-40"></div>
-      </div>
+      <section id="cta-section" className="w-full py-24 md:py-32 bg-zinc-950 relative overflow-hidden">
+        {/* Enhanced green/emerald radial glow */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-green-400 rounded-full blur-3xl opacity-40"></div>
+        </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ========================================
             PRICING SECTION - TEMPORARILY REMOVED
             Date: 2025-11-12
@@ -97,17 +99,38 @@ export default function CTA() {
         {/* Main CTA Card */}
         <div className="mx-auto max-w-4xl">
           {/* Headline */}
-          <div className="text-center mb-8 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+          <div className="text-center mb-8">
+            <h2
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight transition-all duration-300 ease-out"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transitionDelay: '0ms',
+              }}
+            >
               Boka demo
             </h2>
-            <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
+            <p
+              className="text-lg text-zinc-300 max-w-2xl mx-auto transition-all duration-300 ease-out"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transitionDelay: '150ms',
+              }}
+            >
               Vi visar hur Elivro kan hjälpa er med bättre rekrytering, snabbare schemaläggning och enklare rapportering. Kostnadsfritt och utan förpliktelser.
             </p>
           </div>
 
           {/* Trust Signals */}
-          <div className="flex items-center justify-center gap-8 mb-8 text-zinc-300">
+          <div
+            className="flex items-center justify-center gap-8 mb-8 text-zinc-300 transition-all duration-300 ease-out"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transitionDelay: '300ms',
+            }}
+          >
             <div className="flex items-center gap-2">
               <span className="text-emerald-400 text-lg">✓</span>
               <span className="text-sm">Kostnadsfritt</span>
@@ -121,8 +144,12 @@ export default function CTA() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="mb-16 animate-slide-in-up"
-            style={{ animationDelay: '0.1s' }}
+            className="mb-16 transition-all duration-300 ease-out"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transitionDelay: '450ms',
+            }}
           >
             <div className="max-w-2xl mx-auto space-y-4">
               {/* Row 1: Name and Phone */}
@@ -250,9 +277,20 @@ export default function CTA() {
             </div>
 
             {/* Reassurance text */}
-            <p className="text-zinc-400 text-sm text-center mt-4">
-              Vi kontaktar dig inom 24 timmar för att boka en personlig demo.
-            </p>
+            <div className="text-center mt-4 space-y-2">
+              <p className="text-zinc-400 text-sm">
+                Vi kontaktar dig inom 24 timmar för att boka en personlig demo.
+              </p>
+              <p className="text-zinc-500 text-xs">
+                Genom att skicka formuläret godkänner du vår{' '}
+                <a
+                  href="/integritetspolicy"
+                  className="text-emerald-400 hover:text-emerald-300 underline transition-colors"
+                >
+                  integritetspolicy
+                </a>.
+              </p>
+            </div>
           </form>
 
         </div>
