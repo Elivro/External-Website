@@ -1,14 +1,14 @@
-Elivro Landing Page
+# Elivro Landing Page
 
-A modern landing page for Elivro - AI-powered recruiting tool for the Swedish assistant care industry.
+A modern landing page for Elivro - Intelligent recruiting tool for the Swedish assistant care industry.
 
-Quick Start
+## Quick Start
 
-Prerequisites
+### Prerequisites
 - Node.js 18+
 - npm or yarn
 
-Installation & Running
+### Installation & Running
 
 1. Clone the repository:
 ```bash
