@@ -30,7 +30,7 @@ export default function CookieConsent() {
 
   const loadGoogleAnalytics = () => {
     // Only load if not already loaded
-    if (window.gtag) return
+    if (typeof window.gtag !== 'undefined') return
 
     // Load gtag.js script
     const script1 = document.createElement('script')
