@@ -72,12 +72,8 @@ export default function FounderStory() {
               <div
                 key={index}
                 className="
-                  group relative overflow-hidden rounded-2xl sm:rounded-3xl
-                  bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
-                  backdrop-blur-sm border border-emerald-500/30
-                  hover:border-emerald-400/50
-                  transition-all duration-500 ease-out
-                  p-4 sm:p-6 md:p-8 text-center
+                  group relative text-center
+                  p-3 sm:p-4 md:p-6
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
@@ -85,11 +81,8 @@ export default function FounderStory() {
                   transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
                 }}
               >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-green-400/0 to-emerald-600/0 group-hover:from-emerald-500/5 group-hover:via-green-400/5 group-hover:to-emerald-600/5 transition-all duration-500 pointer-events-none" />
-
-                {/* Founder Photo - Responsive sizing */}
-                <div className="relative mx-auto mb-3 sm:mb-4 md:mb-6 w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-emerald-500/30 group-hover:border-emerald-400/50 transition-all duration-300">
+                {/* Founder Photo - Responsive sizing with border */}
+                <div className="relative mx-auto mb-3 sm:mb-4 md:mb-6 w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-3 sm:border-4 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300">
                   <Image
                     src={founder.image}
                     alt={`${founder.name} - ${founder.role}`}
@@ -99,18 +92,18 @@ export default function FounderStory() {
                   />
                 </div>
 
-                {/* Name - Responsive sizing */}
-                <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
+                {/* Name - Improved mobile sizing */}
+                <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
                   {founder.name}
                 </h3>
 
-                {/* Role - Responsive sizing */}
-                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2">
+                {/* Role - Improved mobile sizing */}
+                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2 leading-tight">
                   {founder.role}
                 </p>
 
-                {/* Expertise - Responsive sizing */}
-                <p className="text-xs sm:text-sm text-zinc-300">
+                {/* Expertise - Improved mobile sizing */}
+                <p className="text-xs sm:text-sm text-zinc-300 leading-tight">
                   {founder.expertise}
                 </p>
               </div>
