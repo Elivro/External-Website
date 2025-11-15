@@ -66,14 +66,19 @@ export default function FounderStory() {
             </h2>
           </header>
 
-          {/* Founders Grid - 3 columns on all screen sizes, optimized for mobile */}
+          {/* Founders Grid - 3 columns on all screen sizes, cards on desktop only */}
           <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-10 mb-16 md:mb-20">
             {founders.map((founder, index) => (
               <div
                 key={index}
                 className="
                   group relative text-center
-                  p-2 sm:p-4 md:p-6 lg:p-7
+                  p-2 sm:p-4
+                  md:rounded-3xl md:bg-gradient-to-br md:from-zinc-800/50 md:to-zinc-900/50
+                  md:backdrop-blur-sm md:border md:border-emerald-500/30
+                  md:hover:border-emerald-400/50
+                  md:transition-all md:duration-500 md:ease-out
+                  md:p-6 lg:p-7
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
