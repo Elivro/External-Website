@@ -57,7 +57,7 @@ export default function Features() {
         id="three-pillars"
         ref={sectionRef}
         aria-labelledby="features-title"
-        className="w-full bg-black py-20 md:py-32 relative overflow-hidden"
+        className="w-full bg-black py-16 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -68,10 +68,10 @@ export default function Features() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Section Header - CONDENSED */}
-          <header className="mx-auto max-w-3xl text-center mb-16">
+          <header className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
             <h2
               id="features-title"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -93,7 +93,7 @@ export default function Features() {
                   backdrop-blur-sm border border-zinc-700/30
                   hover:border-purple-500/50
                   transition-all duration-500 ease-out
-                  p-8 lg:p-10
+                  p-6 md:p-8 lg:p-10
                   ${index === 0 ? 'md:col-span-2 lg:col-span-1' : ''}
                 `}
                 style={{

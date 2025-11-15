@@ -49,7 +49,7 @@ export default function FAQSection() {
         id="faq"
         ref={sectionRef}
         aria-labelledby="faq-title"
-        className="w-full bg-zinc-950 py-20 md:py-32 relative overflow-hidden"
+        className="w-full bg-zinc-950 py-16 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements - Blue/Teal theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -60,10 +60,10 @@ export default function FAQSection() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
-          <header className="mx-auto max-w-3xl text-center mb-16">
+          <header className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
             <h2
               id="faq-title"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -94,7 +94,7 @@ export default function FAQSection() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full text-left p-8 lg:p-10 focus:outline-none focus:ring-2 focus:ring-teal-400/50 rounded-3xl"
+                  className="w-full text-left p-6 md:p-8 lg:p-10 focus:outline-none focus:ring-2 focus:ring-teal-400/50 rounded-3xl"
                   aria-expanded={openIndex === index}
                 >
                   {/* Question */}

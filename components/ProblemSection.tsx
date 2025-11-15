@@ -49,7 +49,7 @@ export default function ProblemSection() {
         id="problem"
         ref={sectionRef}
         aria-labelledby="problem-title"
-        className="w-full bg-zinc-950 py-20 md:py-32 relative overflow-hidden"
+        className="w-full bg-zinc-950 py-16 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements - Purple theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -60,10 +60,10 @@ export default function ProblemSection() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
-          <header className="mx-auto max-w-3xl text-center mb-16">
+          <header className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
             <h2
               id="problem-title"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -85,7 +85,7 @@ export default function ProblemSection() {
                   backdrop-blur-sm border border-purple-500/30
                   hover:border-purple-400/50
                   transition-all duration-500 ease-out
-                  p-8 lg:p-10
+                  p-6 md:p-8 lg:p-10
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,

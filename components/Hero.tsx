@@ -24,7 +24,7 @@ export default function Hero() {
 
   return (
     <>
-    <section className="relative w-full min-h-[85vh] lg:min-h-[95vh] overflow-hidden">
+    <section className="relative w-full min-h-[75vh] lg:min-h-[95vh] overflow-hidden">
       {/* Animated Particles Background */}
       <div className="absolute inset-0 z-0 bg-black">
         {/* Subtle background glow */}
@@ -48,8 +48,8 @@ export default function Hero() {
       </div>
 
       {/* Content - Two Column Grid */}
-      <div className="relative z-30 min-h-[85vh] lg:min-h-[95vh] flex items-center pointer-events-auto">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div className="relative z-30 min-h-[75vh] lg:min-h-[95vh] flex items-center pointer-events-auto">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start lg:items-center">
 
@@ -70,7 +70,7 @@ export default function Hero() {
 
               {/* Main Headline - H1 */}
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] text-white mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-white mb-6"
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
@@ -168,7 +168,7 @@ export default function Hero() {
 
             {/* RIGHT COLUMN - Product Visual */}
             <div
-              className="lg:col-span-2 relative mt-8 lg:mt-16"
+              className="hidden lg:block lg:col-span-2 relative lg:mt-16"
               style={{
                 opacity: mounted ? 1 : 0,
                 transform: mounted ? 'translateY(0)' : 'translateY(30px)',
