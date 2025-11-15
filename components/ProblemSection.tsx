@@ -49,7 +49,7 @@ export default function ProblemSection() {
         id="problem"
         ref={sectionRef}
         aria-labelledby="problem-title"
-        className="w-full bg-zinc-950 py-16 md:py-24 lg:py-32 relative overflow-hidden"
+        className="w-full bg-zinc-950 py-18 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements - Purple theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -75,7 +75,7 @@ export default function ProblemSection() {
           </header>
 
           {/* Pain Points Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8">
             {painPoints.map((point, index) => (
               <div
                 key={index}
@@ -85,7 +85,7 @@ export default function ProblemSection() {
                   backdrop-blur-sm border border-purple-500/30
                   hover:border-purple-400/50
                   transition-all duration-500 ease-out
-                  p-6 md:p-8 lg:p-10
+                  p-7 md:p-8 lg:p-10
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
