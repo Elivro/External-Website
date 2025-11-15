@@ -41,7 +41,7 @@ export default function HowItWorks() {
         id="how-it-works"
         ref={sectionRef}
         aria-labelledby="how-it-works-title"
-        className="w-full bg-black py-16 md:py-24 lg:py-32 relative overflow-hidden"
+        className="w-full bg-black py-20 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements - Blue/Teal theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -97,7 +97,7 @@ export default function HowItWorks() {
                       backdrop-blur-sm border border-teal-500/30
                       hover:border-teal-400/50
                       transition-all duration-500 ease-out
-                      p-6 md:p-8 lg:p-10
+                      p-8 md:p-8 lg:p-10
                       h-full
                     "
                   >
