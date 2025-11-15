@@ -66,8 +66,8 @@ export default function FounderStory() {
             </h2>
           </header>
 
-          {/* Founders Grid - Responsive 2/3 column layout */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16 md:mb-20">
+          {/* Founders Grid - 3 columns on all screen sizes */}
+          <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16 md:mb-20">
             {founders.map((founder, index) => (
               <div
                 key={index}
