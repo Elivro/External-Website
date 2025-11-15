@@ -41,7 +41,7 @@ export default function FounderStory() {
         id="about"
         ref={sectionRef}
         aria-labelledby="founder-title"
-        className="w-full bg-black pt-16 md:pt-24 lg:pt-32 pb-0 relative overflow-hidden"
+        className="w-full bg-black pt-18 md:pt-24 lg:pt-32 pb-0 relative overflow-hidden"
       >
         {/* Background gradient elements - Green/Emerald theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -66,18 +66,14 @@ export default function FounderStory() {
             </h2>
           </header>
 
-          {/* Founders Grid - Always horizontal layout */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-16 md:mb-20">
+          {/* Founders Grid - 3 columns on all screen sizes, optimized for mobile */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-10 mb-16 md:mb-20">
             {founders.map((founder, index) => (
               <div
                 key={index}
                 className="
-                  group relative overflow-hidden rounded-2xl sm:rounded-3xl
-                  bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
-                  backdrop-blur-sm border border-emerald-500/30
-                  hover:border-emerald-400/50
-                  transition-all duration-500 ease-out
-                  p-4 sm:p-6 md:p-8 text-center
+                  group relative text-center
+                  p-2 sm:p-4 md:p-6 lg:p-7
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
@@ -85,32 +81,29 @@ export default function FounderStory() {
                   transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
                 }}
               >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-green-400/0 to-emerald-600/0 group-hover:from-emerald-500/5 group-hover:via-green-400/5 group-hover:to-emerald-600/5 transition-all duration-500 pointer-events-none" />
-
-                {/* Founder Photo - Responsive sizing */}
-                <div className="relative mx-auto mb-3 sm:mb-4 md:mb-6 w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-emerald-500/30 group-hover:border-emerald-400/50 transition-all duration-300">
+                {/* Founder Photo - Smaller on mobile for better fit */}
+                <div className="relative mx-auto mb-2 sm:mb-3 md:mb-4 lg:mb-6 w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300">
                   <Image
                     src={founder.image}
                     alt={`${founder.name} - ${founder.role}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 80px, (max-width: 768px) 112px, 128px"
+                    sizes="(max-width: 640px) 64px, (max-width: 768px) 96px, 128px"
                   />
                 </div>
 
-                {/* Name - Responsive sizing */}
-                <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
+                {/* Name - Optimized for mobile */}
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white mb-0.5 sm:mb-1 md:mb-2 leading-tight">
                   {founder.name}
                 </h3>
 
-                {/* Role - Responsive sizing */}
-                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2">
+                {/* Role - Tighter on mobile */}
+                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-0.5 sm:mb-1 md:mb-2 leading-tight">
                   {founder.role}
                 </p>
 
-                {/* Expertise - Responsive sizing */}
-                <p className="text-xs sm:text-sm text-zinc-300">
+                {/* Expertise - Compact on mobile */}
+                <p className="text-xs sm:text-sm text-zinc-300 leading-tight">
                   {founder.expertise}
                 </p>
               </div>
@@ -184,7 +177,7 @@ export default function FounderStory() {
               mx-auto max-w-4xl rounded-3xl
               bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
               backdrop-blur-sm border border-emerald-500/30
-              p-6 md:p-8 lg:p-12 mb-16 md:mb-20
+              p-7 md:p-8 lg:p-12 mb-16 md:mb-20
             "
             style={{
               opacity: isVisible ? 1 : 0,
