@@ -151,54 +151,57 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-zinc-900/95 backdrop-blur-md">
-          <div className="space-y-1 px-4 pb-3 pt-2">
-            <a
-              href="#problem"
-              onClick={(e) => handleScrollToSection(e, 'problem')}
-              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-            >
-              Utmaningar
-            </a>
-            <a
-              href="#how-it-works"
-              onClick={(e) => handleScrollToSection(e, 'how-it-works')}
-              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-            >
-              Hur det fungerar
-            </a>
-            <a
-              href="#three-pillars"
-              onClick={(e) => handleScrollToSection(e, 'three-pillars')}
-              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-            >
-              Funktioner
-            </a>
-            <a
-              href="#about"
-              onClick={(e) => handleScrollToSection(e, 'about')}
-              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-            >
-              Om oss
-            </a>
-            <a
-              href="#faq"
-              onClick={(e) => handleScrollToSection(e, 'faq')}
-              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-            >
-              FAQ
-            </a>
-            <a
-              href="#cta-section"
-              onClick={(e) => handleScrollToSection(e, 'cta-section')}
-              className="block w-full px-3 py-2 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-            >
-              Boka demo
-            </a>
-          </div>
+      <div
+        className={`
+          md:hidden bg-zinc-900/95 backdrop-blur-md overflow-hidden transition-all duration-300 ease-out
+          ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
+        `}
+      >
+        <div className="space-y-1 px-4 pb-3 pt-2">
+          <a
+            href="#problem"
+            onClick={(e) => handleScrollToSection(e, 'problem')}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Utmaningar
+          </a>
+          <a
+            href="#how-it-works"
+            onClick={(e) => handleScrollToSection(e, 'how-it-works')}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Hur det fungerar
+          </a>
+          <a
+            href="#three-pillars"
+            onClick={(e) => handleScrollToSection(e, 'three-pillars')}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Funktioner
+          </a>
+          <a
+            href="#about"
+            onClick={(e) => handleScrollToSection(e, 'about')}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Om oss
+          </a>
+          <a
+            href="#faq"
+            onClick={(e) => handleScrollToSection(e, 'faq')}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            FAQ
+          </a>
+          <a
+            href="#cta-section"
+            onClick={(e) => handleScrollToSection(e, 'cta-section')}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Boka demo
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   )
 }

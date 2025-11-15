@@ -73,7 +73,7 @@ export default function CTA() {
   }
 
   return (
-      <section id="cta-section" className="w-full py-24 md:py-32 bg-zinc-950 relative overflow-hidden">
+      <section id="cta-section" className="w-full py-16 md:py-24 lg:py-32 bg-zinc-950 relative overflow-hidden">
         {/* Enhanced green/emerald radial glow */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500 rounded-full blur-3xl"></div>
@@ -101,7 +101,7 @@ export default function CTA() {
           {/* Headline */}
           <div className="text-center mb-8">
             <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight transition-all duration-300 ease-out"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight transition-all duration-300 ease-out"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -153,7 +153,7 @@ export default function CTA() {
           >
             <div className="max-w-2xl mx-auto space-y-4">
               {/* Row 1: Name and Phone */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name Input */}
                 <div>
                   <label htmlFor="name-input" className="sr-only">
@@ -194,7 +194,7 @@ export default function CTA() {
               </div>
 
               {/* Row 2: Company and Email */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Company Input */}
                 <div>
                   <label htmlFor="company-input" className="sr-only">
