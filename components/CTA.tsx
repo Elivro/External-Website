@@ -73,7 +73,7 @@ export default function CTA() {
   }
 
   return (
-      <section id="cta-section" className="w-full py-20 md:py-24 lg:py-32 bg-zinc-950 relative overflow-hidden">
+      <section id="cta-section" className="w-full py-16 md:py-24 lg:py-32 bg-zinc-950 relative overflow-hidden">
         {/* Enhanced green/emerald radial glow */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500 rounded-full blur-3xl"></div>

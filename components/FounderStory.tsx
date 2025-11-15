@@ -41,7 +41,7 @@ export default function FounderStory() {
         id="about"
         ref={sectionRef}
         aria-labelledby="founder-title"
-        className="w-full bg-black pt-20 md:pt-24 lg:pt-32 pb-0 relative overflow-hidden"
+        className="w-full bg-black pt-16 md:pt-24 lg:pt-32 pb-0 relative overflow-hidden"
       >
         {/* Background gradient elements - Green/Emerald theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -66,14 +66,14 @@ export default function FounderStory() {
             </h2>
           </header>
 
-          {/* Founders Grid - Responsive layout */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16 md:mb-20">
+          {/* Founders Grid - Always horizontal layout */}
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-16 md:mb-20">
             {founders.map((founder, index) => (
               <div
                 key={index}
                 className="
                   group relative text-center
-                  p-4 sm:p-5 md:p-6
+                  p-3 sm:p-4 md:p-6
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
@@ -93,17 +93,17 @@ export default function FounderStory() {
                 </div>
 
                 {/* Name - Improved mobile sizing */}
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
+                <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
                   {founder.name}
                 </h3>
 
                 {/* Role - Improved mobile sizing */}
-                <p className="text-sm sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2 leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2 leading-tight">
                   {founder.role}
                 </p>
 
                 {/* Expertise - Improved mobile sizing */}
-                <p className="text-sm sm:text-sm text-zinc-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-300 leading-tight">
                   {founder.expertise}
                 </p>
               </div>

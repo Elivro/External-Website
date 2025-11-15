@@ -49,7 +49,7 @@ export default function Hero() {
 
       {/* Content - Two Column Grid */}
       <div className="relative z-30 min-h-[75vh] lg:min-h-[95vh] flex items-center pointer-events-auto">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-16 lg:py-20">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start lg:items-center">
 

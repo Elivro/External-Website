@@ -57,7 +57,7 @@ export default function Features() {
         id="three-pillars"
         ref={sectionRef}
         aria-labelledby="features-title"
-        className="w-full bg-black py-20 md:py-24 lg:py-32 relative overflow-hidden"
+        className="w-full bg-black py-16 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -83,7 +83,7 @@ export default function Features() {
           </header>
 
           {/* Bento Grid - Mixed Sizes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {pillars.map((pillar, index) => (
               <div
                 key={pillar.title}
@@ -93,7 +93,7 @@ export default function Features() {
                   backdrop-blur-sm border border-zinc-700/30
                   hover:border-purple-500/50
                   transition-all duration-500 ease-out
-                  p-8 md:p-8 lg:p-10
+                  p-6 md:p-8 lg:p-10
                   ${index === 0 ? 'md:col-span-2 lg:col-span-1' : ''}
                 `}
                 style={{
