@@ -66,18 +66,18 @@ export default function FounderStory() {
             </h2>
           </header>
 
-          {/* Founders Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 md:mb-20">
+          {/* Founders Grid - Always horizontal layout */}
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-16 md:mb-20">
             {founders.map((founder, index) => (
               <div
                 key={index}
                 className="
-                  group relative overflow-hidden rounded-3xl
+                  group relative overflow-hidden rounded-2xl sm:rounded-3xl
                   bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
                   backdrop-blur-sm border border-emerald-500/30
                   hover:border-emerald-400/50
                   transition-all duration-500 ease-out
-                  p-6 md:p-8 text-center
+                  p-4 sm:p-6 md:p-8 text-center
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
@@ -88,29 +88,29 @@ export default function FounderStory() {
                 {/* Hover gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-green-400/0 to-emerald-600/0 group-hover:from-emerald-500/5 group-hover:via-green-400/5 group-hover:to-emerald-600/5 transition-all duration-500 pointer-events-none" />
 
-                {/* Founder Photo */}
-                <div className="relative mx-auto mb-6 w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-500/30 group-hover:border-emerald-400/50 transition-all duration-300">
+                {/* Founder Photo - Responsive sizing */}
+                <div className="relative mx-auto mb-3 sm:mb-4 md:mb-6 w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-emerald-500/30 group-hover:border-emerald-400/50 transition-all duration-300">
                   <Image
                     src={founder.image}
                     alt={`${founder.name} - ${founder.role}`}
                     fill
                     className="object-cover"
-                    sizes="128px"
+                    sizes="(max-width: 640px) 80px, (max-width: 768px) 112px, 128px"
                   />
                 </div>
 
-                {/* Name */}
-                <h3 className="text-2xl font-bold text-white mb-2">
+                {/* Name - Responsive sizing */}
+                <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
                   {founder.name}
                 </h3>
 
-                {/* Role */}
-                <p className="text-emerald-400 font-medium mb-2">
+                {/* Role - Responsive sizing */}
+                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2">
                   {founder.role}
                 </p>
 
-                {/* Expertise */}
-                <p className="text-zinc-300 text-sm">
+                {/* Expertise - Responsive sizing */}
+                <p className="text-xs sm:text-sm text-zinc-300">
                   {founder.expertise}
                 </p>
               </div>
