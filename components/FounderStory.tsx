@@ -66,14 +66,14 @@ export default function FounderStory() {
             </h2>
           </header>
 
-          {/* Founders Grid - 3 columns on all screen sizes */}
-          <div className="grid grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16 md:mb-20">
+          {/* Founders Grid - 3 columns on all screen sizes, optimized for mobile */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 lg:gap-10 mb-16 md:mb-20">
             {founders.map((founder, index) => (
               <div
                 key={index}
                 className="
                   group relative text-center
-                  p-5 sm:p-6 md:p-7
+                  p-2 sm:p-4 md:p-6 lg:p-7
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
@@ -81,29 +81,29 @@ export default function FounderStory() {
                   transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
                 }}
               >
-                {/* Founder Photo - Responsive sizing with border */}
-                <div className="relative mx-auto mb-3 sm:mb-4 md:mb-6 w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-3 sm:border-4 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300">
+                {/* Founder Photo - Smaller on mobile for better fit */}
+                <div className="relative mx-auto mb-2 sm:mb-3 md:mb-4 lg:mb-6 w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 sm:border-3 md:border-4 border-emerald-500/40 group-hover:border-emerald-400/60 transition-all duration-300">
                   <Image
                     src={founder.image}
                     alt={`${founder.name} - ${founder.role}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 80px, (max-width: 768px) 112px, 128px"
+                    sizes="(max-width: 640px) 64px, (max-width: 768px) 96px, 128px"
                   />
                 </div>
 
-                {/* Name - Readable mobile sizing */}
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">
+                {/* Name - Optimized for mobile */}
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white mb-0.5 sm:mb-1 md:mb-2 leading-tight">
                   {founder.name}
                 </h3>
 
-                {/* Role - Readable mobile sizing */}
-                <p className="text-sm sm:text-sm md:text-base text-emerald-400 font-medium mb-1 sm:mb-2 leading-relaxed">
+                {/* Role - Tighter on mobile */}
+                <p className="text-xs sm:text-sm md:text-base text-emerald-400 font-medium mb-0.5 sm:mb-1 md:mb-2 leading-tight">
                   {founder.role}
                 </p>
 
-                {/* Expertise - Readable mobile sizing */}
-                <p className="text-sm sm:text-sm text-zinc-300 leading-relaxed">
+                {/* Expertise - Compact on mobile */}
+                <p className="text-xs sm:text-sm text-zinc-300 leading-tight">
                   {founder.expertise}
                 </p>
               </div>
