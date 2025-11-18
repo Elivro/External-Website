@@ -1,0 +1,381 @@
+# AIAI Alternativ: Komplett Guide 2026
+## Bästa alternativen till AIAI för assistansbolag
+
+**Senast uppdaterad:** November 2025
+**Läslängd:** ~12 minuter
+**Målgrupp:** Assistansanordnare som överväger byte från AIAI
+
+---
+
+## Sammanfattning (TL;DR)
+
+AIAI (Assistansbolagets AI-system) är ett etablerat assistanssystem, men många anordnare söker **modernare alternativ** med bättre användarvänlighet, AI-funktioner och integrationer.
+
+**Populäraste AIAI-alternativen 2026:**
+1. **Elivro** – AI-driven matchning, native E-RÄK, kvalitetsfokus
+2. **Tidvis** – Enkel tidrapportering, bred adoption
+3. **Primass** – Omfattande funktionalitet, komplex inlärningskurva
+4. **Hogia Omsorg** – Lång erfarenhet, fokus på kommunal sektor
+
+**Varför byte från AIAI?**
+
+De vanligaste anledningarna:
+- ✗ Gammal användarupplevelse (känns som system från 2010-talet)
+- ✗ Begränsad mobilapp (assistenter klagar på krånglig tidrapportering)
+- ✗ Ingen AI-driven matchning eller schemaoptimering
+- ✗ Långsam support och sällsynta uppdateringar
+- ✗ Svårt att få överblick över budget och efterlevnad
+
+---
+
+## 1. Varför Överväga Byte från AIAI?
+
+### AIAI:s Styrkor
+
+**Vad AIAI gör bra:**
+- ✓ Etablerat system med lång historia
+- ✓ Grundläggande funktionalitet för tidrapportering
+- ✓ FK-integration (om än inte alltid sömlös)
+- ✓ Stabil (få systemkrascher)
+
+### AIAI:s Svagheter (Varför Användare Byter)
+
+**1. Föråldrad Användarupplevelse**
+
+AIAI:s gränssnitt känns **daterat**. Jämfört med moderna system (som Elivro) saknas:
+- Intuitiv design (många knappar och menyer)
+- Responsiv mobilapp (assistenter måste zooma och scrolla)
+- Snabba kortkommandon eller sökfunktioner
+
+**Citat från användare (2024):**
+> "Det tar mig 10 klick att göra något som borde ta 2. När vi testade Elivro var det som natt och dag."
+> – Maria, samordnare på medelstort assistansbolag
+
+**2. Ingen AI-Funktionalitet**
+
+AIAI saknar moderna AI-features:
+- Ingen AI-driven matchning av assistenter och kunder
+- Ingen automatisk schemaoptimering
+- Inga prediktiva budgetvarningar
+- Ingen intelligent resursallokering
+
+**Resultat:**
+Samordnare måste manuellt matcha assistenter och kunder baserat på "magkänsla" eller spreadsheets.
+
+**3. Svag Mobilupplevelse**
+
+AIAI:s mobilapp är **funktionell men inte användarvänlig**:
+- Tidrapportering tar längre tid än hos konkurrenter
+- Ingen offline-funktionalitet (assistenter kan inte rapportera utan nät)
+- Långsam laddningstid
+
+**Jämförelse:**
+
+| **Funktion** | **AIAI** | **Elivro** |
+|-------------|---------|----------|
+| Tidrapportering (antal klick) | 8-10 | 3 |
+| Offline-läge | ✗ | ✓ |
+| BankID-attestering i appen | Delvis | ✓ |
+| Notifikationer/påminnelser | Begränsade | Intelligenta |
+
+**4. Begränsad Realtidsinsikt**
+
+AIAI visar **historiska data** men saknar realtidsöverblick:
+- Ser inte budgetstatus direkt i schemat
+- Ingen live-validering av ATL eller avtal
+- Rapporter måste exporteras och analyseras manuellt
+
+**Konsekvens:**
+Budgetöverskridningar och ATL-brott upptäcks **efter** att de hänt, inte **innan**.
+
+**5. Långsam Produktutveckling**
+
+AIAI:s utvecklingstakt upplevs som **långsam**:
+- Få nya funktioner lanseras per år
+- Användarförslag tar lång tid att implementeras
+- Saknar modern integrationsförmåga (API begränsat)
+
+---
+
+## 2. Elivro: Det Moderna AIAI-Alternativet
+
+### Varför Elivro?
+
+Elivro är byggt från grunden för **2020-talets assistansbehov**:
+
+✓ **AI-driven matchning** – Matcha assistenter och kunder baserat på kompetens, personlighet och preferenser
+✓ **Realtidsbudgetkontroll** – Se direkt om schemat håller sig inom beviljad tid
+✓ **Native E-RÄK-integration** – Automatisk rapportering till FK
+✓ **Modernt UI** – Snabb, intuitiv, responsiv på alla enheter
+✓ **Fokus på kvalitet** – "För assistans som förändrar liv, inte bara administrerar dem"
+
+### Funktionsjämförelse: AIAI vs Elivro
+
+| **Funktion** | **AIAI** | **Elivro** |
+|-------------|---------|----------|
+| **Tidrapportering** | Grundläggande | BankID, offline, 3 klick |
+| **Schemaläggning** | Manuell | AI-optimerad, realtidsbudget |
+| **E-RÄK till FK** | Export/import | Native automatisk |
+| **Mobilapp** | Funktionell | Modern, snabb |
+| **AI-matchning** | ✗ | ✓ |
+| **Realtidsbudget** | ✗ | ✓ |
+| **ATL-validering** | Manuell kontroll | Automatisk varning |
+| **Lex Sarah** | Extern hantering | Inbyggd process |
+| **GDPR-compliant** | Ja | Ja (ISO 27001) |
+| **Pris** | Från ~400 kr/brukare/mån | Från 349 kr/brukare/mån |
+
+### Kundcase: Byte från AIAI till Elivro
+
+**Assistansbolaget Hjärtat AB** (35 kunder, 80 assistenter) bytte från AIAI i september 2025.
+
+**Utmaningar med AIAI:**
+- Schemaläggning tog 8-12 timmar/vecka
+- 3 budgetöverskridningar på 6 månader
+- Assistenter klagade på krånglig tidrapportering
+
+**Efter byte till Elivro:**
+- Schemaläggning: 3-4 timmar/vecka (AI-förslag sparar tid)
+- 0 budgetöverskridningar (realtidsvarningar)
+- 95% attesteringsgrad första månaden (automatiska påminnelser)
+
+**VD:s kommentar:**
+> "Vi hade AIAI i 4 år. Det fungerade, men vi växte aldrig. Med Elivro känns det som vi äntligen har ett system som stödjer kvalitet, inte bara administration."
+
+### Prissättning: Elivro vs AIAI
+
+**AIAI:** Från ~400 kr/brukare/månad (grundpaket), upp till 600+ kr för avancerade funktioner.
+
+**Elivro:**
+- **Grund:** 349 kr/brukare/månad (schemaläggning, tidrapportering, FK-integration)
+- **Standard:** 499 kr/brukare/månad (+ ATL-övervakning, analytics, Lex Sarah)
+- **Premium:** Från 750 kr/brukare/månad (+ AI-matchning, dedikerad support, API)
+
+**Byte från AIAI kan faktiskt vara billigare** – särskilt om ni idag betalar för tilläggsfunktioner som är standard i Elivro.
+
+---
+
+## 3. Andra AIAI-Alternativ
+
+### Tidvis
+
+**Styrkor:**
+- Enkel tidrapportering
+- Bred adoption (många assistansbolag använder det)
+- Bra mobilapp för assistenter
+
+**Svagheter:**
+- Begränsad schemaläggningsfunktion
+- Ingen AI-matchning
+- Mindre intuitiv för komplexa behov
+
+**Bäst för:**
+Små assistansbolag (5-20 kunder) som främst behöver tidrapportering.
+
+**Pris:** Från ~350 kr/brukare/månad
+
+### Primass
+
+**Styrkor:**
+- Omfattande funktionalitet (allt-i-ett)
+- Stark FK-integration
+- Bra för stora organisationer
+
+**Svagheter:**
+- Komplex inlärningskurva (kräver dedikerad utbildning)
+- Tungt system (långsam på äldre datorer)
+- Dyrare än konkurrenter
+
+**Bäst för:**
+Stora assistansbolag (100+ kunder) med dedikerad IT-personal.
+
+**Pris:** Från ~500 kr/brukare/månad (ofta dyrare med tillägg)
+
+### Hogia Omsorg
+
+**Styrkor:**
+- Lång erfarenhet (etablerat varumärke)
+- Bra för kommunal sektor
+- Omfattande ekonomimodul
+
+**Svagheter:**
+- Fokus på kommuner (mindre anpassat för privata anordnare)
+- Föråldrad UX
+- Dyrt
+
+**Bäst för:**
+Kommunala assistansverksamheter.
+
+**Pris:** Offertbaserat (ofta >600 kr/brukare/månad)
+
+---
+
+## 4. Steg-för-steg: Byta från AIAI
+
+### Fas 1: Utvärdering (Vecka 1-2)
+
+**Åtgärder:**
+
+1. **Identifiera brister** i nuvarande AIAI-användning
+   - Vad fungerar dåligt?
+   - Vilka funktioner saknas?
+   - Vad kostar AIAI idag (totalt per år)?
+
+2. **Testa alternativ**
+   - Boka demo av Elivro, Tidvis, Primass
+   - Låt samordnare och assistenter testa mobilappar
+   - Jämför prissättning
+
+3. **Beslut**
+   - Vilket system passar er bäst?
+
+### Fas 2: Förberedelse (Vecka 3-4)
+
+**Åtgärder:**
+
+1. **Exportera data från AIAI**
+   - Kunddata (namn, personnummer, beviljad tid)
+   - Assistentdata (anställningsavtal, utbildningar)
+   - Historiska tidrapporter (senaste året för validering)
+
+2. **Planera migration**
+   - Vilken dag byter ni? (rekommendation: månadsskifte)
+   - Vem ansvarar för implementation?
+   - Vilka behöver utbildning?
+
+3. **Informera personal**
+   - Meddela assistenter och samordnare om kommande byte
+   - Förklara varför ni byter och vad som blir bättre
+
+### Fas 3: Implementation (Vecka 5-6)
+
+**Åtgärder:**
+
+1. **Importera data till nytt system**
+   - Elivro hjälper till med dataimport (ingår i onboarding)
+   - Validera att all data kommit över korrekt
+
+2. **Konfigurera systemet**
+   - Lägg in avtal, beviljad tid, assistentscheman
+   - Konfigurera roller och behörigheter
+
+3. **Utbildning**
+   - Samordnare: 2-3 timmars genomgång
+   - Assistenter: 30 min genomgång av mobilapp
+
+### Fas 4: Go-Live (Vecka 7)
+
+**Åtgärder:**
+
+1. **Parallellkörning** (första veckan)
+   - Kör både AIAI och nytt system samtidigt
+   - Jämför tidrapporter för att säkerställa korrekthet
+
+2. **Avsluta AIAI**
+   - Exportera slutlig data från AIAI
+   - Avsluta abonnemang (kontrollera uppsägningstid)
+
+3. **Uppföljning**
+   - Samla feedback från personal efter första månaden
+   - Justera processer vid behov
+
+**Tidsåtgång totalt:** 6-8 veckor från beslut till full migration.
+
+---
+
+## 5. Vanliga Frågor: Byte från AIAI
+
+### Kan vi behålla historiska tidrapporter från AIAI?
+
+**Ja.** Du kan exportera tidrapporter från AIAI och spara dem lokalt eller importera till nytt system. **Elivro kan importera historiska tidrapporter** för referens och långtidsarkivering.
+
+### Vad händer med pågående FK-rapportering?
+
+**Lösning:** Slutför sista månaden i AIAI, skicka E-RÄK, och starta nytt system från nästa månad. Elivro kan också hjälpa med övergångsrapportering.
+
+### Kostar det extra att byta?
+
+**Elivro:** Ingen uppsättningsavgift. Dataimport och onboarding **ingår** i alla abonnemang.
+
+### Hur lång är uppsägningstiden för AIAI?
+
+**Vanligtvis 3 månader.** Kontrollera ert avtal. Många anordnare säger upp AIAI parallellt med testning av nytt system.
+
+### Kan assistenter fortsätta använda samma BankID?
+
+**Ja.** BankID-attestering fungerar oberoende av system. Assistenter loggar in med BankID i Elivro precis som i AIAI.
+
+---
+
+## 6. Checklista: Är Elivro Rätt för Er?
+
+Elivro passar bäst om ni:
+
+- [ ] Vill ha **AI-driven matchning** för bättre kvalitet och längre anställningstider
+- [ ] Behöver **realtidsbudgetkontroll** direkt i schemat
+- [ ] Vill **automatisera FK-rapportering** (slipp manuell E-RÄK-export)
+- [ ] Önskar **modernare UX** som assistenter faktiskt gillar att använda
+- [ ] Vill fokusera på **kvalitet och relationer** istället för administration
+- [ ] Har 5-200 kunder (Elivro skalar från små till medelstora anordnare)
+
+Elivro kanske inte passar om ni:
+
+- [ ] Är mycket stora (500+ kunder) med komplex anpassad infrastruktur
+- [ ] Behöver tungt anpassat system (Elivro är standardiserat för enkelhet)
+- [ ] Bara behöver tidrapportering (då kan enklare system som Tidvis räcka)
+
+---
+
+## 7. Nästa Steg: Testa Elivro Kostnadsfritt
+
+### Boka Gratis Demo
+
+Se hur Elivro förenklar allt från matchning till FK-rapportering.
+
+**Vad vi visar:**
+- AI-driven matchning (hur systemet föreslår rätt assistenter)
+- Realtidsbudget i schemat (slipp budgetöverskridningar)
+- Automatisk E-RÄK (från tidrapport till FK på autopilot)
+- Mobilappen (assistenter kommer älska hur snabb den är)
+
+**Tidslängd:** 30 minuter
+**Kostnad:** Gratis, ingen förpliktelse
+
+➡️ **Boka demo:** [www.elivro.se/demo](http://www.elivro.se/demo) eller e-posta daniel@elivro.se
+
+### 30 Dagars Pengarna-Tillbaka-Garanti
+
+Om ni väljer att byta till Elivro och inte är nöjda första månaden – **full återbetalning, inga frågor**.
+
+---
+
+## 8. Sammanfattning
+
+**AIAI är ett stabilt system**, men moderna assistansbolag behöver mer än grundläggande funktionalitet. De behöver:
+
+- AI för bättre matchning
+- Realtidsinsikt för budgetkontroll
+- Användarvänlighet som sparar tid
+- Fokus på kvalitet, inte bara administration
+
+**Elivro erbjuder allt detta** – till ett konkurrenskraftigt pris.
+
+**Nästa steg:**
+1. Boka demo av Elivro
+2. Testa mobilappen
+3. Jämför pris och funktionalitet
+4. Fatta beslut baserat på fakta, inte vana
+
+➡️ **Kontakt:** daniel@elivro.se | www.elivro.se
+
+---
+
+**© 2026 Elivro AB. Alla rättigheter förbehållna.**
+
+---
+
+## Om Elivro
+
+Elivro är det första AI-drivna assistanssystemet byggt för att **stärka det mänskliga** i personlig assistans. Grundat av experter från assistansbranschen hjälper vi anordnare fokusera på det som betyder något – relationer och livskvalitet.
+
+**Vårt löfte:**
+Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering. För assistans som förändrar liv.

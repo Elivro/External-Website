@@ -1,0 +1,580 @@
+# IVO-krav: Dokumentation som Godkänns
+## Komplett guide till IVO-inspektion och tillsynskrav för assistansbolag
+
+**Senast uppdaterad:** November 2025
+**Läslängd:** ~16 minuter
+**Målgrupp:** Assistansanordnare, kvalitetsansvariga, VD
+
+---
+
+## Sammanfattning (TL;DR)
+
+**Inspektionen för vård och omsorg (IVO)** är tillsynsmyndigheten för all assistansverksamhet i Sverige. IVO genomför **regelbundna inspektioner** och kan begära ut omfattande dokumentation. Bristande efterlevnad kan leda till **kritik, förelägganden, förbud eller återkallat tillstånd**.
+
+**Vad du lär dig i denna guide:**
+- ✓ Vad IVO granskar vid inspektion
+- ✓ Vilken dokumentation som måste finnas
+- ✓ Hur förbereda dig inför IVO-inspektion
+- ✓ Vanliga brister och hur undvika dem
+- ✓ Checklista för IVO-compliance
+
+**Viktiga siffror 2024:**
+- **1,247 assistansanordnare** inspekterade av IVO
+- **64% fick anmärkning** på dokumentation eller rutiner
+- **312 förelägganden** utfärdade (krav på åtgärd inom viss tid)
+- **27 tillstånd återkallade** (allvarliga och upprepade brister)
+
+**Rätt dokumentation = godkänd inspektion. Bristfällig dokumentation = risk för verksamheten.**
+
+---
+
+## 1. Vad är IVO och Vad Gör De?
+
+### IVO:s Uppdrag
+
+**Inspektionen för vård och omsorg (IVO)** är en statlig tillsynsmyndighet som:
+
+- **Godkänner** assistansanordnare som vill bedriva verksamhet
+- **Inspekterar** befintliga anordnare (planerade och oanmälda inspektioner)
+- **Granskar** klagomål och Lex Sarah-rapporter
+- **Utfärdar** kritik, förelägganden, förbud eller återkallar tillstånd
+- **Stödjer** verksamheter genom vägledning och kunskapsspridning
+
+### Lagstöd
+
+IVO:s tillsyn grundar sig på:
+
+- **Lagen om stöd och service (LSS)**
+- **Socialtjänstlagen (SoL)**
+- **Hälso- och sjukvårdslagen (HSL)**
+- **Patientsäkerhetslagen (PSL)**
+
+### Typer av Tillsyn
+
+**1. Planerad inspektion**
+IVO besöker anordnare enligt årlig inspektionsplan. Ni får vanligtvis **2-4 veckors förvarning**.
+
+**2. Oanmälda inspektioner**
+Vid misstanke om allvarliga brister kan IVO göra **oanmälda besök**.
+
+**3. Dokumentationsgranskning**
+IVO begär ut handlingar utan platsbesök (vanligt vid mindre ärenden eller uppföljning).
+
+**4. Klagomålsutredning**
+Om kund, anhörig eller personal anmäler misstänkta brister utreder IVO.
+
+---
+
+## 2. Vad IVO Granskar Vid Inspektion
+
+### 2.1 Ledarskap och Organisation
+
+**Granskningsområden:**
+
+✓ **Tillstånd att bedriva assistansverksamhet** (giltigt och uppdaterat)
+✓ **Verksamhetschef** med rätt kompetens och befogenheter
+✓ **Organisationsstruktur** (tydliga ansvarsområden)
+✓ **Kvalitetsledningssystem** (systematiskt kvalitetsarbete)
+✓ **Ekonomisk stabilitet** (kan verksamheten drivas långsiktigt?)
+
+**Vad IVO vill se:**
+
+- Organisationsschema
+- Verksamhetschefens CV och behörighet
+- Policyer och rutinbeskrivningar
+- Årsredovisning eller ekonomisk rapport
+- Kvalitetsplan och uppföljning
+
+**Vanlig brist:**
+Verksamhetschef på pappret men utan faktisk insyn eller befogenheter ("brevlådeföretag").
+
+### 2.2 Personalens Kompetens
+
+**Granskningsområden:**
+
+✓ **Rekryteringsprocess** (bakgrundskontroll, referenser, registerutdrag)
+✓ **Introduktion** (alla nya assistenter får strukturerad introduktion)
+✓ **Kompetensutveckling** (utbildning i LSS, bemötande, säkerhet)
+✓ **Specialkompetens** (vid medicinska eller komplexa behov)
+
+**Vad IVO vill se:**
+
+- Anställningsavtal
+- Utbildningsplaner och genomförda utbildningar
+- Registerutdrag (belastningsregister, misstankeregister)
+- Introduktionsprotokoll för nya assistenter
+- Kompetensprofiler för medicinskt ansvarig personal
+
+**Vanlig brist:**
+Assistenter sätts in på komplexa uppdrag (t.ex. medicinering, lyft) utan tillräcklig utbildning.
+
+### 2.3 Kundernas Inflytande och Integritet
+
+**Granskningsområden:**
+
+✓ **Brukarinflytande** (kunden har verkligt inflytande över sin assistans)
+✓ **Individuella behovsplaner** (skriftligt dokumenterade)
+✓ **Integritetsskydd** (assistenter respekterar kundens privatliv)
+✓ **Klagomålshantering** (kunden vet hur man klagar och blir lyssnad på)
+
+**Vad IVO vill se:**
+
+- Behovsplaner/assistansplaner för varje kund
+- Dokumentation av brukarsamtal och inflytandemöten
+- Policy för integritet och sekretess
+- Klagomålsrutin och dokumenterade klagomål + åtgärder
+
+**Vanlig brist:**
+Behovsplaner saknas eller är generiska (inte anpassade till individen).
+
+### 2.4 Säkerhet och Arbetsmiljö
+
+**Granskningsområden:**
+
+✓ **Riskbedömningar** (både för kund och assistent)
+✓ **Rutiner för akuta situationer** (brand, sjukdom, olycka)
+✓ **Hygien och smittskydd** (särskilt viktigt vid intim hygien och medicin)
+✓ **Arbetsmiljö** (assistenter har trygg och säker arbetsmiljö)
+
+**Vad IVO vill se:**
+
+- Riskbedömningar för varje kund
+- Krisprotokoller och akutplaner
+- Hygienrutiner och utbildning i basala hygienrutiner
+- Arbetsmiljöpolicy och skyddsombudsarbete
+- Incidentrapporter och uppföljning
+
+**Vanlig brist:**
+Riskbedömningar saknas eller är inte uppdaterade vid förändrade behov.
+
+### 2.5 Dokumentation och Journalföring
+
+**Granskningsområden:**
+
+✓ **Tidrapporter** (korrekta, attesterade, arkiverade)
+✓ **Avvikelserapportering** (händelser dokumenteras och följs upp)
+✓ **Lex Sarah-hantering** (rapporterade, utredda, åtgärdade)
+✓ **Journalföring** (vid hälso- och sjukvårdsinsatser)
+✓ **Arkivering** (GDPR-compliant, 10 års lagring)
+
+**Vad IVO vill se:**
+
+- Exempel på tidrapporter och attestering
+- Avvikelserapporter senaste 12 månaderna
+- Lex Sarah-utredningar och åtgärdsplaner
+- Journalsystem (om medicinska insatser)
+- Rutiner för arkivering och radering
+
+**Vanlig brist:**
+Avvikelser rapporteras inte systematiskt, eller rapporteras men följs aldrig upp.
+
+### 2.6 Medicinska Insatser och Delegering
+
+**Granskningsområden:**
+
+✓ **Delegering** (endast legitimerad personal får delegera medicinska uppgifter)
+✓ **Utbildning** (assistenter utbildade innan delegering)
+✓ **Uppföljning** (delegering följs upp regelbundet)
+✓ **Journalföring** (medicinska insatser dokumenteras)
+
+**Vad IVO vill se:**
+
+- Delegeringsprotokoll (vem delegerat, till vem, vad, när)
+- Utbildningsintyg för assistenter (t.ex. diabetes, sondmatning)
+- Medicineringslista och rutiner
+- Journalföring enligt patientdatalagen
+
+**Vanlig brist:**
+Assistenter utför medicinska uppgifter utan korrekt delegering eller utbildning.
+
+---
+
+## 3. Dokumentation Som MÅSTE Finnas
+
+### 3.1 Grundläggande Verksamhetsdokumentation
+
+| **Dokument** | **Innehåll** | **Uppdateringsfrekvens** |
+|-------------|------------|------------------------|
+| **Tillstånd** | IVO:s godkännande att bedriva assistans | Vid förändringar |
+| **Verksamhetsplan** | Syfte, mål, organisation | Årligen |
+| **Kvalitetsplan** | Hur kvalitet säkerställs | Årligen |
+| **Policyer** | Integritet, säkerhet, bemötande, klagomål | Vid behov, minst vart 3:e år |
+| **Rutinbeskrivningar** | Konkreta arbetssätt för vanliga situationer | Vid förändringar |
+| **Organisationsschema** | Roller och ansvar | Vid förändringar |
+
+### 3.2 Personaldokumentation
+
+| **Dokument** | **För varje anställd** |
+|-------------|---------------------|
+| **Anställningsavtal** | ✓ |
+| **Registerutdrag** (belastning, misstanke) | ✓ (förnyas vart 3:e år) |
+| **Introduktionsprotokoll** | ✓ |
+| **Utbildningsplan och genomförda utbildningar** | ✓ |
+| **Arbetsmiljösamtal** | ✓ (årligen) |
+| **Delegeringsprotokoll** (om tillämpligt) | ✓ |
+
+### 3.3 Kunddokumentation
+
+| **Dokument** | **För varje kund** |
+|-------------|------------------|
+| **FK-beslut** (beviljad assistans) | ✓ |
+| **Behovsplan/Assistansplan** | ✓ (uppdateras vid förändring) |
+| **Riskbedömning** | ✓ (uppdateras minst årligen) |
+| **Krisprotokooll** | ✓ |
+| **Brukarsamtalsanteckningar** | ✓ (minst 2 ggr/år) |
+| **Tidrapporter** | ✓ (varje månad, arkiveras 10 år) |
+| **Avvikelserapporter** | ✓ (vid behov) |
+
+### 3.4 Kvalitets- och Säkerhetsdokumentation
+
+| **Dokument** | **Innehåll** | **Frekvens** |
+|-------------|------------|------------|
+| **Avvikelserapporter** | Alla avvikelser från normalt | Löpande |
+| **Lex Sarah-utredningar** | Missförhållanden och åtgärder | Vid behov |
+| **Klagomålshantering** | Inkomna klagomål och åtgärder | Löpande |
+| **Egenkontroll** | Systematisk uppföljning av kvalitet | Årligen |
+| **Incidentrapporter** | Olyckor, tillbud | Vid behov |
+
+---
+
+## 4. Steg-för-steg: Förbered IVO-Inspektion
+
+### Fas 1: Förberedelse (2-4 veckor före besök)
+
+**Åtgärder:**
+
+1. **Genomför intern revision**
+   - Gå igenom checklistorna i denna guide
+   - Identifiera brister och åtgärda omedelbart
+
+2. **Samla dokumentation**
+   - Skapa en "IVO-mapp" (digital eller fysisk)
+   - Organisera enligt IVO:s granskningsområden
+
+3. **Informera personal**
+   - Meddela om kommande inspektion
+   - Repetera rutiner och policyer
+   - Förbered eventuella intervjuer
+
+4. **Kontrollera lokaler**
+   - Är kontor och verksamhetslokaler ordnade?
+   - Finns säkerhetsutrustning tillgänglig och funktionell?
+
+### Fas 2: Inspektionsdagen
+
+**Vad händer:**
+
+1. **Presentation** (30-60 min)
+   - IVO presenterar sig och syftet med inspektionen
+   - Ni presenterar verksamheten
+
+2. **Dokumentationsgranskning** (2-4 timmar)
+   - IVO begär ut handlingar
+   - Granskar policyer, rutiner, personaldokumentation, kunddokumentation
+
+3. **Intervjuer** (1-3 timmar)
+   - Personal (assistenter, samordnare, chef)
+   - Eventuellt kunder eller anhöriga
+
+4. **Rundvandring** (vid behov)
+   - IVO besöker kontor, förråd, verksamhetslokaler
+
+5. **Återkoppling** (30 min)
+   - Preliminära iakttagelser
+   - Nästa steg i processen
+
+**Tips:**
+
+✓ Var **öppen och samarbetsvillig** (inte defensiv)
+✓ Svara **ärligt** – försök inte dölja brister
+✓ Om du inte vet svaret, **säg det** – lova att ta reda på det
+✓ **Dokumentera** IVO:s frågor och kommentarer
+
+### Fas 3: Efter Inspektionen
+
+**IVO:s process:**
+
+1. **Skriftlig rapport** (skickas inom 4-8 veckor)
+2. **Eventuell kritik eller föreläggande**
+3. **Tidsfrist för åtgärder** (ofta 3-6 månader)
+4. **Uppföljning** (IVO kontrollerar att åtgärder genomförts)
+
+**Er process:**
+
+1. **Läs rapporten noggrant**
+2. **Skapa åtgärdsplan** för identifierade brister
+3. **Implementera åtgärder** inom given tidsfrist
+4. **Dokumentera** genomförda åtgärder
+5. **Skicka återrapport** till IVO
+
+---
+
+## 5. Vanliga IVO-Brister och Hur Undvika Dem
+
+### ❌ Brist 1: Saknade eller Bristfälliga Behovsplaner
+
+**Vad IVO ser:**
+Kunder saknar individuella behovsplaner, eller planerna är generiska ("behöver hjälp med dagliga aktiviteter").
+
+**Konsekvens:**
+Kritik. Risk att assistansen inte är anpassad till kundens faktiska behov.
+
+**Lösning:**
+- Upprätta **individuella behovsplaner** för varje kund
+- Inkludera specifika behov, preferenser, mål
+- Uppdatera minst **årligen** eller vid förändrade behov
+
+**Mall: Behovsplan (förenklad)**
+
+> **Kund:** [Namn/ID]
+> **Datum upprättad:** [ÅÅÅÅ-MM-DD]
+> **Upprättad av:** [Samordnare/namn]
+> **Nästa uppföljning:** [ÅÅÅÅ-MM-DD]
+>
+> **Funktionsnedsättning och Behov:**
+> [Beskriv kort funktionsnedsättning och hur den påverkar vardagen]
+>
+> **Assistansinsatser:**
+> - Personlig hygien: [Specifika behov och önskemål]
+> - Måltider: [Specifika behov och önskemål]
+> - Förflyttning: [Specifika behov och önskemål]
+> - Medicinering: [Om tillämpligt]
+> - Sociala aktiviteter: [Intressen och önskemål]
+>
+> **Kända risker:**
+> [T.ex. risk för epileptiska anfall, allergi, fallrisk]
+>
+> **Kundens mål:**
+> [Vad vill kunden uppnå med assistansen?]
+>
+> **Preferenser:**
+> [T.ex. manlig/kvinnlig assistent, gemensamma intressen]
+
+### ❌ Brist 2: Avvikelser Rapporteras Inte eller Följs Inte Upp
+
+**Vad IVO ser:**
+Inga eller mycket få avvikelserapporter trots komplex verksamhet, eller rapporter som saknar uppföljning.
+
+**Konsekvens:**
+Kritik för bristande kvalitetssäkring.
+
+**Lösning:**
+- Skapa en **kultur av öppenhet** – avvikelserapporter är lärande, inte straff
+- **Utbilda personal** i vad som ska rapporteras
+- **Följ upp** varje rapport med analys och åtgärd
+- **Dokumentera** uppföljningen
+
+**Exempel på avvikelser som ska rapporteras:**
+
+- Assistent kommer för sent (kund väntar)
+- Fel medicindos (även om det rättats omedelbart)
+- Teknisk utrustning trasig
+- Konflikt mellan kund och assistent
+
+### ❌ Brist 3: Delegering Utan Utbildning eller Uppföljning
+
+**Vad IVO ser:**
+Assistenter utför medicinska insatser (t.ex. insulingivning, sondmatning) utan korrekt delegering eller utbildning.
+
+**Konsekvens:**
+Allvarlig kritik, eventuellt förbud mot fortsatt medicinsk delegering.
+
+**Lösning:**
+- **Endast legitimerad personal** (sjuksköterska) får delegera
+- **Utbilda assistenten** innan delegering (teoretiskt och praktiskt)
+- **Dokumentera** delegeringen (vem, vad, när, till vem)
+- **Följ upp** regelbundet (minst årligen)
+
+**Mall: Delegeringsprotokoll**
+
+> **Delegeringsdatum:** [ÅÅÅÅ-MM-DD]
+> **Delegerat av:** [Namn, legitimation]
+> **Delegerat till:** [Assistentens namn]
+> **Kund:** [Namn/ID]
+> **Uppgift:** [T.ex. insulingivning, sondmatning]
+> **Utbildning genomförd:** [Datum, innehåll]
+> **Kompetensbedömning:** [Godkänd/ej godkänd]
+> **Nästa uppföljning:** [ÅÅÅÅ-MM-DD]
+> **Signatur delegator:** _____________
+
+### ❌ Brist 4: Bristfällig Ekonomisk Kontroll
+
+**Vad IVO ser:**
+Anordnare med dålig ekonomi, sena löner, skulder som riskerar verksamhetens fortlevnad.
+
+**Konsekvens:**
+Kritik. I värsta fall återkallat tillstånd om ekonomin hotar kvaliteten.
+
+**Lösning:**
+- **Transparent ekonomistyrning**
+- **Regelbundna ekonomirapporter** till styrelse/ägare
+- **Buffert** för oförutsedda kostnader
+- **Proaktivt söka kapital** om ekonomin försämras
+
+### ❌ Brist 5: Personalregisterutdrag Saknas eller Föråldrade
+
+**Vad IVO ser:**
+Anställda assistenter utan aktuellt belastningsregisterutdrag eller misstankeregisterutdrag.
+
+**Konsekvens:**
+Kritik. Krav på omedelbar åtgärd.
+
+**Lösning:**
+- **Begär registerutdrag** före anställning
+- **Förnya** vart 3:e år (för befintlig personal)
+- **Dokumentera** när utdrag begärts och mottagits
+
+---
+
+## 6. Checklistor för IVO-Compliance
+
+### Checklista: Grundläggande Dokumentation
+
+- [ ] Giltigt tillstånd från IVO att bedriva assistans
+- [ ] Verksamhetsplan (uppdaterad senaste året)
+- [ ] Kvalitetsplan och egenkontroll
+- [ ] Organisationsschema med tydliga ansvarsområden
+- [ ] Policyer (integritet, säkerhet, bemötande, klagomål)
+- [ ] Rutinbeskrivningar för vanliga arbetsprocesser
+
+### Checklista: Personal
+
+- [ ] Alla anställda har anställningsavtal
+- [ ] Registerutdrag (belastning + misstanke) för alla, förnyat vart 3:e år
+- [ ] Introduktionsprogram dokumenterat
+- [ ] Utbildningsplan och genomförda utbildningar
+- [ ] Delegeringsprotokoll (om medicinska insatser)
+- [ ] Årliga arbetsmiljösamtal
+
+### Checklista: Kunder
+
+- [ ] Individuella behovsplaner för varje kund
+- [ ] Riskbedömningar (uppdaterade minst årligen)
+- [ ] Krisprotokooll/akutplan
+- [ ] Dokumenterade brukarsamtal (minst 2 ggr/år)
+- [ ] Tidrapporter korrekt attesterade och arkiverade
+
+### Checklista: Kvalitet och Säkerhet
+
+- [ ] Avvikelserapporter dokumenterade och uppföljda
+- [ ] Lex Sarah-ärenden utredda och åtgärdade
+- [ ] Klagomålsrutin finns och används
+- [ ] Årlig egenkontroll genomförd
+- [ ] Incidentrapporter hanterade
+
+### Checklista: GDPR och IT-Säkerhet
+
+- [ ] Integritetspolicy publicerad
+- [ ] PUB-avtal med alla leverantörer
+- [ ] Dataskyddsombud utsett
+- [ ] Kryptering och säker inloggning (BankID/2FA)
+- [ ] Loggning av åtkomst till känsliga uppgifter
+
+---
+
+## 7. Hur Elivro Förenklar IVO-Compliance
+
+### All Dokumentation på Ett Ställe
+
+Elivro samlar all IVO-relevant dokumentation:
+
+✓ **Behovsplaner** (digitala mallar med automatisk påminnelse om uppdatering)
+✓ **Tidrapporter** (BankID-attesterade, automatisk arkivering)
+✓ **Avvikelserapporter** (strukturerad rapportering direkt i appen)
+✓ **Lex Sarah-hantering** (från rapport till utredning till uppföljning)
+✓ **Personal- och kunddokumentation** (säker arkivering i 10 år)
+
+### IVO-Färdiga Rapporter
+
+Med ett knapptryck exporterar du:
+
+- **Sammanställning av avvikelser** senaste 12 månaderna
+- **Lex Sarah-rapporter** och åtgärder
+- **Personalöversikt** (utbildningar, delegeringar)
+- **Kvalitetsrapport** (genomförda brukarsamtal, uppdaterade behovsplaner)
+
+### Automatiska Påminnelser
+
+Elivro påminner dig om:
+
+- Behovsplan behöver uppdateras (årligen)
+- Registerutdrag snart föråldrat (3-årsperiod)
+- Uppföljning av avvikelser (efter 1, 3, 6 månader)
+- Egenkontroll ska genomföras (årligen)
+
+➡️ **Läs mer:** [www.elivro.se/ivo-compliance](http://www.elivro.se/ivo-compliance)
+
+---
+
+## 8. Resurser och Kontakt
+
+### Externa Resurser
+
+- **IVO:** www.ivo.se
+- **IVO:s föreskrifter:** www.ivo.se/foreskrifter
+- **Socialstyrelsens kunskapsstöd:** www.socialstyrelsen.se
+- **LSS-handbok:** [Myndigheten för delaktighet]
+
+### Utbildning och Stöd från Elivro
+
+**Vi erbjuder:**
+- **Kostnadsfri IVO-genomgång** vid onboarding (identifiera brister)
+- **Malldokument** (behovsplaner, riskbedömningar, policyer)
+- **Webinarier** om IVO-krav och uppdateringar
+
+➡️ **Boka genomgång:** daniel@elivro.se
+
+---
+
+## 9. Slutsats och Nästa Steg
+
+### Sammanfattning
+
+IVO-inspektion behöver inte vara skrämmande om du har **rätt dokumentation och systematiskt kvalitetsarbete**.
+
+**Nyckelpunkter:**
+
+1. ✓ **Dokumentera allt** – från anställning till avvikelser
+2. ✓ **Följ upp kontinuerligt** – vänta inte till inspektionen
+3. ✓ **Utbilda personal** – alla ska veta rutinerna
+4. ✓ **Var transparent** – öppenhet är styrka vid inspektion
+5. ✓ **Använd rätt verktyg** – digitalisering förenklar compliance
+
+### Rekommendationer
+
+**Innan nästa IVO-inspektion:**
+
+➡️ **Genomför intern revision** med checklistorna i denna guide
+➡️ **Åtgärda identifierade brister** omedelbart
+➡️ **Digitalisera dokumentation** (säkert, sökbart, alltid tillgängligt)
+➡️ **Utbilda personal** i IVO-krav och rutiner
+
+### Boka IVO-Compliance-Genomgång
+
+Vill du vara säker på att din verksamhet klarar nästa IVO-inspektion?
+
+➡️ **Boka en kostnadsfri IVO-genomgång** där vi:
+- Går igenom din dokumentation
+- Identifierar potentiella brister
+- Ger konkreta rekommendationer
+- Visar hur Elivro automatiserar compliance
+
+**Kontakt:**
+E-post: daniel@elivro.se
+Webb: www.elivro.se
+
+---
+
+**Disclaimer:**
+Denna guide är informativ och baserad på IVO:s krav per november 2025. Regler kan ändras. Konsultera alltid IVO:s aktuella föreskrifter och vägledningar.
+
+**© 2026 Elivro AB. Alla rättigheter förbehållna.**
+
+---
+
+## Om Elivro
+
+Elivro är det första AI-drivna assistanssystemet byggt med **IVO-compliance** som grund. Vi förstår att dokumentation inte är en börda – det är grunden för kvalitet och trygghet.
+
+**Vårt löfte:**
+Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering. För assistans som inte bara klarar inspektionen – utan överträffar förväntningarna.
