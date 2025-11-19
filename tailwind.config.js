@@ -1,3 +1,5 @@
+import typography from '@tailwindcss/typography'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -42,6 +44,6 @@ export default {
     'group-hover:shadow-[0_14px_34px_rgba(139,92,246,.35)]',
   ],
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 }
