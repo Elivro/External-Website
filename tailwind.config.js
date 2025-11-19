@@ -41,4 +41,7 @@ export default {
     'shadow-[0_10px_30px_rgba(139,92,246,.25)]',
     'group-hover:shadow-[0_14px_34px_rgba(139,92,246,.35)]',
   ],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

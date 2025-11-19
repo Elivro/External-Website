@@ -1,12 +1,8 @@
 import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 
-// Fail fast if API key is missing (not just at runtime)
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY environment variable is required')
-}
-
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend with API key (check at runtime, not build time)
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder')
 
 /**
  * Escapes HTML special characters to prevent XSS attacks
@@ -31,6 +27,15 @@ function sanitizeInput(input: string, maxLength: number = 200): string {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check API key at runtime
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured')
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact support.' },
+        { status: 500 }
+      )
+    }
+
     // Parse request body
     const body = await request.json()
     const { name, company, email, phone, honeypot, timestamp } = body
