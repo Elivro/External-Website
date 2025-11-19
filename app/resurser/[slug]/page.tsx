@@ -2,15 +2,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getGuideBySlug, getAllGuides, getRelatedContent, formatDate } from '@/lib/content'
 import { Metadata } from 'next'
-
-// Import the MDX components we'll use
-import { DownloadCTA } from '@/components/content'
-import { DemoCTA } from '@/components/content'
-
-const components = {
-  DownloadCTA,
-  DemoCTA,
-}
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/lib/mdx-components'
 
 export async function generateStaticParams() {
   const guides = await getAllGuides()
@@ -19,8 +12,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const guide = await getGuideBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const guide = await getGuideBySlug(slug)
 
   if (!guide) {
     return {
@@ -49,8 +43,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function GuidePage({ params }: { params: { slug: string } }) {
-  const guide = await getGuideBySlug(params.slug)
+export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const guide = await getGuideBySlug(slug)
 
   if (!guide) {
     notFound()
@@ -163,9 +158,9 @@ export default async function GuidePage({ params }: { params: { slug: string } }
               prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800
               prose-table:border prose-table:border-zinc-800
               prose-th:bg-zinc-900 prose-th:text-white
-              prose-td:border prose-td:border-zinc-800"
-              dangerouslySetInnerHTML={{ __html: guide.content }}
-            />
+              prose-td:border prose-td:border-zinc-800">
+              <MDXRemote source={guide.content} components={mdxComponents} />
+            </div>
           </div>
         </article>
 

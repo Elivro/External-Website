@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getBlogPostBySlug, getAllBlogPosts, getRelatedContent, formatDate } from '@/lib/content'
 import { Metadata } from 'next'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/lib/mdx-components'
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts()
@@ -10,8 +12,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getBlogPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getBlogPostBySlug(slug)
 
   if (!post) {
     return {
@@ -40,8 +43,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getBlogPostBySlug(params.slug)
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await getBlogPostBySlug(slug)
 
   if (!post) {
     notFound()
@@ -155,9 +159,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               prose-table:border prose-table:border-zinc-800
               prose-th:bg-zinc-900 prose-th:text-white
               prose-td:border prose-td:border-zinc-800
-              prose-img:rounded-xl prose-img:border prose-img:border-zinc-800"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+              prose-img:rounded-xl prose-img:border prose-img:border-zinc-800">
+              <MDXRemote source={post.content} components={mdxComponents} />
+            </div>
           </div>
         </article>
 

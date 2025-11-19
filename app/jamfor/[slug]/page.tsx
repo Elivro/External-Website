@@ -2,15 +2,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getComparisonBySlug, getAllComparisons, getRelatedContent, formatDate } from '@/lib/content'
 import { Metadata } from 'next'
-
-// Import MDX components
-import { ComparisonTable } from '@/components/content'
-import { DemoCTA } from '@/components/content'
-
-const components = {
-  ComparisonTable,
-  DemoCTA,
-}
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/lib/mdx-components'
 
 export async function generateStaticParams() {
   const comparisons = await getAllComparisons()
@@ -19,8 +12,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const comparison = await getComparisonBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const comparison = await getComparisonBySlug(slug)
 
   if (!comparison) {
     return {
@@ -49,8 +43,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function ComparisonPage({ params }: { params: { slug: string } }) {
-  const comparison = await getComparisonBySlug(params.slug)
+export default async function ComparisonPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const comparison = await getComparisonBySlug(slug)
 
   if (!comparison) {
     notFound()
@@ -158,9 +153,9 @@ export default async function ComparisonPage({ params }: { params: { slug: strin
               prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800
               prose-table:border prose-table:border-zinc-800
               prose-th:bg-zinc-900 prose-th:text-white
-              prose-td:border prose-td:border-zinc-800"
-              dangerouslySetInnerHTML={{ __html: comparison.content }}
-            />
+              prose-td:border prose-td:border-zinc-800">
+              <MDXRemote source={comparison.content} components={mdxComponents} />
+            </div>
           </div>
         </article>
 
