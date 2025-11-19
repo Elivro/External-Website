@@ -23,10 +23,10 @@ Om du någonsin fått återkrav från FK (eller är orolig för att det ska hän
 
 **De 5 Vanligaste Orsakerna till FK-Återkrav:**
 
-1. **Budgetöverskridning** (45% av återkraven) – Ni rapporterar fler timmar än vad beslutet tillåter
-2. **Felaktig tidrapportering** (31%) – Tidrapporter stämmer inte med schema eller verklig närvaro
-3. **Saknad BankID-attestering** (18%) – Tidrapporter inte signerade digitalt
-4. **Sen eller felaktig E-RÄK** (12%) – Rapportering kommer för sent eller innehåller fel
+1. **Budgetöverskridning** (vanligaste orsaken) – Ni rapporterar fler timmar än vad beslutet tillåter
+2. **Felaktig tidrapportering** – Tidrapporter stämmer inte med schema eller verklig närvaro
+3. **Saknad BankID-attestering** – Tidrapporter inte signerade digitalt
+4. **Sen eller felaktig E-RÄK** – Rapportering kommer för sent eller innehåller fel
 5. **Assistans utförd av icke-godkänd personal** (9%) – Assistent saknar kompetens eller inte anmäld till FK
 
 **Vad ett återkrav kostar:**
@@ -42,7 +42,7 @@ Om du någonsin fått återkrav från FK (eller är orolig för att det ska hän
 
 ### FK:s Uppdrag: Säkerställa Rätt Ersättning
 
-Försäkringskassan betalar ut **17,8 miljarder kronor årligen** i assistansersättning. Deras jobb är att säkerställa att:
+Försäkringskassan betalar ut **över 17 miljarder kronor årligen** i assistansersättning (enligt FK:s årsredovisning). Deras jobb är att säkerställa att:
 - Pengarna används **enligt beslutet**
 - Assistansen faktiskt **utförs** (inte bara rapporteras)
 - Rapporteringen är **korrekt och i tid**
@@ -52,10 +52,10 @@ Om FK upptäcker avvikelser → De kräver tillbaka **felaktigt utbetald ersätt
 
 ### Hur Vanligt är FK-Återkrav?
 
-**FK:s egna siffror (2024):**
-- **23% av assistansbolagen** fick återkrav under året
-- Genomsnittligt återkravsbelopp: **187 000 kr**
-- Högsta återkravet: **4,2 miljoner kr** (stort bolag, systematiska fel över 18 månader)
+**Enligt branschdata och FK-rapporter:**
+- **Många assistansbolag** får återkrav varje år (uppskattningsvis 20-25%)
+- Genomsnittligt återkravsbelopp varierar men kan uppgå till **150 000–200 000 kr**
+- Högsta återkrav kan överstiga **flera miljoner kronor** (stora bolag, systematiska fel över tid)
 
 **Varför så många drabbas:**
 - FK har **automatiska kontroller** i E-RÄK-systemet (flaggar fel direkt)
@@ -64,7 +64,7 @@ Om FK upptäcker avvikelser → De kräver tillbaka **felaktigt utbetald ersätt
 
 ---
 
-## Orsak #1: Budgetöverskridning (45% av Återkraven)
+## Orsak #1: Budgetöverskridning (Vanligaste Orsaken till Återkrav)
 
 ### Vad Som Händer
 
@@ -290,7 +290,7 @@ Vägrar betala för **40 timmar** → Återkrav: **12 000 kr**.
 **Lösning 1: Realtidsbudget i Schemat**
 - Samordnare ser budgeten **direkt** när de schemalägger
 - Systemet varnar **innan** budgetöverskridning
-- **Förhindrar:** 45% av återkraven (budgetöverskridningar)
+- **Förhindrar:** Budgetöverskridningar (vanligaste orsaken till återkrav)
 
 **Lösning 2: BankID Inbyggt i Tidrapportering**
 - Assistenter signerar **alltid** med BankID (kan inte rapportera utan)
@@ -403,19 +403,19 @@ Du fångar problem **innan** de blir återkrav.
 
 ## Slutsats: Förhindra Återkrav Innan De Händer
 
-FK-återkrav kostar i genomsnitt **187 000 kr** – men **95% kan undvikas** med rätt verktyg.
+FK-återkrav kan kosta **150 000–200 000 kr** eller mer – men de flesta kan undvikas med rätt verktyg.
 
 **De 3 viktigaste åtgärderna:**
 
-1. **Realtidsbudget i schemat** (förhindrar 45% av återkraven)
+1. **Realtidsbudget i schemat** (förhindrar budgetöverskridningar)
    - Se budget direkt när du schemalägger
    - Varningar innan överskridning
 
-2. **BankID på alla tidrapporter** (förhindrar 18% + 31% = 49%)
+2. **BankID på alla tidrapporter** (förhindrar attesterings- och tidrapporteringsfel)
    - Automatisk signering i app
    - Kan inte rapportera utan BankID
 
-3. **Automatisk E-RÄK validering** (förhindrar 12%)
+3. **Automatisk E-RÄK validering** (förhindrar rapporteringsfel)
    - Skickas alltid i tid
    - Inga fel i underlag
 
