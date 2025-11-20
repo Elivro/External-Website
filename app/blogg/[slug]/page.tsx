@@ -144,22 +144,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <article className="py-12 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-invert prose-zinc prose-lg max-w-none
-              prose-headings:text-white prose-headings:font-bold
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-zinc-800
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3
-              prose-p:text-zinc-300 prose-p:leading-relaxed
-              prose-a:text-violet-400 prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-white prose-strong:font-semibold
-              prose-ul:text-zinc-300 prose-ol:text-zinc-300
-              prose-li:marker:text-violet-400
-              prose-blockquote:border-l-violet-500 prose-blockquote:bg-violet-500/5 prose-blockquote:py-1
-              prose-code:text-violet-300 prose-code:bg-zinc-900 prose-code:px-1 prose-code:rounded
-              prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800
-              prose-table:border prose-table:border-zinc-800
-              prose-th:bg-zinc-900 prose-th:text-white
-              prose-td:border prose-td:border-zinc-800
-              prose-img:rounded-xl prose-img:border prose-img:border-zinc-800">
+              prose-headings:text-white prose-headings:font-bold prose-headings:tracking-tight
+              prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-4
+              prose-h2:border-b-2 prose-h2:border-gradient-to-r prose-h2:from-violet-500/50 prose-h2:via-purple-500/30 prose-h2:to-transparent
+              prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:text-violet-200
+              prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-4 prose-h4:text-zinc-200
+              prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:mb-6
+              prose-a:text-violet-400 prose-a:no-underline prose-a:font-medium hover:prose-a:underline hover:prose-a:text-violet-300
+              prose-strong:text-white prose-strong:font-semibold prose-strong:bg-gradient-to-r prose-strong:from-violet-400/10 prose-strong:to-transparent prose-strong:px-1
+              prose-ul:text-zinc-300 prose-ul:my-6 prose-ul:space-y-2
+              prose-ol:text-zinc-300 prose-ol:my-6 prose-ol:space-y-2
+              prose-li:marker:text-violet-400 prose-li:marker:font-bold prose-li:pl-2
+              prose-blockquote:border-l-4 prose-blockquote:border-violet-500 prose-blockquote:bg-gradient-to-r prose-blockquote:from-violet-500/10 prose-blockquote:to-transparent
+              prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:my-8
+              prose-blockquote:not-italic prose-blockquote:font-medium prose-blockquote:text-zinc-200
+              prose-code:text-violet-300 prose-code:bg-zinc-900 prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm
+              prose-pre:bg-zinc-900 prose-pre:border-2 prose-pre:border-zinc-800 prose-pre:rounded-xl prose-pre:p-6 prose-pre:my-8
+              prose-table:border-2 prose-table:border-zinc-800 prose-table:rounded-xl prose-table:overflow-hidden prose-table:my-8
+              prose-th:bg-zinc-900 prose-th:text-white prose-th:font-bold prose-th:py-4 prose-th:px-6
+              prose-td:border prose-td:border-zinc-800 prose-td:py-4 prose-td:px-6
+              prose-tr:hover:bg-zinc-800/30 prose-tr:transition-colors
+              prose-img:rounded-xl prose-img:border-2 prose-img:border-zinc-800 prose-img:my-8 prose-img:shadow-2xl
+              prose-hr:border-zinc-800 prose-hr:my-12">
               <MDXRemote source={post.content} components={mdxComponents} />
             </div>
           </div>

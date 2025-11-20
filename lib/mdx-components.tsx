@@ -1,6 +1,14 @@
 import { DemoCTA } from '@/components/content/DemoCTA'
 import { DownloadCTA } from '@/components/content/DownloadCTA'
 import { ComparisonTable, Check, Cross, Partial } from '@/components/content/ComparisonTable'
+import { InfoCard } from '@/components/content/InfoCard'
+import { StatCard, StatGrid } from '@/components/content/StatCard'
+import { StepCard, StepContainer } from '@/components/content/StepCard'
+import { Callout } from '@/components/content/Callout'
+import { CostBreakdown, CostItem } from '@/components/content/CostBreakdown'
+import { Checklist, ChecklistItem } from '@/components/content/Checklist'
+import { ComparisonGrid, ComparisonCard } from '@/components/content/ComparisonGrid'
+import { SectionDivider } from '@/components/content/SectionDivider'
 
 // Custom ComparisonTable wrapper for headers/rows format used in blog posts
 interface SimpleComparisonTableProps {
@@ -56,4 +64,18 @@ export const mdxComponents = {
   Check,
   Cross,
   Partial,
+  // New stunning design components
+  InfoCard,
+  StatCard,
+  StatGrid,
+  StepCard,
+  StepContainer,
+  Callout,
+  CostBreakdown,
+  CostItem,
+  Checklist,
+  ChecklistItem,
+  ComparisonGrid,
+  ComparisonCard,
+  SectionDivider,
 }
