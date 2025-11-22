@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import { UserX, AlertTriangle, FileWarning } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import FadeSection from './FadeSection'
+import DemoModal from './DemoModal'
 
 interface PainPoint {
   problem: string
@@ -12,6 +14,7 @@ interface PainPoint {
 
 export default function ProblemSection() {
   const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const painPoints: PainPoint[] = [
     {
@@ -121,8 +124,43 @@ export default function ProblemSection() {
               </div>
             ))}
           </div>
+
+          {/* CTA Button */}
+          <div
+            className="mt-12 md:mt-16 flex flex-col items-center gap-4"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.3s ease-out 600ms'
+            }}
+          >
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="
+                group inline-flex items-center justify-center gap-2
+                px-8 py-4
+                bg-gradient-to-r from-purple-600 to-violet-600
+                text-white text-lg font-semibold rounded-xl
+                shadow-lg shadow-purple-500/40
+                hover:shadow-xl hover:shadow-purple-500/60
+                transition-all duration-300
+                hover:scale-[1.02]
+              "
+            >
+              <span>Boka gratis demo</span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <p className="text-sm text-white/60">
+              Se hur Elivro löser dessa utmaningar
+            </p>
+          </div>
         </div>
       </section>
+
+      {/* Demo Modal */}
+      <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </FadeSection>
   )
 }

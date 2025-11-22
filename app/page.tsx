@@ -14,12 +14,12 @@ export default function Home() {
       <Navbar />
       <Hero />              {/* 1. Hero */}
       <ProblemSection />    {/* 2. Pain Point */}
-      <HowItWorks />        {/* 3. How It Works - moved up per Walter Chen */}
-      <Features />          {/* 4. Features */}
+      <Features />          {/* 3. Features - Solution benefits before purchase process */}
+      <HowItWorks />        {/* 4. How It Works - Purchase process after understanding benefits */}
       {/* 5. Social Proof - add when you have customers */}
-      <FounderStory />      {/* 6. Founder's Story - moved up per Walter Chen */}
+      <FounderStory />      {/* 6. Founder's Story */}
       <CTA />               {/* 7. Pricing */}
-      <FAQSection />        {/* 8. FAQ - moved down per Walter Chen */}
+      <FAQSection />        {/* 8. FAQ */}
       <Footer />            {/* 9. Footer */}
     </main>
   )

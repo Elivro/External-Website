@@ -24,7 +24,7 @@ export default function FAQSection() {
     },
     {
       question: 'Vad kostar Elivro?',
-      answer: 'Varje företag har olika behov och förutsättningar. Vi erbjuder konkurrenskraftig prissättning som anpassas efter er verksamhets storlek och specifika behov. Kontakta oss för en skräddarsydd offert som passar er situation.'
+      answer: 'Elivro kostar från 449 kr/brukare/mån med volymrabatter – ju fler brukare, desto lägre pris per brukare. Typiska kunder sparar 40% jämfört med AIAI och Tidvis. Ingen bindningstid. Boka demo för exakt prissättning.'
     },
     {
       question: 'Hur säkras personuppgifter enligt GDPR?',
@@ -130,7 +130,7 @@ export default function FAQSection() {
 
           {/* Contact Fallback */}
           <div
-            className="text-center"
+            className="text-center mb-12"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -145,6 +145,41 @@ export default function FAQSection() {
               >
                 Kontakta oss: daniel@elivro.se
               </a>
+            </p>
+          </div>
+
+          {/* Closing CTA */}
+          <div
+            className="text-center"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.3s ease-out 1200ms'
+            }}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Redo att komma igång?
+            </h3>
+            <button
+              onClick={() => window.location.href = '#cta-section'}
+              className="
+                group inline-flex items-center justify-center gap-2
+                px-8 py-4
+                bg-gradient-to-r from-teal-500 to-blue-500
+                text-white text-lg font-semibold rounded-xl
+                shadow-lg shadow-teal-500/40
+                hover:shadow-xl hover:shadow-teal-500/60
+                transition-all duration-300
+                hover:scale-[1.02]
+              "
+            >
+              <span>Boka gratis demo</span>
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <p className="text-sm text-zinc-400 mt-4">
+              2-4 veckor från demo till go-live • 30 dagars pengarna-tillbaka-garanti
             </p>
           </div>
         </div>

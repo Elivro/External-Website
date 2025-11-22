@@ -70,7 +70,7 @@ export default function Hero() {
 
               {/* Main Headline - H1 */}
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-white mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-white mb-4"
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
@@ -79,12 +79,25 @@ export default function Hero() {
                 }}
               >
                 <span className="text-white">
-                  Få tid till{' '}
+                  Kvalitet eller budget?<br />
+                  Nu kan du få{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300">
-                    kvalitet
+                    båda
                   </span>
                 </span>
               </h1>
+
+              {/* Subheadline */}
+              <p
+                className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed"
+                style={{
+                  opacity: mounted ? 1 : 0,
+                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.3s, transform 0.3s ease-out 0.3s'
+                }}
+              >
+                Rekrytering, schema, och rapporter gjort enkelt med AI — för det effektiva assistansbolaget
+              </p>
 
               {/* Subheading - Three Pillars with Lucide Icons */}
               <div
@@ -92,7 +105,7 @@ export default function Hero() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.4s, transform 0.3s ease-out 0.4s'
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.5s, transform 0.3s ease-out 0.5s'
                 }}
               >
                 <ul className="space-y-2 text-lg sm:text-xl text-white">
@@ -117,7 +130,7 @@ export default function Hero() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.6s, transform 0.3s ease-out 0.6s'
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.7s, transform 0.3s ease-out 0.7s'
                 }}
               >
                 God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det.
@@ -129,7 +142,7 @@ export default function Hero() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.8s, transform 0.3s ease-out 0.8s'
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.9s, transform 0.3s ease-out 0.9s'
                 }}
               >
                 {/* Primary CTA - Boka demo */}
@@ -158,7 +171,7 @@ export default function Hero() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 1s, transform 0.3s ease-out 1s'
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 1.1s, transform 0.3s ease-out 1.1s'
                 }}
               >
                 Inget kreditkort krävs

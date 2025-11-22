@@ -115,13 +115,64 @@ export default function FounderStory() {
             ))}
           </div>
 
+          {/* Credibility Section - Active Assistant */}
+          <div
+            className="mx-auto max-w-3xl mb-16 md:mb-20"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.3s ease-out 500ms'
+            }}
+          >
+            <p className="text-lg md:text-xl text-white/90 text-center mb-8 font-medium">
+              Jimmy arbetar aktivt som personlig assistent.
+            </p>
+
+            <div className="rounded-3xl bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm border border-emerald-500/30 p-7 md:p-10">
+              <p className="text-base md:text-lg text-emerald-400 font-medium mb-4 text-center">
+                Därför vet vi exakt var skon klämmer:
+              </p>
+
+              <ul className="space-y-3 text-zinc-300">
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>Budget som inte räcker till</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>FK-underlag som inte stämmer</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>Assistenter som inte rapporterar</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>Svårigheter med rekrytering</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>Scheman som läggs i blindo (budget? vem vet!)</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>Daganteckningar som tar tid från kunden</span>
+                </li>
+                <li className="flex items-start gap-3 text-sm md:text-base">
+                  <span className="text-emerald-400 mt-1 flex-shrink-0">→</span>
+                  <span>IVO-krav som växer snabbare än mjukvaran kan hänga med</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           {/* Rockband Story - Team Chemistry & Creativity */}
           <div
             className="mx-auto max-w-5xl mb-16 md:mb-20"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'all 0.3s ease-out 500ms'
+              transition: 'all 0.3s ease-out 650ms'
             }}
           >
             {/* Headline */}
@@ -136,7 +187,7 @@ export default function FounderStory() {
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? 'scale(1)' : 'scale(0.95)',
-                  transition: 'all 1s ease-out 650ms'
+                  transition: 'all 1s ease-out 800ms'
                 }}
               >
                 <Image
@@ -155,7 +206,7 @@ export default function FounderStory() {
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible ? 'translateX(0)' : 'translateX(30px)',
-                  transition: 'all 1s ease-out 800ms'
+                  transition: 'all 1s ease-out 950ms'
                 }}
               >
                 <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
@@ -187,7 +238,7 @@ export default function FounderStory() {
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'all 0.3s ease-out 600ms'
+              transition: 'all 0.3s ease-out 750ms'
             }}
           >
             <div className="space-y-6 text-center">
@@ -210,7 +261,7 @@ export default function FounderStory() {
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'scale(1)' : 'scale(0.98)',
-            transition: 'all 1.2s ease-out 900ms'
+            transition: 'all 1.2s ease-out 1050ms'
           }}
         >
           {/* Fullscreen Image Container with Glassmorphic Frame & Fade Effect */}
