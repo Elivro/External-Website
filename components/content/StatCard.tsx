@@ -36,7 +36,7 @@ export function StatCard({ number, label, icon = 'trend', subtitle }: StatCardPr
         </div>
         <div className="flex-shrink-0 ml-4">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
-            <Icon className="w-6 h-6 text-white" />
+            <Icon className="w-6 h-6 text-white" strokeWidth={1.5} />
           </div>
         </div>
       </div>

@@ -50,7 +50,7 @@ export function InfoCard({ type = 'info', title, children }: InfoCardProps) {
     >
       <div className="flex items-start gap-4">
         <div className={`flex-shrink-0 ${config.iconColor}`}>
-          <Icon className="w-6 h-6" />
+          <Icon className="w-6 h-6" strokeWidth={1.5} />
         </div>
         <div className="flex-1">
           {title && (

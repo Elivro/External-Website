@@ -29,7 +29,7 @@ export function CostItem({ label, amount, trend = 'neutral', description }: Cost
           )}
         </div>
         <div className={`w-10 h-10 rounded-full ${config.bg} flex items-center justify-center ${config.color}`}>
-          <Icon className="w-5 h-5" />
+          <Icon className="w-5 h-5" strokeWidth={2} />
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ export function CostBreakdown({ children }: { children: ReactNode }) {
     <div className="my-8 p-6 rounded-2xl border border-zinc-700 bg-zinc-900/50 backdrop-blur-sm">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
-          <DollarSign className="w-6 h-6 text-white" />
+          <DollarSign className="w-6 h-6 text-white" strokeWidth={1.5} />
         </div>
         <h4 className="text-xl font-bold text-white">Kostnadsanalys</h4>
       </div>

@@ -34,7 +34,7 @@ export function ChecklistItem({ children, status = 'todo' }: ChecklistItemProps)
   return (
     <div className={`flex items-start gap-3 p-4 rounded-lg border ${config.border} ${config.iconBg} transition-all`}>
       <div className={`flex-shrink-0 ${config.iconColor}`}>
-        <Icon className="w-5 h-5 mt-0.5" />
+        <Icon className="w-5 h-5 mt-0.5" strokeWidth={2} />
       </div>
       <div className="flex-1 text-zinc-300">
         {children}

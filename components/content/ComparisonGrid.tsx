@@ -34,9 +34,9 @@ export function ComparisonCard({ title, items, type }: ComparisonCardProps) {
               }`}
             >
               {item.available ? (
-                <Check className="w-5 h-5" />
+                <Check className="w-5 h-5" strokeWidth={2} />
               ) : (
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" strokeWidth={2} />
               )}
             </div>
             <span className="text-zinc-300">{item.text}</span>

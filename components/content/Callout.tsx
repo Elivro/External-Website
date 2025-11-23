@@ -62,7 +62,7 @@ export function Callout({ type = 'info', title, children }: CalloutProps) {
     >
       <div className="flex items-start gap-4">
         <div className={`flex-shrink-0 w-10 h-10 rounded-full ${config.iconBg} flex items-center justify-center ${config.iconColor}`}>
-          <Icon className="w-5 h-5" />
+          <Icon className="w-5 h-5" strokeWidth={2} />
         </div>
         <div className="flex-1">
           {title && (
