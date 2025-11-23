@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Check } from 'lucide-react'
 import { scrollToSection } from '@/lib/scroll-utils'
 import DemoModal from './DemoModal'
 import { SparklesCore } from './ui/sparkles'
@@ -89,7 +88,7 @@ export default function Hero() {
 
               {/* Subheadline */}
               <p
-                className="text-lg sm:text-xl text-white/90 mb-6 leading-relaxed"
+                className="text-lg sm:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl"
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
@@ -99,50 +98,13 @@ export default function Hero() {
                 Rekrytering, schema, och rapporter gjort enkelt med AI — för det effektiva assistansbolaget
               </p>
 
-              {/* Subheading - Three Pillars with Lucide Icons */}
-              <div
-                className="mb-6"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.5s, transform 0.3s ease-out 0.5s'
-                }}
-              >
-                <ul className="space-y-2 text-lg sm:text-xl text-white">
-                  <li className="flex items-center gap-3">
-                    <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Lättare rekrytering</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Snabbare schemaläggning</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Enklare rapportering</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Subheader - Value Proposition */}
-              <p
-                className="text-base sm:text-lg text-white/80 mb-8 max-w-xl leading-relaxed"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.7s, transform 0.3s ease-out 0.7s'
-                }}
-              >
-                God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det.
-              </p>
-
               {/* Single Primary CTA */}
               <div
                 className="flex flex-col sm:flex-row gap-4 mb-4"
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.9s, transform 0.3s ease-out 0.9s'
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.5s, transform 0.3s ease-out 0.5s'
                 }}
               >
                 {/* Primary CTA - Boka demo */}
@@ -171,7 +133,7 @@ export default function Hero() {
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 1.1s, transform 0.3s ease-out 1.1s'
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.7s, transform 0.3s ease-out 0.7s'
                 }}
               >
                 Inget kreditkort krävs

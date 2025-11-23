@@ -41,10 +41,10 @@ export default function HowItWorks() {
         id="how-it-works"
         ref={sectionRef}
         aria-labelledby="how-it-works-title"
-        className="w-full bg-black py-18 md:py-24 lg:py-32 relative overflow-hidden"
+        className="w-full bg-zinc-950 py-18 md:py-24 lg:py-32 relative overflow-hidden"
       >
-        {/* Background gradient elements - Blue/Teal theme */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        {/* Background gradient elements - Subtle */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-teal-400 rounded-full blur-3xl"></div>
         </div>
@@ -52,10 +52,10 @@ export default function HowItWorks() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
-          <header className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
+          <header className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
             <h2
               id="how-it-works-title"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
@@ -65,7 +65,7 @@ export default function HowItWorks() {
               Hur det fungerar
             </h2>
             <p
-              className="mt-6 text-lg md:text-xl text-zinc-400"
+              className="text-base md:text-lg text-zinc-400"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -76,9 +76,17 @@ export default function HowItWorks() {
             </p>
           </header>
 
-          {/* Steps - Horizontal Layout */}
+          {/* Steps - Horizontal Layout with Connection Line */}
           <div className="relative">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6">
+            {/* Connection line between cards - Desktop only */}
+            <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-teal-500/20 z-0"
+                 style={{
+                   marginLeft: '16.666%',
+                   marginRight: '16.666%'
+                 }}
+            />
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 relative z-10">
               {steps.map((step, index) => (
                 <div
                   key={index}
@@ -86,48 +94,53 @@ export default function HowItWorks() {
                   style={{
                     opacity: isVisible ? 1 : 0,
                     transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-                    transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
+                    transition: `all 0.4s ease-out ${(index + 1) * 150}ms`
                   }}
                 >
                   {/* Card */}
                   <div
                     className="
-                      group relative overflow-hidden rounded-3xl
-                      bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
-                      backdrop-blur-sm border border-teal-500/30
-                      hover:border-teal-400/50
-                      transition-all duration-500 ease-out
-                      p-7 md:p-8 lg:p-10
+                      group relative overflow-hidden rounded-2xl
+                      bg-zinc-900/30
+                      backdrop-blur-sm border border-zinc-700/20
+                      hover:border-teal-400/40
+                      transition-all duration-300 ease-out
+                      hover:shadow-lg hover:shadow-teal-500/10
+                      hover:-translate-y-1
+                      p-8 md:p-10
                       h-full
+                      flex flex-col
                     "
                   >
-                    {/* Hover gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-teal-400/0 to-blue-600/0 group-hover:from-blue-500/5 group-hover:via-teal-400/5 group-hover:to-blue-600/5 transition-all duration-500 pointer-events-none" />
-
-                    {/* Step Number with Gradient */}
-                    <div className="relative mb-6">
-                      <span
-                        className={`text-7xl font-bold bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}
-                      >
-                        {step.number}
-                      </span>
+                    {/* Step Number Badge */}
+                    <div className="relative mb-6 flex items-center justify-center">
+                      <div className={`
+                        relative w-16 h-16 rounded-full
+                        bg-gradient-to-br ${step.gradient}
+                        flex items-center justify-center
+                        shadow-lg
+                      `}>
+                        <span className="text-2xl font-bold text-white">
+                          {step.number}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 leading-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 text-center leading-tight">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-zinc-300 text-base lg:text-lg leading-relaxed">
+                    <p className="text-zinc-400 text-sm md:text-base leading-relaxed text-center">
                       {step.description}
                     </p>
                   </div>
 
                   {/* Arrow between steps - Desktop only */}
                   {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
-                      <ArrowRight className="w-6 h-6 text-teal-400" strokeWidth={2} />
+                    <div className="hidden lg:flex absolute top-24 -right-5 transform -translate-y-1/2 z-20 items-center justify-center w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700/30">
+                      <ArrowRight className="w-5 h-5 text-teal-400" strokeWidth={2.5} />
                     </div>
                   )}
                 </div>
