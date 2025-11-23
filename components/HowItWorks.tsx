@@ -76,15 +76,8 @@ export default function HowItWorks() {
             </p>
           </header>
 
-          {/* Steps - Horizontal Layout with Connection Line */}
+          {/* Steps - Horizontal Layout */}
           <div className="relative">
-            {/* Connection line between cards - Desktop only */}
-            <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-teal-500/20 z-0"
-                 style={{
-                   marginLeft: '16.666%',
-                   marginRight: '16.666%'
-                 }}
-            />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 relative z-10">
               {steps.map((step, index) => (
@@ -112,35 +105,30 @@ export default function HowItWorks() {
                       flex flex-col
                     "
                   >
-                    {/* Step Number Badge */}
-                    <div className="relative mb-6 flex items-center justify-center">
-                      <div className={`
-                        relative w-16 h-16 rounded-full
-                        bg-gradient-to-br ${step.gradient}
-                        flex items-center justify-center
-                        shadow-lg
-                      `}>
-                        <span className="text-2xl font-bold text-white">
-                          {step.number}
-                        </span>
-                      </div>
+                    {/* Step Number with Gradient */}
+                    <div className="relative mb-6">
+                      <span
+                        className={`text-7xl font-bold bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}
+                      >
+                        {step.number}
+                      </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 text-center leading-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-tight">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-zinc-400 text-sm md:text-base leading-relaxed text-center">
+                    <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
                       {step.description}
                     </p>
                   </div>
 
                   {/* Arrow between steps - Desktop only */}
                   {index < steps.length - 1 && (
-                    <div className="hidden lg:flex absolute top-24 -right-5 transform -translate-y-1/2 z-20 items-center justify-center w-10 h-10 rounded-full bg-zinc-900 border border-zinc-700/30">
-                      <ArrowRight className="w-5 h-5 text-teal-400" strokeWidth={2.5} />
+                    <div className="hidden lg:block absolute top-1/2 -right-5 transform -translate-y-1/2 z-20">
+                      <ArrowRight className="w-6 h-6 text-teal-400" strokeWidth={2} />
                     </div>
                   )}
                 </div>
