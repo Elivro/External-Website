@@ -1,6 +1,11 @@
-# Allow all search engines to crawl the site
+# Robots.txt for Elivro.se
+# Allow search engines to crawl and index all public pages
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 
 # Sitemap location
 Sitemap: https://elivro.se/sitemap.xml
