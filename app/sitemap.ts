@@ -13,36 +13,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/funktioner`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/priser`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/hur-det-fungerar`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/om-oss`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/integritetspolicy`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.3,
     },
-    // TODO: Add these pages as you create them (Week 2)
-    // {
-    //   url: `${baseUrl}/funktioner`,
-    //   lastModified: currentDate,
-    //   changeFrequency: 'weekly' as const,
-    //   priority: 0.9,
-    // },
-    // {
-    //   url: `${baseUrl}/priser`,
-    //   lastModified: currentDate,
-    //   changeFrequency: 'weekly' as const,
-    //   priority: 0.9,
-    // },
-    // {
-    //   url: `${baseUrl}/hur-det-fungerar`,
-    //   lastModified: currentDate,
-    //   changeFrequency: 'weekly' as const,
-    //   priority: 0.8,
-    // },
-    // {
-    //   url: `${baseUrl}/om-oss`,
-    //   lastModified: currentDate,
-    //   changeFrequency: 'weekly' as const,
-    //   priority: 0.7,
-    // },
     // {
     //   url: `${baseUrl}/jamforelse`,
     //   lastModified: currentDate,

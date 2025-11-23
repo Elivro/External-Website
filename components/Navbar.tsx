@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scroll-utils'
 
 export default function Navbar() {
@@ -24,6 +25,8 @@ export default function Navbar() {
     e.preventDefault()
     scrollTop()
   }
+
+  const closeMobileMenu = () => setMobileMenuOpen(false)
 
   return (
     <nav
@@ -50,50 +53,37 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <a
-              href="#problem"
-              onClick={(e) => handleScrollToSection(e, 'problem')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              Utmaningar
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
-            <a
-              href="#how-it-works"
-              onClick={(e) => handleScrollToSection(e, 'how-it-works')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              Hur det fungerar
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
-            <a
-              href="#three-pillars"
-              onClick={(e) => handleScrollToSection(e, 'three-pillars')}
+            <Link
+              href="/funktioner"
               className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
             >
               Funktioner
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
+            </Link>
 
-            <a
-              href="#about"
-              onClick={(e) => handleScrollToSection(e, 'about')}
+            <Link
+              href="/priser"
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+            >
+              Priser
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </Link>
+
+            <Link
+              href="/hur-det-fungerar"
+              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+            >
+              Hur det fungerar
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+            </Link>
+
+            <Link
+              href="/om-oss"
               className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
             >
               Om oss
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
-            <a
-              href="#faq"
-              onClick={(e) => handleScrollToSection(e, 'faq')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              FAQ
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
+            </Link>
 
             <a
               href="#cta-section"
@@ -158,41 +148,34 @@ export default function Navbar() {
         `}
       >
         <div className="space-y-1 px-4 pb-3 pt-2">
-          <a
-            href="#problem"
-            onClick={(e) => handleScrollToSection(e, 'problem')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            Utmaningar
-          </a>
-          <a
-            href="#how-it-works"
-            onClick={(e) => handleScrollToSection(e, 'how-it-works')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            Hur det fungerar
-          </a>
-          <a
-            href="#three-pillars"
-            onClick={(e) => handleScrollToSection(e, 'three-pillars')}
+          <Link
+            href="/funktioner"
+            onClick={closeMobileMenu}
             className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
           >
             Funktioner
-          </a>
-          <a
-            href="#about"
-            onClick={(e) => handleScrollToSection(e, 'about')}
+          </Link>
+          <Link
+            href="/priser"
+            onClick={closeMobileMenu}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Priser
+          </Link>
+          <Link
+            href="/hur-det-fungerar"
+            onClick={closeMobileMenu}
+            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+          >
+            Hur det fungerar
+          </Link>
+          <Link
+            href="/om-oss"
+            onClick={closeMobileMenu}
             className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
           >
             Om oss
-          </a>
-          <a
-            href="#faq"
-            onClick={(e) => handleScrollToSection(e, 'faq')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            FAQ
-          </a>
+          </Link>
           <a
             href="#cta-section"
             onClick={(e) => handleScrollToSection(e, 'cta-section')}
