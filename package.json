@@ -1,11 +1,12 @@
 {
   "name": "elivro-landing",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "next lint",
     "clean": "rimraf .next && npm run dev",
@@ -15,6 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.64.0",
+    "@payloadcms/next": "^3.64.0",
+    "@payloadcms/richtext-lexical": "^3.64.0",
     "@tailwindcss/postcss": "^4.1.16",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
@@ -29,6 +33,7 @@
     "motion": "^12.23.24",
     "next": "^16.0.1",
     "next-font": "^1.2.0",
+    "payload": "^3.64.0",
     "postcss": "^8.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
