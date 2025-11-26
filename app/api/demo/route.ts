@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
     // Send notification email to admin
     const adminEmail = await resend.emails.send({
       from: 'Elivro Demo <notify@notify.elivro.se>',
-      to: ['daniel@elivro.se'],
+      to: ['jimmy@elivro.se'],
       subject: `Ny demo-förfrågan från ${safeName}`,
       html: `
         <!DOCTYPE html>
