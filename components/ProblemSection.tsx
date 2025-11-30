@@ -49,7 +49,7 @@ export default function ProblemSection() {
         id="problem"
         ref={sectionRef}
         aria-labelledby="problem-title"
-        className="w-full bg-zinc-950 py-18 md:py-24 lg:py-32 relative overflow-hidden"
+        className="w-full bg-black py-18 md:py-24 lg:py-32 relative overflow-hidden"
       >
         {/* Background gradient elements - Purple theme */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">

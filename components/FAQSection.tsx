@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
@@ -12,6 +12,7 @@ interface FAQ {
 export default function FAQSection() {
   const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const toggleTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const faqs: FAQ[] = [
     {
@@ -41,7 +42,16 @@ export default function FAQSection() {
   ]
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
+    // Clear any pending toggle
+    if (toggleTimeoutRef.current) {
+      clearTimeout(toggleTimeoutRef.current)
+    }
+
+    // Debounce to prevent double-clicks
+    toggleTimeoutRef.current = setTimeout(() => {
+      setOpenIndex(prev => prev === index ? null : index)
+      toggleTimeoutRef.current = null
+    }, 10)
   }
 
   return (
@@ -75,16 +85,18 @@ export default function FAQSection() {
           </header>
 
           {/* FAQ Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8 mb-12 items-start">
             {faqs.map((faq, index) => (
               <div
                 key={index}
                 className="
-                  relative overflow-hidden rounded-3xl
+                  relative rounded-3xl
                   bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
                   backdrop-blur-sm border border-blue-500/30
                   hover:border-teal-400/50
                   transition-all duration-500 ease-out
+                  flex flex-col
+                  self-start
                 "
                 style={{
                   opacity: isVisible ? 1 : 0,
@@ -92,13 +104,14 @@ export default function FAQSection() {
                   transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
                 }}
               >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full text-left p-7 md:p-8 lg:p-10 focus:outline-none focus:ring-2 focus:ring-teal-400/50 rounded-3xl"
-                  aria-expanded={openIndex === index}
-                >
-                  {/* Question */}
-                  <div className="flex justify-between items-start gap-4">
+                <div className="w-full p-7 md:p-8 lg:p-10 flex flex-col overflow-hidden">
+                  {/* Question - Clickable */}
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full text-left flex justify-between items-start gap-4 focus:outline-none rounded-lg p-2 -m-2"
+                    aria-expanded={openIndex === index}
+                    type="button"
+                  >
                     <h3 className="text-lg lg:text-xl font-bold text-white pr-4 leading-tight">
                       {faq.question}
                     </h3>
@@ -110,20 +123,19 @@ export default function FAQSection() {
                       `}
                       strokeWidth={2}
                     />
-                  </div>
+                  </button>
 
                   {/* Answer */}
-                  <div
-                    className={`
-                      overflow-hidden transition-all duration-300 ease-out
-                      ${openIndex === index ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
-                    `}
-                  >
-                    <p className="text-zinc-300 text-base lg:text-lg leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </button>
+                  {openIndex === index && (
+                    <div
+                      className="overflow-hidden transition-all duration-300 ease-out animate-in fade-in slide-in-from-top-2"
+                    >
+                      <p className="text-zinc-300 text-base lg:text-lg leading-relaxed mt-4">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
