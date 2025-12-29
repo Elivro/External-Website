@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { Plus, Minus } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 interface FAQ {
@@ -17,37 +17,35 @@ export default function FAQSection() {
   const faqs: FAQ[] = [
     {
       question: 'Hur lång tid tar det att komma igång?',
-      answer: 'Från första demo till go-live tar det vanligtvis 2-4 veckor. Vi hjälper er med konfiguration, dataimport och utbildning av teamet.'
+      answer: 'Vanligtvis 2–4 veckor från första samtalet till att ni arbetar i systemet dagligen. Vi tar oss tid att göra det rätt – import av data, anpassning efter era rutiner, och utbildning som ger trygghet.'
     },
     {
       question: 'Finns det någon risk att testa Elivro?',
-      answer: 'Nej. Vi erbjuder 30 dagars pengarna-tillbaka-garanti. Ingen bindningstid. Ni kan avsluta när som helst och får full återbetalning om ni inte är nöjda första månaden.'
+      answer: 'Ingen risk alls. Ni får 30 dagar att uppleva skillnaden. Ingen bindningstid. Och om systemet inte känns rätt kan ni avsluta när som helst – ingen förklaring krävs.'
     },
     {
       question: 'Vad kostar Elivro?',
-      answer: 'Varje företag har olika behov och förutsättningar. Vi erbjuder konkurrenskraftig prissättning som anpassas efter er verksamhets storlek och specifika behov. Kontakta oss för en skräddarsydd offert som passar er situation.'
+      answer: 'Elivro är en investering i kvalitet, inte en kostnad att minimera. Prissättningen anpassas efter er verksamhets storlek och ambitionsnivå. Boka ett samtal så visar vi vad som passar er bäst.'
     },
     {
       question: 'Hur säkras personuppgifter enligt GDPR?',
-      answer: 'Elivro är GDPR-compliant med kryptering, rollbaserade behörigheter och servrar i Sverige. GDPR & PUB-stöd ingår.'
+      answer: 'Elivro är GDPR-compliant med kryptering, rollbaserade behörigheter och servrar i Sverige. All data behandlas enligt svensk lag med högsta säkerhet.'
     },
     {
       question: 'Hur får vi support?',
-      answer: 'All support sker på svenska via e-post (daniel@elivro.se) och telefon. Vi erbjuder dedikerad onboarding-support och löpande hjälp. Support ingår i alla abonnemang.'
+      answer: 'All support sker på svenska, från människor som förstår er bransch. E-post och telefon. Dedikerad hjälp när ni behöver det – ingen supportbot, inga biljettsystem.'
     },
     {
       question: 'Vad händer med vår data om vi avslutar?',
-      answer: 'Er data är er egendom. Vid uppsägning får ni en fullständig export av all data i vanliga format (Excel/CSV). Vi raderar era personuppgifter enligt GDPR inom 30 dagar efter avslut.'
+      answer: 'Er data är alltid er. Om ni väljer att avsluta får ni en fullständig export i vanliga format (Excel/CSV). Vi raderar era personuppgifter enligt GDPR inom 30 dagar. Inga krångel.'
     }
   ]
 
   const toggleFAQ = (index: number) => {
-    // Clear any pending toggle
     if (toggleTimeoutRef.current) {
       clearTimeout(toggleTimeoutRef.current)
     }
 
-    // Debounce to prevent double-clicks
     toggleTimeoutRef.current = setTimeout(() => {
       setOpenIndex(prev => prev === index ? null : index)
       toggleTimeoutRef.current = null
@@ -55,111 +53,102 @@ export default function FAQSection() {
   }
 
   return (
-      <section
-        id="faq"
-        ref={sectionRef}
-        aria-labelledby="faq-title"
-        className="w-full bg-zinc-950 py-18 md:py-24 lg:py-32 relative overflow-hidden"
-      >
-        {/* Background gradient elements - Blue/Teal theme */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-teal-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-        </div>
+    <section
+      id="faq"
+      ref={sectionRef}
+      aria-labelledby="faq-title"
+      className="w-full bg-cream py-20 md:py-28 lg:py-32 relative overflow-hidden"
+    >
+      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          {/* Section Header */}
-          <header className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
-            <h2
-              id="faq-title"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 0.3s ease-out'
-              }}
-            >
-              Vanliga frågor
-            </h2>
-          </header>
-
-          {/* FAQ Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8 mb-12 items-start">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="
-                  relative rounded-3xl
-                  bg-gradient-to-br from-zinc-800/50 to-zinc-900/50
-                  backdrop-blur-sm border border-blue-500/30
-                  hover:border-teal-400/50
-                  transition-all duration-500 ease-out
-                  flex flex-col
-                  self-start
-                "
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-                  transition: `all 0.3s ease-out ${(index + 1) * 150}ms`
-                }}
-              >
-                <div className="w-full p-7 md:p-8 lg:p-10 flex flex-col overflow-hidden">
-                  {/* Question - Clickable */}
-                  <button
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full text-left flex justify-between items-start gap-4 focus:outline-none rounded-lg p-2 -m-2"
-                    aria-expanded={openIndex === index}
-                    type="button"
-                  >
-                    <h3 className="text-lg lg:text-xl font-bold text-white pr-4 leading-tight">
-                      {faq.question}
-                    </h3>
-                    <ChevronDown
-                      className={`
-                        w-6 h-6 text-teal-400 flex-shrink-0 mt-1
-                        transition-transform duration-300
-                        ${openIndex === index ? 'rotate-180' : ''}
-                      `}
-                      strokeWidth={2}
-                    />
-                  </button>
-
-                  {/* Answer */}
-                  {openIndex === index && (
-                    <div
-                      className="overflow-hidden transition-all duration-300 ease-out animate-in fade-in slide-in-from-top-2"
-                    >
-                      <p className="text-zinc-300 text-base lg:text-lg leading-relaxed mt-4">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Contact Fallback */}
+        {/* Section Header - Editorial */}
+        <header className="text-center mb-16 md:mb-20">
+          {/* Accent line */}
           <div
-            className="text-center"
+            className="mx-auto w-16 h-0.5 bg-terracotta mb-8"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.3s ease-out 1000ms'
+              transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
+              transition: 'all 0.5s ease-out'
+            }}
+          />
+
+          <h2
+            id="faq-title"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+              transition: 'all 0.5s ease-out 0.1s'
             }}
           >
-            <p className="text-zinc-400 text-lg">
-              Hittar du inte svar?{' '}
-              <a
-                href="mailto:daniel@elivro.se"
-                className="text-teal-400 hover:text-teal-300 transition-colors duration-200 underline decoration-teal-400/30 hover:decoration-teal-300/50"
+            Vanliga frågor
+          </h2>
+        </header>
+
+        {/* FAQ List - Single Column Editorial */}
+        <div className="space-y-0">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className={`border-b border-charcoal/10 ${index === 0 ? 'border-t' : ''}`}
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+                transition: `all 0.5s ease-out ${0.2 + index * 0.05}s`
+              }}
+            >
+              {/* Question */}
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full text-left flex justify-between items-center gap-4 py-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta rounded-sm group"
+                aria-expanded={openIndex === index}
+                type="button"
               >
-                Kontakta oss: daniel@elivro.se
-              </a>
-            </p>
-          </div>
+                <h3 className="font-serif text-lg md:text-xl text-charcoal-700 pr-4 leading-snug group-hover:text-terracotta transition-colors duration-200">
+                  {faq.question}
+                </h3>
+                <div className={`flex-shrink-0 w-6 h-6 rounded-full border border-charcoal/20 flex items-center justify-center transition-colors duration-200 ${openIndex === index ? 'bg-terracotta border-terracotta' : 'group-hover:border-terracotta'}`}>
+                  {openIndex === index ? (
+                    <Minus className="w-3 h-3 text-cream-50" strokeWidth={2.5} />
+                  ) : (
+                    <Plus className="w-3 h-3 text-charcoal-500 group-hover:text-terracotta" strokeWidth={2.5} />
+                  )}
+                </div>
+              </button>
+
+              {/* Answer */}
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-out ${openIndex === index ? 'max-h-96 pb-6' : 'max-h-0'}`}
+              >
+                <p className="text-charcoal-500 leading-relaxed pr-10">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+
+        {/* Contact Fallback */}
+        <div
+          className="text-center mt-12"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+            transition: 'all 0.5s ease-out 0.6s'
+          }}
+        >
+          <p className="font-mono text-sm text-charcoal-400 tracking-wide">
+            Hittar du inte svar?{' '}
+            <a
+              href="mailto:daniel@elivro.se"
+              className="text-terracotta hover:text-terracotta-600 transition-colors duration-200"
+            >
+              Kontakta oss
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
   )
 }

@@ -2,16 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Check } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { scrollToSection } from '@/lib/scroll-utils'
 import DemoModal from './DemoModal'
-import { SparklesCore } from './ui/sparkles'
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
-  // Check for reduced motion preference
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -20,195 +18,151 @@ export default function Hero() {
     setMounted(true)
   }, [])
 
-  const scrollToFeatures = () => scrollToSection('three-pillars')
-
   return (
     <>
-    <section className="relative w-full min-h-[75vh] lg:min-h-[95vh] overflow-hidden">
-      {/* Animated Particles Background */}
-      <div className="absolute inset-0 z-0 bg-black">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-violet-500 rounded-full blur-3xl"></div>
-        </div>
+      <section className="relative w-full min-h-screen overflow-hidden bg-cream">
+        {/* Content */}
+        <div className="relative z-10 min-h-screen flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
 
-        {/* Sparkles Particles */}
-        <div className="absolute inset-0 pointer-events-none">
-          <SparklesCore
-            id="hero-particles"
-            background="transparent"
-            minSize={0.4}
-            maxSize={1}
-            particleDensity={120}
-            className="w-full h-full"
-            particleColor="#8b5cf6"
-            speed={0.5}
-          />
-        </div>
-      </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-      {/* Content - Two Column Grid */}
-      <div className="relative z-30 min-h-[75vh] lg:min-h-[95vh] flex items-center pointer-events-auto">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-16 lg:py-20">
+              {/* LEFT COLUMN - Editorial Content (7 cols) */}
+              <div className="lg:col-span-7 order-2 lg:order-1">
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start lg:items-center">
-
-            {/* LEFT COLUMN - Content */}
-            <div className="lg:col-span-3">
-
-              {/* Eyebrow Badge */}
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s'
-                }}
-              >
-                <span className="text-white text-sm font-medium">Assistansplanering</span>
-              </div>
-
-              {/* Main Headline - H1 */}
-              <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-white mb-6"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.2s, transform 0.3s ease-out 0.2s',
-                  letterSpacing: '-0.02em'
-                }}
-              >
-                <span className="text-white">
-                  Få tid till{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300">
-                    kvalitet
-                  </span>
-                </span>
-              </h1>
-
-              {/* Subheading - Three Pillars with Lucide Icons */}
-              <div
-                className="mb-6"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.4s, transform 0.3s ease-out 0.4s'
-                }}
-              >
-                <ul className="space-y-2 text-lg sm:text-xl text-white">
-                  <li className="flex items-center gap-3">
-                    <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Lättare rekrytering</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Snabbare schemaläggning</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check className="w-6 h-6 text-violet-300 flex-shrink-0" />
-                    <span>Enklare rapportering</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Subheader - Value Proposition */}
-              <p
-                className="text-base sm:text-lg text-white/80 mb-8 max-w-xl leading-relaxed"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.6s, transform 0.3s ease-out 0.6s'
-                }}
-              >
-                God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det.
-              </p>
-
-              {/* Single Primary CTA */}
-              <div
-                className="flex flex-col sm:flex-row gap-4 mb-4"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.8s, transform 0.3s ease-out 0.8s'
-                }}
-              >
-                {/* Primary CTA - Boka demo */}
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-semibold text-violet-600 bg-white hover:bg-violet-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:scale-105"
-                >
-                  Boka gratis demo
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-
-                {/* Secondary CTA - See how it works */}
-                <button
-                  onClick={scrollToFeatures}
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 hover:border-white/60 hover:bg-white/10 transition-all duration-300"
-                >
-                  Se hur det fungerar
-                </button>
-              </div>
-
-              {/* Reassurance text */}
-              <p
-                className="text-sm text-white/60"
-                style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                  transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 1s, transform 0.3s ease-out 1s'
-                }}
-              >
-                Inget kreditkort krävs
-              </p>
-
-            </div>
-
-            {/* RIGHT COLUMN - Product Visual */}
-            <div
-              className="hidden lg:block lg:col-span-2 relative lg:mt-16"
-              style={{
-                opacity: mounted ? 1 : 0,
-                transform: mounted ? 'translateY(0)' : 'translateY(30px)',
-                transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out 0.4s, transform 0.3s ease-out 0.4s'
-              }}
-            >
-              <div className="relative">
-                {/* Glow effect behind image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-500/30 to-purple-600/30 blur-3xl scale-110 animate-pulse-slow"></div>
-
-                {/* iPhone Image with floating animation - Reduced by ~33% */}
-                <div
-                  className="relative max-w-[280px] lg:max-w-[300px] mx-auto"
+                {/* Eyebrow Label */}
+                <p
+                  className="font-mono text-sm text-charcoal-500 tracking-wider uppercase mb-6"
                   style={{
-                    animation: 'float 6s ease-in-out infinite'
+                    opacity: mounted ? 1 : 0,
+                    transform: mounted ? 'translateY(0)' : 'translateY(24px)',
+                    transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out, transform 0.5s ease-out'
                   }}
                 >
+                  Assistansplanering
+                </p>
+
+                {/* Main Headline - Editorial Serif */}
+                <h1
+                  className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-charcoal-700 leading-[1.1] tracking-tight mb-8"
+                  style={{
+                    opacity: mounted ? 1 : 0,
+                    transform: mounted ? 'translateY(0)' : 'translateY(24px)',
+                    transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out 0.1s, transform 0.5s ease-out 0.1s'
+                  }}
+                >
+                  Låt människorna vara den komplexa delen.{' '}
+                  <span className="text-terracotta">Inte systemet.</span>
+                </h1>
+
+                {/* Subheadline - Monospace */}
+                <p
+                  className="font-mono text-lg sm:text-xl text-charcoal-500 tracking-wide leading-relaxed mb-6 max-w-xl"
+                  style={{
+                    opacity: mounted ? 1 : 0,
+                    transform: mounted ? 'translateY(0)' : 'translateY(24px)',
+                    transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s'
+                  }}
+                >
+                  System för rekrytering, kvalitetsledning och schemaläggning i personlig assistans. Designat för de som ser omsorg som ett hantverk.
+                </p>
+
+                {/* Three Pillars - Visible Checkmarks */}
+                <ul
+                  className="space-y-2 mb-10 max-w-xl"
+                  style={{
+                    opacity: mounted ? 1 : 0,
+                    transform: mounted ? 'translateY(0)' : 'translateY(24px)',
+                    transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out 0.25s, transform 0.5s ease-out 0.25s'
+                  }}
+                >
+                  <li className="flex items-center gap-3 text-charcoal-500 text-base">
+                    <span className="text-sage-500 flex-shrink-0">✓</span>
+                    <span>Rekrytering med personkemi</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-charcoal-500 text-base">
+                    <span className="text-sage-500 flex-shrink-0">✓</span>
+                    <span>Kvalitetsledning som stödjer</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-charcoal-500 text-base">
+                    <span className="text-sage-500 flex-shrink-0">✓</span>
+                    <span>Schemaläggning med budget i realtid</span>
+                  </li>
+                </ul>
+
+                {/* CTAs */}
+                <div
+                  className="flex flex-col sm:flex-row gap-4 mb-6"
+                  style={{
+                    opacity: mounted ? 1 : 0,
+                    transform: mounted ? 'translateY(0)' : 'translateY(24px)',
+                    transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out 0.3s, transform 0.5s ease-out 0.3s'
+                  }}
+                >
+                  {/* Primary CTA - Terracotta */}
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-mono font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm transition-all duration-200 shadow-terracotta hover:shadow-terracotta-lg"
+                  >
+                    Boka en demo
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+                  </button>
+
+                  {/* Secondary CTA */}
+                  <button
+                    onClick={() => scrollToSection('how-it-works')}
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-mono font-medium text-charcoal border border-charcoal hover:bg-charcoal hover:text-cream rounded-sm transition-all duration-200"
+                  >
+                    Se hur det fungerar
+                  </button>
+                </div>
+
+                {/* Reassurance - Subtle */}
+                <p
+                  className="font-mono text-sm text-charcoal-400 tracking-wide"
+                  style={{
+                    opacity: mounted ? 1 : 0,
+                    transform: mounted ? 'translateY(0)' : 'translateY(24px)',
+                    transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out 0.35s, transform 0.5s ease-out 0.35s'
+                  }}
+                >
+                  30 dagar att uppleva skillnaden
+                </p>
+
+              </div>
+
+              {/* RIGHT COLUMN - Editorial Illustration (5 cols) */}
+              <div
+                className="lg:col-span-5 relative order-1 lg:order-2"
+                style={{
+                  opacity: mounted ? 1 : 0,
+                  transform: mounted ? 'scale(1)' : 'scale(0.96)',
+                  transition: prefersReducedMotion ? 'none' : 'opacity 0.6s ease-out 0.15s, transform 0.6s ease-out 0.15s'
+                }}
+              >
+                <div className="relative max-w-md mx-auto lg:max-w-none rounded-sm" style={{ backgroundColor: '#F5F2ED' }}>
+                  {/* Hand Illustration - Organic, Editorial */}
                   <Image
-                    src="/iphone-rekrytering.png"
-                    alt="Elivro mobilapp - Rekryteringsöversikt"
+                    src="/brand-assets/elivro-header-asset_hands.png"
+                    alt="Illustration av sammanflätade händer som symboliserar omsorg och samarbete"
                     width={600}
-                    height={1200}
-                    className="w-full h-auto drop-shadow-2xl"
+                    height={600}
+                    className="relative w-full h-auto"
                     priority
                   />
                 </div>
               </div>
+
             </div>
 
           </div>
-
         </div>
-      </div>
 
-      {/* Subtle fade at bottom for smooth transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-black/20 to-black/40 pointer-events-none z-40" />
-    </section>
+        {/* Subtle bottom transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-cream-200/50 pointer-events-none" />
+      </section>
 
-    {/* Demo Modal */}
-    <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 }
