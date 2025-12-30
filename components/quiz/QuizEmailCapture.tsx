@@ -13,6 +13,7 @@ interface QuizEmailCaptureProps {
 export default function QuizEmailCapture({ state, onNext }: QuizEmailCaptureProps) {
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
+  const [consent, setConsent] = useState(false)
   const [honeypot, setHoneypot] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -199,6 +200,24 @@ export default function QuizEmailCapture({ state, onNext }: QuizEmailCaptureProp
                   />
                 </div>
 
+                {/* GDPR Consent Checkbox */}
+                <div className="flex items-start gap-3">
+                  <input
+                    id="consent"
+                    type="checkbox"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    required
+                    className="mt-1 w-4 h-4 rounded-sm border-charcoal-300 text-terracotta focus:ring-terracotta/20 cursor-pointer"
+                  />
+                  <label htmlFor="consent" className="font-mono text-sm text-charcoal-500 leading-relaxed cursor-pointer">
+                    Jag godkänner att Elivro sparar mina uppgifter för att skicka en personlig bedömning och eventuellt kontakta mig.{' '}
+                    <Link href="/integritetspolicy" className="underline hover:text-terracotta transition-colors">
+                      Läs vår integritetspolicy
+                    </Link>
+                  </label>
+                </div>
+
                 {/* Error message */}
                 {error && (
                   <div className="p-4 bg-red-50 border border-red-200 rounded-sm">
@@ -209,7 +228,7 @@ export default function QuizEmailCapture({ state, onNext }: QuizEmailCaptureProp
                 {/* Submit button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !consent}
                   className="w-full px-6 py-4 bg-terracotta hover:bg-terracotta-600 text-cream-50 font-mono font-medium rounded-sm
                     shadow-terracotta hover:shadow-terracotta-lg
                     transition-all duration-200
@@ -217,15 +236,6 @@ export default function QuizEmailCapture({ state, onNext }: QuizEmailCaptureProp
                 >
                   {isSubmitting ? 'Skickar...' : 'Få min bedömning'}
                 </button>
-
-                {/* Footer */}
-                <p className="font-mono text-xs text-charcoal-400 tracking-wide text-center">
-                  Vi behandlar dina uppgifter med respekt. Läs vår{' '}
-                  <Link href="/integritetspolicy" className="underline hover:text-terracotta transition-colors">
-                    integritetspolicy
-                  </Link>
-                  .
-                </p>
               </form>
 
             </div>
