@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef, useEffect, useState, ReactNode } from 'react'
-import { NormalBufferAttributes } from 'three'
 
 interface FadeSectionProps {
   children: ReactNode
@@ -12,7 +11,7 @@ interface FadeSectionProps {
 export default function FadeSection({
   children,
   className = '',
-  fadeIntensity = 0.5
+  fadeIntensity = 0.3
 }: FadeSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = useState(1)
@@ -64,9 +63,6 @@ export default function FadeSection({
       }}
     >
       {children}
-      
-      {/* Gradient overlay for fade-to-black effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent via-black/30 to-black pointer-events-none" />
     </div>
   )
 }

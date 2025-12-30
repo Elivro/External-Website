@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Elivro - Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering',
   description: 'God assistans handlar om relationer. Därför bygger vi teknik som stärker det mänskliga, inte ersätter det.',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.png',
   },
   metadataBase: new URL('https://elivro.se'),
   openGraph: {

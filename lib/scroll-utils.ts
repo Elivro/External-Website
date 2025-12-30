@@ -3,7 +3,7 @@
  */
 
 // Constants
-export const NAVBAR_HEIGHT = 64 // 16 * 4 = 64px (h-16 in Tailwind)
+export const NAVBAR_HEIGHT = 80 // 20 * 4 = 80px (h-20 in Tailwind)
 export const SCROLL_OFFSET = 20 // Extra padding from navbar
 
 /**

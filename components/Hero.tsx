@@ -20,15 +20,15 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative w-full min-h-screen overflow-hidden bg-cream">
+      <section className="relative w-full min-h-fit lg:min-h-screen overflow-hidden bg-cream">
         {/* Content */}
-        <div className="relative z-10 min-h-screen flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div className="relative z-10 min-h-fit lg:min-h-screen flex items-start lg:items-center">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:py-32">
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
 
-              {/* LEFT COLUMN - Editorial Content (7 cols) */}
-              <div className="lg:col-span-7 order-2 lg:order-1">
+              {/* LEFT COLUMN - Editorial Content (6 cols) */}
+              <div className="lg:col-span-6 relative z-10">
 
                 {/* Eyebrow Label */}
                 <p
@@ -44,7 +44,7 @@ export default function Hero() {
 
                 {/* Main Headline - Editorial Serif */}
                 <h1
-                  className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-charcoal-700 leading-[1.1] tracking-tight mb-8"
+                  className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-charcoal-700 leading-[1.1] tracking-tight mb-4 sm:mb-6 lg:mb-8"
                   style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? 'translateY(0)' : 'translateY(24px)',
@@ -69,7 +69,7 @@ export default function Hero() {
 
                 {/* Three Pillars - Visible Checkmarks */}
                 <ul
-                  className="space-y-2 mb-10 max-w-xl"
+                  className="space-y-1.5 sm:space-y-2 mb-6 sm:mb-8 lg:mb-10 max-w-xl"
                   style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? 'translateY(0)' : 'translateY(24px)',
@@ -92,14 +92,14 @@ export default function Hero() {
 
                 {/* CTAs */}
                 <div
-                  className="flex flex-col sm:flex-row gap-4 mb-6"
+                  className="flex flex-col sm:flex-row gap-4"
                   style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? 'translateY(0)' : 'translateY(24px)',
                     transition: prefersReducedMotion ? 'none' : 'opacity 0.5s ease-out 0.3s, transform 0.5s ease-out 0.3s'
                   }}
                 >
-                  {/* Primary CTA - Terracotta */}
+                  {/* Primary CTA */}
                   <button
                     onClick={() => setIsModalOpen(true)}
                     className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-mono font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm transition-all duration-200 shadow-terracotta hover:shadow-terracotta-lg"
@@ -117,9 +117,9 @@ export default function Hero() {
                   </button>
                 </div>
 
-                {/* Reassurance - Subtle */}
+                {/* Risk reducer - under both CTAs */}
                 <p
-                  className="font-mono text-sm text-charcoal-400 tracking-wide"
+                  className="font-mono text-xs text-charcoal-400 tracking-wide mt-4"
                   style={{
                     opacity: mounted ? 1 : 0,
                     transform: mounted ? 'translateY(0)' : 'translateY(24px)',
@@ -131,26 +131,42 @@ export default function Hero() {
 
               </div>
 
-              {/* RIGHT COLUMN - Editorial Illustration (5 cols) */}
+              {/* Mobile: Editorial side bleed illustration - runs behind content */}
+              {/* Starts at headline level, extends past CTA buttons */}
               <div
-                className="lg:col-span-5 relative order-1 lg:order-2"
+                className="absolute top-36 sm:top-40 -right-8 sm:-right-6 w-44 sm:w-52 h-[480px] sm:h-[520px] pointer-events-none lg:hidden z-0"
+                aria-hidden="true"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%)',
+                }}
+              >
+                <Image
+                  src="/brand-assets/elivro-header-asset_hands.png"
+                  alt=""
+                  width={400}
+                  height={600}
+                  className="w-full h-full object-cover object-left opacity-[0.18]"
+                />
+              </div>
+
+              {/* Desktop: Full illustration column - aligned with headline, spans to CTA */}
+              <div
+                className="hidden lg:flex lg:col-span-6 items-start justify-end -mr-8 xl:-mr-16 mt-16"
                 style={{
                   opacity: mounted ? 1 : 0,
                   transform: mounted ? 'scale(1)' : 'scale(0.96)',
                   transition: prefersReducedMotion ? 'none' : 'opacity 0.6s ease-out 0.15s, transform 0.6s ease-out 0.15s'
                 }}
               >
-                <div className="relative max-w-md mx-auto lg:max-w-none rounded-sm" style={{ backgroundColor: '#F5F2ED' }}>
-                  {/* Hand Illustration - Organic, Editorial */}
-                  <Image
-                    src="/brand-assets/elivro-header-asset_hands.png"
-                    alt="Illustration av sammanflätade händer som symboliserar omsorg och samarbete"
-                    width={600}
-                    height={600}
-                    className="relative w-full h-auto"
-                    priority
-                  />
-                </div>
+                <Image
+                  src="/brand-assets/elivro-header-asset_hands.png"
+                  alt="Illustration av sammanflätade händer som symboliserar omsorg och samarbete"
+                  width={800}
+                  height={800}
+                  className="w-full max-w-2xl xl:max-w-3xl h-auto object-contain"
+                  priority
+                />
               </div>
 
             </div>

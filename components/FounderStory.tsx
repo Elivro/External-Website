@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 export default function FounderStory() {
@@ -45,7 +47,7 @@ export default function FounderStory() {
           >
             <p className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-charcoal-700 leading-snug tracking-tight">
               Vi såg hur administrationen dränerade energi från det viktigaste: mötet mellan assistent och kund. Därför skapade vi Elivro –
-              <span className="text-terracotta"> inte för att effektivisera omsorg, utan för att ge den plats att blomma.</span>
+              <span className="text-terracotta"> för att frigöra tid till det som verkligen betyder något.</span>
             </p>
           </blockquote>
 
@@ -57,9 +59,6 @@ export default function FounderStory() {
               transition: 'all 0.5s ease-out 0.2s'
             }}
           >
-            {/* Accent line */}
-            <div className="w-12 h-0.5 bg-terracotta mx-auto mb-6" />
-
             <cite className="not-italic">
               <span className="font-mono text-sm text-charcoal-500 tracking-wider uppercase">
                 Jimmy, Daniel & Filiph
@@ -69,6 +68,27 @@ export default function FounderStory() {
               </span>
             </cite>
           </footer>
+
+          {/* Quiz CTA - Exit Ramp */}
+          <div
+            className="mt-16 pt-12 border-t border-charcoal/10"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+              transition: 'all 0.5s ease-out 0.3s'
+            }}
+          >
+            <p className="font-mono text-base text-charcoal-500 mb-4">
+              Är Elivro rätt för er?
+            </p>
+            <Link
+              href="/quiz"
+              className="group inline-flex items-center gap-2 px-6 py-3 text-base font-mono font-medium text-charcoal bg-sage/20 hover:bg-terracotta hover:text-cream border border-sage/30 hover:border-terracotta rounded-sm transition-all duration-200"
+            >
+              Gör testet på 2 minuter
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+            </Link>
+          </div>
         </article>
 
       </div>

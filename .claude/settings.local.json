@@ -10,7 +10,20 @@
       "Bash(npm install:*)",
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\ndocs: Add project documentation and brand guidelines\n\n- Add CLAUDE.md with project overview, tech stack, and development guidelines\n- Add Elivro_Värdeerbjudande_Kvalitetsfokus.md with brand messaging and content strategy\n- Include quality-focused messaging principles and three-pillar structure documentation\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Redesign navbar in Superhuman style and update Hero tagline\n\nNavbar improvements:\n- Transparent initial state that transitions to glassmorphism on scroll\n- Slower, more elegant 700ms transition with ease-in-out\n- Cleaner logo font (tracking-tight instead of tracking-widest)\n- Added navigation for all sections: Utmaningar, Hur det fungerar, Funktioner, Om oss, FAQ, Boka demo\n- Better spacing and refined hover states\n- Added section IDs to ProblemSection (#problem) and FounderStory (#about)\n\nHero changes:\n- Updated tagline from \"Allt-i-ett bemanningsverktyg för assistansföretag\" to \"Få tid till kvalitet\"\n- \"kvalitet\" highlighted with violet-purple gradient, rest in white\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Redesign navbar in Superhuman style and update Hero tagline\n\nNavbar improvements:\n- Transparent initial state that transitions to glassmorphism on scroll\n- Slower, more elegant 700ms transition with ease-in-out\n- Cleaner logo font (tracking-tight instead of tracking-widest)\n- Added navigation for all sections: Utmaningar, Hur det fungerar, Funktioner, Om oss, FAQ, Boka demo\n- Better spacing and refined hover states\n- Added section IDs to ProblemSection (#problem) and FounderStory (#about)\n\nHero changes:\n- Updated tagline from \"Allt-i-ett bemanningsverktyg för assistansföretag\" to \"Få tid till kvalitet\"\n- \"kvalitet\" highlighted with violet-purple gradient, rest in white\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Skill(frontend-design)",
+      "mcp__MCP_DOCKER__browser_navigate",
+      "mcp__MCP_DOCKER__browser_take_screenshot",
+      "mcp__MCP_DOCKER__browser_click",
+      "mcp__MCP_DOCKER__browser_snapshot",
+      "mcp__MCP_DOCKER__browser_press_key",
+      "mcp__MCP_DOCKER__browser_evaluate",
+      "mcp__MCP_DOCKER__browser_resize",
+      "mcp__MCP_DOCKER__browser_close",
+      "Bash(Copy-Item -Path 'C:/Users/jimmy/Repos/External-Website/brand-assets/*' -Destination 'C:/Users/jimmy/Repos/External-Website/public/brand-assets/' -Force)",
+      "Bash(powershell:*)",
+      "mcp__MCP_DOCKER__browser_wait_for",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []

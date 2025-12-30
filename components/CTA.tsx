@@ -84,16 +84,6 @@ export default function CTA() {
 
           {/* Left Column - Editorial Text */}
           <div>
-            {/* Accent line */}
-            <div
-              className="w-16 h-0.5 bg-terracotta mb-8"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-                transition: 'all 0.5s ease-out'
-              }}
-            />
-
             <h2
               className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight mb-6"
               style={{

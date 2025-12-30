@@ -124,15 +124,29 @@ We will apply intentional inversion to the category norms to define our visual t
 
 **Visual:** The right half of the screen is dominated by a large, flowing illustration rendered in terracotta and sage brushstrokes, depicting two abstract figures or hands intertwined with flowing lines representing orchestrated care. It feels analog and artistic.
 
+**Eyebrow Label (Above headline):**
+> *Assistansplanering*
+
 **Headline (Left side):** Set in large, beautiful serif type:
-> *The dignity of care, artfully orchestrated.*
+> *Låt människorna vara den komplexa delen. Inte systemet.*
+
+**Rationale for headline:** The original concept ("The dignity of care, artfully orchestrated") was refined based on user testing to be more concrete and immediately understandable. The new headline maintains the philosophical positioning (human-first, system supports) while clearly communicating the value proposition: complexity in human work is good, complexity in systems is bad.
 
 **Sub-headline (Monospace):**
-> A sophisticated system designed for the human nuance of personal assistance.
+> System för rekrytering, kvalitetsledning och schemaläggning i personlig assistans. Designat för de som ser omsorg som ett hantverk.
 
-**CTA:** A rectangular button, terracotta color, with monospace text. No rounded corners.
+**Three Visible Pillars (Under subheadline):**
+- ✓ Rekrytering med personkemi
+- ✓ Kvalitetsledning som stödjer
+- ✓ Schemaläggning med budget i realtid
 
-**Why this is unmistakable:** It lacks a product screenshot, it uses a serif headline, and the color palette is completely foreign to the competitors' pastels and neons.
+**Primary CTA:** "Boka en demo" (terracotta button, monospace text, minimal rounding)
+
+**Secondary CTA:** "Se hur det fungerar" (outlined button)
+
+**Reassurance:** "30 dagar att uppleva skillnaden"
+
+**Why this is unmistakable:** It lacks a product screenshot, it uses a serif headline, and the color palette is completely foreign to the competitors' pastels and neons. The headline immediately establishes the brand positioning (human-first) while the eyebrow and three pillars provide concrete clarity.
 
 ---
 
@@ -146,13 +160,31 @@ We will apply intentional inversion to the category norms to define our visual t
 
 **Differentiation:** Replaces the standard "3-box feature grid" with an editorial narrative flow.
 
-#### Section B: The System (Features revealed artfully)
+#### Section B: The System (Features - Three Pillars)
 
-**Purpose:** To show capability without resorting to generic screenshots.
+**Purpose:** To show capability through editorial narrative, not feature lists.
 
-**Visual Treatment:** "Deconstructed UI." Instead of showing a full laptop screen, we show isolated, stylized components of the interface (e.g., a beautiful calendar view or a scheduling card) floating amidst organic illustrated lines. The UI elements themselves use the new serif/mono font pairing and earthy color system.
+**Section Title:** "Tre dimensioner av skickligt omsorgsarbete"
 
-**Differentiation:** It suggests the software's power through artistic interpretation rather than literal demonstration.
+**Three Pillars (Implemented):**
+
+1. **Rekrytering** - "När rätt person möter rätt uppdrag"
+   - Accent color: Terracotta
+   - Focus: Personkemi, kontinuitet, djupare relationer
+
+2. **Kvalitetsledning** (NEW - replaces "Enklare rapportering")
+   - "Värdighet i varje detalj"
+   - Accent color: Sage
+   - Focus: Craft documentation, reflection over compliance, dignity in details
+   - **Strategic note:** This pillar reframes reporting/admin as quality management - positioning as support for learning rather than bureaucratic burden
+
+3. **Schemaläggning** - "Förutsägbarhet som frigör"
+   - Accent color: Charcoal
+   - Focus: Rhythm, continuity, real-time clarity (budget, avtal, ATL)
+
+**Visual Treatment:** Editorial cards with narrative benefits (not bullet lists). Each pillar uses storytelling format: "Ett schema är mer än tidsblock – det är rytmen i någons vardag."
+
+**Differentiation:** Replaces standard "3-box feature grid" with editorial vignettes. Benefits written as narrative outcomes, not technical capabilities.
 
 #### Section C: The Human Element (Social Proof)
 

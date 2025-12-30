@@ -21,7 +21,7 @@ export default function FAQSection() {
     },
     {
       question: 'Finns det någon risk att testa Elivro?',
-      answer: 'Ingen risk alls. Ni får 30 dagar att uppleva skillnaden. Ingen bindningstid. Och om systemet inte känns rätt kan ni avsluta när som helst – ingen förklaring krävs.'
+      answer: 'Nej. Testa systemet i 30 dagar utan förpliktelser. Passar det inte er verksamhet? Avsluta när som helst - inga bindningstider, inga frågor.'
     },
     {
       question: 'Vad kostar Elivro?',
@@ -29,15 +29,15 @@ export default function FAQSection() {
     },
     {
       question: 'Hur säkras personuppgifter enligt GDPR?',
-      answer: 'Elivro är GDPR-compliant med kryptering, rollbaserade behörigheter och servrar i Sverige. All data behandlas enligt svensk lag med högsta säkerhet.'
+      answer: 'Elivro är GDPR-compliant med kryptering, rollbaserade behörigheter och servrar inom EU. All data behandlas enligt GDPR med högsta säkerhet & integritet.'
     },
     {
       question: 'Hur får vi support?',
-      answer: 'All support sker på svenska, från människor som förstår er bransch. E-post och telefon. Dedikerad hjälp när ni behöver det – ingen supportbot, inga biljettsystem.'
+      answer: 'All support sker på svenska, från människor som förstår er bransch. E-post och telefon. Dedikerad hjälp när ni behöver det.'
     },
     {
       question: 'Vad händer med vår data om vi avslutar?',
-      answer: 'Er data är alltid er. Om ni väljer att avsluta får ni en fullständig export i vanliga format (Excel/CSV). Vi raderar era personuppgifter enligt GDPR inom 30 dagar. Inga krångel.'
+      answer: 'Er data är alltid er. Om ni väljer att avsluta får ni en fullständig export i vanliga format (Excel/CSV). Vi raderar era personuppgifter enligt GDPR inom 30 dagar. Inget krångel.'
     }
   ]
 
@@ -63,16 +63,6 @@ export default function FAQSection() {
 
         {/* Section Header - Editorial */}
         <header className="text-center mb-16 md:mb-20">
-          {/* Accent line */}
-          <div
-            className="mx-auto w-16 h-0.5 bg-terracotta mb-8"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-              transition: 'all 0.5s ease-out'
-            }}
-          />
-
           <h2
             id="faq-title"
             className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight"

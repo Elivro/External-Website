@@ -41,27 +41,27 @@ export default function CookieConsent() {
 
       {/* Cookie consent banner */}
       {showBanner && (
-        <div className="fixed bottom-4 right-4 z-50 max-w-sm">
-          <div className="bg-zinc-900 border border-zinc-700 rounded-lg shadow-2xl p-4 backdrop-blur-sm">
-            <p className="text-sm text-zinc-300 mb-3">
+        <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 z-50 sm:max-w-sm">
+          <div className="bg-cream border border-charcoal-200 rounded-sm shadow-lg p-4 mx-auto sm:mx-0">
+            <p className="font-sans text-sm text-charcoal-500 mb-3">
               Vi använder cookies för att förbättra din upplevelse.{' '}
               <a
                 href="/integritetspolicy"
-                className="text-white hover:text-zinc-300 underline transition-colors"
+                className="text-charcoal hover:text-terracotta underline underline-offset-2 transition-colors duration-200"
               >
                 Läs mer
               </a>
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <button
                 onClick={handleAccept}
-                className="flex-1 px-4 py-2 bg-white text-black text-sm font-semibold rounded-lg hover:bg-zinc-200 transition-all duration-200"
+                className="flex-1 px-4 py-2.5 font-mono text-sm font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm transition-all duration-200 shadow-terracotta"
               >
                 Acceptera
               </button>
               <button
                 onClick={handleDecline}
-                className="flex-1 px-4 py-2 bg-zinc-800 text-zinc-300 text-sm font-medium rounded-lg hover:bg-zinc-700 transition-colors duration-200"
+                className="flex-1 px-4 py-2.5 font-mono text-sm font-medium text-charcoal border border-charcoal hover:bg-charcoal hover:text-cream rounded-sm transition-all duration-200"
               >
                 Avvisa
               </button>

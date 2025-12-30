@@ -61,16 +61,6 @@ export default function Features() {
 
           {/* Section Header - Editorial */}
           <header className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
-            {/* Accent line */}
-            <div
-              className="mx-auto w-16 h-0.5 bg-terracotta mb-8"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-                transition: 'all 0.5s ease-out'
-              }}
-            />
-
             <h2
               id="features-title"
               className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight mb-6"

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { X, Check } from 'lucide-react'
 
 interface DemoModalProps {
   isOpen: boolean
@@ -12,7 +13,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [honeypot, setHoneypot] = useState('') // Anti-bot honeypot field
+  const [honeypot, setHoneypot] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -20,7 +21,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const firstInputRef = useRef<HTMLInputElement>(null)
   const formOpenTimeRef = useRef<number>(0)
 
-  // Handle ESC key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -32,14 +32,12 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     return () => document.removeEventListener('keydown', handleEscape)
   }, [isOpen, onClose])
 
-  // Focus trap
   useEffect(() => {
     if (isOpen && firstInputRef.current) {
       firstInputRef.current.focus()
     }
   }, [isOpen])
 
-  // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -51,7 +49,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     }
   }, [isOpen])
 
-  // Silent timer - track when modal opens for bot detection
   useEffect(() => {
     if (isOpen) {
       formOpenTimeRef.current = Date.now()
@@ -61,7 +58,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Honeypot check - if filled, it's a bot
     if (honeypot) {
       console.log('Bot detected via honeypot')
       return
@@ -80,7 +76,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
           company,
           email,
           phone,
-          honeypot, // Send to API for server-side validation too
+          honeypot,
           timestamp: formOpenTimeRef.current,
         }),
       })
@@ -91,11 +87,9 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
         throw new Error(data.error || 'Ett fel uppstod')
       }
 
-      // Success
       setIsSubmitting(false)
       setSubmitted(true)
 
-      // Reset form and close modal after showing success message
       setTimeout(() => {
         setName('')
         setCompany('')
@@ -113,7 +107,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     }
   }
 
-  // Click outside to close
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose()
@@ -131,43 +124,42 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
       aria-labelledby="modal-title"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-charcoal-900/60 backdrop-blur-sm"></div>
 
       {/* Modal */}
       <div
         ref={modalRef}
-        className="relative z-10 w-full max-w-md bg-zinc-900 rounded-2xl border border-zinc-800 shadow-2xl shadow-violet-500/10 animate-slide-in-up"
+        className="relative z-10 w-full max-w-md bg-cream-50 rounded-sm border border-charcoal/10 shadow-2xl animate-slide-up"
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors duration-200 p-2 hover:bg-white/5 rounded-lg"
+          className="absolute top-4 right-4 text-charcoal-400 hover:text-charcoal-700 transition-colors duration-200 p-1.5 hover:bg-charcoal/5 rounded-sm"
           aria-label="Stäng modal"
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <X className="w-5 h-5" />
         </button>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-8 lg:p-10">
           {!submitted ? (
             <>
               {/* Header */}
-              <div className="mb-6">
-                <h2 id="modal-title" className="text-2xl font-bold text-white mb-2">
-                  Boka en demo
+              <div className="mb-8">
+                <div className="w-12 h-0.5 bg-terracotta mb-6" />
+                <h2 id="modal-title" className="font-serif text-2xl text-charcoal-700 mb-2">
+                  Boka demo
                 </h2>
-                <p className="text-zinc-400 text-sm">
+                <p className="font-mono text-sm text-charcoal-500 tracking-wide">
                   Fyll i dina uppgifter så kontaktar vi dig.
                 </p>
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Name */}
                 <div>
-                  <label htmlFor="modal-name" className="block text-sm font-medium text-zinc-300 mb-2">
+                  <label htmlFor="modal-name" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
                     Namn
                   </label>
                   <input
@@ -177,16 +169,16 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full px-4 py-3 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
-                      transition-all duration-300 text-base"
+                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
+                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
+                      font-mono text-sm transition-all duration-200"
                     placeholder="Ditt namn"
                   />
                 </div>
 
                 {/* Company */}
                 <div>
-                  <label htmlFor="modal-company" className="block text-sm font-medium text-zinc-300 mb-2">
+                  <label htmlFor="modal-company" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
                     Företag
                   </label>
                   <input
@@ -195,17 +187,17 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     required
-                    className="w-full px-4 py-3 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
-                      transition-all duration-300 text-base"
-                    placeholder="Ditt företag"
+                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
+                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
+                      font-mono text-sm transition-all duration-200"
+                    placeholder="Företagsnamn"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="modal-email" className="block text-sm font-medium text-zinc-300 mb-2">
-                    E-postadress
+                  <label htmlFor="modal-email" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
+                    E-post
                   </label>
                   <input
                     id="modal-email"
@@ -213,17 +205,17 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-3 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
-                      transition-all duration-300 text-base"
-                    placeholder="E-post"
+                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
+                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
+                      font-mono text-sm transition-all duration-200"
+                    placeholder="namn@foretag.se"
                   />
                 </div>
 
                 {/* Phone */}
                 <div>
-                  <label htmlFor="modal-phone" className="block text-sm font-medium text-zinc-300 mb-2">
-                    Telefonnummer
+                  <label htmlFor="modal-phone" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
+                    Telefon
                   </label>
                   <input
                     id="modal-phone"
@@ -231,14 +223,14 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
-                    className="w-full px-4 py-3 bg-zinc-800/50 border-2 border-zinc-700/50 rounded-xl text-white placeholder-zinc-500
-                      focus:outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/20
-                      transition-all duration-300 text-base"
-                    placeholder="Telefonnummer"
+                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
+                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
+                      font-mono text-sm transition-all duration-200"
+                    placeholder="070-123 45 67"
                   />
                 </div>
 
-                {/* Honeypot field - hidden from humans, visible to bots */}
+                {/* Honeypot */}
                 <div
                   style={{
                     position: 'absolute',
@@ -265,10 +257,10 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl
-                    shadow-lg shadow-violet-500/40 hover:shadow-xl hover:shadow-violet-500/60
-                    transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]
-                    disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full mt-2 px-6 py-4 bg-terracotta hover:bg-terracotta-600 text-cream-50 font-mono font-medium rounded-sm
+                    shadow-terracotta hover:shadow-terracotta-lg
+                    transition-all duration-200
+                    disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Skickar...' : 'Skicka förfrågan'}
                 </button>
@@ -277,13 +269,11 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
           ) : (
             /* Success message */
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+              <div className="w-16 h-16 bg-sage-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Check className="w-8 h-8 text-sage-500" strokeWidth={2.5} />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Tack!</h3>
-              <p className="text-zinc-400">Vi hör av oss snart.</p>
+              <h3 className="font-serif text-2xl text-charcoal-700 mb-2">Tack!</h3>
+              <p className="font-mono text-sm text-charcoal-500 tracking-wide">Vi hör av oss snart.</p>
             </div>
           )}
         </div>

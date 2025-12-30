@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scroll-utils'
 
 export default function Navbar() {
@@ -25,83 +26,67 @@ export default function Navbar() {
     scrollTop()
   }
 
+  const navLinks = [
+    { label: 'Filosofi', id: 'philosophy' },
+    { label: 'Hur det fungerar', id: 'how-it-works' },
+    { label: 'Funktioner', id: 'three-pillars' },
+    { label: 'Om oss', id: 'about' },
+    { label: 'FAQ', id: 'faq' },
+  ]
+
   return (
     <nav
       data-scrolled={scrolled}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-in-out ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-zinc-900/60 backdrop-blur-xl shadow-lg shadow-black/5'
+          ? 'bg-cream/95 backdrop-blur-md border-b border-charcoal/10 shadow-sm'
           : 'bg-transparent'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+        <div className="flex h-20 items-center justify-between">
+          {/* Masthead - Editorial Logo Lockup */}
           <div className="flex-shrink-0">
             <a
               href="#top"
               onClick={handleScrollToTop}
-              className="text-zinc-300 text-xl font-bold tracking-widest hover:text-zinc-200 transition-colors duration-300"
-              style={{ fontFamily: 'var(--font-nunito)' }}
+              className="flex items-center gap-2 group"
             >
-              ELIVRO
+              {/* Logo Mark - sized to align with cap height */}
+              <Image
+                src="/brand-assets/elivro_logo2.png"
+                alt="Elivro logo"
+                width={44}
+                height={44}
+                className="w-11 h-11 transition-transform duration-300 group-hover:scale-105"
+              />
+              {/* Wordmark - Instrument Serif with luxury tracking, hidden on mobile */}
+              <span className="hidden sm:inline font-serif text-charcoal-700 text-[1.75rem] font-normal tracking-[0.04em] group-hover:text-terracotta transition-colors duration-200">
+                Elivro
+              </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            <a
-              href="#problem"
-              onClick={(e) => handleScrollToSection(e, 'problem')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              Utmaningar
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
+          <div className="hidden md:flex md:items-center md:gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={(e) => handleScrollToSection(e, link.id)}
+                className="px-3 py-2 text-sm font-medium font-mono tracking-wide text-charcoal-500 hover:text-charcoal-700 transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            ))}
 
-            <a
-              href="#how-it-works"
-              onClick={(e) => handleScrollToSection(e, 'how-it-works')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              Hur det fungerar
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
-            <a
-              href="#three-pillars"
-              onClick={(e) => handleScrollToSection(e, 'three-pillars')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              Funktioner
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
-            <a
-              href="#about"
-              onClick={(e) => handleScrollToSection(e, 'about')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              Om oss
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
-            <a
-              href="#faq"
-              onClick={(e) => handleScrollToSection(e, 'faq')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
-            >
-              FAQ
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
-            </a>
-
+            {/* CTA Button */}
             <a
               href="#cta-section"
               onClick={(e) => handleScrollToSection(e, 'cta-section')}
-              className="text-white/90 hover:text-white text-sm font-medium transition-all duration-200 relative group py-1"
+              className="ml-4 px-5 py-2 text-sm font-mono font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm transition-all duration-200 shadow-terracotta"
             >
               Boka demo
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 ease-out group-hover:w-full"></span>
             </a>
           </div>
 
@@ -110,10 +95,10 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-white/80 hover:bg-white/10 hover:text-white transition-colors duration-300"
-              aria-expanded="false"
+              className="inline-flex items-center justify-center rounded-sm p-2 text-charcoal-500 hover:bg-charcoal/5 hover:text-charcoal-700 transition-colors duration-200"
+              aria-expanded={mobileMenuOpen}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">Öppna meny</span>
               {!mobileMenuOpen ? (
                 <svg
                   className="block h-6 w-6"
@@ -153,50 +138,26 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={`
-          md:hidden bg-zinc-900/95 backdrop-blur-md overflow-hidden transition-all duration-300 ease-out
+          md:hidden bg-cream/98 backdrop-blur-md border-b border-charcoal/10
+          overflow-hidden transition-all duration-300 ease-out
           ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}
         `}
       >
-        <div className="space-y-1 px-4 pb-3 pt-2">
-          <a
-            href="#problem"
-            onClick={(e) => handleScrollToSection(e, 'problem')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            Utmaningar
-          </a>
-          <a
-            href="#how-it-works"
-            onClick={(e) => handleScrollToSection(e, 'how-it-works')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            Hur det fungerar
-          </a>
-          <a
-            href="#three-pillars"
-            onClick={(e) => handleScrollToSection(e, 'three-pillars')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            Funktioner
-          </a>
-          <a
-            href="#about"
-            onClick={(e) => handleScrollToSection(e, 'about')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            Om oss
-          </a>
-          <a
-            href="#faq"
-            onClick={(e) => handleScrollToSection(e, 'faq')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
-          >
-            FAQ
-          </a>
+        <div className="space-y-1 px-4 pb-4 pt-2">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(e) => handleScrollToSection(e, link.id)}
+              className="block w-full px-4 py-2.5 text-base font-mono font-medium text-charcoal-500 hover:bg-charcoal/5 hover:text-charcoal-700 rounded-sm transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))}
           <a
             href="#cta-section"
             onClick={(e) => handleScrollToSection(e, 'cta-section')}
-            className="block w-full px-4 py-3 text-base font-medium text-white/80 hover:bg-white/10 hover:text-white rounded-md transition-colors duration-300"
+            className="block w-full px-4 py-2.5 mt-2 text-base font-mono font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm text-center transition-all duration-200"
           >
             Boka demo
           </a>
