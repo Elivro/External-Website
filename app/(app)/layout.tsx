@@ -39,7 +39,7 @@ export default function AppLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="sv">
+    <html lang="sv" data-scroll-behavior="smooth">
       <body>
         {children}
         <CookieConsent />

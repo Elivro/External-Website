@@ -92,6 +92,7 @@ export default function Philosophy() {
                     src={pillar.icon}
                     alt={pillar.iconAlt}
                     fill
+                    sizes="(max-width: 768px) 96px, 112px"
                     className="object-contain"
                   />
                 </div>

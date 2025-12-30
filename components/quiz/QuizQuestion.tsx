@@ -72,16 +72,15 @@ export default function QuizQuestion({ currentQuestionIndex, answers, onNext }: 
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-screen">
 
-          {/* LEFT COLUMN - Illustration (40%) */}
-          <div className="hidden lg:flex lg:col-span-5 bg-cream-200/30 items-center justify-center p-8">
-            <div className="max-w-lg w-full">
-              {/* Reuse the hands illustration */}
+          {/* LEFT COLUMN - Illustration bleeds left only */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-end overflow-hidden pr-8">
+            <div className="-ml-32 w-full max-w-2xl">
               <Image
                 src="/brand-assets/elivro-header-asset_hands.png"
                 alt="Illustration av sammanflätade händer"
-                width={600}
-                height={600}
-                className="w-full h-auto opacity-60"
+                width={700}
+                height={700}
+                className="w-full h-auto"
                 priority
               />
             </div>
@@ -93,13 +92,13 @@ export default function QuizQuestion({ currentQuestionIndex, answers, onNext }: 
 
               {/* Question counter */}
               <p
-                className="font-mono text-xs sm:text-sm text-charcoal-400 tracking-wide mb-4"
+                className="font-mono text-xs sm:text-sm text-terracotta tracking-wide mb-4"
                 style={{
                   opacity: mounted ? 1 : 0,
                   transition: prefersReducedMotion ? 'none' : 'opacity 0.3s ease-out'
                 }}
               >
-                Fråga {currentQuestionIndex + 1} av {totalQuestions}
+                {currentQuestionIndex + 1}/{totalQuestions}
               </p>
 
               {/* Question Headline */}
@@ -126,14 +125,14 @@ export default function QuizQuestion({ currentQuestionIndex, answers, onNext }: 
                 </p>
               )}
 
-              {/* Answer Options */}
-              <div className="space-y-3">
+              {/* Answer Options - key on container forces remount on question change */}
+              <div className="space-y-3" key={currentQuestion.id}>
                 {currentQuestion.options.map((option, index) => {
                   const isSelected = selectedIndex === index
 
                   return (
                     <button
-                      key={index}
+                      key={`${currentQuestion.id}-${index}`}
                       onClick={() => handleSelect(index)}
                       className={`
                         w-full px-6 py-4 sm:px-6 sm:py-5

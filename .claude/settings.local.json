@@ -23,7 +23,8 @@
       "Bash(Copy-Item -Path 'C:/Users/jimmy/Repos/External-Website/brand-assets/*' -Destination 'C:/Users/jimmy/Repos/External-Website/public/brand-assets/' -Force)",
       "Bash(powershell:*)",
       "mcp__MCP_DOCKER__browser_wait_for",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

@@ -32,6 +32,23 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     return () => document.removeEventListener('keydown', handleEscape)
   }, [isOpen, onClose])
 
+  // Handle mobile back button - close modal instead of navigating back
+  useEffect(() => {
+    if (isOpen) {
+      // Push a state when modal opens
+      window.history.pushState({ modal: 'demo' }, '')
+
+      const handlePopState = () => {
+        onClose()
+      }
+
+      window.addEventListener('popstate', handlePopState)
+      return () => {
+        window.removeEventListener('popstate', handlePopState)
+      }
+    }
+  }, [isOpen, onClose])
+
   useEffect(() => {
     if (isOpen && firstInputRef.current) {
       firstInputRef.current.focus()

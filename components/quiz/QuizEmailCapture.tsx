@@ -86,16 +86,15 @@ export default function QuizEmailCapture({ state, onNext }: QuizEmailCaptureProp
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-screen">
 
-          {/* LEFT COLUMN - Illustration (40%) */}
-          <div className="hidden lg:flex lg:col-span-5 bg-cream-200/30 items-center justify-center p-8">
-            <div className="max-w-lg w-full">
-              {/* Reuse the hands illustration */}
+          {/* LEFT COLUMN - Illustration bleeds left only */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-end overflow-hidden pr-8">
+            <div className="-ml-32 w-full max-w-2xl">
               <Image
                 src="/brand-assets/elivro-header-asset_hands.png"
                 alt="Illustration av sammanflätade händer"
-                width={600}
-                height={600}
-                className="w-full h-auto opacity-60"
+                width={700}
+                height={700}
+                className="w-full h-auto"
                 priority
               />
             </div>
