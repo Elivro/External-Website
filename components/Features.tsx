@@ -41,7 +41,7 @@ export default function Features() {
       title: 'Schemaläggning',
       headline: 'Förutsägbarhet som frigör',
       benefits: [
-        'Real-time klarhet – budget, avtal, ATL innan du sparar',
+        'Realtidsöversikt – budget, ATL, anställningsgrad',
         'Stabilitet som gör att relationer får tid att växa',
         'Trygghet för kunder som vet vem som kommer'
       ],

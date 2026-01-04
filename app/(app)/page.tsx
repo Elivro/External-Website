@@ -16,6 +16,7 @@ export default function Home() {
       <Hero />
       <Philosophy />
       <Features />
+      <SectionDivider />
       <HowItWorks />
       <FounderStory />
       <SectionDivider />

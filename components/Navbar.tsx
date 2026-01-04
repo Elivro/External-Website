@@ -7,6 +7,7 @@ import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scr
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [logoRotation, setLogoRotation] = useState(0)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -50,20 +51,27 @@ export default function Navbar() {
             <a
               href="#top"
               onClick={handleScrollToTop}
+              onMouseEnter={() => setLogoRotation(prev => prev - 90)}
               className="flex items-center gap-2 group"
             >
-              {/* Logo Mark - sized to align with cap height */}
+              {/* Logo Mark - 90° rotation on each hover, stays in place */}
               <Image
                 src="/brand-assets/elivro_logo2.png"
                 alt="Elivro logo"
                 width={44}
                 height={44}
-                className="w-11 h-11 transition-transform duration-300 group-hover:scale-105"
+                className="w-11 h-11"
+                style={{
+                  transform: `rotate(${logoRotation}deg)`,
+                  transition: 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }}
               />
-              {/* Wordmark - Instrument Serif with luxury tracking, hidden on mobile */}
-              <span className="hidden sm:inline font-serif text-charcoal-700 text-[1.75rem] font-normal tracking-[0.04em] group-hover:text-terracotta transition-colors duration-200">
-                Elivro
-              </span>
+              {/* Wordmark - optically aligned so E's middle bar matches logo center */}
+              <div className="logo-text-mask" style={{ marginTop: '3px' }}>
+                <span className="font-serif text-charcoal-700 text-[1.75rem] font-normal tracking-[0.04em] logo-text-slide">
+                  Elivro
+                </span>
+              </div>
             </a>
           </div>
 

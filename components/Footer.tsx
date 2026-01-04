@@ -23,7 +23,7 @@ export default function Footer() {
                 height={44}
                 className="w-11 h-11"
               />
-              <span className="font-serif text-charcoal-700 text-[1.75rem] font-normal tracking-[0.04em]">
+              <span className="font-serif text-charcoal-700 text-[1.75rem] font-normal tracking-[0.04em]" style={{ marginTop: '3px' }}>
                 Elivro
               </span>
             </div>
