@@ -1,180 +1,173 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code working in this repo.
 
-## Project Overview
+## Project
 
-This is the **Elivro landing page** - a Swedish B2B SaaS landing page for an assistant care platform. The project emphasizes **human-centered messaging** and **quality over efficiency** in personal assistance services.
+Elivro landing page — Swedish B2B for an AI platform that serves
+assistansbolag (personal-care companies). Single repo, Next.js 16 +
+Payload CMS (admin only) + Tailwind v4. Pre-launch — no testimonials,
+no customer logos, no case studies.
 
-**Core Value Proposition**: "Lättare rekrytering. Snabbare schemaläggning. Enklare rapportering. För assistans som förändrar liv - inte bara administrerar dem."
+## Authoritative sources
 
-## Tech Stack
+| What | Where |
+|---|---|
+| **Design system** | `./DESIGN_RULES.md` (operational mapping) → `../elivro-business/DESIGN.md` (canonical Obsidian spec) |
+| **Voice & positioning** | `../elivro-business/positionering.md` |
+| **Marketing vs app dialect** | `../elivro-business/design-strategi.md` |
+| **Token CSS** | `../elivro-business/Elivro Design System/tokens.css` |
 
-- **Next.js 16.0.1** (App Router)
-- **React 19.2.0**
-- **TypeScript 5.9.3**
-- **Tailwind CSS 4.1.16**
-- **Framer Motion 12.23.24** (for animations)
-- **Resend 6.4.2** (for demo form email submissions)
+`DESIGN.md` always wins. `positionering.md` wins on voice and copy.
+This file is a quickstart, not a source of truth.
 
-## Common Commands
+## The three governing rules
+
+Every choice in this codebase derives from these. From `DESIGN.md`:
+
+1. **Restraint over cleverness** — one accent, one easing curve, one
+   italic for emphasis. *If a flourish has to be defended, it leaves.*
+2. **Specifics over abstractions** — "14 timmar per vecka per
+   koordinator" beats "productivity gains."
+3. **Warmth without softness** — dark surfaces, never cold. Halos,
+   hairlines, a mark that breathes once every 30 seconds.
+
+## Tech stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **React 19**
+- **TypeScript 5.9**
+- **Tailwind CSS 4** (`@theme` block in `app/globals.css` + legacy
+  `tailwind.config.mjs` loaded via `@config` directive — NOTE the file
+  is `.mjs`, not `.cjs`, because it uses `export default` ES module syntax)
+- **next/font** for self-hosted Fraunces / Inter / JetBrains Mono /
+  Instrument Serif / Newsreader / Bodoni Moda (display switcher in dev)
+- **Framer Motion** for the few transitions that need orchestration
+- **GSAP + ScrollTrigger** for HowItWorks scroll-pinning
+- **Resend** for `/api/demo` email submissions
+- **Payload CMS** (admin login only — no content collections wire to
+  the marketing surface yet)
+
+## Commands
 
 ```bash
-npm run dev          # Start development server (http://localhost:3000)
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run clean        # Clean Next.js cache and build artifacts
-npm run clean:build  # Clean and rebuild
+npm run dev          # Start dev server (localhost:3000, falls back to 3001)
+npm run build        # Production build
+npm run lint         # ESLint
+npm run clean        # Clean .next cache
 ```
 
-## Architecture Overview
+## Architecture
 
-### Component Structure
+### Route groups
 
-The landing page follows a **vertical scroll structure** with these main sections in order:
+- `app/(app)/` — public marketing surface. Layout renders `<html>`,
+  `<body>`, mounts `next/font` variable classes, attaches the
+  `DisplayFontSwitcher` in dev only.
+- `app/(payload)/` — Payload admin (Users-only collection).
 
-1. **Navbar** - Fixed navigation with smooth scroll to sections
-2. **Hero** - Primary value proposition with dual CTAs
-3. **ProblemSection** - 2 pain points (validates customer challenges)
-4. **Features** - "Three Pillars" with bullet-format benefits (Lättare rekrytering, Snabbare schemaläggning, Enklare rapportering)
-5. **HowItWorks** - 3-step process flow
-6. **FAQSection** - 4 Q&As with accordion
-7. **CTA** - Demo booking form
-8. **Footer** - Navigation and trust signals
+### Page composition
 
-**Total: 7 sections** optimized for B2B SaaS best practices (visitors spend ~35 seconds on landing pages)
+`app/(app)/page.tsx` mounts sections in this order:
+Navbar → Hero → LogoStrip → ProductShowcase → Features → AboutUs →
+WhyPickUs → StartupOffer → QuizCTA → FAQSection → CTA → Footer.
 
-### Key Design Patterns
+`Philosophy`, `ProblemSection`, `SystemDoesItself`, and `HowItWorks` were
+removed from the page on 2026-04-29 as part of the restructure that
+introduced reference customers, the four-tool showcase, the founder
+carousel, the uppstartskampanj, and the matchning-quiz CTA. The old
+component files remain on disk for reuse but are no longer mounted.
 
-#### 1. Scroll-Triggered Animations
-All major sections use **Intersection Observer API** for scroll-triggered animations:
+### Where things live
 
-```tsx
-const [isVisible, setIsVisible] = useState(false)
-const sectionRef = useRef<HTMLDivElement>(null)
+| Concern | File |
+|---|---|
+| Tokens | `app/globals.css` (`@theme` + `:root`) and `tailwind.config.mjs` |
+| Components | `components/*.tsx` (flat, no UI sub-library) |
+| Quiz flow | `components/quiz/*.tsx` + `app/(app)/quiz/page.tsx` |
+| Hooks | `hooks/*.ts` (intersection observer, reduced-motion) |
+| Demo API | `app/api/demo/route.ts` (Resend) |
+| Quiz API | `app/api/quiz/route.ts` |
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => setIsVisible(entry.isIntersecting),
-    { threshold: 0.1 }
-  )
-  if (sectionRef.current) observer.observe(sectionRef.current)
-  return () => observer.disconnect()
-}, [])
-```
+### Liv — the alive signal
 
-Elements use `transitionDelay` with staggered timing (e.g., `${index * 150}ms`) for sequential reveals.
+`#7a8a6b` muted sage. The ONLY permitted secondary accent. Strictly
+scoped to **three positions** on this site:
 
-#### 2. Smooth Scroll Navigation
-All navigation links use JavaScript smooth scroll with navbar offset:
+1. **Nav heartbeat** — dot adjacent to wordmark in `Navbar.tsx`.
+2. **Hero / system-status pill** — leading-edge dot in `LiveTicker.tsx`.
+3. **Dashboard "Realtid" indicator** — inside `ProofOfLifeMock.tsx`.
 
-```tsx
-const scrollToSection = (id: string) => {
-  const element = document.getElementById(id)
-  if (element) {
-    const navbarHeight = 64
-    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-    const offsetPosition = elementPosition - navbarHeight - 20
-    window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
-  }
-}
-```
+`.liv-dot` class in `globals.css` carries the 3.2s breath. Disabled
+under `prefers-reduced-motion`. Don't introduce a fourth Liv usage.
 
-**Section IDs to scroll to**:
-- `how-it-works` (HowItWorks section)
-- `faq` (FAQSection)
-- `cta-section` (CTA section)
-- `three-pillars` (Features section)
+## Voice rules (positionering.md § 6)
 
-#### 3. Glassmorphism Design System
-Consistent styling pattern across all cards:
+- **Swedish first.** English is a second skin, never primary.
+- **"du" form, never "Ni."**
+- **Italic emphasizes — bold never.** One italicized word per heading.
+- **Forbidden vocabulary:** synergier, disrupta, revolutionera,
+  transformera, empowerment, journey, solution, best-in-class,
+  cutting-edge, next-gen, 10x, unlock, seamless.
+- **Quantify in time, money, names:** "14 timmar per vecka per
+  koordinator," "30 dagars test," "Anders L. på torsdag."
+- **No emoji, no exclamation marks, no testimonials, no comparison
+  tables, no "Powered by GPT-X" attribution.**
 
-```tsx
-className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm border border-zinc-700/30 hover:border-purple-500/30"
-```
+## Anti-patterns (HARD don'ts)
 
-**Color Palette**:
-- Primary: `violet-500` (#8b5cf6), `purple-600`
-- Accent: `teal-400` (#22d3ee)
-- Background: `zinc-900`, `zinc-950`
-- Text: `white`, `zinc-300`, `zinc-400`
+From `positionering.md` § 9 and `DESIGN.md` Don'ts:
 
-#### 4. Aura.build Standards
-The design follows Aura.build conventions:
+- ❌ Bold for emphasis in body. Italic always.
+- ❌ Second accent color beyond Liv's three positions.
+- ❌ Backdrop-blur / glassmorphism.
+- ❌ Purple gradients, AI sparkles, glowing AI orbs, streaming-text reveals.
+- ❌ Stacked shadows. One layer of light per surface.
+- ❌ ALL CAPS in headlines. Only mono eyebrows are tracked + uppercase.
+- ❌ Mixed easing curves. `cubic-bezier(0.2, 0.7, 0.2, 1)` everywhere
+  except the two named exceptions (mark rotation, Liv breath).
+- ❌ `dark:` Tailwind prefix. Marketing is dark canonical, no toggle.
+- ❌ Generic stockfoton. The hands illustration is the brand asset.
+- ❌ Decorative iconography. Icons earn their place by carrying
+  differentiating information.
 
-- **Typography**: Inter font with scale (text-sm to text-6xl)
-- **Animations**: 600ms ease-out for entrances, 300ms for hovers
-- **Breakpoints**: Mobile-first (640px sm, 768px md, 1024px lg)
-- **Timing**: Staggered delays (150-200ms between items)
+## Pre-launch context
 
-## Important Content Guidelines
+Elivro has **one named customer (2u Assistans) and co-built credibility**.
+The page focuses on:
+- A single-customer credibility mark (`LogoStrip`) — "Byggt tillsammans
+  med 2u Assistans" with the 2u logo. Do not list other names here;
+  one honest customer beats five suggested ones. If a second customer
+  is signed and approves naming, expand to a real strip then.
+- Co-built positioning (`WhyPickUs`) — the prose case for 2u Assistans
+  as the largest assistansanordnare in Västerås.
+- Product completeness demonstration (`ProductShowcase` four tools,
+  `Features` full catalog).
+- De-risking (`StartupOffer` uppstartskampanj, 30-day test, no bindningstid).
+- Founder credibility (`AboutUs` — Jimmy / Filiph / Daniel as a team).
 
-### B2B SaaS Best Practices
+Do NOT add testimonial quotes, case studies, "X% mindre tid" claims,
+or comparison-vs-competitor tables. The reference strip is the only
+permitted social-proof element.
 
-The landing page follows **B2B SaaS conversion optimization principles**:
+## Common pitfalls when editing
 
-- **Target word count**: 500-600 words total (optimal range for B2B SaaS)
-- **35-second rule**: Visitors spend ~35 seconds on page - content must be scannable
-- **Bullet format over paragraphs** - Use bullets for benefits/outcomes
-- **3-second headlines** - Headlines should convey value in 3 seconds or less
-- **One conversion goal**: Every section supports the primary CTA (demo booking)
-- **Benefits over features** - Translate capabilities to business outcomes
+- **Mono is the system's voice.** Body text and CTAs use Inter, not
+  JetBrains Mono. Reach for `font-mono` only when the system is being
+  cited (eyebrows, timestamps, system-event lines, AI-proposal labels).
+- **`rounded-md` is 10px**, not Tailwind's default 6px. The borderRadius
+  scale is overridden in `tailwind.config.mjs` to match Obsidian.
+- **`@/lib/gsap-config`** depends on `gsap` and `@gsap/react` both being
+  in `package.json`. Before April 2026 the lockfile had `@gsap/react`
+  but `package.json` didn't — leading to a build failure that masked
+  the whole app behind an error overlay. If you see "Module not found:
+  Can't resolve '@gsap/react'" run `npm install @gsap/react`.
+- **Tailwind config file is `.mjs`** (ES module). If you rename to
+  `.cjs`, change `export default` to `module.exports = `, otherwise
+  Node will silently fail to load it and Obsidian's `obs-*` token
+  aliases will no-op.
 
-### Messaging Principles
+## Email
 
-1. **NO percentage claims** - Avoid unsubstantiated metrics like "80% mindre tid"
-2. **Quality over efficiency** - Emphasize relationships, trust, and human outcomes
-3. **Swedish B2B tone** - Professional but warm, not overly technical
-4. **Human-centered language** - "För assistans som förändrar liv" not "För assistans som effektiviserar processer"
-5. **Three-pillar structure** - Always maintain: Lättare rekrytering, Snabbare schemaläggning, Enklare rapportering
-6. **Scannable format** - Bullets, short sentences, clear hierarchy
-7. **Brevity is clarity** - Remove unnecessary words, get to the point quickly
-
-### Pre-launch Context
-
-**IMPORTANT**: Elivro has **no existing customers or testimonials** yet. The landing page focuses on:
-- Product value demonstration
-- Process clarity
-- De-risking (guarantees, pilot program)
-- Team/technology credibility
-
-Do NOT add social proof, testimonials, customer logos, or case studies.
-
-### Source Document
-
-The authoritative messaging source is:
-**`Elivro_Värdeerbjudande_Kvalitetsfokus.md`**
-
-When editing copy, always reference this document for:
-- Core value propositions
-- Quality promises
-- Three-pillar descriptions
-- Persona-based messaging
-
-## Email Integration
-
-Demo form submissions use **Resend** via `/api/demo` endpoint.
-
-**Form Fields**: name, company, email
-
-The API route sends emails to `daniel@elivro.se` with submitted details.
-
-## Development Notes
-
-- All components are in `components/` directory
-- Main page is `app/page.tsx`
-- Email API route is `app/api/demo/route.ts`
-- Shared UI components in `components/ui/` (Button, AnimatedText)
-- All text content is **Swedish**
-- Mobile-first responsive design
-- Animations use CSS transitions + Intersection Observer (not Framer Motion in most cases)
-
-## File Path Context
-
-**Note**: There's a duplicate folder structure due to migration. The active codebase is:
-```
-C:\Users\jimmy\Repos\landing-page\Desktop\Claude\elivro-landing\
-```
-
-Not the root `landing-page` directory.
+Demo form → `/api/demo` (Resend) → `daniel@elivro.se`.
+Quiz form → `/api/quiz` (Resend) → same.

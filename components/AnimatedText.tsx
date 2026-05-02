@@ -6,14 +6,19 @@ interface AnimatedTextProps {
   text: string
   className?: string
   delay?: number
-  gradientWord?: string
+  /**
+   * Optional word to wrap in <em> for italic emphasis.
+   * Replaces the legacy purple-gradient highlight which is forbidden
+   * per Obsidian anti-patterns (DESIGN.md § Don'ts).
+   */
+  emphasisWord?: string
 }
 
 export default function AnimatedText({
   text,
   className = '',
   delay = 0,
-  gradientWord
+  emphasisWord,
 }: AnimatedTextProps) {
   const words = text.split(' ')
   const [visibleWords, setVisibleWords] = useState<number>(0)
@@ -22,7 +27,7 @@ export default function AnimatedText({
     if (visibleWords >= words.length) return
 
     const timer = setTimeout(() => {
-      setVisibleWords(prev => prev + 1)
+      setVisibleWords((prev) => prev + 1)
     }, delay + visibleWords * 100)
 
     return () => clearTimeout(timer)
@@ -31,25 +36,20 @@ export default function AnimatedText({
   return (
     <div className={className}>
       {words.map((word, index) => {
-        const isGradientWord = gradientWord && word.toLowerCase() === gradientWord.toLowerCase()
+        const isEmphasis = emphasisWord && word.toLowerCase() === emphasisWord.toLowerCase()
+        const visible = index < visibleWords
 
         return (
           <span
             key={index}
-            className={`word ${
-              index < visibleWords
-                ? 'opacity-100'
-                : 'opacity-0'
-            } ${
-              isGradientWord
-                ? 'bg-gradient-to-r from-[#a78bfa] via-[#c084fc] to-[#60a5fa] bg-clip-text text-transparent [text-shadow:none]'
-                : ''
-            }`}
+            className="word"
             style={{
+              opacity: visible ? 1 : 0,
+              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
               transitionDelay: `${index * 0.1}s`,
             }}
           >
-            {word}{' '}
+            {isEmphasis ? <em className="font-serif italic">{word}</em> : word}{' '}
           </span>
         )
       })}

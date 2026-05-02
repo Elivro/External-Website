@@ -2,118 +2,73 @@
 
 import Image from 'next/image'
 import { scrollToSection } from '@/lib/scroll-utils'
-import { Check } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-cream-200 border-t border-charcoal/10 py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        {/* Main Footer Content */}
+    <footer className="w-full bg-ink-lift border-t border-edge py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-
-          {/* Brand Column */}
           <div className="md:col-span-1">
-            {/* Masthead - Editorial Logo Lockup */}
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/brand-assets/elivro_logo2.png"
-                alt="Elivro logo"
-                width={44}
-                height={44}
-                className="w-11 h-11"
+                alt="Elivro"
+                width={28}
+                height={28}
+                className="w-7 h-7"
               />
-              <span className="font-serif text-charcoal-700 text-[1.75rem] font-normal tracking-[0.04em]" style={{ marginTop: '3px' }}>
+              <span className="font-serif text-fg text-[1.25rem] font-light tracking-[0.02em]">
                 Elivro
               </span>
             </div>
-            <p className="text-charcoal-500 text-sm leading-relaxed">
-              För assistans som förändrar liv
+            <p className="text-fg-soft text-sm leading-relaxed">
+              Operativsystemet för svenska assistansbolag.
             </p>
           </div>
 
-          {/* Navigation Column */}
           <div>
-            <h3 className="font-mono text-charcoal-700 font-medium text-sm tracking-wide uppercase mb-4">Navigering</h3>
+            <h3 className="font-mono text-fg-muted text-[11px] tracking-[0.12em] uppercase mb-4">Navigering</h3>
             <nav className="space-y-2.5">
-              <a
-                href="#three-pillars"
-                onClick={(e) => { e.preventDefault(); scrollToSection('three-pillars') }}
-                className="block text-charcoal-500 hover:text-terracotta transition-colors duration-200 text-sm"
-              >
-                Funktioner
-              </a>
-              <a
-                href="#how-it-works"
-                onClick={(e) => { e.preventDefault(); scrollToSection('how-it-works') }}
-                className="block text-charcoal-500 hover:text-terracotta transition-colors duration-200 text-sm"
-              >
-                Hur det fungerar
-              </a>
-              <a
-                href="#faq"
-                onClick={(e) => { e.preventDefault(); scrollToSection('faq') }}
-                className="block text-charcoal-500 hover:text-terracotta transition-colors duration-200 text-sm"
-              >
-                FAQ
-              </a>
-              <a
-                href="#cta-section"
-                onClick={(e) => { e.preventDefault(); scrollToSection('cta-section') }}
-                className="block text-charcoal-500 hover:text-terracotta transition-colors duration-200 text-sm"
-              >
-                Boka demo
-              </a>
+              <a href="#product" onClick={(e) => { e.preventDefault(); scrollToSection('product') }} className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm text-sm">Produkten</a>
+              <a href="#features" onClick={(e) => { e.preventDefault(); scrollToSection('features') }} className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm text-sm">Funktioner</a>
+              <a href="#about-us" onClick={(e) => { e.preventDefault(); scrollToSection('about-us') }} className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm text-sm">Om oss</a>
+              <a href="#faq" onClick={(e) => { e.preventDefault(); scrollToSection('faq') }} className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm text-sm">FAQ</a>
+              <a href="#cta-section" onClick={(e) => { e.preventDefault(); scrollToSection('cta-section') }} className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm text-sm">Boka demo</a>
             </nav>
           </div>
 
-          {/* Legal Column */}
           <div>
-            <h3 className="font-mono text-charcoal-700 font-medium text-sm tracking-wide uppercase mb-4">Juridiskt</h3>
+            <h3 className="font-mono text-fg-muted text-[11px] tracking-[0.12em] uppercase mb-4">Juridiskt</h3>
             <nav className="space-y-2.5">
-              <a
-                href="/integritetspolicy"
-                className="block text-charcoal-500 hover:text-terracotta transition-colors duration-200 text-sm"
-              >
+              <a href="/integritetspolicy" className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm text-sm">
                 Integritetspolicy
               </a>
             </nav>
           </div>
 
-          {/* Contact Column */}
           <div>
-            <h3 className="font-mono text-charcoal-700 font-medium text-sm tracking-wide uppercase mb-4">Kontakt</h3>
+            <h3 className="font-mono text-fg-muted text-[11px] tracking-[0.12em] uppercase mb-4">Kontakt</h3>
             <div className="space-y-2.5 text-sm">
-              <a
-                href="mailto:daniel@elivro.se"
-                className="block text-charcoal-500 hover:text-terracotta transition-colors duration-200"
-              >
+              <a href="mailto:daniel@elivro.se" className="block text-fg-soft hover:text-accent transition-colors ease-obsidian duration-obs-sm">
                 daniel@elivro.se
               </a>
-              <div className="pt-3">
-                <div className="flex items-center gap-2 text-charcoal-500">
-                  <div className="w-4 h-4 rounded-full bg-sage-500/20 flex items-center justify-center">
-                    <Check className="w-2.5 h-2.5 text-sage-500" strokeWidth={3} />
-                  </div>
-                  <span>GDPR-compliant</span>
-                </div>
-              </div>
+              <p className="pt-3 text-fg-muted text-sm">
+                GDPR-kompatibel. Data inom EU.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-charcoal/10">
+        <div className="pt-8 border-t border-edge">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="font-mono text-charcoal-400 text-sm tracking-wide">
+            <div className="font-mono text-fg-dim text-[11px] tracking-[0.12em] uppercase">
               © {new Date().getFullYear()} Elivro
             </div>
-            <div className="font-mono text-charcoal-400 text-sm tracking-wide">
-              Systemet som förstärker din förmåga att ge exceptionell assistans
+            <div className="font-mono text-fg-dim text-[11px] tracking-[0.12em] uppercase">
+              Levande system för levande verksamheter
             </div>
           </div>
         </div>
-
       </div>
     </footer>
   )

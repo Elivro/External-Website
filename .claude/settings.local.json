@@ -24,9 +24,14 @@
       "Bash(powershell:*)",
       "mcp__MCP_DOCKER__browser_wait_for",
       "WebSearch",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(npm audit fix:*)"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "elivro-rag"
+  ]
 }

@@ -1,157 +1,270 @@
 'use client'
 
-import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import DemoModal from './DemoModal'
 
-interface Pillar {
+interface Group {
+  index: string
   title: string
-  headline: string
-  benefits: string[]
-  accent: string
+  bullets: string[]
 }
 
-export default function Features() {
-  const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+const CATEGORIES = [
+  'Annonsering',
+  'Rekrytering',
+  'Schemaläggning',
+  'Tidrapportering',
+  'FK-räkning',
+  'Avvikelsehantering',
+  'Lön',
+  'Ledningssystem',
+]
 
-  const pillars: Pillar[] = [
-    {
-      title: 'Rekrytering',
-      headline: 'När rätt person möter rätt uppdrag',
-      benefits: [
-        'Intelligens som förstår nyans, inte bara checkboxar',
-        'Assistenter som blommar i rätt kontext',
-        'Kontinuitet som bygger förtroende över tid'
-      ],
-      accent: 'bg-terracotta'
-    },
-    {
-      title: 'Kvalitetsledning',
-      headline: 'Värdighet i varje detalj',
-      benefits: [
-        'Dokumentation som stödjer reflektion, inte bara efterlevnad',
-        'Tydlighet som skapar förtroende mellan alla parter',
-        'Mental energi frigörs från pappersarbete till personkontakt'
-      ],
-      accent: 'bg-sage-500'
-    },
-    {
-      title: 'Schemaläggning',
-      headline: 'Förutsägbarhet som frigör',
-      benefits: [
-        'Realtidsöversikt – budget, ATL, anställningsgrad',
-        'Stabilitet som gör att relationer får tid att växa',
-        'Trygghet för kunder som vet vem som kommer'
-      ],
-      accent: 'bg-charcoal-400'
-    }
-  ]
+const GROUPS: Group[] = [
+  {
+    index: '01',
+    title: 'Rekrytering & Anställning',
+    bullets: [
+      'AI-genererade jobbannonser',
+      'Publik jobbsida',
+      'Arbetsförmedlingen-integration',
+      'AI-matchning mellan kandidat och jobb',
+      'Intuitivt rekryteringsflöde',
+      'Anställningsavtal med BankID-signering',
+    ],
+  },
+  {
+    index: '02',
+    title: 'Schema & Bemanning',
+    bullets: [
+      'Schemaläggning (kalender och lista)',
+      'Grundschema',
+      'Automatiskt grundschema (baserat på budget och anställningsgrad)',
+      'Identifiering av dubbelassistans',
+      'Pass-byten med godkännande',
+      'Budgetprognoser per period',
+    ],
+  },
+  {
+    index: '03',
+    title: 'Tid, Lön & FK',
+    bullets: [
+      'Tidrapportering med attestering',
+      'Frånvarohantering',
+      'E-RÄK (FK-räkning)',
+      'Lönefil-export',
+      'Kostnadsavstämning',
+    ],
+  },
+  {
+    index: '04',
+    title: 'Kunder',
+    bullets: [
+      'Delaktighet i rekrytering',
+      'Kundregister med detaljvy',
+      'LSS-beslut och vårdplan',
+      'Kontaktpersoner och team',
+      'Daganteckningar',
+      'Journal med röst-till-text',
+      'Specifika kompetenskrav per kund',
+    ],
+  },
+  {
+    index: '05',
+    title: 'Kvalitet & Compliance',
+    bullets: [
+      'Rutiner med AI-stöd',
+      'Regelverk (SOSFS, AFS, Lex Sarah, IVO)',
+      'Riskbedömningar enligt SAM (AFS 2023:1)',
+      'Tillbud',
+      'Egenkontroller och KPI:er',
+      'IVO-export och -simulering',
+      'Auto-genererad kvalitetsberättelse',
+    ],
+  },
+  {
+    index: '06',
+    title: 'Avvikelser & Förbättring',
+    bullets: [
+      'Avvikelser med utredning',
+      'Lex Sarah-anmälan',
+      'Klagomål och synpunkter',
+      'Publik synpunktsform',
+      'Förbättringsåtgärder',
+      'Handlingsplaner med PDF-export',
+    ],
+  },
+  {
+    index: '07',
+    title: 'Processer & Årshjul',
+    bullets: [
+      'Processkarta och process-editor',
+      'Process-tavla (kanban)',
+      'Process-mallar',
+      'Årshjul för återkommande uppgifter',
+      'Uppgifts-feed per användare',
+      'Bilagor till processer',
+    ],
+  },
+  {
+    index: '08',
+    title: 'Kompetens & Delegationer',
+    bullets: [
+      'Kompetensprofiler per roll',
+      'Kompetensgap-analys',
+      'Certifieringar',
+      'Medicineringsdelegationer',
+      'Kvittering av rutiner och policyer',
+      'Automatiska påminnelser',
+    ],
+  },
+  {
+    index: '09',
+    title: 'AI-assistent',
+    bullets: [
+      'Chat mot er egna kunskapsbas',
+      'AI-granskning av rutiner och policyer',
+      'Källhänvisning i alla AI-svar',
+      'Egna prompts, skills och agenter',
+      'AI-genererade rapport-utkast',
+      'Svensk hosting via Berget AI',
+    ],
+  },
+  {
+    index: '10',
+    title: 'Säkerhet & Plattform',
+    bullets: [
+      'BankID-inloggning',
+      'Granskningslogg per användare',
+      'GDPR-säker datahantering',
+      'Push, e-post och SMS',
+      'Egna färger och tema',
+      'Roller och behörigheter',
+    ],
+  },
+]
+
+export default function Features() {
+  const { ref, isVisible } = useIntersectionObserver(0.05)
 
   return (
-    <>
-      <section
-        id="three-pillars"
-        ref={sectionRef}
-        aria-labelledby="features-title"
-        className="w-full bg-cream py-20 md:py-28 lg:py-32 relative overflow-hidden"
-      >
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="features"
+      ref={ref}
+      aria-labelledby="features-title"
+      className="w-full bg-ink-lift py-20 md:py-24 relative"
+    >
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
 
-          {/* Section Header - Editorial */}
-          <header className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
-            <h2
-              id="features-title"
-              className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight mb-6"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                transition: 'all 0.5s ease-out 0.1s'
-              }}
-            >
-              Tre dimensioner av skickligt omsorgsarbete
-            </h2>
-
-            <p
-              className="font-mono text-charcoal-500 text-lg tracking-wide max-w-2xl mx-auto"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                transition: 'all 0.5s ease-out 0.2s'
-              }}
-            >
-              Där precision möter mänsklighet – verktygen som ger rum för omsorg
-            </p>
-          </header>
-
-          {/* Pillars - Editorial Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            {pillars.map((pillar, index) => (
-              <article
-                key={pillar.title}
-                className="relative bg-cream-50 border border-charcoal/10 rounded-sm p-8 lg:p-10 transition-all duration-300 hover:border-charcoal/20 hover:shadow-md group"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                  transition: `all 0.5s ease-out ${0.3 + index * 0.1}s`
-                }}
-              >
-                {/* Accent line - top */}
-                <div className={`absolute top-0 left-8 right-8 h-0.5 ${pillar.accent} rounded-full`} />
-
-                {/* Number - Editorial style */}
-                <span className="font-mono text-sm text-charcoal-400 tracking-wider mb-4 block">
-                  0{index + 1}
-                </span>
-
-                {/* Title - Serif */}
-                <h3 className="font-serif text-2xl lg:text-3xl text-charcoal-700 mb-3">
-                  {pillar.title}
-                </h3>
-
-                {/* Headline - Mono subhead */}
-                <p className="font-mono text-sm text-terracotta tracking-wide mb-6">
-                  {pillar.headline}
-                </p>
-
-                {/* Benefits */}
-                <ul className="space-y-3">
-                  {pillar.benefits.map((benefit, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-charcoal-500 text-sm leading-relaxed"
-                    >
-                      <span className="text-sage-500 mt-1 flex-shrink-0 text-xs">●</span>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div
-            className="mt-16 md:mt-20 flex justify-center"
+        {/* Header — claim first, then the work that earns it. */}
+        <header className="mx-auto max-w-3xl mb-12 md:mb-16 text-center">
+          <p
+            className="font-mono text-[11px] tracking-[0.14em] uppercase text-accent mb-4"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.6s'
+              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
             }}
           >
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="group inline-flex items-center gap-3 px-8 py-4 text-base font-mono font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm transition-all duration-200 shadow-terracotta hover:shadow-terracotta-lg"
-            >
-              <span>Låt oss visa hur det fungerar</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
-            </button>
-          </div>
-        </div>
-      </section>
+            Allt ingår
+          </p>
+          <h2
+            id="features-title"
+            className="font-serif text-fg tracking-[-0.021em] leading-[1.05] mb-5"
+            style={{
+              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+              fontWeight: 300,
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
+              transition:
+                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms',
+            }}
+          >
+            Ett levande företag kräver ett{' '}
+            <em className="font-serif italic">levande verksamhetssystem.</em>
+          </h2>
+          <p
+            className="text-fg-soft text-lg leading-[1.55] max-w-xl mx-auto"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
+              transition:
+                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms',
+            }}
+          >
+            Vi andas assistans och vet vad som krävs. Glöm moduler, krångel
+            och extra avgifter.
+          </p>
+        </header>
 
-      <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+        {/* Category bar — scope at a glance, before the catalog. */}
+        <div
+          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 max-w-5xl mx-auto mb-12 md:mb-16 py-5 border-y border-edge"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transition: 'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms',
+          }}
+        >
+          {CATEGORIES.map((cat, i) => (
+            <span key={cat} className="inline-flex items-center gap-x-5">
+              <span className="font-serif text-[clamp(0.95rem,1.4vw,1.1rem)] font-light text-fg tracking-[-0.005em]">
+                {cat}
+              </span>
+              {i < CATEGORIES.length - 1 && (
+                <span aria-hidden="true" className="block w-1 h-1 rounded-full bg-accent/70" />
+              )}
+            </span>
+          ))}
+        </div>
+
+        {/* Catalog grid: 10 numbered columns */}
+        <ul
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-edge rounded-obs-lg overflow-hidden border border-edge"
+          aria-label="Funktionskatalog"
+        >
+          {GROUPS.map((group, gi) => (
+            <li
+              key={group.index}
+              className="bg-ink-card p-6 md:p-7 flex flex-col"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
+                transition: `opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) ${120 + gi * 40}ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) ${120 + gi * 40}ms`,
+              }}
+            >
+              <span className="font-mono text-[11px] tracking-[0.14em] text-accent mb-4">
+                {group.index}
+              </span>
+
+              <h3
+                className="font-serif text-fg mb-5"
+                style={{
+                  fontSize: '0.9375rem',
+                  fontWeight: 500,
+                  lineHeight: 1.25,
+                  letterSpacing: '-0.005em',
+                }}
+              >
+                {group.title}
+              </h3>
+
+              <ul className="space-y-px">
+                {group.bullets.map((bullet, bi) => (
+                  <li
+                    key={bullet}
+                    className={`text-fg-soft text-[0.8125rem] leading-[1.5] py-2 pl-4 relative ${bi === 0 ? '' : 'border-t border-edge/60'}`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-[0.85em] w-1 h-1 rounded-full bg-fg-muted"
+                    />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    </section>
   )
 }

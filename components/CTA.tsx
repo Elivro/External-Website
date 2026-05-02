@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import { Check } from 'lucide-react'
 
 export default function CTA() {
   const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
@@ -22,7 +21,6 @@ export default function CTA() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
     if (honeypot) {
       console.log('Bot detected via honeypot')
       return
@@ -33,9 +31,7 @@ export default function CTA() {
     try {
       const response = await fetch('/api/demo', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
           company,
@@ -47,7 +43,6 @@ export default function CTA() {
       })
 
       const data = await response.json()
-
       if (!response.ok) {
         throw new Error(data.error || 'Ett fel uppstod')
       }
@@ -61,7 +56,6 @@ export default function CTA() {
       setHoneypot('')
 
       setTimeout(() => setSubmitted(false), 5000)
-
     } catch (error) {
       console.error('Form submission error:', error)
       setIsLoading(false)
@@ -69,214 +63,140 @@ export default function CTA() {
     }
   }
 
+  const inputClass =
+    'w-full px-4 py-3 bg-ink border border-edge-strong rounded-obs-md text-fg placeholder-fg-muted ' +
+    'focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 ' +
+    'font-sans text-sm transition-colors ease-obsidian duration-obs-sm'
+
   return (
     <section
       id="cta-section"
       ref={sectionRef}
-      className="w-full py-20 md:py-28 lg:py-32 bg-sage/20 relative overflow-hidden"
+      className="w-full py-24 md:py-32 bg-ink relative"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-terracotta/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-sage/10 rounded-full blur-3xl" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-          {/* Left Column - Editorial Text */}
           <div>
-            <h2
-              className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight mb-6"
+            <p
+              className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-4"
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                transition: 'all 0.5s ease-out 0.1s'
+                transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
               }}
             >
-              Låt oss börja samtalet
+              Boka en demo
+            </p>
+            <h2
+              className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-light text-fg tracking-[-0.021em] leading-[1.05] mb-6"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+                transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms',
+              }}
+            >
+              Låt oss börja <em className="font-serif italic">samtalet</em>.
             </h2>
 
             <p
-              className="text-charcoal-500 text-lg leading-relaxed mb-8 max-w-md"
+              className="text-fg-soft text-lg leading-[1.55] mb-10 max-w-md"
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                transition: 'all 0.5s ease-out 0.2s'
+                transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+                transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms',
               }}
             >
-              Ett samtal om er verksamhet, era utmaningar, och hur omsorg kan organiseras vackrare. Ingen demo-mall – bara äkta dialog.
+              Ett samtal om er verksamhet, era utmaningar, och hur Elivro skulle se ut hos er. Inget säljmanus — bara dialog.
             </p>
 
-            {/* Trust Signals */}
-            <div
+            <ul
               className="space-y-3"
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                transition: 'all 0.5s ease-out 0.3s'
+                transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+                transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms',
               }}
             >
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-sage-500/20 flex items-center justify-center">
-                  <Check className="w-3 h-3 text-sage-500" strokeWidth={3} />
-                </div>
-                <span className="font-mono text-sm text-charcoal-500 tracking-wide">Ingen kostnad, ingen stress</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-sage-500/20 flex items-center justify-center">
-                  <Check className="w-3 h-3 text-sage-500" strokeWidth={3} />
-                </div>
-                <span className="font-mono text-sm text-charcoal-500 tracking-wide">Vi hör av oss inom 24 timmar</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-sage-500/20 flex items-center justify-center">
-                  <Check className="w-3 h-3 text-sage-500" strokeWidth={3} />
-                </div>
-                <span className="font-mono text-sm text-charcoal-500 tracking-wide">30 dagar att upptäcka skillnaden</span>
-              </div>
-            </div>
+              {[
+                'Ingen kostnad, ingen bindningstid',
+                'Vi hör av oss inom 24 timmar',
+                '30 dagars test om vi blir överens',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-fg-soft text-sm">
+                  <span aria-hidden="true" className="mt-[0.6em] w-3 h-px bg-accent flex-shrink-0" />
+                  <span className="leading-[1.55]">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Right Column - Form */}
           <div
-            className="bg-cream-50 border border-charcoal/10 rounded-sm p-8 lg:p-10"
+            className="bg-ink-lift border border-edge rounded-obs-lg p-8 lg:p-10"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.2s'
+              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+              transition: 'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms',
             }}
           >
             <form onSubmit={handleSubmit}>
               <div className="space-y-5">
-                {/* Name */}
                 <div>
-                  <label htmlFor="name-input" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
+                  <label htmlFor="name-input" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-2">
                     Namn
                   </label>
-                  <input
-                    id="name-input"
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Ditt namn"
-                    required
-                    aria-label="Ditt namn"
-                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
-                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
-                      font-mono text-sm transition-all duration-200"
-                  />
+                  <input id="name-input" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ditt namn" required className={inputClass} />
                 </div>
 
-                {/* Company */}
                 <div>
-                  <label htmlFor="company-input" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
+                  <label htmlFor="company-input" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-2">
                     Företag
                   </label>
-                  <input
-                    id="company-input"
-                    type="text"
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
-                    placeholder="Företagsnamn"
-                    required
-                    aria-label="Företagsnamn"
-                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
-                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
-                      font-mono text-sm transition-all duration-200"
-                  />
+                  <input id="company-input" type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="Företagsnamn" required className={inputClass} />
                 </div>
 
-                {/* Email */}
                 <div>
-                  <label htmlFor="email-input" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
+                  <label htmlFor="email-input" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-2">
                     E-post
                   </label>
-                  <input
-                    id="email-input"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="namn@foretag.se"
-                    required
-                    aria-label="E-postadress"
-                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
-                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
-                      font-mono text-sm transition-all duration-200"
-                  />
+                  <input id="email-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="namn@foretag.se" required className={inputClass} />
                 </div>
 
-                {/* Phone */}
                 <div>
-                  <label htmlFor="phone-input" className="block font-mono text-sm text-charcoal-500 tracking-wide mb-2">
+                  <label htmlFor="phone-input" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-2">
                     Telefon
                   </label>
-                  <input
-                    id="phone-input"
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="070-123 45 67"
-                    required
-                    aria-label="Telefonnummer"
-                    className="w-full px-4 py-3 bg-cream-50 border border-charcoal-300 rounded-sm text-charcoal placeholder-charcoal-400
-                      focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/10
-                      font-mono text-sm transition-all duration-200"
-                  />
+                  <input id="phone-input" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="070-123 45 67" required className={inputClass} />
                 </div>
 
-                {/* Honeypot */}
                 <div
-                  style={{
-                    position: 'absolute',
-                    left: '-9999px',
-                    width: '1px',
-                    height: '1px',
-                    overflow: 'hidden',
-                  }}
+                  style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}
                   aria-hidden="true"
                 >
                   <label htmlFor="cta-website">Website</label>
-                  <input
-                    id="cta-website"
-                    type="text"
-                    name="website"
-                    value={honeypot}
-                    onChange={(e) => setHoneypot(e.target.value)}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
+                  <input id="cta-website" type="text" name="website" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`
-                    w-full px-6 py-4 font-mono font-medium rounded-sm transition-all duration-200 text-base
-                    ${
-                      submitted
-                        ? 'bg-sage-500 text-cream-50'
-                        : 'bg-terracotta hover:bg-terracotta-600 text-cream-50 shadow-terracotta hover:shadow-terracotta-lg'
-                    }
-                    ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}
-                  `}
+                  className={`w-full px-6 py-3 font-sans text-sm rounded-obs-md transition-colors ease-obsidian duration-obs-sm ${
+                    submitted
+                      ? 'bg-ink-card text-fg border border-accent'
+                      : 'bg-accent text-ink hover:bg-accent-bright active:bg-accent-deep'
+                  } ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  {isLoading ? 'Skickar...' : submitted ? 'Skickat!' : 'Boka en demo'}
+                  {isLoading ? 'Skickar…' : submitted ? 'Skickat — vi hör av oss inom 24 timmar' : 'Boka en demo'}
                 </button>
               </div>
 
-              {/* Privacy notice */}
-              <p className="text-center mt-4 font-mono text-xs text-charcoal-400 tracking-wide">
-                Vi behandlar dina uppgifter med respekt. Läs vår{' '}
-                <a
-                  href="/integritetspolicy"
-                  className="text-terracotta hover:text-terracotta-600 underline transition-colors"
-                >
-                  integritetspolicy
+              <p className="text-center mt-4 text-fg-muted text-xs leading-[1.55]">
+                Vi behandlar dina uppgifter med respekt.{' '}
+                <a href="/integritetspolicy" className="text-fg-soft hover:text-accent underline underline-offset-2 transition-colors ease-obsidian duration-obs-sm">
+                  Integritetspolicy
                 </a>.
               </p>
             </form>
           </div>
-
         </div>
       </div>
     </section>

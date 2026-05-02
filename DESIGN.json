@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-04-29T00:00:00.000Z",
+  "title": "Design System: Elivro — Obsidian",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Ember Orange",
+        "canonical": "oklch(72% 0.17 38)",
+        "tonalRamp": [
+          "oklch(14% 0.04 38)",
+          "oklch(24% 0.08 38)",
+          "oklch(36% 0.11 38)",
+          "oklch(48% 0.14 38)",
+          "oklch(60% 0.17 38)",
+          "oklch(72% 0.17 38)",
+          "oklch(84% 0.13 38)",
+          "oklch(94% 0.06 38)"
+        ]
+      },
+      "primary-bright": {
+        "role": "primary",
+        "displayName": "Ember Bright (hover)",
+        "canonical": "oklch(78% 0.14 38)"
+      },
+      "primary-deep": {
+        "role": "primary",
+        "displayName": "Ember Deep (pressed)",
+        "canonical": "oklch(64% 0.20 38)"
+      },
+      "liv": {
+        "role": "secondary",
+        "displayName": "Liv Sage",
+        "canonical": "oklch(58% 0.04 130)",
+        "tonalRamp": [
+          "oklch(14% 0.01 130)",
+          "oklch(24% 0.02 130)",
+          "oklch(36% 0.03 130)",
+          "oklch(46% 0.035 130)",
+          "oklch(58% 0.04 130)",
+          "oklch(70% 0.035 130)",
+          "oklch(82% 0.025 130)",
+          "oklch(94% 0.012 130)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Obsidian Ink",
+        "canonical": "oklch(8% 0.005 38)",
+        "tonalRamp": [
+          "oklch(6% 0.004 38)",
+          "oklch(8% 0.005 38)",
+          "oklch(10% 0.005 38)",
+          "oklch(13% 0.006 38)",
+          "oklch(16% 0.006 38)",
+          "oklch(20% 0.007 38)",
+          "oklch(28% 0.008 38)",
+          "oklch(40% 0.009 38)"
+        ]
+      },
+      "ink-lift": {
+        "role": "neutral",
+        "displayName": "Ink Lift",
+        "canonical": "oklch(10% 0.005 38)"
+      },
+      "ink-card": {
+        "role": "neutral",
+        "displayName": "Ink Card",
+        "canonical": "oklch(13% 0.006 38)"
+      },
+      "ink-card-soft": {
+        "role": "neutral",
+        "displayName": "Ink Card Soft",
+        "canonical": "oklch(11% 0.006 38)"
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(94% 0.015 80)",
+        "tonalRamp": [
+          "oklch(20% 0.01 80)",
+          "oklch(34% 0.012 80)",
+          "oklch(50% 0.014 80)",
+          "oklch(64% 0.016 80)",
+          "oklch(76% 0.018 80)",
+          "oklch(85% 0.018 80)",
+          "oklch(94% 0.015 80)",
+          "oklch(98% 0.008 80)"
+        ]
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "Foreground (primary on dark)",
+        "canonical": "oklch(94% 0.015 80)"
+      },
+      "fg-soft": {
+        "role": "neutral",
+        "displayName": "Foreground Soft (secondary)",
+        "canonical": "oklch(75% 0.02 80)"
+      },
+      "fg-muted": {
+        "role": "neutral",
+        "displayName": "Foreground Muted (de-emphasized)",
+        "canonical": "oklch(58% 0.015 80)"
+      },
+      "fg-dim": {
+        "role": "neutral",
+        "displayName": "Foreground Dim (caption / inactive)",
+        "canonical": "oklch(42% 0.012 80)"
+      },
+      "fg-on-light": {
+        "role": "neutral",
+        "displayName": "Foreground on Light (inverted panels)",
+        "canonical": "oklch(8% 0.005 38)"
+      }
+    },
+    "typographyMeta": {
+      "display-xl": { "displayName": "Display XL", "purpose": "Hero opening lines, the brand's largest voice." },
+      "display-lg": { "displayName": "Display Large", "purpose": "Section openings on tall hero blocks." },
+      "display":    { "displayName": "Display", "purpose": "Large editorial statements." },
+      "h1":         { "displayName": "H1", "purpose": "Page title." },
+      "h2":         { "displayName": "H2", "purpose": "Section title." },
+      "h3":         { "displayName": "H3", "purpose": "Sub-section title; weight 400 so smaller display type doesn't go anemic." },
+      "h4":         { "displayName": "H4", "purpose": "Card title, feature heading." },
+      "h5":         { "displayName": "H5", "purpose": "Smallest serif heading; rare." },
+      "body-lg":    { "displayName": "Body Large", "purpose": "Editorial lead paragraphs." },
+      "body":       { "displayName": "Body", "purpose": "Default body type, 65–75ch line length." },
+      "body-sm":    { "displayName": "Body Small", "purpose": "Buttons, secondary text, meta paragraphs." },
+      "mono-eyebrow": { "displayName": "Mono Eyebrow", "purpose": "Section eyebrows, system-event lines, AI-proposal labels. Uppercase, +0.12em tracking." },
+      "mono-meta":  { "displayName": "Mono Meta", "purpose": "Timestamps, footer meta, even smaller system citations." }
+    },
+    "shadows": [
+      { "name": "sh-rim",       "value": "0 0 0 1px rgba(255, 122, 69, 0.463)", "purpose": "Focus ring and active-edge glow on inputs and selectable surfaces." },
+      { "name": "sh-cta",       "value": "0 0 0 1px var(--bone, #f5efe3), 0 20px 40px -12px rgba(255, 122, 69, 0.25)", "purpose": "Default lift on a primary CTA, bone hairline plus warm ember diffusion." },
+      { "name": "sh-cta-hover", "value": "0 0 0 1px var(--accent, #ff7a45), 0 25px 50px -12px rgba(255, 122, 69, 0.45)", "purpose": "Primary CTA on hover, edge shifts from bone to ember and the diffusion deepens." },
+      { "name": "sh-card",      "value": "0 40px 80px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 122, 69, 0.08)", "purpose": "Card-class lift, deeper diffusion plus a faint ember edge." },
+      { "name": "sh-chip",      "value": "0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 122, 69, 0.05)", "purpose": "Pill / chip lift, smaller drop, faint ember hairline." },
+      { "name": "sh-hero",      "value": "0 0 0 1px rgba(255, 122, 69, 0.08), 0 60px 120px -20px rgba(0, 0, 0, 0.7), 0 30px 60px -20px rgba(255, 122, 69, 0.15)", "purpose": "Modal-class surfaces only." },
+      { "name": "sh-glow-dot",  "value": "0 0 8px var(--accent, #ff7a45)", "purpose": "Halo around the Liv heartbeat dot in dark contexts." }
+    ],
+    "motion": [
+      { "name": "ease-obsidian",    "value": "cubic-bezier(0.2, 0.7, 0.2, 1)", "purpose": "The single Obsidian easing curve. Used everywhere except the two named exceptions." },
+      { "name": "ease-liv-breath",  "value": "ease-in-out", "purpose": "Liv breath exception. Opacity 0.55 ↔ 1.0 over 3.2s, infinite. Disabled under prefers-reduced-motion." },
+      { "name": "ease-mark-rotate", "value": "linear", "purpose": "Mark rotation exception. 30s linear, infinite, hero contexts only. Disabled under prefers-reduced-motion." },
+      { "name": "duration-xs", "value": "100ms", "purpose": "Smallest transition; micro-feedback (cursor swaps, tooltip fades)." },
+      { "name": "duration-sm", "value": "200ms", "purpose": "Default UI state changes (hover, focus, button color)." },
+      { "name": "duration-md", "value": "300ms", "purpose": "Component state transitions (modal open, accordion expand)." },
+      { "name": "duration-lg", "value": "600ms", "purpose": "Page-level entrances (hero rise, scroll-driven reveals)." },
+      { "name": "duration-xl", "value": "800ms", "purpose": "Slowest entrance, used sparingly for sectional reveals." }
+    ],
+    "breakpoints": [
+      { "name": "sm",  "value": "640px" },
+      { "name": "md",  "value": "768px" },
+      { "name": "lg",  "value": "1024px" },
+      { "name": "xl",  "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ember on dark text. Single most important action per view. 10/20 padding, 10px radius, body-sm Inter (never mono).",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Boka demo</button>",
+      "css": ".ds-btn-primary { background: #ff7a45; color: #0a0806; font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: 0.875rem; letter-spacing: -0.005em; padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; transition: background-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-btn-primary:hover { background: #ff9566; } .ds-btn-primary:active { background: #e55a22; } .ds-btn-primary:focus-visible { outline: 1px solid #ff7a45; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ink-lift surface, bone text, hairline border. Standard non-destructive action.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Läs mer</button>",
+      "css": ".ds-btn-secondary { background: #12100d; color: #f5efe3; font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: 0.875rem; letter-spacing: -0.005em; padding: 10px 20px; border: 1px solid rgba(255, 240, 220, 0.07); border-radius: 10px; cursor: pointer; transition: background-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1), border-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-btn-secondary:hover { background: #1a1714; border-color: rgba(255, 240, 220, 0.14); } .ds-btn-secondary:focus-visible { outline: 1px solid #ff7a45; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent on muted foreground. Tertiary nav and toolbar actions. Hover lifts color to fg.",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\">Avbryt</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #8a8275; font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: 0.875rem; letter-spacing: -0.005em; padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; transition: color 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-btn-ghost:hover { color: #f5efe3; } .ds-btn-ghost:focus-visible { outline: 1px solid #ff7a45; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Default content card on ink-lift, 32px padding, hairline border that strengthens on hover. No shadow at rest.",
+      "html": "<article class=\"ds-card\"><h4 class=\"ds-card__title\">Schemaläggning som ser <em>framåt</em></h4><p class=\"ds-card__body\">Föreslår vem, var, när, och varför, baserat på det Elivro lärt sig om er vardag.</p></article>",
+      "css": ".ds-card { background: #12100d; color: #f5efe3; padding: 32px; border: 1px solid rgba(255, 240, 220, 0.07); border-radius: 14px; transition: border-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-card:hover { border-color: rgba(255, 240, 220, 0.14); } .ds-card__title { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 1.625rem; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 12px 0; color: #f5efe3; } .ds-card__title em { font-style: italic; } .ds-card__body { font-family: 'Inter', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.55; letter-spacing: -0.005em; color: #bdb5a6; margin: 0; }"
+    },
+    {
+      "name": "Card Elevated",
+      "kind": "card",
+      "refersTo": "card-elevated",
+      "description": "Feature panel on ink-card with deeper diffusion shadow and ember-tinted hairline. 48px padding.",
+      "html": "<article class=\"ds-card-elevated\"><span class=\"ds-card-elevated__eyebrow\">REALTID · SYNKAT</span><h3 class=\"ds-card-elevated__title\"><em>Anders L.</em> på torsdag</h3><p class=\"ds-card-elevated__body\">Elivro föreslår: schemaändring godkänd och kommunicerad.</p></article>",
+      "css": ".ds-card-elevated { background: #1a1714; color: #f5efe3; padding: 48px; border-radius: 14px; box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 122, 69, 0.08); } .ds-card-elevated__eyebrow { display: inline-block; font-family: 'JetBrains Mono', Consolas, monospace; font-weight: 500; font-size: 0.6875rem; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; color: #bdb5a6; margin-bottom: 24px; } .ds-card-elevated__title { font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 3rem; line-height: 1.1; letter-spacing: -0.021em; margin: 0 0 16px 0; color: #f5efe3; } .ds-card-elevated__title em { font-style: italic; } .ds-card-elevated__body { font-family: 'Inter', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.55; letter-spacing: -0.005em; color: #bdb5a6; margin: 0; }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Dark canonical (ink) surface with strong hairline. Focus draws an ember border plus 3px outer halo, no outline ring.",
+      "html": "<label class=\"ds-input-label\">E-post<input class=\"ds-input\" type=\"email\" placeholder=\"du@assistansbolag.se\" /></label>",
+      "css": ".ds-input-label { display: block; font-family: 'Inter', system-ui, sans-serif; font-size: 0.875rem; color: #bdb5a6; } .ds-input { display: block; width: 100%; margin-top: 8px; background: #0a0806; color: #f5efe3; font-family: 'Inter', system-ui, sans-serif; font-size: 0.875rem; padding: 12px 16px; border: 1px solid rgba(255, 240, 220, 0.14); border-radius: 10px; outline: none; transition: border-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-input::placeholder { color: #8a8275; opacity: 1; } .ds-input:focus { border-color: #ff7a45; box-shadow: 0 0 0 3px rgba(255, 122, 69, 0.18); }"
+    },
+    {
+      "name": "Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Mono-eyebrow type, 50px radius, ink-lift surface. Lives in metadata strips and feature labels.",
+      "html": "<span class=\"ds-pill\">30 dagars test</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; background: #12100d; color: #bdb5a6; font-family: 'JetBrains Mono', Consolas, monospace; font-weight: 500; font-size: 0.6875rem; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 50px; padding: 6px 14px; border: 1px solid rgba(255, 240, 220, 0.07); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky ink at 85% opacity (no blur), 12/48 padding. Mark + wordmark + Liv heartbeat dot on the left, single primary CTA on the right.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav__brand\"><span class=\"ds-nav__mark\" aria-hidden=\"true\"></span><span class=\"ds-nav__wordmark\">Elivro</span><span class=\"ds-nav__liv\" aria-label=\"Systemet är aktivt\"></span></div><ul class=\"ds-nav__links\"><li><a class=\"ds-nav__link\" href=\"#\">Produkt</a></li><li><a class=\"ds-nav__link\" href=\"#\">Vi som bygger</a></li></ul><a class=\"ds-nav__cta\" href=\"#\">Boka demo</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 12px 48px; background: rgba(10, 8, 6, 0.85); color: #f5efe3; font-family: 'Inter', system-ui, sans-serif; } .ds-nav__brand { display: flex; align-items: center; gap: 10px; } .ds-nav__mark { width: 22px; height: 22px; border-radius: 4px; background: linear-gradient(135deg, #ff7a45, #e55a22); display: inline-block; } .ds-nav__wordmark { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 1.125rem; letter-spacing: -0.012em; color: #f5efe3; } .ds-nav__liv { display: inline-block; width: 6px; height: 6px; border-radius: 9999px; background: #7a8a6b; animation: ds-liv-breath 3.2s ease-in-out infinite; } @keyframes ds-liv-breath { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-nav__liv { animation: none; opacity: 1; } } .ds-nav__links { display: flex; align-items: center; gap: 24px; list-style: none; padding: 0; margin: 0; } .ds-nav__link { color: #bdb5a6; font-size: 0.875rem; text-decoration: none; transition: color 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-nav__link:hover { color: #f5efe3; } .ds-nav__cta { background: #ff7a45; color: #0a0806; font-weight: 500; font-size: 0.875rem; padding: 10px 20px; border-radius: 10px; text-decoration: none; transition: background-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1); } .ds-nav__cta:hover { background: #ff9566; }"
+    },
+    {
+      "name": "Liv Heartbeat Dot",
+      "kind": "custom",
+      "refersTo": "liv-dot",
+      "description": "The alive signal. 6px sage circle with a 3.2s ease-in-out opacity breath (0.55 ↔ 1.0). Only used in three positions: nav heartbeat, hero/system-status pill, dashboard Realtid indicator. Disabled under prefers-reduced-motion.",
+      "html": "<span class=\"ds-liv-dot\" role=\"img\" aria-label=\"Systemet är aktivt\"></span>",
+      "css": ".ds-liv-dot { display: inline-block; width: 6px; height: 6px; border-radius: 9999px; background: #7a8a6b; animation: ds-liv-breath 3.2s ease-in-out infinite; flex-shrink: 0; } @keyframes ds-liv-breath { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } } @media (prefers-reduced-motion: reduce) { .ds-liv-dot { animation: none; opacity: 1; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Obsidian, quiet confidence made with the texture of craft.",
+    "overview": "Obsidian isn't a theme. It's a posture: quiet confidence, Swedish restraint, the texture of craft. Elivro builds tools for the people who do care work, and the brand should feel made by people who respect that work. The system favors the inevitable over the inventive: thin Fraunces display type set against deep obsidian surfaces, lit by a single ember orange. No second accent color, no second easing curve, no second mood. What this system explicitly rejects: the AI-aesthetic surface (purple gradients, sparkle iconography, glowing orbs, streaming-text reveals), generic SaaS templates (hero-metric blocks, identical icon-and-heading card grids, gradient-text headlines), and the branschsystem cliché (heavy navy-and-white corporate palettes, dense feature checklists, stockfoton of smiling teams). The brand visibly embraces AI; the surface must not look AI-made.",
+    "keyCharacteristics": [
+      "One accent (ember orange), one easing curve, one italic for emphasis.",
+      "Dark canonical, lit by warm ember light, never cold.",
+      "Italic carries emphasis in headings; bold is forbidden in body.",
+      "Specifics over adjectives: time, money, named days, named people.",
+      "Two voices in type: Fraunces display, Inter body. Mono is system voice only.",
+      "Liv (sage #7a8a6b) appears in exactly three positions, never elsewhere."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "The primary accent is the system's voice. It carries the logo, the primary CTA, the focus ring, and one italicized word per heading, nothing else. If a button, eyebrow, or bullet is reaching for ember to feel important, the answer is no.", "section": "colors" },
+      { "name": "The Liv Three-Position Rule", "body": "Liv lives in exactly three positions: nav heartbeat, hero/system-status pill dot, dashboard Realtid indicator. A fourth Liv usage anywhere is a system-break.", "section": "colors" },
+      { "name": "The Italic-Not-Bold Rule", "body": "Italic emphasizes. Bold never. One italicized word per heading. The italic, set in Fraunces, is the brand's typographic signature. Bold weights are absent from headings entirely.", "section": "typography" },
+      { "name": "The Sentence-Case Rule", "body": "Headings are sentence case. Eyebrows are uppercase mono with wide tracking. ALL CAPS in headlines is forbidden.", "section": "typography" },
+      { "name": "The Mono-as-System-Voice Rule", "body": "Mono is the system speaking. Body text and CTAs use Inter, not JetBrains Mono. Reach for font-mono only when the system is being cited (eyebrows, timestamps, system-event lines, AI-proposal labels).", "section": "typography" },
+      { "name": "The No-Blur Rule", "body": "Backdrop-blur is forbidden. If a surface needs separation, lift it with ink-lift or ink-card, never with blur.", "section": "elevation" },
+      { "name": "The One Layer Rule", "body": "One layer of light per surface. Stacked decorative shadows are forbidden. Where shadow is used, it is paired with a 1px hairline in the same color family.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use one italicized word per heading to carry emphasis. The italic is the brand's signature.",
+      "Do write in Swedish first. English is the second skin, never the first.",
+      "Do quantify benefits in units of time (\"14 timmar per vecka per koordinator\"), money, or named days (\"Anders L. på torsdag\").",
+      "Do use \"du\", informal, warm, close. Never \"Ni\".",
+      "Do pair every shadow with a 1px hairline border in the same color family.",
+      "Do let surfaces breathe. xl and 2xl spacing exist to be used.",
+      "Do keep Liv to its three permitted positions; treat the scope as inviolable."
+    ],
+    "donts": [
+      "Don't use bold for emphasis in body text. Italic always, bold never.",
+      "Don't introduce a second accent color beyond the strictly-scoped Liv exception. Orange is the system; Liv is the heartbeat. Nothing else.",
+      "Don't use the AI-aesthetic surface: purple gradients, sparkle iconography, glowing orbs, streaming-text reveals, AI typing pulsing dots. The brand is AI; the surface must not be.",
+      "Don't reach for SaaS clichés: hero-metric template (big number + label + supporting stats + gradient), identical card grids, gradient-text headlines, side-stripe colored borders on callouts, comparison-vs-competitor tables, customer logo strips, testimonials.",
+      "Don't write startup copy: synergier, disrupta, revolutionera, transformera, empowerment, journey, solution, best-in-class, world-class, cutting-edge, next-gen, 10x, unlock, seamless. Specificity beats every one of these.",
+      "Don't use backdrop-blur or any glassmorphism. Lift surfaces with ink-lift or ink-card, never with blur.",
+      "Don't use emoji in product copy. Ever.",
+      "Don't stack shadows. One layer of light per surface.",
+      "Don't set headings in ALL CAPS. Only mono eyebrows get tracking.",
+      "Don't add a second easing curve. cubic-bezier(0.2, 0.7, 0.2, 1) is the system. The two named exceptions (mark rotation, Liv breath) are the entire set.",
+      "Don't use the dark: Tailwind prefix. Marketing is dark canonical, no toggle. Theme switching, when it ever exists, uses [data-theme] on <html>.",
+      "Don't round photos differently than UI. Images are lg radius or square, nothing in between.",
+      "Don't attribute the model in product copy (\"Powered by GPT-X\"). The model is supply chain, not product.",
+      "Don't use generic stockfoton. The hands illustration is the brand asset; any new imagery must be warm, granulated, real."
+    ]
+  }
+}

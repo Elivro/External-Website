@@ -1,13 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 interface PhilosophyPillar {
   title: string
   description: string
-  icon: string
-  iconAlt: string
+  emphasis: string
 }
 
 export default function Philosophy() {
@@ -15,23 +13,20 @@ export default function Philosophy() {
 
   const pillars: PhilosophyPillar[] = [
     {
-      title: 'Skapad för kontakt',
-      description: 'Vi bygger verktyg som förstärker mänskliga relationer, inte ersätter dem. Varje funktion är designad för att ge mer tid till det som verkligen spelar roll.',
-      icon: '/brand-assets/elivro-asset_hands_small-removebg.png',
-      iconAlt: 'Två händer som möts - symbol för kontakt och relation'
+      title: 'AI utan inlärning',
+      emphasis: 'inlärning',
+      description: 'Inga prompts. Inga rutor med "fråga AI." Inga blinkande sparkles. Vi tar all teknisk komplexitet på vår sida av gränssnittet — det ni möter är resultatet.',
     },
     {
-      title: 'Intuitivt flöde',
-      description: 'Ett system som arbetar med dig, inte mot dig. Elegant enkelhet som frigör kapacitet för omsorg istället för administration.',
-      icon: '/brand-assets/elivro-asset_floatingballhand_small-removebg.png',
-      iconAlt: 'Hand som bär en sfär - symbol för balans och stöd'
+      title: 'Tystnad är en feature',
+      emphasis: 'Tystnad',
+      description: 'Inga notifikationsbubblor. Inga onboarding-popovers. Levande system ska kännas lugna, inte upptagna. När systemet talar är det för att det har något viktigt att säga.',
     },
     {
-      title: 'Bestående stöd',
-      description: 'Kvalitet som varar. Vi bygger för långsiktiga relationer och kontinuitet - för dina kunder, dina assistenter och din verksamhet.',
-      icon: '/brand-assets/elivro-asset_personabstract_small-removebg.png',
-      iconAlt: 'Abstrakt figur - symbol för mänsklig närvaro'
-    }
+      title: 'Specifikt över abstrakt',
+      emphasis: 'Specifikt',
+      description: '"Schemat upptäcker konflikten på torsdag innan ni hinner" — inte "AI-driven optimering." Tid, namn, siffror. Vi visar — vi påstår inte.',
+    },
   ]
 
   return (
@@ -39,78 +34,59 @@ export default function Philosophy() {
       id="philosophy"
       ref={sectionRef}
       aria-labelledby="philosophy-title"
-      className="w-full bg-sage/30 py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="w-full bg-ink-lift py-24 md:py-32 relative"
     >
-      {/* Subtle organic shape decorations */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-sage/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-terracotta/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-        {/* Section Header - Editorial */}
-        <header className="mx-auto max-w-3xl text-center mb-16 md:mb-20">
+        <header className="mx-auto max-w-3xl mb-16 md:mb-20">
+          <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-4">
+            Filosofi
+          </p>
           <h2
             id="philosophy-title"
-            className="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal-700 tracking-tight mb-6"
+            className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-light text-fg tracking-[-0.021em] leading-[1.05]"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.1s'
+              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
             }}
           >
-            Vår filosofi
+            Tre principer som <em className="font-serif italic">vägleder</em> allt vi bygger.
           </h2>
-
-          <p
-            className="font-mono text-charcoal-500 text-lg tracking-wide max-w-2xl mx-auto"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.2s'
-            }}
-          >
-            Tre principer som vägleder allt vi bygger
-          </p>
         </header>
 
-        {/* Philosophy Pillars - Editorial Vignettes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-edge rounded-obs-lg overflow-hidden">
           {pillars.map((pillar, index) => (
             <article
-              key={index}
-              className="relative text-center"
+              key={pillar.title}
+              className="bg-ink-card p-8 lg:p-10"
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-                transition: `all 0.5s ease-out ${0.3 + index * 0.1}s`
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: `opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) ${index * 80}ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) ${index * 80}ms`,
               }}
             >
-              {/* Organic Icon */}
-              <div className="mb-6 flex justify-center">
-                <div className="w-24 h-24 md:w-28 md:h-28 relative rounded-full" style={{ backgroundColor: '#F5F2ED' }}>
-                  <Image
-                    src={pillar.icon}
-                    alt={pillar.iconAlt}
-                    fill
-                    sizes="(max-width: 768px) 96px, 112px"
-                    className="object-contain"
-                  />
-                </div>
-              </div>
+              <span className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted block mb-6">
+                Princip {index + 1}
+              </span>
 
-              {/* Title - Serif */}
-              <h3 className="font-serif text-xl md:text-2xl text-charcoal-700 mb-4">
-                {pillar.title}
+              <h3 className="font-serif text-[1.75rem] font-normal text-fg leading-[1.15] mb-5">
+                {pillar.title.split(pillar.emphasis).map((part, i, arr) => (
+                  <span key={i}>
+                    {part}
+                    {i < arr.length - 1 && (
+                      <em className="font-serif italic">{pillar.emphasis}</em>
+                    )}
+                  </span>
+                ))}
               </h3>
 
-              {/* Description - Sans */}
-              <p className="text-charcoal-500 leading-relaxed max-w-sm mx-auto">
+              <p className="text-fg-soft text-base leading-[1.55]">
                 {pillar.description}
               </p>
             </article>
           ))}
         </div>
-
       </div>
     </section>
   )

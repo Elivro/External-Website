@@ -1,25 +1,30 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Philosophy from '@/components/Philosophy'
-import HowItWorks from '@/components/HowItWorks'
+import LogoStrip from '@/components/LogoStrip'
+import ProductShowcase from '@/components/ProductShowcase'
 import Features from '@/components/Features'
-import FounderStory from '@/components/FounderStory'
-import CTA from '@/components/CTA'
+import Manifesto from '@/components/Manifesto'
+import CaseProof from '@/components/CaseProof'
+import AboutUs from '@/components/AboutUs'
+import StartupOffer from '@/components/StartupOffer'
+import QuizCTA from '@/components/QuizCTA'
 import FAQSection from '@/components/FAQSection'
+import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
-import SectionDivider from '@/components/SectionDivider'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-cream">
+    <main className="min-h-screen bg-ink text-fg">
       <Navbar />
       <Hero />
-      <Philosophy />
+      <LogoStrip />
+      <ProductShowcase />
       <Features />
-      <SectionDivider />
-      <HowItWorks />
-      <FounderStory />
-      <SectionDivider />
+      <AboutUs />
+      <Manifesto />
+      <CaseProof />
+      <StartupOffer />
+      <QuizCTA />
       <FAQSection />
       <CTA />
       <Footer />

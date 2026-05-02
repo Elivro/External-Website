@@ -12,81 +12,74 @@ export default function FounderStory() {
       id="about"
       ref={sectionRef}
       aria-labelledby="founder-title"
-      className="w-full bg-cream py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="w-full bg-ink py-24 md:py-32 relative"
     >
-      {/* Subtle decorative elements */}
-      <div className="absolute top-1/2 left-0 w-32 h-32 bg-sage/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 right-0 w-32 h-32 bg-terracotta/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
-        {/* Pull Quote - Editorial Magazine Style */}
         <article className="text-center">
-          {/* Decorative quote marks */}
-          <div
-            className="mb-8"
+          <p
+            className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-8"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'scale(1)' : 'scale(0.9)',
-              transition: 'all 0.5s ease-out'
+              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
             }}
           >
-            <span className="font-serif text-8xl md:text-9xl text-terracotta/20 leading-none select-none">
-              "
-            </span>
-          </div>
+            Grundarna
+          </p>
 
-          {/* Quote text */}
           <blockquote
             className="mb-10"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.1s'
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms',
             }}
           >
-            <p className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-charcoal-700 leading-snug tracking-tight">
-              Vi såg hur administrationen dränerade energi från det viktigaste: mötet mellan assistent och kund. Därför skapade vi Elivro –
-              <span className="text-terracotta"> för att frigöra tid till det som verkligen betyder något.</span>
+            <p
+              id="founder-title"
+              className="font-serif text-[clamp(1.75rem,3.6vw,3rem)] font-light text-fg leading-[1.15] tracking-[-0.018em]"
+            >
+              En av oss står på golvet. Två andra bygger AI-system som faktiskt fungerar.
+              Tillsammans bygger vi det vi själva alltid <em className="font-serif italic">saknat</em>.
             </p>
           </blockquote>
 
-          {/* Attribution */}
           <footer
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.2s'
+              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms',
             }}
           >
-            <cite className="not-italic">
-              <span className="font-mono text-sm text-charcoal-500 tracking-wider uppercase">
-                Jimmy, Daniel & Filiph
+            <cite className="not-italic block">
+              <span className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-soft block">
+                Jimmy · Daniel · Filiph
               </span>
-              <span className="block font-mono text-xs text-charcoal-400 tracking-wide mt-1">
+              <span className="block font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mt-1">
                 Grundare, Elivro
               </span>
             </cite>
           </footer>
 
-          {/* Quiz CTA - Exit Ramp */}
+          {/* Quiz CTA — exit ramp */}
           <div
-            className="mt-16 pt-12 border-t border-charcoal/10"
+            className="mt-16 pt-12 border-t border-edge"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: 'all 0.5s ease-out 0.3s'
+              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 280ms',
             }}
           >
-            <p className="font-mono text-base text-charcoal-500 mb-4">
-              Är Elivro rätt för er?
+            <p className="text-fg-soft text-base mb-5">
+              Är Elivro rätt för er verksamhet?
             </p>
             <Link
               href="/quiz"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-base font-mono font-medium text-charcoal bg-sage/20 hover:bg-terracotta hover:text-cream border border-sage/30 hover:border-terracotta rounded-sm transition-all duration-200"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-sans text-fg bg-ink-lift hover:bg-ink-card rounded-obs-md border border-edge transition-colors ease-obsidian duration-obs-sm"
             >
               Gör testet på 2 minuter
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+              <ArrowRight className="w-4 h-4 transition-transform ease-obsidian duration-obs-sm group-hover:translate-x-0.5" />
             </Link>
           </div>
         </article>

@@ -8,13 +8,10 @@ export default function CookieConsent() {
   const [hasConsent, setHasConsent] = useState(false)
 
   useEffect(() => {
-    // Check if user has already made a choice
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) {
-      // Small delay before showing banner to not interrupt initial page load
       setTimeout(() => setShowBanner(true), 1000)
     } else if (consent === 'accepted') {
-      // If previously accepted, enable GA
       setHasConsent(true)
     }
   }, [])
@@ -33,21 +30,19 @@ export default function CookieConsent() {
 
   return (
     <>
-      {/* Google Analytics - only loads after consent */}
       <GoogleAnalytics
         hasConsent={hasConsent}
         debug={process.env.NODE_ENV === 'development'}
       />
 
-      {/* Cookie consent banner */}
       {showBanner && (
         <div className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 z-50 sm:max-w-sm">
-          <div className="bg-cream border border-charcoal-200 rounded-sm shadow-lg p-4 mx-auto sm:mx-0">
-            <p className="font-sans text-sm text-charcoal-500 mb-3">
-              Vi använder cookies för att förbättra din upplevelse.{' '}
+          <div className="bg-ink-card border border-edge-strong rounded-obs-lg shadow-obs-card p-5">
+            <p className="text-fg-soft text-sm leading-[1.55] mb-4">
+              Vi använder cookies för att förbättra upplevelsen.{' '}
               <a
                 href="/integritetspolicy"
-                className="text-charcoal hover:text-terracotta underline underline-offset-2 transition-colors duration-200"
+                className="text-fg hover:text-accent underline underline-offset-2 transition-colors ease-obsidian duration-obs-sm"
               >
                 Läs mer
               </a>
@@ -55,13 +50,13 @@ export default function CookieConsent() {
             <div className="flex gap-3">
               <button
                 onClick={handleAccept}
-                className="flex-1 px-4 py-2.5 font-mono text-sm font-medium text-cream-50 bg-terracotta hover:bg-terracotta-600 rounded-sm transition-all duration-200 shadow-terracotta"
+                className="flex-1 px-4 py-2 font-sans text-sm text-ink bg-accent hover:bg-accent-bright active:bg-accent-deep rounded-obs-md transition-colors ease-obsidian duration-obs-sm"
               >
                 Acceptera
               </button>
               <button
                 onClick={handleDecline}
-                className="flex-1 px-4 py-2.5 font-mono text-sm font-medium text-charcoal border border-charcoal hover:bg-charcoal hover:text-cream rounded-sm transition-all duration-200"
+                className="flex-1 px-4 py-2 font-sans text-sm text-fg-soft bg-ink-lift hover:bg-ink hover:text-fg rounded-obs-md transition-colors ease-obsidian duration-obs-sm"
               >
                 Avvisa
               </button>
