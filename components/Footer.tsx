@@ -53,6 +53,17 @@ function FooterColumn({ eyebrow, items }: { eyebrow: string; items: LinkItem[] }
               </li>
             )
           }
+          // Items with an empty "#" href are placeholder labels — render
+          // as text so they're not misleading dead-end clicks.
+          if (item.href === '#') {
+            return (
+              <li key={item.label}>
+                <span className="text-fg-muted text-[15px] break-words cursor-default">
+                  {item.label}
+                </span>
+              </li>
+            )
+          }
           return (
             <li key={item.label}>
               <a href={item.href} className={linkClass}>

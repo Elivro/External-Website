@@ -78,7 +78,7 @@ export default function Hero() {
                     →
                   </span>
                 </button>
-                <Link href="#proof" className="btn-secondary group">
+                <Link href="#case-proof" className="btn-secondary group">
                   Se hur 2U Assistans gjorde
                 </Link>
               </div>

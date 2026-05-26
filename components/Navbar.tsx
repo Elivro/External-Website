@@ -3,11 +3,18 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import ElivroLogo from './ElivroLogo'
+import DemoModal from './DemoModal'
 import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scroll-utils'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+
+  const openDemo = () => {
+    setIsDemoOpen(true)
+    setMobileMenuOpen(false)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -76,14 +83,14 @@ export default function Navbar() {
               Logga in
             </a>
 
-            <a
-              href="#startup-offer"
-              onClick={(e) => handleScrollToSection(e, 'startup-offer')}
+            <button
+              type="button"
+              onClick={openDemo}
               className="ml-2 inline-flex items-center px-5 py-2 text-sm font-sans font-semibold bg-ink hover:bg-n-900 rounded-pill transition-colors duration-fast ease-out shadow-cta"
               style={{ color: '#FAFAF7' }}
             >
               Boka demo
-            </a>
+            </button>
           </div>
 
           {/* Mobile menu trigger */}
@@ -134,16 +141,18 @@ export default function Navbar() {
           >
             Logga in
           </a>
-          <a
-            href="#startup-offer"
-            onClick={(e) => handleScrollToSection(e, 'startup-offer')}
+          <button
+            type="button"
+            onClick={openDemo}
             className="block w-full px-4 py-2.5 mt-2 text-base font-sans font-semibold bg-ink hover:bg-n-900 rounded-pill text-center transition-colors duration-fast ease-out"
             style={{ color: '#FAFAF7' }}
           >
             Boka demo
-          </a>
+          </button>
         </div>
       </div>
+
+      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </nav>
   )
 }

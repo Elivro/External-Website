@@ -45,7 +45,8 @@ export default function LogoStrip() {
                 src="/brand-assets/2ulogga.jpg"
                 alt="2U Assistans"
                 fill
-                sizes="200px"
+                sizes="(min-width: 768px) 200px, 168px"
+                quality={95}
                 className="object-cover"
               />
             </div>
@@ -66,7 +67,8 @@ export default function LogoStrip() {
                   src="/susanne_2u.png"
                   alt="Susanne Pettersson, Arbetsmiljöansvarig på 2U Assistans"
                   fill
-                  sizes="(min-width: 768px) 240px, 200px"
+                  sizes="(min-width: 768px) 480px, 400px"
+                  quality={95}
                   className="object-cover"
                   onError={() => setPhotoFailed(true)}
                 />
