@@ -93,7 +93,7 @@ export default function Hero() {
                   width={1200}
                   height={1200}
                   priority
-                  className="elv-float h-auto w-[122%] max-w-none -mx-[11%]"
+                  className="elv-float h-auto w-full lg:w-[122%] lg:max-w-none lg:-mx-[11%]"
                 />
               </div>
             </div>
