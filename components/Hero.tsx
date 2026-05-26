@@ -25,9 +25,9 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative flex min-h-[clamp(40rem,80svh,55rem)] flex-col overflow-visible bg-hero-bg">
+      <section className="relative flex min-h-[clamp(40rem,80svh,70rem)] flex-col overflow-visible bg-hero-bg">
         <div className="container-default flex flex-1 items-center py-12 lg:py-14">
-          <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[0.9fr_1.2fr] lg:gap-[72px]">
+          <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[1.2fr_1.2fr] lg:gap-[32px]">
             {/* LEFT — editorial content */}
             <div>
               <div className="eyebrow-pill mb-8">
