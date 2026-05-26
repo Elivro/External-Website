@@ -98,6 +98,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
   return (
     <div
+      data-surface="light"
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       onClick={handleBackdropClick}
       role="dialog"
