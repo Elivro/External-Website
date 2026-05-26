@@ -98,7 +98,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
   return (
     <div
-      data-surface="light"
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       onClick={handleBackdropClick}
       role="dialog"
@@ -108,12 +107,19 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
         animation: 'obsFadeUp 300ms cubic-bezier(0.2, 0.7, 0.2, 1)',
       }}
     >
-      {/* Backdrop — solid ink, no blur per Obsidian anti-pattern */}
-      <div className="absolute inset-0 bg-ink/85" />
+      {/* Backdrop — solid ink, no blur per Obsidian anti-pattern.
+          Inline rgba so the data-surface override on the card doesn't
+          accidentally bleed through here. */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: 'rgba(17, 17, 17, 0.85)' }}
+      />
 
-      {/* Modal — sh-hero class equivalent via shadow-obs-hero */}
+      {/* Modal — light-surface card so it renders consistently across
+          all instances regardless of where the modal is mounted. */}
       <div
         ref={modalRef}
+        data-surface="light"
         className="relative z-10 w-full max-w-md bg-ink-card rounded-obs-lg border border-edge-strong shadow-obs-hero"
       >
         <button
