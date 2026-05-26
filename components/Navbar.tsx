@@ -42,6 +42,7 @@ export default function Navbar() {
   ]
 
   return (
+    <>
     <nav
       data-scrolled={scrolled}
       className={`sticky top-0 inset-x-0 z-50 transition-colors duration-fast ease-out ${
@@ -152,7 +153,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </nav>
+    <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
+    </>
   )
 }
