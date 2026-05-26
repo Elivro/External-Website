@@ -52,17 +52,19 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        <div className="flex h-16 items-center justify-between">
-          {/* Mark + wordmark */}
-          <a
-            href="#top"
-            onClick={handleScrollToTop}
-            className="flex items-center gap-3 group"
-          >
-            <ElivroLogo className="h-9 w-auto text-ink" ariaLabel="Elivro" />
-          </a>
+        <div className="flex h-16 items-center">
+          {/* LEFT — Mark + wordmark */}
+          <div className="flex flex-1 justify-start">
+            <a
+              href="#top"
+              onClick={handleScrollToTop}
+              className="flex items-center gap-3 group"
+            >
+              <ElivroLogo className="h-9 w-auto text-ink" ariaLabel="Elivro" />
+            </a>
+          </div>
 
-          {/* Desktop navigation */}
+          {/* CENTER — primary nav links, geometrically centered */}
           <div className="hidden md:flex md:items-center md:gap-1">
             {navLinks.map((link) => (
               <a
@@ -74,12 +76,15 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+          </div>
 
+          {/* RIGHT — Logga in + Boka demo */}
+          <div className="hidden md:flex md:flex-1 md:items-center md:justify-end md:gap-1">
             <a
               href="https://login.elivro.se"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 inline-flex items-center px-3 py-2 text-sm font-sans text-n-700 hover:text-ink transition-colors duration-fast ease-out"
+              className="inline-flex items-center px-3 py-2 text-sm font-sans text-n-700 hover:text-ink transition-colors duration-fast ease-out"
             >
               Logga in
             </a>
