@@ -513,11 +513,6 @@ export default function HeroLiveFeed() {
     if (reducedMotion) {
       const fx = W * 0.5
       const fy = H * 0.32
-      ctx.strokeStyle = 'rgba(245, 239, 227, 0.04)'
-      ctx.beginPath()
-      ctx.moveTo(28, H * 0.5)
-      ctx.lineTo(W - 28, H * 0.5)
-      ctx.stroke()
       ctx.fillStyle = `rgba(${accentRGB}, 0.7)`
       ;[
         [fx - 60, fy + 40],
@@ -586,13 +581,6 @@ export default function HeroLiveFeed() {
       for (let i = orbits.length - 1; i >= 0; i--) if (!orbits[i].update(dt)) orbits.splice(i, 1)
 
       ctx.clearRect(0, 0, W, H)
-
-      ctx.strokeStyle = 'rgba(245, 239, 227, 0.04)'
-      ctx.lineWidth = 1
-      ctx.beginPath()
-      ctx.moveTo(28, H * 0.5)
-      ctx.lineTo(W - 28, H * 0.5)
-      ctx.stroke()
 
       particles.forEach((p) => p.draw(ctx))
       pulses.forEach((p) => p.draw(ctx))

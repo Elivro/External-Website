@@ -1,195 +1,251 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { ArrowRight } from 'lucide-react'
-import { scrollToSection } from '@/lib/scroll-utils'
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import DemoModal from './DemoModal'
-import HeroAtmosphere from './HeroAtmosphere'
-import HeroLiveFeed from './HeroLiveFeed'
 
-// Tiled film grain SVG, warm-tinted to match Obsidian's "warm grain" token.
-// Static (no animation) so it costs nothing at runtime once decoded.
-const GRAIN_BG =
-  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1   0 0 0 0 0.55  0 0 0 0 0.35  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>\")"
-
+/**
+ * Hero — Brand Kit v4
+ * Mirrors strategy-analysis/elivro-landing-mockup-v2.html § HERO + TRUST.
+ *
+ * Structure:
+ *   eyebrow pill → H1 (three results) → sub → three pillars → CTA row
+ *   right column: floating 3D hexagon asset
+ *   below: full-width trust band (pillar axiom + six trust items)
+ *
+ * Tokens used: --paper, --hero-bg, --ink, --red (eyebrow dot, pillar
+ * icon), --moss, --line, --line-strong, --n-600, --n-700.
+ *
+ * Per BK v4 § 8, hero copy is LOCKED — do not modify without a brand
+ * decision. Edit BRAND_KIT_v4.md first, then sync.
+ */
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
-
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   return (
     <>
-      <section className="relative w-full min-h-fit lg:min-h-screen overflow-hidden bg-ink">
-        {/* Atmospheric WebGL shader (drifting warm-noise field). Replaces the
-            old static radial halo with organic, breathing depth. */}
-        <HeroAtmosphere />
+      <section className="relative overflow-visible bg-hero-bg pt-12">
+        <div className="container-default">
+          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[0.9fr_1.2fr] lg:gap-[72px]">
+            {/* LEFT — editorial content */}
+            <div>
+              <div className="eyebrow-pill mb-8">
+                <span className="eyebrow-dot" />
+                Funderar ni på att byta verksamhetssystem?
+              </div>
 
-        {/* Faint static gradient as fallback for browsers without WebGL. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 800px 600px at 30% 35%, rgba(220,77,61,0.04), transparent 72%)',
-            zIndex: 0,
-          }}
-        />
+              <h1 className="mb-6 max-w-[20ch] font-display text-[clamp(34px,3.5vw,54px)] font-bold leading-[1.08] tracking-[-0.044em] text-ink">
+                Mindre admin.<br />
+                Tryggare regelefterlevnad.<br />
+                Snabbare rekrytering.
+              </h1>
 
-        {/* Warm film grain — sits between atmosphere and content, gives the
-            dark surface tactile presence per DESIGN.md "warm grain" rule. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: GRAIN_BG,
-            backgroundSize: '240px 240px',
-            backgroundRepeat: 'repeat',
-            opacity: 0.07,
-            mixBlendMode: 'overlay',
-            zIndex: 1,
-          }}
-        />
+              <p className="mb-7 max-w-[480px] text-[clamp(15.5px,1.1vw,17.5px)] leading-[1.52] text-n-700">
+                Höj kvaliteten för era{' '}
+                <em className="font-sans font-semibold not-italic text-ink">
+                  kunder, assistenter, arbetsledare och kundansvariga
+                </em>
+                . Byggt från grunden för att effektivisera med kraften från AI.
+              </p>
 
-        <div className="relative z-10 min-h-fit lg:min-h-screen flex items-start lg:items-center">
+              <div className="mb-8 grid max-w-[540px] grid-cols-1 gap-5 sm:grid-cols-3">
+                <HeroPillar
+                  icon={<UsersIcon />}
+                  label="Byggt inifrån"
+                  sub="Tekniknördar som jobbat med personlig assistans."
+                />
+                <HeroPillar
+                  icon={<LayersIcon />}
+                  label="Allt på ett ställe"
+                  sub="Schema, FK, avtal, rekrytering, ledning — samma system."
+                />
+                <HeroPillar
+                  icon={<AwardIcon />}
+                  label="Utfall, inte försök"
+                  sub="Pilot 90 dagar med pengarna-tillbaka-garanti."
+                />
+              </div>
 
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-28 pb-16 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(true)}
+                  className="btn-primary group"
+                >
+                  Boka demo
+                  <span className="arrow inline-block transition-transform duration-fast ease-out group-hover:translate-x-1">
+                    →
+                  </span>
+                </button>
+                <Link href="#proof" className="btn-secondary group">
+                  Se hur 2U Assistans gjorde
+                </Link>
+              </div>
+            </div>
 
-          {/* LEFT — editorial content */}
-          <div className="lg:col-span-6 relative z-10 self-center">
-
-          {/* Eyebrow — co-built attribution above the fold */}
-          <p
-          className="font-mono text-[11px] tracking-[0.16em] uppercase text-fg-muted mb-6"
-          style={{
-          opacity: mounted ? 1 : 0,
-          transition: prefersReducedMotion ? 'none' : 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
-          }}
-          >
-          Byggt tillsammans med Västerås största assistansanordnare
-          </p>
-
-          {/* Headline — italic emphasis on the load-bearing clause */}
-          <h1
-          className="font-serif text-[clamp(2.5rem,7vw,5.5rem)] font-light text-fg leading-[1.02] tracking-[-0.025em] mb-8"
-          style={{
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-          transition: prefersReducedMotion ? 'none' : 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms',
-          }}
-          >
-          Verksamhetssystemet som sänker er{' '}
-          <em className="font-serif italic text-fg">lönekostnad.</em>
-          </h1>
-
-          {/* Subhead — body Inter, not mono. Mono is system-voice only. */}
-          <p
-          className="text-fg-soft text-lg sm:text-xl leading-[1.55] max-w-2xl mb-10"
-          style={{
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-          transition: prefersReducedMotion ? 'none' : 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms',
-          }}
-          >
-          87% av er ersättning går till löner. Vi sänker den genom bättre
-          rekrytering — AI-matchning tränad på svensk assistans, kopplad till
-          schema, lön och kvalitet.
-          </p>
-
-          {/* CTAs — single primary, single secondary */}
-          <div
-          className="flex flex-col sm:flex-row gap-3"
-          style={{
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? 'translateY(0)' : 'translateY(20px)',
-          transition: prefersReducedMotion ? 'none' : 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms',
-          }}
-          >
-          <button
-          onClick={() => setIsModalOpen(true)}
-          className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-sans text-ink bg-accent hover:bg-accent-bright active:bg-accent-deep rounded-obs-md transition-colors ease-obsidian duration-obs-sm"
-          >
-          Boka en demo
-          <ArrowRight className="w-4 h-4 transition-transform ease-obsidian duration-obs-sm group-hover:translate-x-0.5" />
-          </button>
-
-          <button
-          onClick={() => scrollToSection('product')}
-          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-sans text-fg bg-ink-lift hover:text-fg hover:bg-ink-card rounded-obs-md transition-colors ease-obsidian duration-obs-sm"
-          >
-          Se produkten
-          </button>
+            {/* RIGHT — floating 3D hexagon asset */}
+            <div className="relative">
+              <div className="flex items-center justify-center">
+                <Image
+                  src="/brand-assets/cropped_3d_hero.png"
+                  alt="Elivro — verksamhetssystem med tio funktioner runt en gemensam kärna"
+                  width={1200}
+                  height={1200}
+                  priority
+                  className="elv-float h-auto w-[122%] max-w-none -mx-[11%]"
+                />
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Specific risk-reducer — quantified, not abstract */}
-          <p
-          className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mt-6"
-          style={{
-          opacity: mounted ? 1 : 0,
-          transition: prefersReducedMotion ? 'none' : 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 320ms',
-          }}
-          >
-          30 dagars test · Ingen bindningstid
-          </p>
+        {/* TRUST BAND — full-width, paper-card surface, sits inside hero
+            section so it anchors above the fold. */}
+        <div className="mt-16 border-t border-line bg-paper-card py-7 shadow-[inset_0_-1px_0_rgba(255,255,255,0.5)]">
+          <div className="px-7">
+            <div className="grid grid-cols-1 items-center gap-y-5 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(6,1fr)]">
+              <div className="flex items-center gap-4 border-line pr-8 lg:border-r">
+                <span
+                  aria-hidden="true"
+                  className="w-[3px] self-stretch min-h-[36px] rounded-sm bg-red"
+                />
+                <span className="whitespace-nowrap font-display text-[16.5px] font-medium leading-[1.25] tracking-[-0.008em] text-ink">
+                  Vi tar betalt för utfall, inte för försök.
+                </span>
+              </div>
+
+              <TrustItem icon={<AwardIcon />} text="Betala endast vid levererat resultat" />
+              <TrustItem icon={<ClipboardIcon />} text="Tillsyns-redo (IVO + Arbetsmiljöverket)" />
+              <TrustItem icon={<CpuIcon />} text="Säker AI på svensk infrastruktur" />
+              <TrustItem icon={<ShieldIcon />} text="Säkert, stabilt och tillgängligt" />
+              <TrustItem icon={<LockIcon />} text="GDPR-säkert byggt för verkligheten" />
+              <TrustItem icon={<HeadsetIcon />} text="Personlig support som svarar och förstår" />
+            </div>
           </div>
-
-          {/* RIGHT — live system feed (Canvas2D, auto-cycling through three
-              domains: schemaläggning, rekrytering, ledningssystem). */}
-          <div
-          className="hidden lg:block lg:col-span-6 relative aspect-[4/5] max-h-[820px] self-center"
-          style={{
-          opacity: mounted ? 1 : 0,
-          transition: prefersReducedMotion ? 'none' : 'opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms',
-          }}
-          >
-          <HeroLiveFeed />
-          </div>
-
-          </div>
-          </div>
-
-          {/* Scroll cue — Obsidian-style "Scrolla" label (body sans 16px
-              regular, fg-muted) over a vertical hairline with an accent
-              segment dropping down on a 2.4s loop. */}
-          <button
-            type="button"
-            onClick={() => scrollToSection('reference-customers')}
-            aria-label="Scrolla nedåt"
-            className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-fg-muted hover:text-fg transition-colors ease-obsidian duration-obs-sm"
-            style={{
-              opacity: mounted ? 1 : 0,
-              transition: prefersReducedMotion
-                ? 'none'
-                : 'opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 600ms',
-            }}
-          >
-            <span className="text-base font-normal">Scrolla</span>
-            <span
-              aria-hidden="true"
-              className="relative block w-px h-12 bg-edge-strong overflow-hidden"
-            >
-              <span
-                className="absolute left-0 right-0 top-0 h-3 bg-accent rounded-full"
-                style={{
-                  animation: prefersReducedMotion
-                    ? 'none'
-                    : 'scrollCueDrop 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) infinite',
-                }}
-              />
-            </span>
-          </button>
-
         </div>
       </section>
 
       <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
+  )
+}
+
+/* -------------------- Sub-components -------------------- */
+
+function HeroPillar({
+  icon,
+  label,
+  sub,
+}: {
+  icon: React.ReactNode
+  label: string
+  sub: string
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="text-red [&>svg]:h-[22px] [&>svg]:w-[22px]">{icon}</span>
+      <span className="mt-1 font-sans text-[14.5px] font-bold tracking-[-0.01em] text-ink">
+        {label}
+      </span>
+      <span className="font-sans text-[13px] leading-[1.42] text-n-600">{sub}</span>
+    </div>
+  )
+}
+
+function TrustItem({ icon, text }: { icon: React.ReactNode; text: string }) {
+  return (
+    <div className="flex items-center gap-2.5 border-line px-4 lg:border-r lg:last-of-type:border-r-0">
+      <span className="text-n-700 [&>svg]:h-5 [&>svg]:w-5">{icon}</span>
+      <div className="text-[12.5px] leading-[1.32] text-n-700 text-balance">{text}</div>
+    </div>
+  )
+}
+
+/* -------------------- Icons -------------------- */
+/* 24×24 viewBox, 1.6 stroke, round caps + joins — per BK v4 § 6 spec. */
+
+const iconProps = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.6,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+}
+
+function UsersIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
+function LayersIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M12 2 2 7l10 5 10-5-10-5z" />
+      <path d="m2 17 10 5 10-5" />
+      <path d="m2 12 10 5 10-5" />
+    </svg>
+  )
+}
+
+function AwardIcon() {
+  return (
+    <svg {...iconProps}>
+      <circle cx="12" cy="8" r="7" />
+      <path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12" />
+    </svg>
+  )
+}
+
+function ClipboardIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+      <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+      <path d="M12 11h4M12 16h4M8 11h.01M8 16h.01" />
+    </svg>
+  )
+}
+
+function CpuIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect width="16" height="16" x="4" y="4" rx="2" />
+      <rect width="6" height="6" x="9" y="9" />
+      <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3" />
+    </svg>
+  )
+}
+
+function ShieldIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    </svg>
+  )
+}
+
+function LockIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  )
+}
+
+function HeadsetIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1zM21 14h-3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2a1 1 0 0 0 1-1z" />
+      <path d="M3 14a9 9 0 1 1 18 0" />
+    </svg>
   )
 }

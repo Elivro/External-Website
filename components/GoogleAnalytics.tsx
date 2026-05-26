@@ -76,6 +76,11 @@ export default function GoogleAnalytics({
     return null
   }
 
+  // Skip GA in non-production (avoids ad-blocker noise in dev console)
+  if (process.env.NODE_ENV !== 'production') {
+    return null
+  }
+
   return (
     <Script
       id="google-analytics"

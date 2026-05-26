@@ -1,12 +1,15 @@
 /**
  * @type {import('tailwindcss').Config}
  *
- * Design system: ELIVRO — OBSIDIAN
- * Source of truth: ../elivro-business/DESIGN.md
- * Operational mapping: ./DESIGN_RULES.md
+ * Design system: ELIVRO — Brand Kit v4 (post-pivot)
+ * Source of truth: elivro-design plugin
+ *   - tokens.json + primitives.css (canonical token values)
+ *   - brand-guidelines.md (visual rules)
  *
- * The legacy Tactile Humanist tokens (terracotta / sage / cream / charcoal)
- * have been retired. All components consume Obsidian tokens.
+ * Token values live in app/globals.css `@theme` block; this config
+ * references them via Tailwind utility-class aliases for ergonomic
+ * use in JSX (`bg-paper`, `text-ink`, `border-line-strong`).
+ * Never re-declare hex values here — point at CSS variables.
  */
 export default {
   content: [
@@ -17,55 +20,76 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Wired through next/font CSS variables. The display font is
-        // switchable via ?font= URL param in dev (DESIGN_RULES § Font swap).
-        serif: ['var(--t-display)',          'Georgia',   'serif'],
-        sans:  ['var(--font-inter)',         'system-ui', 'sans-serif'],
-        mono:  ['var(--font-jetbrains-mono)', 'Consolas', 'monospace'],
+        display: ['var(--font-display)', 'Plus Jakarta Sans', '-apple-system', 'sans-serif'],
+        sans:    ['var(--font-inter)',   'system-ui', 'sans-serif'],
+        italic:  ['var(--font-italic)',  'Fraunces',  'serif'],
+        mono:    ['var(--font-jetbrains-mono)', 'Consolas', 'monospace'],
+        // Legacy compat: `font-serif` is heavily used by old sections for
+        // headings. Per mockup-v2 hero treatment (Inter weight 700 for the
+        // load-bearing display moment), we route font-serif → Inter so old
+        // section headlines pick up the new heading voice automatically.
+        // Components that explicitly want the Fraunces italic accent should
+        // use `<em>` (CSS-styled globally) or `font-italic`.
+        serif:   ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       colors: {
-        // Brand accent — the ember.
+        // ===== V4 PALETTE =====
+        // Surfaces
+        paper:      'var(--paper)',
+        'paper-soft': 'var(--paper-soft)',
+        'paper-card': 'var(--paper-card)',
+        'hero-bg':  'var(--hero-bg)',
+
+        // Ink + brand accents
+        ink:        'var(--ink)',
+        red:        'var(--red)',
+        'red-dark': 'var(--red-dark)',
+        moss:       'var(--moss)',
+        warm:       'var(--warm)',
+
+        // Neutrals
+        'n-900':    'var(--n-900)',
+        'n-700':    'var(--n-700)',
+        'n-600':    'var(--n-600)',
+        'n-400':    'var(--n-400)',
+        'n-200':    'var(--n-200)',
+        'n-100':    'var(--n-100)',
+
+        // Function
+        success:    'var(--success)',
+        warning:    'var(--warning)',
+
+        // Lines
+        line:           'var(--line)',
+        'line-strong':  'var(--line-strong)',
+
+        // ===== OBSIDIAN LEGACY COMPAT (delete as sections migrate) =====
         accent: {
           DEFAULT: 'var(--accent)',
           bright:  'var(--accent-bright)',
           deep:    'var(--accent-deep)',
         },
-
-        // Liv — the alive signal. Strictly scoped to three positions
-        // (DESIGN.md § Colors / Liv).
-        liv: '#7a8a6b',
-
-        // Surfaces (dark canonical).
-        ink:             'var(--bg)',
+        liv:             '#7a8a6b',
         'ink-lift':      'var(--bg-lift)',
         'ink-card':      'var(--bg-card)',
         'ink-card-soft': 'var(--bg-card-soft)',
-
-        // Foreground / text on dark.
-        bone:       'var(--fg)',
-        fg:         'var(--fg)',
-        'fg-soft':  'var(--fg-soft)',
-        'fg-muted': 'var(--fg-muted)',
-        'fg-dim':   'var(--fg-dim)',
-
-        // Hairline borders.
+        bone:       'var(--bone, #f5efe3)',
+        fg:         'var(--fg, #f5efe3)',
+        'fg-soft':  'var(--fg-soft, #bdb5a6)',
+        'fg-muted': 'var(--fg-muted, #8a8275)',
+        'fg-dim':   'var(--fg-dim, #5c5649)',
         edge:          'var(--border)',
         'edge-strong': 'var(--border-strong)',
         'edge-accent': 'var(--accent-glow)',
       },
       borderRadius: {
-        // Obsidian — DESIGN.md § Shapes.
-        // The five working radii: sm 8 · md 10 · lg 14 · xl 20 · pill 50.
-        // Standard Tailwind keys overwritten so `rounded-md` produces 10px.
         'none':    '0',
         'sm':      '8px',
-        'DEFAULT': '10px',
-        'md':      '10px',
-        'lg':      '14px',
-        'xl':      '20px',
-        'pill':    '50px',
-
-        // Explicit obs-* aliases — used by components for clarity.
+        'DEFAULT': '14px',
+        'md':      '14px',
+        'lg':      '20px',
+        'pill':    '999px',
+        // ===== Obsidian compat =====
         'obs-sm':   '8px',
         'obs-md':  '10px',
         'obs-lg':  '14px',
@@ -73,68 +97,47 @@ export default {
         'obs-pill': '50px',
       },
       boxShadow: {
-        // Obsidian — soft, long, ember-tinted. Drives off CSS variables.
-        'sm':       'var(--shadow-chip)',
-        'DEFAULT':  'var(--shadow-card)',
-        'md':       'var(--shadow-card)',
-        'lg':       'var(--shadow-cta)',
-        'xl':       'var(--shadow-cta-hover)',
-        '2xl':      'var(--shadow-hero)',
-
-        // Explicit obs-* aliases.
-        'obs-rim':       'var(--shadow-focus)',
-        'obs-cta':       'var(--shadow-cta)',
-        'obs-cta-hover': 'var(--shadow-cta-hover)',
-        'obs-card':      'var(--shadow-card)',
-        'obs-chip':      'var(--shadow-chip)',
-        'obs-hero':      'var(--shadow-hero)',
-        'obs-glow-dot':  'var(--shadow-glow-dot)',
-      },
-      spacing: {
-        '18': '4.5rem',
-        '22': '5.5rem',
-        '30': '7.5rem',
-        '34': '8.5rem',
+        'lift':  'var(--shadow-lift)',
+        'hover': 'var(--shadow-hover)',
+        'cta':   'var(--shadow-cta)',
       },
       letterSpacing: {
-        'tighter':     '-0.03em',
-        'tight':       '-0.02em',
-        'editorial':   '-0.01em',
-        'normal':      '0',
-        'wide':        '0.01em',
-        'wider':       '0.02em',
-        'mono':        '0.04em',
-        'obs-display': '-0.028em',
-        'obs-h1':      '-0.021em',
-        'obs-mono':    '0.12em',
+        'display':  '-0.025em',
+        'tight':    '-0.018em',
+        'body':     '0',
+        'kicker':   '0.16em',
+        'eyebrow':  '0.18em',
       },
       lineHeight: {
-        'editorial':   '1.15',
-        'relaxed':     '1.55',
-        'obs-display': '0.94',
-        'obs-tight':   '1.05',
-        'obs-body':    '1.55',
+        'display':  '1.06',
+        'tight':    '1.04',
+        'h1':       '1.08',
+        'h3':       '1.10',
+        'h4':       '1.18',
+        'body':     '1.55',
       },
       transitionDuration: {
-        // Obsidian — DESIGN.md § Motion.
-        '100': '100ms',
-        '200': '200ms',
-        '300': '300ms',
-        '600': '600ms',
-        '800': '800ms',
-
-        // Explicit obs-* aliases.
-        'obs-xs':  '100ms',
-        'obs-sm':  '200ms',
-        'obs-md':  '300ms',
-        'obs-lg':  '600ms',
-        'obs-xl':  '800ms',
+        'fast': '200ms',
+        'base': '250ms',
+        'slow': '800ms',
+        // ===== Obsidian compat =====
+        'obs-xs': '100ms',
+        'obs-sm': '200ms',
+        'obs-md': '300ms',
+        'obs-lg': '600ms',
+        'obs-xl': '800ms',
       },
       transitionTimingFunction: {
-        // The single Obsidian easing. Mixing curves is a system-break.
-        // Documented exceptions (mark rotation, Liv breath) are inline
-        // in their respective component CSS.
+        // Single canonical curve family. Documented exceptions (hero float,
+        // AI pulse) use ease-in-out and are scoped to their components.
+        DEFAULT: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+        'out':   'cubic-bezier(0.2, 0.8, 0.2, 1)',
+        // ===== Obsidian compat =====
         obsidian: 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+      },
+      maxWidth: {
+        'container':        'var(--container)',
+        'container-narrow': 'var(--container-narrow)',
       },
     },
   },

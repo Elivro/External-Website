@@ -16,22 +16,18 @@ const KPIS: Kpi[] = [
     number: <>5</>,
     label: (
       <>
-        anställda — <em className="font-serif italic">bara</em> 4–5★
+        anställda · exakt de <em className="font-serif italic">AI:n föreslog</em>
       </>
     ),
   },
   {
     number: <>4&thinsp;475</>,
-    label: 'produktuppdateringar på 7 mån',
-  },
-  {
-    number: <>8 tim</>,
-    label: 'sparade per koordinator / vecka',
+    label: 'produktuppdateringar på tio månader',
   },
 ]
 
 const META = [
-  { value: '80', unit: 'kunder' },
+  { value: '60', unit: 'kunder' },
   { value: '215', unit: 'anställda' },
   { value: '100 MSEK', unit: 'omsättning' },
 ]
@@ -63,22 +59,20 @@ export default function CaseProof() {
               transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
             }}
           >
-            Case · 2u Assistans · Västerås
+            Case · 2U Assistans · Västerås
           </p>
           <h2
             id="case-proof-title"
             className="font-serif text-fg tracking-[-0.022em] leading-[1.05] mx-auto max-w-3xl"
             style={{
-              fontSize: 'clamp(2rem, 4.8vw, 3.75rem)',
-              fontWeight: 300,
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
               transition:
                 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms',
             }}
           >
-            Sex månader inifrån. Vi byggde{' '}
-            <em className="font-serif italic">med koordinatorerna.</em>
+            Tio månader inifrån. Vi byggde{' '}
+            <em className="font-serif italic">med kundansvariga.</em>
           </h2>
         </header>
 
@@ -115,18 +109,18 @@ export default function CaseProof() {
               className="flex items-center justify-center w-11 h-11 rounded-full bg-ink-lift border border-edge font-serif text-fg leading-none"
               style={{ fontSize: '0.9375rem', fontWeight: 500 }}
             >
-              2u
+              2U
             </span>
             <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-fg-muted">
-              Rekryterare · 2u Assistans
+              Citat förbereds · Rekryterare · 2U Assistans
             </span>
           </figcaption>
         </figure>
 
         {/* KPI strip — naked numbers, vertical hairlines between, top+bottom rule */}
         <ul
-          className="grid grid-cols-2 lg:grid-cols-4 border-y border-edge divide-y lg:divide-y-0 lg:divide-x divide-edge"
-          aria-label="Resultat efter sex månaders samarbete med 2u Assistans"
+          className="grid grid-cols-1 sm:grid-cols-3 border-y border-edge divide-y sm:divide-y-0 sm:divide-x divide-edge"
+          aria-label="Resultat efter tio månaders samarbete med 2U Assistans"
         >
           {KPIS.map((kpi, i) => (
             <li
@@ -141,10 +135,10 @@ export default function CaseProof() {
               }}
             >
               <span
-                className="font-serif text-fg leading-[1] tracking-[-0.04em] mb-5"
+                className="font-italic not-italic text-fg leading-[1] tracking-[-0.04em] mb-5"
                 style={{
                   fontSize: 'clamp(2.75rem, 6vw, 5rem)',
-                  fontWeight: 300,
+                  fontWeight: 400,
                 }}
               >
                 {kpi.number}
@@ -169,8 +163,8 @@ export default function CaseProof() {
           {META.map((m, i) => (
             <span key={m.unit} className="inline-flex items-center gap-2 text-fg-soft">
               <span
-                className="font-serif text-fg leading-none tracking-[-0.012em]"
-                style={{ fontSize: '1.0625rem', fontWeight: 500 }}
+                className="font-italic not-italic text-fg leading-none tracking-[-0.012em]"
+                style={{ fontSize: '1.0625rem', fontWeight: 600 }}
               >
                 {m.value}
               </span>

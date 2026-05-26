@@ -1,294 +1,329 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import TwoPeopleOneRhythm from './illustrations/TwoPeopleOneRhythm'
 
 interface Founder {
-  slug: 'jimmy' | 'filiph' | 'daniel'
-  number: string
+  slug: string
   name: string
-  shortName: string
   role: string
-  bio: React.ReactNode
-  quote: string
+  shortBio: string
+  longBio: string
   photo: string
-  alt: string
 }
 
 const FOUNDERS: Founder[] = [
   {
     slug: 'jimmy',
-    number: '01',
     name: 'Jimmy Södermark',
-    shortName: 'Jimmy',
-    role: 'Sälj · Personlig assistent',
-    bio: (
-      <>
-        Ex-säljchef. Jobbar idag som personlig assistent.{' '}
-        <span aria-hidden>✊</span>
-      </>
-    ),
-    quote:
-      'På min första arbetsdag fick jag använda verksamhetssystemet hos arbetsgivaren — och fick en chock. Det kändes som att ingen på väldigt länge hade tänkt på hur en assistent faktiskt vill använda ett system.',
-    photo: '/founders/jimmy.jpg',
-    alt: 'Jimmy Södermark',
+    role: 'Sälj & verksamhet',
+    shortBio: 'Ex-säljchef. Jobbar idag som personlig assistent.',
+    longBio:
+      'Byggde Elivro under tio månaders aktiv tjänst som personlig assistent hos 2u Assistans. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
+    photo: '/founders/jimmy.png',
   },
   {
     slug: 'filiph',
-    number: '02',
     name: 'Filiph Arverot-Falk',
-    shortName: 'Filiph',
-    role: 'Teknik · Fullstack',
-    bio: (
-      <>
-        10 år som fullstack-utvecklare. Fråga mig gärna vad som helst om
-        systemets design <span aria-hidden>👋</span>
-      </>
-    ),
-    quote:
-      'När man bygger något som tusentals ska använda är tillgänglighet och säkerhet A och O.',
+    role: 'Teknik & utveckling',
+    shortBio: 'Tio år som fullstack-utvecklare.',
+    longBio:
+      'Tio år som fullstack-utvecklare. Har byggt produkt för allt från fintech till hälsa. Ansvarar för plattformen, integrationerna och att GDPR sitter i koden — inte i en PDF.',
     photo: '/founders/filiph.png',
-    alt: 'Filiph Arverot-Falk',
   },
   {
     slug: 'daniel',
-    number: '03',
     name: 'Daniel Nakhost',
-    shortName: 'Daniel',
-    role: 'Kundservice · Datavetenskap',
-    bio: <>Många år som SOS-operatör. Datavetenskap i ryggen.</>,
-    quote:
-      'Vi vet alla hur det känns när en hemsida möter en med förvirring för att den är krångligt upplagd. Mitt mål med Elivro är, precis som namnet säger, att på något vis ge ro i era liv. 😌',
+    role: 'Drift & kundsupport',
+    shortBio: 'SOS-operatör i grunden. Datavetenskap i ryggen.',
+    longBio:
+      'Många år som SOS-operatör innan datavetenskapen tog över. Vet vad som händer när ett system sviker mitt i ett samtal — och vad som krävs för att det aldrig ska göra det.',
     photo: '/founders/daniel.png',
-    alt: 'Daniel Nakhost',
   },
 ]
 
+const GROUP_PHOTO = '/founders/group.png'
+const INTRO =
+  'Jimmy byggde Elivro under tio månaders aktiv tjänst som personlig assistent. Filiph har tio år som fullstack-utvecklare. Daniel kommer från SOS Alarm. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
+
+const BULLETS = [
+  'Byggt under tio månaders aktiv tjänst som personlig assistent.',
+  'Sambygget med 2u Assistans — Västerås största assistansanordnare.',
+  'Du pratar med en grundare. Inte en supportkö.',
+]
+
+// Hover-zone + label coordinates in % of the stage. Photo order L→R is
+// Jimmy · Filiph · Daniel. Stage now spans full wrap width (no horizontal
+// crop on the image), so coordinates are people-positions in the photo
+// roughly: ~28% / 50% / 72%. Fine-tune in browser if the crop changes.
+const ZONES: Record<string, { left: number; width: number; top: number; height: number }> = {
+  jimmy:  { left: 22, width: 13, top: 22, height: 72 },
+  filiph: { left: 43, width: 13, top: 20, height: 74 },
+  daniel: { left: 64, width: 13, top: 22, height: 72 },
+}
+
+const LABELS: Record<string, { left: number; top: number; align: 'left' | 'center' | 'right' }> = {
+  jimmy:  { left: 28, top: 8, align: 'left' },
+  filiph: { left: 50, top: 5, align: 'center' },
+  daniel: { left: 71, top: 8, align: 'right' },
+}
+
 /**
- * AboutUs — editorial gallery spread. The group portrait runs at its native
- * 4:5 aspect (instead of being cropped to 21:9) and is framed like an
- * exhibition placard with mono caption strips above and below. Below it,
- * three founder cards with floating serif numerals (01/02/03) that break
- * the card outline, and a quiet ember rule that draws in on hover/focus.
+ * AboutUs — "Tre grundare". Group portrait with hover zones; tooltip card
+ * surfaces a single founder on hover/focus. No default selection so the
+ * scene reads as a scene, not a profile-of-Jimmy.
  */
 export default function AboutUs() {
-  const { ref, isVisible } = useIntersectionObserver(0.05)
+  const [active, setActive] = useState<string | null>(null)
+  // `displayed` lags `active` so the tooltip's inner content stays
+  // rendered through the fade-out animation. `show` is the visibility
+  // flag the CSS reads — separating it from `active` lets us drop
+  // visibility for ~200ms when switching between founders, so the old
+  // card fades out before the new one fades in (sequential crossfade).
+  const [displayed, setDisplayed] = useState<Founder | null>(null)
+  const [show, setShow] = useState(false)
+  const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    if (swapTimer.current) {
+      clearTimeout(swapTimer.current)
+      swapTimer.current = null
+    }
+
+    const target = active ? FOUNDERS.find((f) => f.slug === active) ?? null : null
+
+    if (!target) {
+      setShow(false)
+      return
+    }
+
+    if (!displayed || displayed.slug === target.slug) {
+      setDisplayed(target)
+      setShow(true)
+      return
+    }
+
+    setShow(false)
+    swapTimer.current = setTimeout(() => {
+      setDisplayed(target)
+      setShow(true)
+      swapTimer.current = null
+    }, 120)
+
+    return () => {
+      if (swapTimer.current) {
+        clearTimeout(swapTimer.current)
+        swapTimer.current = null
+      }
+    }
+  }, [active, displayed])
 
   return (
     <section
       id="about-us"
-      ref={ref}
       aria-labelledby="about-title"
-      className="w-full bg-ink py-24 md:py-32 relative overflow-hidden"
+      className="w-full"
     >
-      {/* Soft warm halo, offset to the left so it pairs with the centered photo */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 760px 540px at 22% 30%, rgba(210,88,68,0.05), transparent 65%)',
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        {/* === HEADER === */}
-        <header className="max-w-3xl mb-16 md:mb-20">
-          <div className="flex items-center gap-5 mb-5">
-            <div className="w-14 text-fg-muted" aria-hidden="true">
-              <TwoPeopleOneRhythm animate={isVisible} />
-            </div>
-            <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-fg-muted">
-              Tre grundare
-            </p>
-          </div>
-          <h2
-            id="about-title"
-            className="font-serif text-fg tracking-[-0.022em] leading-[1.05] mb-6"
-            style={{
-              fontSize: 'clamp(2rem, 4.8vw, 3.75rem)',
-              fontWeight: 300,
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-              transition:
-                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms',
-            }}
-          >
-            Vi byggde det vi själva{' '}
-            <em className="font-serif italic">saknade.</em>
+      <div className="about-wrap">
+        <div className="about-content">
+          <span className="about-kicker">Om oss</span>
+          <h2 id="about-title" className="about-title">
+            Vi byggde det vi själva <em>saknade.</em>
           </h2>
-          <p
-            className="text-fg-soft text-lg leading-[1.55] max-w-2xl"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-              transition:
-                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms',
-            }}
-          >
-            Jimmy är fortfarande personlig assistent. Filiph har tio år som
-            fullstack-utvecklare. Daniel kommer från SOS Alarm. Tre olika
-            bakgrunder, samma frustration över systemen vi själva använt.
-          </p>
-        </header>
+          <p className="about-intro">{INTRO}</p>
 
-        {/* === EDITORIAL PORTRAIT === */}
-        <div className="mb-20 md:mb-28 max-w-md mx-auto">
-          {/* Caption strip above — exhibition placard */}
-          <div
-            className="flex items-center mb-5"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition:
-                'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 280ms',
-            }}
-          >
-            <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-fg-muted">
-              Frame 01
-            </span>
-            <span aria-hidden="true" className="flex-1 h-px bg-edge mx-4" />
-            <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-fg-muted">
-              Västerås · 2026
-            </span>
-          </div>
-
-          {/* Portrait — photo at native 4:5, hairline corner brackets on the outside */}
-          <figure
-            className="relative"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition:
-                'opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 360ms, transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 360ms',
-            }}
-          >
-            {/* Corner brackets — sketchbook primitive */}
-            <span
-              aria-hidden="true"
-              className="absolute -top-2 -left-2 w-5 h-5 border-l border-t border-accent/70"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -top-2 -right-2 w-5 h-5 border-r border-t border-accent/70"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -bottom-2 -left-2 w-5 h-5 border-l border-b border-accent/70"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -bottom-2 -right-2 w-5 h-5 border-r border-b border-accent/70"
-            />
-
-            <div className="relative aspect-[4/5] w-full overflow-hidden border border-edge bg-ink-lift">
-              <Image
-                src="/founders/group.png"
-                alt="Jimmy, Filiph och Daniel — Elivros tre grundare, Västerås 2026"
-                fill
-                sizes="(min-width: 768px) 448px, 100vw"
-                className="object-cover"
-                priority
-              />
-              {/* Subtle vignette so edges read as a printed plate, not a screenshot */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(ellipse at center, transparent 60%, rgba(10,8,6,0.4) 100%)',
-                }}
-              />
-            </div>
-
-            {/* Caption below — the three names, ember interpuncts */}
-            <figcaption className="mt-5 text-center">
-              <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-fg-muted leading-[1.6]">
-                Jimmy{' '}
-                <span className="text-accent" aria-hidden>
-                  ·
-                </span>{' '}
-                Filiph{' '}
-                <span className="text-accent" aria-hidden>
-                  ·
-                </span>{' '}
-                Daniel
-              </p>
-            </figcaption>
-          </figure>
+          <ul className="about-bullets">
+            {BULLETS.map((b) => (
+              <li key={b} className="about-bullet">
+                <span className="about-bullet-mark" aria-hidden="true">—</span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* === FOUNDER TRIPTYCH === */}
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-12 md:gap-y-0">
-          {FOUNDERS.map((f, i) => (
-            <li
-              key={f.slug}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-                transition: `opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1) ${500 + i * 130}ms, transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1) ${500 + i * 130}ms`,
-              }}
-            >
-              <article
-                tabIndex={0}
-                aria-label={`${f.name} — ${f.role}`}
-                className="group relative h-full bg-ink-card border border-edge rounded-obs-lg p-7 lg:p-8 flex flex-col transition-colors ease-obsidian duration-obs-md hover:border-accent/40 focus-visible:border-accent/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30"
+        <div
+          className="about-stage"
+          data-active={active ?? 'none'}
+          onMouseLeave={() => setActive(null)}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+              setActive(null)
+            }
+          }}
+        >
+          <div className="about-stage-img">
+            <Image
+              src={GROUP_PHOTO}
+              alt="Jimmy, Filiph och Daniel — Elivros tre grundare"
+              fill
+              /* Stage column is ~57% of the wrap. Sizes scales with the
+                 viewport so high-DPR displays pick a sharper srcset
+                 variant (source PNG is 3072px wide — plenty of headroom). */
+              sizes="(max-width: 820px) 100vw, 60vw"
+              quality={92}
+              className="about-stage-img-el"
+              priority
+            />
+          </div>
+
+          {FOUNDERS.map((f) => {
+            const label = LABELS[f.slug]
+            return (
+              <span
+                key={`label-${f.slug}`}
+                className="about-label"
+                data-align={label.align}
+                style={{ left: `${label.left}%`, top: `${label.top}%` }}
+                aria-hidden="true"
               >
-                {/* Floating numeral — breaks the top-left of the card outline */}
-                <span
-                  aria-hidden="true"
-                  className="absolute -top-[0.95rem] left-7 font-serif text-accent leading-none bg-ink px-2"
-                  style={{ fontSize: '1.5rem', fontWeight: 300 }}
-                >
-                  {f.number}
-                </span>
+                <span className="about-label-name">{f.name.split(' ')[0]}</span>
+                <span className="about-label-role">{f.role}</span>
+                <ArrowDoodle align={label.align} className="about-label-arrow" />
+              </span>
+            )
+          })}
 
-                {/* Vertical accent rule on the left — draws in on hover/focus */}
-                <span
-                  aria-hidden="true"
-                  className="absolute left-0 top-10 bottom-10 w-px bg-accent origin-top scale-y-0 group-hover:scale-y-100 group-focus-visible:scale-y-100 transition-transform ease-obsidian duration-obs-md"
-                />
+          {FOUNDERS.map((f) => {
+            const z = ZONES[f.slug]
+            return (
+              <button
+                key={`zone-${f.slug}`}
+                type="button"
+                className="about-zone"
+                style={{
+                  left: `${z.left}%`,
+                  width: `${z.width}%`,
+                  top: `${z.top}%`,
+                  height: `${z.height}%`,
+                }}
+                aria-label={`${f.name} — ${f.role}`}
+                aria-describedby={active === f.slug ? `about-tip-${f.slug}` : undefined}
+                onMouseEnter={() => setActive(f.slug)}
+                onFocus={() => setActive(f.slug)}
+              />
+            )
+          })}
 
-                <div className="flex items-center gap-4 mb-6 mt-3">
-                  <span className="relative w-12 h-12 rounded-full overflow-hidden border border-edge bg-ink-lift flex-shrink-0">
-                    <Image
-                      src={f.photo}
-                      alt=""
-                      fill
-                      sizes="48px"
-                      className="object-cover"
-                    />
-                  </span>
-                  <div className="min-w-0">
-                    <h3
-                      className="font-serif text-fg leading-[1.15] tracking-[-0.012em] truncate"
-                      style={{ fontSize: '1.25rem', fontWeight: 400 }}
-                    >
-                      {f.name}
-                    </h3>
-                    <p className="font-mono text-[10px] tracking-[0.14em] uppercase text-fg-muted mt-1.5 truncate">
-                      {f.role}
-                    </p>
-                  </div>
+          <p className="about-stage-hint" aria-live="polite">
+            <svg
+              className="about-stage-hint-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M9 11V6a2 2 0 1 1 4 0v5" />
+              <path d="M13 9V4.5a2 2 0 1 1 4 0V11" />
+              <path d="M17 7.5a2 2 0 1 1 4 0V14a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-5.2-3l-3-5.2a2 2 0 0 1 3-2.6L11 11" />
+            </svg>
+            <span>Hovra över en person för att lära känna oss bättre</span>
+          </p>
+        </div>
+
+        <aside
+          className="about-aside"
+          data-visible={show ? 'true' : 'false'}
+          aria-hidden={!show}
+        >
+          {displayed && (() => {
+            const idx = FOUNDERS.findIndex((f) => f.slug === displayed.slug)
+            const seq = String(idx + 1).padStart(2, '0')
+            const total = String(FOUNDERS.length).padStart(2, '0')
+            const bioWords = displayed.longBio.split(' ')
+            const lead = bioWords.slice(0, 2).join(' ')
+            const rest = ' ' + bioWords.slice(2).join(' ')
+            return (
+              <article id={`about-tip-${displayed.slug}`} className="about-card">
+                <div className="about-card-photo">
+                  <span className="about-card-seq">№ {seq} / {total}</span>
+                  <Image src={displayed.photo} alt="" fill sizes="300px" />
                 </div>
-
-                <p className="text-fg-soft text-[0.9375rem] leading-[1.55] mb-6">
-                  {f.bio}
-                </p>
-
-                <hr className="border-0 border-t border-edge mb-6" />
-
-                <blockquote
-                  className="font-serif italic text-fg-soft text-[0.9375rem] leading-[1.55] flex-1"
-                  style={{ fontWeight: 400 }}
-                >
-                  &ldquo;{f.quote}&rdquo;
-                </blockquote>
+                <div className="about-card-divider" />
+                <div className="about-card-body">
+                  <p className="about-card-role">{displayed.role}</p>
+                  <h3 className="about-card-name">{displayed.name}</h3>
+                  <p className="about-card-bio">
+                    <span className="about-card-lead">{lead}</span>
+                    {rest}
+                  </p>
+                  <p className="about-card-sig">{displayed.name.split(' ')[0]}</p>
+                </div>
               </article>
-            </li>
-          ))}
-        </ul>
+            )
+          })()}
+        </aside>
+      </div>
+
+      <div className="about-mobile-roster" aria-hidden="false">
+        {FOUNDERS.map((f) => (
+          <div key={`mob-${f.slug}`} className="about-mobile-row">
+            <div className="about-mobile-thumb">
+              <Image src={f.photo} alt={f.name} fill sizes="64px" className="about-mobile-thumb-el" />
+            </div>
+            <div>
+              <h3 className="about-mobile-name">{f.name}</h3>
+              <p className="about-mobile-role">{f.role}</p>
+              <p className="about-mobile-bio">{f.shortBio}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
+  )
+}
+
+function ArrowDoodle({ align, className }: { align: 'left' | 'center' | 'right'; className?: string }) {
+  // Hand-drawn feel: rounded caps/joins, slight S-curve, chevron tip.
+  const stroke = 1.6
+  if (align === 'center') {
+    return (
+      <svg viewBox="0 0 28 56" className={className} fill="none" aria-hidden="true">
+        <path
+          d="M14 3 C 16 16, 12 30, 14 48"
+          stroke="currentColor"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8 41 L14 50 L20 41"
+          stroke="currentColor"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    )
+  }
+  const isLeft = align === 'left'
+  return (
+    <svg viewBox="0 0 56 56" className={className} fill="none" aria-hidden="true">
+      <path
+        d={
+          isLeft
+            ? 'M 10 3 C 6 18, 30 30, 46 50'
+            : 'M 46 3 C 50 18, 26 30, 10 50'
+        }
+        stroke="currentColor"
+        strokeWidth={stroke}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d={
+          isLeft
+            ? 'M 36 44 L 46 50 L 44 39'
+            : 'M 20 44 L 10 50 L 12 39'
+        }
+        stroke="currentColor"
+        strokeWidth={stroke}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   )
 }

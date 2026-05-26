@@ -2,102 +2,140 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 /**
- * Single-customer reference quote. Replaces the prior bare logo strip with a
- * richer credibility band — a quiet portrait tile + one short quote from a
- * named person at 2u Assistans. The system was built with them; one quote
- * said honestly beats five logos suggested falsely.
+ * Referens · 2U Assistans — single-customer credibility band.
  *
- * Photo: `/public/susanne_2u.png` (Susanne is at 2u Assistans, not an Elivro
- * founder — kept outside `/public/founders/`). Until the file exists,
- * `<Image onError>` falls back to a typographic 2U mono-tile so the page
- * never breaks at build time.
+ * Layout ported from elivro-landing-mockup-v2.html § SUSANNE-TESTIMONIAL:
+ * an overlapping visual stack (green 2U tile bottom-left + Susanne portrait
+ * top-right, with her name + title overlaid on the photo) beside one short
+ * named quote. Runs on a DARK surface — the mockup's own dark variant.
  *
- * Section id is preserved (`reference-customers`) so the Hero scroll cue and
- * any deep links keep working.
+ * All colours inline so the component renders correctly regardless of the
+ * data-surface override layer (it sits in data-surface="dark").
+ *
+ * id `reference-customers` preserved for any deep links.
  */
+const WHITE = '#FAFAF7'
+const WHITE_70 = 'rgba(255,255,255,0.70)'
+const WHITE_65 = 'rgba(255,255,255,0.65)'
+const WHITE_18 = 'rgba(255,255,255,0.18)'
+const RED = '#DC2626'
+
 export default function LogoStrip() {
-  const { ref, isVisible } = useIntersectionObserver(0.1)
   const [photoFailed, setPhotoFailed] = useState(false)
 
   return (
     <section
       id="reference-customers"
-      ref={ref}
-      aria-labelledby="reference-customers-eyebrow"
-      className="w-full bg-ink py-16 md:py-20 relative border-y border-edge"
+      aria-label="Referens — 2U Assistans"
+      className="w-full pt-24 pb-20"
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-12">
-        <div
-          className="grid grid-cols-1 sm:grid-cols-12 items-center gap-8 sm:gap-10"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
-            transition:
-              'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1)',
-          }}
-        >
-          {/* Portrait tile — photo if available, typographic fallback otherwise */}
-          <figure className="sm:col-span-4 md:col-span-3">
+      <div className="mx-auto max-w-[1200px] px-7">
+        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[380px_1fr] md:gap-[72px]">
+
+          {/* Visual stack — relative box, two overlapping tiles */}
+          <div className="relative mx-auto h-[300px] w-[300px] md:h-[360px] md:w-[360px]">
+            {/* Green 2U tile — bottom-left, behind */}
             <div
-              className="relative w-40 sm:w-full aspect-[4/5] rounded-obs-md overflow-hidden border border-edge bg-ink-lift"
-              aria-hidden={photoFailed ? 'true' : undefined}
+              className="absolute bottom-0 left-0 overflow-hidden rounded-[18px]"
+              style={{ width: '56%', height: '56%', zIndex: 1 }}
             >
-              {!photoFailed && (
+              <Image
+                src="/brand-assets/2ulogga.jpg"
+                alt="2U Assistans"
+                fill
+                sizes="200px"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Susanne portrait — top-right, overlapping, in front, name overlaid */}
+            <div
+              className="absolute right-0 top-0 overflow-hidden rounded-[18px]"
+              style={{
+                width: '67%',
+                height: '67%',
+                zIndex: 2,
+                boxShadow:
+                  '0 1px 0 rgba(255,255,255,0.14) inset, 0 28px 56px -20px rgba(0,0,0,0.55), 0 14px 28px -14px rgba(0,0,0,0.35)',
+              }}
+            >
+              {!photoFailed ? (
                 <Image
                   src="/susanne_2u.png"
-                  alt="Susanne Pettersson, Arbetsmiljöansvarig på 2u Assistans"
+                  alt="Susanne Pettersson, Arbetsmiljöansvarig på 2U Assistans"
                   fill
-                  sizes="(min-width: 768px) 200px, 160px"
+                  sizes="(min-width: 768px) 240px, 200px"
                   className="object-cover"
                   onError={() => setPhotoFailed(true)}
                 />
-              )}
-
-              {photoFailed && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-gradient-to-br from-ink-card to-ink-lift">
-                  <span className="font-serif italic text-fg-soft text-[2.25rem] leading-[1] tracking-[-0.02em]">
+              ) : (
+                <div
+                  className="flex h-full w-full items-center justify-center"
+                  style={{ background: '#1c1c1c' }}
+                >
+                  <span className="font-italic text-[2rem] italic" style={{ color: WHITE }}>
                     Susanne
-                  </span>
-                  <span className="mt-3 block w-6 h-px bg-accent/60" aria-hidden="true" />
-                  <span className="mt-3 font-mono text-[10px] tracking-[0.18em] uppercase text-fg-muted">
-                    2u Assistans
                   </span>
                 </div>
               )}
+
+              {/* Name + title overlay — baked over the lower portion of the photo */}
+              <div
+                className="absolute inset-x-0 bottom-0 px-4 pb-3.5 pt-12"
+                style={{
+                  background:
+                    'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 42%, transparent 100%)',
+                }}
+              >
+                <div
+                  className="font-display text-[15px] font-bold leading-tight"
+                  style={{ color: WHITE }}
+                >
+                  Susanne Pettersson
+                </div>
+                <div
+                  className="mt-1 font-sans text-[9.5px] font-semibold uppercase tracking-[0.18em]"
+                  style={{ color: WHITE_70 }}
+                >
+                  Arbetsmiljöansvarig
+                </div>
+              </div>
             </div>
-          </figure>
-
-          <div className="sm:col-span-8 md:col-span-9">
-            <p
-              id="reference-customers-eyebrow"
-              className="font-mono text-[11px] tracking-[0.16em] uppercase text-fg-muted mb-5"
-            >
-              Referens · 2u Assistans
-            </p>
-
-            <blockquote className="font-serif text-[clamp(1.5rem,3vw,2.25rem)] font-light text-fg leading-[1.15] tracking-[-0.018em] max-w-2xl">
-              <span aria-hidden="true" className="text-fg-muted mr-2">&mdash;</span>
-              Jag tycker det fungerar{' '}
-              <em className="font-serif italic text-accent">riktigt bra.</em>
-            </blockquote>
-
-            <figcaption className="mt-6 flex items-center gap-3 text-fg-soft">
-              <Image
-                src="/2u.png"
-                alt=""
-                width={72}
-                height={24}
-                className="h-5 w-auto opacity-80"
-              />
-              <span aria-hidden="true" className="block w-px h-4 bg-edge" />
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-fg-muted">
-                Susanne Pettersson · Arbetsmiljöansvarig
-              </span>
-            </figcaption>
           </div>
+
+          {/* Quote + attribution */}
+          <div>
+            <p
+              className="mb-7 font-italic italic text-[clamp(26px,2.7vw,38px)] leading-[1.22] tracking-[-0.012em]"
+              style={{ color: WHITE, fontWeight: 300 }}
+            >
+              &ldquo;Jag tycker det fungerar{' '}
+              <em
+                className="font-italic italic"
+                style={{ color: RED, fontWeight: 500 }}
+              >
+                riktigt bra
+              </em>
+              .&rdquo;
+            </p>
+            <div className="max-w-[420px] border-t pt-5" style={{ borderColor: WHITE_18 }}>
+              <div
+                className="font-italic not-italic text-[20px] font-semibold tracking-[-0.01em]"
+                style={{ color: WHITE }}
+              >
+                Susanne Pettersson
+              </div>
+              <div
+                className="mt-1.5 font-sans text-[11.5px] font-semibold uppercase tracking-[0.16em]"
+                style={{ color: WHITE_65 }}
+              >
+                Arbetsmiljöansvarig · 2U Assistans
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,0 +1,36 @@
+# Elivro
+
+> Verksamhetssystem för svenska assistansbolag — AI-driven rekrytering, schemaläggning, tidredovisning och kvalitetsledning. Ersätter fyra system med ett. Byggt tillsammans med 2u Assistans (Västerås).
+
+Elivro är en svensk B2B-plattform som riktar sig till verksamheter inom personlig assistans (assistansbolag, assistansanordnare). Plattformen är AI-driven men kräver ingen prompt-kunskap från användaren — gränssnittet är vanlig programvara, AI:n arbetar i bakgrunden.
+
+Tonal positionering: pondus — vaken kompetens, närvaro utan väsen. Inte startup-frenetisk, inte etablerad-aktör-trög.
+
+Affärsmodell: 30 dagars test, ingen bindningstid. Prissättning anpassas efter verksamhetens storlek.
+
+## Produkten
+
+- [Boka demo](https://elivro.se/#cta-section): Ett samtal om er verksamhet och hur Elivro skulle se ut hos er. Inget säljmanus.
+- [Matchningstest](https://elivro.se/quiz): 2-minuters test som avgör om Elivro passar er verksamhet.
+- [Logga in](https://login.elivro.se): För befintliga kunder — inloggning till verksamhetssystemet.
+
+## Fyra verktyg, ett operativsystem
+
+- [Rekrytering](https://elivro.se/#product): AI-matchning av kandidat mot brukare baserat på personlighet, värderingar, kompetens, geografi och historisk kontinuitet. Tränad på svensk assistans, inte branschsnitt.
+- [Schemaläggning](https://elivro.se/#product): Förutser konflikter, föreslår täckning, balanserar ATL och budget i realtid. Konflikter syns innan de uppstår.
+- [Tidredovisning](https://elivro.se/#product): BankID-attesterad mobil tidrapport. Närvarointyg, attestering och FK-fakturering följer av sig själv.
+- [Kvalitetsledning](https://elivro.se/#product): Genomförandeplaner, daganteckningar, Lex Sarah och IVO-granskningsberedskap — kopplat till samma data som schemat.
+
+## Information
+
+- [Funktioner](https://elivro.se/#features): Fullständig lista av kapaciteter — rekrytering, schemaläggning, tidredovisning, kvalitetsledning.
+- [Om oss](https://elivro.se/#about-us): Grundarna — Jimmy (assistent på golvet), Filiph (utvecklare, 10+ år), Daniel (operativ).
+- [Filosofi](https://elivro.se/#manifesto): Levande system för levande verksamheter. Ett operativsystem för svenska assistansbolag.
+- [FAQ](https://elivro.se/#faq): Vanliga frågor om kostnad, GDPR, support, datauttag, uppstartstid.
+- [Uppstartserbjudande](https://elivro.se/#startup-offer): Flerårig rabatt för tidiga partner.
+
+## Optional
+
+- [Integritetspolicy (GDPR)](https://elivro.se/integritetspolicy): Datahantering enligt GDPR, servrar inom EU.
+- [Kontakt](mailto:daniel@elivro.se): daniel@elivro.se
+- [llms-full.txt](https://elivro.se/llms-full.txt): Utförligare beskrivning av positionering, pelare och tonal kärna.

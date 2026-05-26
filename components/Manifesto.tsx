@@ -47,7 +47,7 @@ export default function Manifesto() {
 
         <p
           id="manifesto-quote"
-          className="font-serif text-[clamp(1.75rem,4vw,3.25rem)] font-light text-fg leading-[1.12] tracking-[-0.022em] mb-10 max-w-3xl mx-auto"
+          className="font-italic italic text-[clamp(1.75rem,4vw,3.25rem)] font-light text-fg leading-[1.12] tracking-[-0.022em] mb-10 max-w-3xl mx-auto"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
@@ -72,10 +72,12 @@ export default function Manifesto() {
               'opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 280ms, transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 280ms',
           }}
         >
-          Och det vi inte hade koll på? Det har vi fått koll på — tack vare
-          feedback från{' '}
-          <em className="font-serif italic text-fg">2u Assistans</em>, Västerås
-          största assistansanordnare.
+          Det är ni som varje dag gör jobbet. Innan vi ens började bygga
+          Elivro pratade vi med 100+ personer om vad som faktiskt behövs.
+          Tack vare feedback från{' '}
+          <em className="font-serif italic text-fg">2U Assistans</em>,
+          Västerås-grundade assistansanordnare — med målet att alltid erbjuda
+          er mindre admin, tryggare regelefterlevnad och snabbare rekrytering.
         </p>
 
         <div

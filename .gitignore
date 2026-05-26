@@ -15,3 +15,9 @@ dist/
 *~
 screenshot.png
 screenshot.js
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
+# Claude Code project-local settings and plugins
+.claude/

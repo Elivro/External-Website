@@ -170,8 +170,6 @@ export default function Features() {
             id="features-title"
             className="font-serif text-fg tracking-[-0.021em] leading-[1.05] mb-5"
             style={{
-              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-              fontWeight: 300,
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
               transition:

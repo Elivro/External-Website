@@ -162,7 +162,10 @@ export default function HeroAtmosphere() {
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 
     let rafId = 0
-    const t0 = performance.now()
+    // Pre-warm the clock by a large random offset so the noise field is
+    // already in a "clouds visible" state on first paint. Random so each
+    // refresh shows a different slice of the drift instead of the same one.
+    const t0 = performance.now() - (60000 + Math.random() * 240000)
     const render = () => {
       const t = (performance.now() - t0) / 1000
       gl.clearColor(0, 0, 0, 0)

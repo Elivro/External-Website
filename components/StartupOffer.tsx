@@ -1,194 +1,100 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import DemoModal from './DemoModal'
 
-const TOTAL_SLOTS = 5
-const FILLED_SLOTS = 1
-
 /**
- * Uppstartskampanj — the page's loudest moment in pondus terms. Drop the
- * card-on-card containment, let display-scale typography carry the call,
- * render the scarcity as a five-slot ruler with mono index numbers above
- * a hairline track. Big italic ember on "flerårig rabatt" is the carrot;
- * the deadline stamp underneath is the quiet temporal pressure.
+ * StartupOffer — Uppstartskampanj 2026 (Nystart)
+ *
+ * Faithful port of elivro-landing-mockup-v2.html § NYSTART:
+ *   single centered card on paper bg, red-gradient surface with subtle moss
+ *   radial accent, pulse moss-dot in the tag, paper-white CTA button.
+ *
+ * Sits inside a light section (per the alternating rhythm); the card is the
+ * page's loudest red moment. Red discipline maintained — this is one of the
+ * five permitted positions for full red surface (BK v4 § 6).
  */
 export default function StartupOffer() {
-  const { ref, isVisible } = useIntersectionObserver(0.05)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const remaining = TOTAL_SLOTS - FILLED_SLOTS
 
   return (
     <>
       <section
         id="startup-offer"
-        ref={ref}
         aria-labelledby="startup-offer-title"
-        className="w-full bg-ink py-28 md:py-40 relative overflow-hidden border-t border-edge"
+        className="w-full px-7 pt-12 pb-28"
       >
-        {/* Asymmetric warm halo — slightly louder than other sections */}
         <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
+          className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] px-7 py-20 text-center text-paper sm:px-14 sm:py-24 md:px-14 md:py-[96px]"
           style={{
-            background:
-              'radial-gradient(ellipse 880px 620px at 75% 25%, rgba(210,88,68,0.10), transparent 60%), radial-gradient(ellipse 600px 460px at 15% 85%, rgba(210,88,68,0.05), transparent 65%)',
+            background: `
+              radial-gradient(ellipse at 85% 0%, rgba(30, 125, 89, 0.32), transparent 55%),
+              radial-gradient(ellipse at 0% 100%, rgba(255, 255, 255, 0.12), transparent 50%),
+              linear-gradient(140deg, var(--red) 0%, var(--red-dark) 100%)
+            `,
+            boxShadow:
+              '0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 40px 80px -32px rgba(153, 27, 27, 0.5)',
           }}
-        />
-
-        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-12 text-center">
-
-          {/* Eyebrow pill — stamped notice */}
-          <div
-            className="inline-flex items-center gap-3 rounded-full border border-edge-strong bg-ink-lift/70 backdrop-blur-[2px] px-4 py-2 mb-10"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
-              transition:
-                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
-            }}
+        >
+          {/* Decorative "01" — quiet ordinal in top-right corner */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-8 top-6 select-none font-display text-[80px] italic leading-none tracking-[-0.04em] text-[rgba(255,255,255,0.10)] sm:right-10 sm:top-8 sm:text-[120px]"
+            style={{ fontWeight: 500 }}
           >
-            <span
-              aria-hidden="true"
-              className="block w-1.5 h-1.5 rounded-full bg-accent"
-              style={{ boxShadow: '0 0 0 3px rgba(210, 88, 68, 0.18)' }}
-            />
-            <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-fg">
-              Uppstartskampanj 2026 · {remaining} platser kvar
-            </span>
-          </div>
+            01
+          </span>
 
-          {/* Display headline */}
-          <h2
-            id="startup-offer-title"
-            className="font-serif text-fg tracking-[-0.024em] leading-[1.02] mb-8 max-w-4xl mx-auto"
-            style={{
-              fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)',
-              fontWeight: 300,
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition:
-                'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 120ms',
-            }}
-          >
-            Vill du få{' '}
-            <em className="font-serif italic text-accent">flerårig rabatt</em>{' '}
-            i utbyte mot feedback?
-          </h2>
-
-          {/* Sub copy */}
-          <p
-            className="text-fg-soft text-lg md:text-xl leading-[1.55] max-w-2xl mx-auto mb-16 md:mb-20"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-              transition:
-                'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms',
-            }}
-          >
-            Vi söker fyra assistansanordnare som vill vara med och forma
-            systemet — och få betydligt lägre pris i flera år.
-          </p>
-
-          {/* Slot ruler — five marks on a hairline track */}
-          <div
-            className="mx-auto max-w-2xl mb-14"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
-              transition:
-                'opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 360ms, transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 360ms',
-            }}
-            role="status"
-            aria-label={`${remaining} av ${TOTAL_SLOTS} platser kvar`}
-          >
-            <div className="relative">
-              {/* The track */}
+          <div className="relative">
+            {/* Tag pill — moss pulse dot signals "AI in service" / active campaign */}
+            <div className="mb-8 inline-flex items-center gap-2.5 rounded-pill bg-[rgba(250,250,247,0.16)] px-4 py-[7px] font-display text-[12px] font-medium uppercase tracking-[0.14em] text-paper">
               <span
                 aria-hidden="true"
-                className="absolute left-3 right-3 top-1/2 -translate-y-1/2 h-px bg-edge-strong"
+                className="elv-pulse h-[7px] w-[7px] rounded-full bg-moss"
               />
-
-              {/* Slots */}
-              <ul
-                className="relative flex items-center justify-between"
-                aria-hidden="true"
-              >
-                {Array.from({ length: TOTAL_SLOTS }).map((_, i) => {
-                  const filled = i < FILLED_SLOTS
-                  return (
-                    <li key={i} className="flex flex-col items-center gap-3">
-                      <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-fg-muted">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span
-                        className={
-                          filled
-                            ? 'block w-5 h-5 rounded-full bg-accent ring-2 ring-accent/25 ring-offset-2 ring-offset-ink'
-                            : 'block w-5 h-5 rounded-full bg-ink border border-accent/50'
-                        }
-                        style={
-                          filled
-                            ? { boxShadow: '0 0 16px rgba(210,88,68,0.35)' }
-                            : undefined
-                        }
-                      />
-                      <span
-                        className={
-                          filled
-                            ? 'font-mono text-[9px] tracking-[0.2em] uppercase text-accent'
-                            : 'font-mono text-[9px] tracking-[0.2em] uppercase text-fg-muted'
-                        }
-                      >
-                        {filled ? 'Tagen' : 'Öppen'}
-                      </span>
-                    </li>
-                  )
-                })}
-              </ul>
+              Uppstartskampanj 2026 · Fyra platser kvar
             </div>
-            <p className="mt-8 font-mono text-[11px] tracking-[0.16em] uppercase text-fg-muted">
-              {`${FILLED_SLOTS} av ${TOTAL_SLOTS} tagna · ${remaining} platser kvar`}
-            </p>
-          </div>
 
-          {/* CTA — scaled up half a step from the rest of the site */}
-          <div
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
-              transition:
-                'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 480ms, transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 480ms',
-            }}
-          >
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-base font-sans font-medium text-ink bg-accent hover:bg-accent-bright active:bg-accent-deep rounded-obs-md transition-colors ease-obsidian duration-obs-sm"
+            {/* Headline — display, italic accent on "formar systemet" */}
+            <h2
+              id="startup-offer-title"
+              className="mx-auto mb-6 max-w-[820px] font-display text-[clamp(42px,5.6vw,72px)] font-bold leading-[1.03] tracking-[-0.032em] text-balance"
             >
-              Boka 30 minuter
-              <ArrowRight
-                className="w-4 h-4 transition-transform ease-obsidian duration-obs-sm group-hover:translate-x-0.5"
-                strokeWidth={2}
-              />
-            </button>
-          </div>
+              Bli en av fyra som{' '}
+              <em
+                className="font-italic font-bold italic"
+                style={{ color: '#FAFAF7' }}
+              >
+                formar systemet
+              </em>
+              .
+            </h2>
 
-          {/* Deadline stamp — quiet temporal pressure */}
-          <div
-            className="mt-10 inline-flex items-center gap-3"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition:
-                'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 600ms',
-            }}
-          >
-            <span aria-hidden="true" className="block w-6 h-px bg-accent/60" />
-            <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-fg-muted">
-              Slutar 2026-09-30
-            </span>
-            <span aria-hidden="true" className="block w-6 h-px bg-accent/60" />
+            {/* Sub */}
+            <p className="mx-auto mb-10 max-w-[580px] text-[17px] text-[rgba(250,250,247,0.88)]">
+              Vi söker fyra assistansanordnare som vill vara med och forma
+              systemet under 2026. Vi bygger med er, inte åt er.
+            </p>
+
+            {/* CTA — white pill on red surface, ink text */}
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="group inline-flex items-center gap-2.5 rounded-pill bg-paper px-[30px] py-[17px] text-[15px] font-bold text-ink shadow-[0_8px_24px_-8px_rgba(0,0,0,0.2)] transition-all duration-fast ease-out hover:-translate-y-0.5 hover:shadow-[0_14px_36px_-10px_rgba(0,0,0,0.28)]"
+            >
+              Boka demo
+              <span
+                aria-hidden="true"
+                className="inline-block transition-transform duration-fast ease-out group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </button>
+
+            {/* Fineprint */}
+            <div className="mt-5 text-[13px] text-[rgba(250,250,247,0.55)]">
+              Stänger 2026-09-30 · Pilot 90 dagar med pengarna tillbaka
+            </div>
           </div>
         </div>
       </section>

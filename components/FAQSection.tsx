@@ -3,43 +3,14 @@
 import { useState, useRef } from 'react'
 import { Plus, Minus } from 'lucide-react'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-
-interface FAQ {
-  question: string
-  answer: string
-}
+import { FAQS } from '@/lib/faq-data'
 
 export default function FAQSection() {
   const { ref: sectionRef, isVisible } = useIntersectionObserver(0.1)
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const toggleTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  const faqs: FAQ[] = [
-    {
-      question: 'Hur lång tid tar det att komma igång?',
-      answer: 'Vanligtvis 2–4 veckor från första samtalet till att ni arbetar i systemet dagligen. Vi tar oss tid att göra det rätt — import av data, anpassning efter era rutiner, och utbildning som ger trygghet.',
-    },
-    {
-      question: 'Finns det någon risk att testa Elivro?',
-      answer: 'Nej. Testa systemet i 30 dagar utan förpliktelser. Passar det inte er verksamhet? Avsluta när som helst — inga bindningstider, inga frågor.',
-    },
-    {
-      question: 'Vad kostar Elivro?',
-      answer: 'Elivro är en investering i kvalitet, inte en kostnad att minimera. Prissättningen anpassas efter er verksamhets storlek. Boka ett samtal så visar vi vad som passar er bäst.',
-    },
-    {
-      question: 'Hur säkras personuppgifter enligt GDPR?',
-      answer: 'Elivro är GDPR-kompatibel med kryptering, rollbaserade behörigheter och servrar inom EU. All data behandlas enligt GDPR med högsta säkerhet och integritet.',
-    },
-    {
-      question: 'Hur får vi support?',
-      answer: 'All support sker på svenska, från människor som förstår er bransch. E-post och telefon. Dedikerad hjälp när ni behöver det.',
-    },
-    {
-      question: 'Vad händer med vår data om vi avslutar?',
-      answer: 'Er data är alltid er. Om ni väljer att avsluta får ni en fullständig export i vanliga format (Excel/CSV). Vi raderar era personuppgifter enligt GDPR inom 30 dagar.',
-    },
-  ]
+  const faqs = FAQS
 
   const toggleFAQ = (index: number) => {
     if (toggleTimeoutRef.current) clearTimeout(toggleTimeoutRef.current)
@@ -64,7 +35,7 @@ export default function FAQSection() {
           </p>
           <h2
             id="faq-title"
-            className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-light text-fg tracking-[-0.021em] leading-[1.05]"
+            className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-bold text-fg tracking-[-0.021em] leading-[1.05]"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(16px)',

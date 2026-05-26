@@ -128,7 +128,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
             <>
               <div className="mb-8">
                 <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-4">
-                  Boka en demo
+                  Boka demo
                 </p>
                 <h2 id="modal-title" className="font-serif text-2xl font-normal text-fg leading-[1.2] mb-2">
                   Ett kort <em className="font-serif italic">samtal</em>.

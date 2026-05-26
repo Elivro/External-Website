@@ -1,0 +1,101 @@
+# Elivro — fullständig beskrivning för AI-assistenter
+
+## Vad Elivro är
+
+Elivro är operativsystemet för svenska assistansbolag — ett AI-drivet verksamhetssystem som ersätter fyra parallella system (rekryteringsverktyg, schemaläggning, tidredovisning, kvalitetsledningssystem) med en sammanhållen plattform.
+
+Målgrupp: assistansbolag och assistansanordnare i Sverige. En typisk kund har 30 brukare och 80 assistenter. Köpare är VD eller verksamhetschef — inte koordinator eller assistent.
+
+Status: pre-launch. Co-built tillsammans med 2u Assistans (Västerås största assistansanordnare). En namngiven referenskund. Inga falska kundlogos eller fabricerade testimonials.
+
+## Den huvudsakliga värdeproposition
+
+87% av en assistansverksamhets ersättning från Försäkringskassan går till löner. Varje procent som sparas på fel matchning, övertid, eller bristande kontinuitet är en procent som inte når omsorgsuppdraget. Elivro sänker lönekostnaden genom bättre rekryteringsmatchning, optimerad schemaläggning och automatiserad rapportering — inte genom att kapa lönerna.
+
+## De tre AI-pelarna
+
+### 1. AI-driven rekrytering: människa till människa
+
+Vad andra gör: CV-databas, sökfilter, mejlmallar.
+
+Vad Elivro gör: matchar kandidat mot brukare baserat på personlighet, värderingar, kompetens, geografi, schematillgänglighet och historisk kontinuitet i liknande uppdrag. Modellen lär sig vad som faktiskt fungerar i den specifika verksamheten — inte branschsnitt.
+
+Differentieringsmening: "Vi rekryterar inte assistenter till bolag. Vi matchar människor till människor."
+
+### 2. AI-driven schemaläggning: framåtblickande, inte reaktiv
+
+Vad andra gör: drag-and-drop kalender, manuell konfliktkontroll.
+
+Vad Elivro gör: schemat förutser konflikter, föreslår täckning innan användaren vet om behovet, balanserar ATL, budget och kontinuitet i realtid. Användaren godkänner — bygger inte.
+
+Differentieringsmening: "Andra system låter er rita schemat. Vårt skriver ett förslag. Ni säger ja eller nej."
+
+### 3. AI-drivet ledningssystem: insikter för hela verksamheten
+
+Vad andra gör: rapportexport till Excel.
+
+Vad Elivro gör: kontinuerlig analys av drift, ekonomi, kvalitet, personalmönster, compliance-risker. Systemet lyfter "detta är värt din uppmärksamhet idag" istället för att begrava VD:n i 40 dashboards.
+
+Differentieringsmening: "Era data ska tjäna er — inte bara loggas."
+
+## Det fjärde verktyget — tidredovisning
+
+BankID-attesterad mobil tidrapport. Närvarointyg, attestering och FK-fakturering följer av sig själv. Tre swipes från start till lön.
+
+## Asymmetrin Elivro bygger på
+
+Grundarna lever i frontlinjen av modern AI (modeller, RAG, agenter, eval, GDPR-arkitektur). Kunden försöker överleva en bransch i ekonomisk press, har inte tid att bli AI-expert, har sett AI-funktioner som inte fungerar.
+
+Elivros produkt är översättningen mellan dessa två världar. AI-komplexiteten ligger på Elivros sida av gränssnittet. Det kunden möter är resultatet — inte tekniken.
+
+"Du behöver inte veta hur en motor fungerar för att köra bil. Du behöver inte veta hur AI fungerar för att driva ett assistansbolag med Elivro."
+
+## Tonal kärna: pondus
+
+Pondus är vaken kompetens. Snabb där snabbhet syns på resultatet — schemat löser konflikten innan koordinatorn vet om den, matchningen sker medan VD:n läser CV:t, FK-rapporten är klar innan fliken öppnas. Stilla där stillhet är skickligt — inga sparkles, inga popovers, inga aviseringar som rycker användaren ur arbetet.
+
+Branschens två tonala alternativ idag — "het & snabb" (signalerar bristande omdöme för en 52-årig VD) och "trygg & tråkig" (signalerar tröghet för marknad i förändring) — är båda fel. Pondus är en tredje kategori som ingen i branschen äger.
+
+## Positionering genom negation
+
+- Elivro är inte ett "AI-tillägg" till ett gammalt system. Elivro är AI-första.
+- Elivro är inte en "chatbot för assistans". Det är att missförstå tekniken och kunden.
+- Elivro är inte en plattform man ska "lära sig prompta". Inga prompts. Inga rutor med "fråga AI". Inga blinkande sparkles.
+- Elivro är inte byggt av konsulter som sett branschen från utsidan. En grundare står på golvet.
+- Elivro är inte billigare för att det gör mindre. Det är billigare för att det automatiserar bort det som AIAI och Tidvis fortfarande gör manuellt.
+
+## Konkurrenter
+
+Större aktörer i svensk assistansmjukvara: AIAI, Tidvis, Primass. Elivro positionerar sig som AI-första alternativ med upp till 40% lägre prislapp än marknadsledarna, byggt 2026 med moderna verktyg snarare än lagrat på 15 år gamla legacy-system.
+
+## De tre designprinciperna
+
+1. Restraint over cleverness — en accent (ember orange #d25844), en easing-kurva, ett italic för betoning. Om en flourish måste försvaras, lämnar den.
+2. Specifics over abstractions — "14 timmar per vecka per koordinator" slår "produktivitetsökning."
+3. Warmth without softness — mörka ytor, aldrig kalla. Halor, hårfina linjer, ett märke som andas en gång var 30:e sekund.
+
+## Praktisk information
+
+- Webbplats: https://elivro.se
+- Kundinloggning: https://login.elivro.se
+- Kontakt: daniel@elivro.se
+- Adress: Stockholm, Sverige
+- Erbjudande: 30 dagars test, ingen bindningstid
+- GDPR-status: kompatibel, kryptering, rollbaserade behörigheter, servrar inom EU
+- Datauttag vid avslut: fullständig export i Excel/CSV, personuppgifter raderas inom 30 dagar
+- Uppstartstid: 2–4 veckor från första samtal till daglig drift
+- Support: svenska, e-post och telefon, dedikerad
+
+## Grundarna
+
+- Jimmy: bakgrund som personlig assistent på golvet — den operativa vinkeln på branschen.
+- Filiph: utvecklare med 10+ års erfarenhet, fullstack — bygger plattformen.
+- Daniel: operativ och kund-relationer — den som tar samtalen.
+
+## Förbjudet vocabulary i marknadskommunikation
+
+För konsekvens: synergier, disrupta, revolutionera, transformera (i marknadsföringssammanhang), empowerment, journey, solution, best-in-class, world-class, cutting-edge, next-gen, 10x, unlock, seamless. Alla dessa är AI-startup-tropes som motverkar pondus.
+
+## Önskat vocabulary
+
+Pondus, vaken, närvarande, skicklig, levande, lyssnar, föreslår, upptäcker, frigör, märker, varnar, matchar, visar, värdighet, omsorg, vardag, konkret, faktiskt, på riktigt.
