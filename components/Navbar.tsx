@@ -35,8 +35,9 @@ export default function Navbar() {
   }
 
   const navLinks = [
-    { label: 'System', id: 'features' },
-    { label: 'Team', id: 'about-us' },
+    { label: 'Produkt', id: 'product' },
+    { label: 'Funktioner', id: 'features' },
+    { label: 'Om oss', id: 'about-us' },
     { label: 'Manifest', id: 'manifesto' },
     { label: 'Bevis', id: 'case-proof' },
   ]

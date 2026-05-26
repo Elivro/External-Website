@@ -85,10 +85,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     }
   }
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose()
-  }
-
   if (!isOpen) return null
 
   const inputClass =
@@ -99,7 +95,6 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
@@ -108,10 +103,13 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
       }}
     >
       {/* Backdrop — solid ink, no blur per Obsidian anti-pattern.
-          Inline rgba so the data-surface override on the card doesn't
-          accidentally bleed through here. */}
-      <div
-        className="absolute inset-0"
+          Clicking the backdrop closes the modal. Inline rgba so the
+          data-surface override on the card doesn't bleed here. */}
+      <button
+        type="button"
+        aria-label="Stäng modal"
+        onClick={onClose}
+        className="absolute inset-0 cursor-default"
         style={{ backgroundColor: 'rgba(17, 17, 17, 0.85)' }}
       />
 
