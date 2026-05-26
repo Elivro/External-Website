@@ -93,7 +93,7 @@ export default function Hero() {
                   width={1200}
                   height={1200}
                   priority
-                  className="elv-float h-auto w-full lg:w-[122%] lg:max-w-none lg:-mx-[11%]"
+                  className="elv-float h-auto w-full 2xl:w-[122%] 2xl:max-w-none 2xl:-mx-[11%]"
                 />
               </div>
             </div>
@@ -104,13 +104,13 @@ export default function Hero() {
             section so it anchors above the fold. */}
         <div className="mt-16 border-t border-line bg-paper-card py-7 shadow-[inset_0_-1px_0_rgba(255,255,255,0.5)]">
           <div className="px-7">
-            <div className="grid grid-cols-1 items-center gap-y-5 sm:grid-cols-2 lg:grid-cols-[1.4fr_repeat(6,1fr)]">
+            <div className="grid grid-cols-1 items-center gap-y-5 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(6,minmax(0,1fr))]">
               <div className="flex items-center gap-4 border-line pr-8 lg:border-r">
                 <span
                   aria-hidden="true"
                   className="w-[3px] self-stretch min-h-[36px] rounded-sm bg-red"
                 />
-                <span className="whitespace-nowrap font-display text-[16.5px] font-medium leading-[1.25] tracking-[-0.008em] text-ink">
+                <span className="font-display text-[16.5px] font-medium leading-[1.25] tracking-[-0.008em] text-ink">
                   Vi tar betalt för utfall, inte för försök.
                 </span>
               </div>

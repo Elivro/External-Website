@@ -258,7 +258,7 @@ export default function ProductShowcase() {
               type="button"
               onClick={() => go(activeIndex - 1)}
               aria-label="Föregående verktyg"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-obs-md border border-edge text-fg-muted hover:text-fg hover:border-edge-strong transition-colors ease-obsidian duration-obs-sm"
+              className="inline-flex items-center justify-center w-11 h-11 rounded-obs-md border border-edge text-fg-muted hover:text-fg hover:border-edge-strong transition-colors ease-obsidian duration-obs-sm"
             >
               <ChevronLeft className="w-4 h-4" strokeWidth={1.4} />
             </button>
@@ -266,7 +266,7 @@ export default function ProductShowcase() {
               type="button"
               onClick={() => go(activeIndex + 1)}
               aria-label="Nästa verktyg"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-obs-md border border-edge text-fg-muted hover:text-fg hover:border-edge-strong transition-colors ease-obsidian duration-obs-sm"
+              className="inline-flex items-center justify-center w-11 h-11 rounded-obs-md border border-edge text-fg-muted hover:text-fg hover:border-edge-strong transition-colors ease-obsidian duration-obs-sm"
             >
               <ChevronRight className="w-4 h-4" strokeWidth={1.4} />
             </button>
@@ -281,30 +281,35 @@ export default function ProductShowcase() {
                       onClick={() => go(i)}
                       aria-pressed={isActive}
                       aria-label={`Visa verktyg ${t.index}`}
-                      className={`relative block overflow-hidden transition-all ease-obsidian duration-obs-sm ${
-                        isActive
-                          ? 'w-14 h-[2px] bg-edge-strong'
-                          : 'w-7 h-px bg-edge-strong hover:bg-fg-muted hover:h-[2px]'
-                      }`}
+                      className="group flex items-center justify-center min-w-[44px] h-11"
                     >
-                      {isActive && (
-                        <span
-                          key={`${activeIndex}-${userInteracted}`}
-                          aria-hidden="true"
-                          className="absolute inset-0 origin-left"
-                          style={{
-                            background:
-                              'linear-gradient(to right, var(--accent-deep) 0%, var(--accent) 60%, var(--accent-bright) 100%)',
-                            boxShadow: '0 0 6px rgba(210, 88, 68, 0.55)',
-                            transform:
-                              userInteracted || reducedMotion ? 'scaleX(1)' : undefined,
-                            animation:
-                              userInteracted || reducedMotion
-                                ? undefined
-                                : `progressSweep ${ROTATE_MS}ms linear forwards`,
-                          }}
-                        />
-                      )}
+                      <span
+                        aria-hidden="true"
+                        className={`relative block overflow-hidden transition-all ease-obsidian duration-obs-sm ${
+                          isActive
+                            ? 'w-14 h-[2px] bg-edge-strong'
+                            : 'w-7 h-px bg-edge-strong group-hover:bg-fg-muted group-hover:h-[2px]'
+                        }`}
+                      >
+                        {isActive && (
+                          <span
+                            key={`${activeIndex}-${userInteracted}`}
+                            aria-hidden="true"
+                            className="absolute inset-0 origin-left"
+                            style={{
+                              background:
+                                'linear-gradient(to right, var(--accent-deep) 0%, var(--accent) 60%, var(--accent-bright) 100%)',
+                              boxShadow: '0 0 6px rgba(210, 88, 68, 0.55)',
+                              transform:
+                                userInteracted || reducedMotion ? 'scaleX(1)' : undefined,
+                              animation:
+                                userInteracted || reducedMotion
+                                  ? undefined
+                                  : `progressSweep ${ROTATE_MS}ms linear forwards`,
+                            }}
+                          />
+                        )}
+                      </span>
                     </button>
                   </li>
                 )

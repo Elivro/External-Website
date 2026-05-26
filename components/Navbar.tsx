@@ -91,7 +91,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-n-700 hover:text-ink hover:bg-paper-soft transition-colors duration-fast ease-out"
+              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] rounded-md p-2 text-n-700 hover:text-ink hover:bg-paper-soft transition-colors duration-fast ease-out"
               aria-expanded={mobileMenuOpen}
             >
               <span className="sr-only">Öppna meny</span>
