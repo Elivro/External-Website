@@ -25,9 +25,9 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative overflow-visible bg-hero-bg pt-12">
-        <div className="container-default">
-          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[0.9fr_1.2fr] lg:gap-[72px]">
+      <section className="relative flex min-h-screen flex-col overflow-visible bg-hero-bg">
+        <div className="container-default flex flex-1 items-center py-12 lg:py-16">
+          <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[0.9fr_1.2fr] lg:gap-[72px]">
             {/* LEFT — editorial content */}
             <div>
               <div className="eyebrow-pill mb-8">
@@ -101,8 +101,10 @@ export default function Hero() {
         </div>
 
         {/* TRUST BAND — full-width, paper-card surface, sits inside hero
-            section so it anchors above the fold. */}
-        <div className="mt-16 border-t border-line bg-paper-card py-7 shadow-[inset_0_-1px_0_rgba(255,255,255,0.5)]">
+            section so it anchors above the fold. The section is min-h-screen
+            with flex-col, so the trust band naturally pins to the bottom of
+            the viewport on the first paint. */}
+        <div className="border-t border-line bg-paper-card py-7 shadow-[inset_0_-1px_0_rgba(255,255,255,0.5)]">
           <div className="px-7">
             <div className="grid grid-cols-1 items-center gap-y-5 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(6,minmax(0,1fr))]">
               <div className="flex items-center gap-4 border-line pr-8 lg:border-r">

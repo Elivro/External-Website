@@ -22,15 +22,22 @@ export default function TopBanner() {
       href="#startup-offer"
       className="group block w-full border-b border-paper/15 bg-moss text-paper transition-colors duration-obs-sm ease-obsidian hover:bg-[#197049]"
     >
-      <p className="mx-auto flex min-h-[44px] max-w-[1280px] flex-wrap items-center justify-center gap-x-3 gap-y-1 px-7 py-2 text-center text-[13px] leading-[1.45]">
+      <p className="mx-auto flex min-h-[52px] max-w-[1280px] flex-wrap items-center justify-center gap-x-5 gap-y-1 px-7 py-2.5 text-center leading-[1.25]">
         <span
           aria-hidden="true"
           className="elv-pulse inline-block h-[7px] w-[7px] shrink-0 rounded-full bg-paper/85"
           style={{ animationDuration: '3.2s' }}
         />
-        <span className="whitespace-nowrap">Uppstartskampanj 2026.</span>
-        <span className="whitespace-nowrap">Fyra platser kvar.</span>
-        <span className="inline-flex items-center gap-1 whitespace-nowrap">
+        <span className="font-display text-[15.5px] font-bold tracking-[-0.022em] whitespace-nowrap">
+          Uppstartskampanj 2026.
+        </span>
+        <span aria-hidden="true" className="hidden sm:inline-block h-3.5 w-px shrink-0 bg-paper/25" />
+        <span className="text-[13.5px] whitespace-nowrap text-paper/90">
+          Fyra platser{' '}
+          <em className="font-serif italic">kvar</em>.
+        </span>
+        <span aria-hidden="true" className="hidden sm:inline-block h-3.5 w-px shrink-0 bg-paper/25" />
+        <span className="inline-flex items-center gap-1 whitespace-nowrap text-[13px]">
           Läs mer
           <span
             aria-hidden="true"
