@@ -11,8 +11,9 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     // Next 16 requires non-default quality values to be allowlisted —
-    // 92 used on the founder group photo for sharper rendering.
-    qualities: [75, 92],
+    // 92 + 95 used on the founder photos, susanne portrait, and 2u logo
+    // for sharper rendering.
+    qualities: [75, 92, 95],
   },
 
   // Compress output

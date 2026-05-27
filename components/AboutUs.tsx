@@ -42,7 +42,7 @@ const FOUNDERS: Founder[] = [
   },
 ]
 
-const GROUP_PHOTO = '/founders/group.png'
+const GROUP_PHOTO = '/founders/group.jpg'
 const INTRO =
   'Vi byggde Elivro tillsammans under sex månader. Jimmy har arbetat tio månader som personlig assistent. Filiph har tio år som utvecklare för det offentliga, i system med höga krav på säkerhet och tillgänglighet. Daniel är expert på kundsupport och utbildad utvecklare. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
 
