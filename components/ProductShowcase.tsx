@@ -118,6 +118,11 @@ export default function ProductShowcase() {
       aria-labelledby="product-title"
       className="w-full bg-ink py-24 md:py-32 relative"
     >
+      {/* progressSweep keyframe — defined inline so it's guaranteed to
+          ship even if the global CSS hasn't been recompiled. Drives the
+          ember sweep on the active tab underline and the progress strip
+          below the screenshot. */}
+      <style dangerouslySetInnerHTML={{ __html: '@keyframes progressSweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }' }} />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         <header className="max-w-3xl mb-14 md:mb-16">
           <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-4">Produkten</p>
