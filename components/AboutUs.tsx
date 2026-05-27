@@ -160,7 +160,7 @@ export default function AboutUs() {
               /* Stage column is ~57% of the wrap. Sizes scales with the
                  viewport so high-DPR displays pick a sharper srcset
                  variant (source PNG is 3072px wide — plenty of headroom). */
-              sizes="(max-width: 820px) 100vw, (max-width: 1280px) 70vw, 1200px"
+              sizes="(max-width: 820px) 100vw, (max-width: 1280px) 70vw, (min-width: 1440px) 1800px, 1200px"
               quality={95}
               className="about-stage-img-el"
               priority
