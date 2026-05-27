@@ -122,7 +122,7 @@ export default function AboutUs() {
     <section
       id="about-us"
       aria-labelledby="about-title"
-      className="w-full pt-20 md:pt-24 bg-warm"
+      className="w-full pt-14 bg-[#c5baa6b3]"
     >
       <div className="about-wrap">
         <div className="about-content">
