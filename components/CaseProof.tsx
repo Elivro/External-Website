@@ -93,8 +93,11 @@ export default function CaseProof() {
             style={{ fontSize: 'clamp(1.25rem, 2.4vw, 1.875rem)', fontWeight: 300 }}
           >
             <span aria-hidden="true" className="text-fg-muted">&ldquo;</span>
-            Ett modernt system med snabb support och en lösning som verkligen{' '}
-            <em className="font-serif italic">levererar</em> för verksamheten.
+            Rekryterarna valde{' '}
+            <em className="font-serif italic">enbart</em> att anställa
+            kandidater som systemet rekommenderat som en{' '}
+            <em className="font-serif italic">matchning</em> mellan kund och
+            kandidat.
             <span aria-hidden="true" className="text-fg-muted">&rdquo;</span>
           </blockquote>
 
@@ -107,7 +110,7 @@ export default function CaseProof() {
               2U
             </span>
             <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-fg-muted">
-              Susanne Pettersson · Arbetsmiljöansvarig · 2U Assistans
+              Citat förbereds · Rekryterare · 2U Assistans
             </span>
           </figcaption>
         </figure>

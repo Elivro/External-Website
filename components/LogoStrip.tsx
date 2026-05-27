@@ -110,17 +110,17 @@ export default function LogoStrip() {
           {/* Quote + attribution */}
           <div>
             <p
-              className="mb-7 font-italic italic text-[clamp(26px,2.7vw,38px)] leading-[1.22] tracking-[-0.012em]"
+              className="mb-7 font-italic italic text-[clamp(22px,2.2vw,32px)] leading-[1.28] tracking-[-0.012em]"
               style={{ color: WHITE, fontWeight: 300 }}
             >
-              &ldquo;Jag tycker det fungerar{' '}
+              &ldquo;Ett modernt system med snabb support och en lösning som{' '}
               <em
                 className="font-italic italic"
                 style={{ color: RED, fontWeight: 500 }}
               >
-                riktigt bra
-              </em>
-              .&rdquo;
+                verkligen levererar
+              </em>{' '}
+              för verksamheten.&rdquo;
             </p>
             <div className="max-w-[420px] border-t pt-5" style={{ borderColor: WHITE_18 }}>
               <div
