@@ -38,8 +38,7 @@ export default function Navbar() {
     { label: 'Produkt', id: 'product' },
     { label: 'Funktioner', id: 'features' },
     { label: 'Om oss', id: 'about-us' },
-    { label: 'Manifest', id: 'manifesto' },
-    { label: 'Bevis', id: 'case-proof' },
+    { label: 'Case', id: 'case-proof' },
   ]
 
   return (

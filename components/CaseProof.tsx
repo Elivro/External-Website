@@ -65,6 +65,8 @@ export default function CaseProof() {
             id="case-proof-title"
             className="font-serif text-fg tracking-[-0.022em] leading-[1.05] mx-auto max-w-3xl"
             style={{
+              fontSize: 'clamp(2rem, 4.2vw, 3.25rem)',
+              fontWeight: 600,
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
               transition:
@@ -76,8 +78,7 @@ export default function CaseProof() {
           </h2>
         </header>
 
-        {/* Pull-quote — centered card. Cite shows the 2u monogram tile + role
-            (no fake personal name; drop in once 2u approves attribution). */}
+        {/* Pull-quote — centered card */}
         <figure
           className="relative bg-ink-card border border-edge rounded-obs-lg px-7 py-12 md:px-14 md:py-16 mx-auto max-w-3xl mb-20 md:mb-24"
           style={{
@@ -89,10 +90,7 @@ export default function CaseProof() {
         >
           <blockquote
             className="font-serif text-fg leading-[1.25] tracking-[-0.012em] text-center"
-            style={{
-              fontSize: 'clamp(1.25rem, 2.4vw, 1.875rem)',
-              fontWeight: 300,
-            }}
+            style={{ fontSize: 'clamp(1.25rem, 2.4vw, 1.875rem)', fontWeight: 300 }}
           >
             <span aria-hidden="true" className="text-fg-muted">&ldquo;</span>
             Rekryterarna valde{' '}
@@ -125,9 +123,7 @@ export default function CaseProof() {
           {KPIS.map((kpi, i) => (
             <li
               key={i}
-              className={`px-6 py-10 md:px-8 md:py-14 text-center flex flex-col items-center ${
-                i % 2 === 1 ? 'border-l border-edge lg:border-l-0' : ''
-              }`}
+              className="px-6 py-10 md:px-8 md:py-14 text-center flex flex-col items-center"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
@@ -135,15 +131,12 @@ export default function CaseProof() {
               }}
             >
               <span
-                className="font-italic not-italic text-fg leading-[1] tracking-[-0.04em] mb-5"
-                style={{
-                  fontSize: 'clamp(2.75rem, 6vw, 5rem)',
-                  fontWeight: 400,
-                }}
+                className="font-italic not-italic text-fg leading-[1] tracking-[-0.04em] mb-6"
+                style={{ fontSize: 'clamp(2.75rem, 6vw, 5rem)', fontWeight: 400 }}
               >
                 {kpi.number}
               </span>
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-fg-muted leading-[1.45] max-w-[14rem]">
+              <span className="font-sans text-[15px] text-fg-soft leading-[1.5] max-w-[18rem]">
                 {kpi.label}
               </span>
             </li>

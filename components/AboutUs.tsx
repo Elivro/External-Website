@@ -17,37 +17,37 @@ const FOUNDERS: Founder[] = [
     slug: 'jimmy',
     name: 'Jimmy Södermark',
     role: 'Sälj & verksamhet',
-    shortBio: 'Ex-säljchef. Jobbar idag som personlig assistent.',
+    shortBio: 'Ex-säljchef. Tio månader som personlig assistent.',
     longBio:
-      'Byggde Elivro under tio månaders aktiv tjänst som personlig assistent hos 2u Assistans. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
+      'Arbetade i tio månader som personlig assistent hos 2u Assistans, medan vi tre byggde Elivro tillsammans. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
     photo: '/founders/jimmy.png',
   },
   {
     slug: 'filiph',
     name: 'Filiph Arverot-Falk',
-    role: 'Teknik & utveckling',
-    shortBio: 'Tio år som fullstack-utvecklare.',
+    role: 'Tech lead & systemarkitekt',
+    shortBio: 'Tio år som utvecklare. Säkerhet och tillgänglighet i ryggraden.',
     longBio:
-      'Tio år som fullstack-utvecklare. Har byggt produkt för allt från fintech till hälsa. Ansvarar för plattformen, integrationerna och att GDPR sitter i koden — inte i en PDF.',
+      'Tio år som fullstack-utvecklare med tunga projekt för det offentliga och system där säkerhet och tillgänglighet inte är förhandlingsbart. Ansvarar för arkitektur, plattform, integrationer och att GDPR sitter i koden — inte i en PDF.',
     photo: '/founders/filiph.png',
   },
   {
     slug: 'daniel',
     name: 'Daniel Nakhost',
-    role: 'Drift & kundsupport',
-    shortBio: 'SOS-operatör i grunden. Datavetenskap i ryggen.',
+    role: 'Kundsupport & utveckling',
+    shortBio: 'Expert på kundsupport. Utbildad utvecklare.',
     longBio:
-      'Många år som SOS-operatör innan datavetenskapen tog över. Vet vad som händer när ett system sviker mitt i ett samtal — och vad som krävs för att det aldrig ska göra det.',
+      'År av kundsupport på allvar, med en utbildning i utveckling i ryggen. Vet vad som händer när ett system sviker mitt i ett samtal — och vad som krävs för att det aldrig ska göra det.',
     photo: '/founders/daniel.png',
   },
 ]
 
 const GROUP_PHOTO = '/founders/group.png'
 const INTRO =
-  'Jimmy byggde Elivro under tio månaders aktiv tjänst som personlig assistent. Filiph har tio år som fullstack-utvecklare. Daniel kommer från SOS Alarm. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
+  'Vi byggde Elivro tillsammans under tio månader. Jimmy arbetade som personlig assistent hos 2u Assistans. Filiph har tio år som utvecklare i offentlig sektor och i system med höga krav på säkerhet och tillgänglighet. Daniel är expert på kundsupport och utbildad utvecklare. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
 
 const BULLETS = [
-  'Byggt under tio månaders aktiv tjänst som personlig assistent.',
+  'Byggt parallellt med tio månaders arbete som personlig assistent.',
   'Sambygget med 2u Assistans — Västerås största assistansanordnare.',
   'Du pratar med en grundare. Inte en supportkö.',
 ]
@@ -122,7 +122,7 @@ export default function AboutUs() {
     <section
       id="about-us"
       aria-labelledby="about-title"
-      className="w-full"
+      className="w-full pt-20 md:pt-24"
     >
       <div className="about-wrap">
         <div className="about-content">

@@ -580,6 +580,12 @@ textarea::placeholder {
 }
 
 .about-stage-img-el {
+  /* Override next/image fill defaults: pin image to bottom 95% of the
+     stage so the top 5% breathes, and the founders' heads sit further
+     down (more room above for names + arrows). */
+  height: 95% !important;
+  top: auto !important;
+  bottom: 0 !important;
   object-fit: cover;
   object-position: center 38%;
   /* Stage now spans the full wrap. The copy column lives in the photo's

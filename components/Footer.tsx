@@ -9,22 +9,19 @@ type LinkItem =
   | { label: string; section: string }
 
 const PRODUKT: LinkItem[] = [
-  { label: 'System', section: 'features' },
-  { label: '2U-fallet', section: 'case-proof' },
+  { label: 'Produkt', section: 'product' },
+  { label: 'Funktioner', section: 'features' },
+  { label: 'Case', section: 'case-proof' },
   { label: 'Uppstartskampanj', section: 'startup-offer' },
 ]
 
 const FORETAG: LinkItem[] = [
-  { label: 'Team', section: 'about-us' },
-  { label: 'Manifest', section: 'manifesto' },
-  { label: 'Kontakt', href: 'mailto:jimmy.sodermark@elivro.se' },
+  { label: 'Om oss', section: 'about-us' },
+  { label: 'Kontakt', href: 'mailto:hello@elivro.se' },
 ]
 
 const REGELEFTERLEVNAD: LinkItem[] = [
-  { label: 'EU AI Act', href: '#' },
   { label: 'GDPR', href: '/integritetspolicy' },
-  { label: 'Berget AI', href: '#' },
-  { label: 'Tillsyns-redo', href: '#' },
 ]
 
 function FooterColumn({ eyebrow, items }: { eyebrow: string; items: LinkItem[] }) {
