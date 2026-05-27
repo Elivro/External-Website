@@ -53,7 +53,8 @@ const TOOLS: Tool[] = [
     category: 'Tid, Lön & FK',
     heading: (
       <>
-        Tre swipes från start till <em className="font-serif italic">lön</em>.
+        Säker och certifierad tidredovisning till{' '}
+        <em className="font-serif italic">Försäkringskassan</em>.
       </>
     ),
     body:
