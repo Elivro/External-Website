@@ -19,16 +19,16 @@ const FOUNDERS: Founder[] = [
     role: 'Sälj & verksamhet',
     shortBio: 'Ex-säljchef. Tio månader som personlig assistent.',
     longBio:
-      'Arbetade i tio månader som personlig assistent hos 2u Assistans, medan vi tre byggde Elivro tillsammans. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
+      'Tio månader som personlig assistent. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
     photo: '/founders/jimmy.png',
   },
   {
     slug: 'filiph',
     name: 'Filiph Arverot-Falk',
-    role: 'Tech lead & systemarkitekt',
+    role: 'Utveckling & systemarkitektur',
     shortBio: 'Tio år som utvecklare. Säkerhet och tillgänglighet i ryggraden.',
     longBio:
-      'Tio år som fullstack-utvecklare med tunga projekt för det offentliga och system där säkerhet och tillgänglighet inte är förhandlingsbart. Ansvarar för arkitektur, plattform, integrationer och att GDPR sitter i koden — inte i en PDF.',
+      'Tio år som utvecklare med tunga projekt för det offentliga och system där säkerhet och tillgänglighet inte är förhandlingsbart. Ansvarar för arkitektur, plattform, integrationer och att GDPR sitter i koden — inte i en PDF.',
     photo: '/founders/filiph.png',
   },
   {
@@ -44,10 +44,10 @@ const FOUNDERS: Founder[] = [
 
 const GROUP_PHOTO = '/founders/group.png'
 const INTRO =
-  'Vi byggde Elivro tillsammans under tio månader. Jimmy arbetade som personlig assistent hos 2u Assistans. Filiph har tio år som utvecklare i offentlig sektor och i system med höga krav på säkerhet och tillgänglighet. Daniel är expert på kundsupport och utbildad utvecklare. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
+  'Vi byggde Elivro tillsammans under sex månader. Jimmy har arbetat tio månader som personlig assistent. Filiph har tio år som utvecklare för det offentliga, i system med höga krav på säkerhet och tillgänglighet. Daniel är expert på kundsupport och utbildad utvecklare. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
 
 const BULLETS = [
-  'Byggt parallellt med tio månaders arbete som personlig assistent.',
+  'Sex månader. Byggt parallellt med dagligt arbete som personlig assistent.',
   'Sambygget med 2u Assistans — Västerås största assistansanordnare.',
   'Du pratar med en grundare. Inte en supportkö.',
 ]
