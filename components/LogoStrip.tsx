@@ -42,7 +42,7 @@ export default function LogoStrip() {
               style={{ width: '56%', height: '56%', zIndex: 1 }}
             >
               <Image
-                src="/brand-assets/2ulogga.jpg"
+                src="/brand-assets/2ulogga.webp"
                 alt="2U Assistans"
                 fill
                 sizes="(min-width: 768px) 200px, 168px"
@@ -64,7 +64,7 @@ export default function LogoStrip() {
             >
               {!photoFailed ? (
                 <Image
-                  src="/susanne_2u.png"
+                  src="/susanne_2u.webp"
                   alt="Susanne Pettersson, Arbetsmiljöansvarig på 2U Assistans"
                   fill
                   sizes="(min-width: 768px) 480px, 400px"

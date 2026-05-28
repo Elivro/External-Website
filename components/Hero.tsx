@@ -27,7 +27,7 @@ export default function Hero() {
     <>
       <section className="relative flex min-h-[clamp(40rem,80svh,70rem)] flex-col overflow-visible bg-hero-bg">
         <div className="container-default flex flex-1 items-center py-12 lg:py-14">
-          <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[1.2fr_1.2fr] lg:gap-[32px]">
+          <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_1.2fr] lg:gap-[32px]">
             {/* LEFT — editorial content */}
             <div>
               <div className="eyebrow-pill mb-8">
@@ -67,18 +67,21 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="btn-primary group"
+                  className="btn-primary group w-full justify-center sm:w-auto sm:justify-start"
                 >
                   Boka demo
                   <span className="arrow inline-block transition-transform duration-fast ease-out group-hover:translate-x-1">
                     →
                   </span>
                 </button>
-                <Link href="#case-proof" className="btn-secondary group">
+                <Link
+                  href="#case-proof"
+                  className="btn-secondary group w-full justify-center sm:w-auto sm:justify-start"
+                >
                   Se hur 2U Assistans gjorde
                 </Link>
               </div>
@@ -88,11 +91,12 @@ export default function Hero() {
             <div className="relative">
               <div className="flex items-center justify-center">
                 <Image
-                  src="/brand-assets/cropped_3d_hero.png"
+                  src="/brand-assets/cropped_3d_hero.webp"
                   alt="Elivro — verksamhetssystem med tio funktioner runt en gemensam kärna"
                   width={1200}
                   height={1200}
                   priority
+                  sizes="(min-width: 1536px) 730px, (min-width: 1024px) 50vw, 100vw"
                   className="elv-float h-auto w-full 2xl:w-[122%] 2xl:max-w-none 2xl:-mx-[11%]"
                 />
               </div>
@@ -105,8 +109,8 @@ export default function Hero() {
             the last flex child. */}
         <div className="border-t border-line bg-paper-card py-7 shadow-[inset_0_-1px_0_rgba(255,255,255,0.5)]">
           <div className="px-7">
-            <div className="grid grid-cols-1 items-center gap-y-5 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(6,minmax(0,1fr))]">
-              <div className="flex items-center gap-4 border-line pr-8 lg:border-r">
+            <div className="grid grid-cols-2 items-center gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(6,minmax(0,1fr))] lg:gap-x-0">
+              <div className="col-span-2 flex items-center gap-4 border-line pr-8 lg:col-span-1 lg:border-r">
                 <span
                   aria-hidden="true"
                   className="w-[3px] self-stretch min-h-[36px] rounded-sm bg-red"

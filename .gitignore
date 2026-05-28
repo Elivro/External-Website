@@ -22,5 +22,6 @@ tsconfig.tsbuildinfo
 # Claude Code project-local settings and plugins
 .claude/
 
-# Responsive audit output (script kept, screenshots not)
+# Responsive audit output (scripts kept, output not)
 audit/screenshots/
+audit/*.json

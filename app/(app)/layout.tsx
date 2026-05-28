@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Fraunces, JetBrains_Mono, Plus_Jakarta_Sans, DM_Sans, Quicksand } from 'next/font/google'
+import { Inter, Fraunces, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 import '../globals.css'
 import CookieConsent from '@/components/CookieConsent'
 import { FAQS } from '@/lib/faq-data'
@@ -9,6 +9,9 @@ import { FAQS } from '@/lib/faq-data'
    - Plus Jakarta Sans (display, headings) via next/font/google.
    - Inter (body / UI) via next/font/google.
    - Fraunces (italic accent inside <em>) via next/font/google.
+     Italic-only, weights 500 + 700 — globals.css `em { font-weight: 700 }`
+     and `.about-title / .about-card-lead / .about-card-sig { font-weight: 500 }`
+     are the only consumers.
    - JetBrains Mono (code / URLs) via next/font/google.
    ============================================================= */
 
@@ -16,7 +19,11 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-jakarta',
-  display: 'swap',
+  // 'optional' lets the H1 paint immediately in the system fallback; Jakarta
+  // swaps in only if it loads within ~100ms. Tradeoff: slow first-cold visits
+  // see fallback headings for that session. Mobile LCP win is real (text
+  // LCP no longer waits for the font to load).
+  display: 'optional',
 })
 
 const inter = Inter({
@@ -28,8 +35,8 @@ const inter = Inter({
 
 const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['500', '700'],
+  style: ['italic'],
   variable: '--font-fraunces',
   display: 'swap',
 })
@@ -41,27 +48,11 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
-
-const quicksand = Quicksand({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-quicksand',
-  display: 'swap',
-})
-
 const fontVariables = [
   jakarta.variable,
   inter.variable,
   fraunces.variable,
   jetbrainsMono.variable,
-  dmSans.variable,
-  quicksand.variable,
 ].join(' ')
 
 export const metadata: Metadata = {
@@ -95,8 +86,17 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    other: [
+      { rel: 'icon', url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { rel: 'icon', url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
   },
   openGraph: {
     type: 'website',

@@ -25,7 +25,7 @@ const TOOLS: Tool[] = [
     body:
       'Personlighet, värderingar, kompetens och kontinuitet — vägt över tid. Modellen lär sig av era egna utfall, inte av branschsnitt.',
     image: {
-      src: '/marketing-screenshots/desktop-candidates.png',
+      src: '/marketing-screenshots/desktop-candidates.webp',
       alt: 'Elivros rekryteringsvy — kandidater rangordnade efter matchning mot kund',
       width: 1300,
       height: 1020,
@@ -42,7 +42,7 @@ const TOOLS: Tool[] = [
     body:
       'Se konflikter innan de uppstår. Anställningsgrader, vila och kundfördelning — allt i en vy som känns naturlig.',
     image: {
-      src: '/marketing-screenshots/desktop-schedule.png',
+      src: '/marketing-screenshots/desktop-schedule.webp',
       alt: 'Elivros schemaläggningsvy — budget och ATL i realtid',
       width: 1273,
       height: 943,
@@ -60,7 +60,7 @@ const TOOLS: Tool[] = [
     body:
       'Mobil tidrapport, BankID-attesterad. Närvarointyg, attestering och FK-fakturering följer av sig själv.',
     image: {
-      src: '/marketing-screenshots/desktop-tidredovisning.png',
+      src: '/marketing-screenshots/desktop-tidredovisning.webp',
       alt: 'Elivros tidredovisningsvy — BankID-attesterad mobil tidrapport',
       width: 1302,
       height: 976,
@@ -77,7 +77,7 @@ const TOOLS: Tool[] = [
     body:
       'Genomförandeplaner, daganteckningar, Lex Sarah och IVO-granskningsberedskap — kopplat till samma data som schemat och tidrapporten.',
     image: {
-      src: '/marketing-screenshots/desktop-qms.png',
+      src: '/marketing-screenshots/desktop-qms.webp',
       alt: 'Elivros kvalitetsledningsvy — genomförandeplaner och IVO-beredskap',
       width: 1295,
       height: 670,
@@ -124,7 +124,7 @@ export default function ProductShowcase() {
           ember sweep on the active tab underline and the progress strip
           below the screenshot. */}
       <style dangerouslySetInnerHTML={{ __html: '@keyframes progressSweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }' }} />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-6 lg:px-12">
         <header className="max-w-3xl mb-14 md:mb-16">
           <p className="font-mono text-[11px] tracking-[0.12em] uppercase text-fg-muted mb-4">Produkten</p>
           <h2 id="product-title" className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-bold text-fg tracking-[-0.021em] leading-[1.05]">

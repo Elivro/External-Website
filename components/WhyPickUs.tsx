@@ -5,7 +5,7 @@ import SharedContext from './illustrations/SharedContext'
 
 /**
  * "Varför oss" — co-built positioning. The argument: the system was built
- * with the largest assistansanordnare in Västerås (2u Assistans), which is
+ * with the largest assistansanordnare in Västerås (2U Assistans), which is
  * what gives it the right to claim completeness. The SharedContext
  * illustration carries that semantic — three rings around a common center.
  */
@@ -75,7 +75,7 @@ export default function WhyPickUs() {
               </p>
               <p>
                 Därför har vi, tillsammans med den största assistansanordnaren i
-                Västerås — <span className="text-fg">2u Assistans</span> — byggt
+                Västerås — <span className="text-fg">2U Assistans</span> — byggt
                 ett system som har alla funktioner som en assistansanordnare
                 behöver.
               </p>

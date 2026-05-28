@@ -474,141 +474,210 @@ textarea::placeholder {
 /* ============================================
    ABOUT · "Tre grundare" (founder-stage layout)
    --------------------------------------------
-   Two-column. Left: text + bullets. Right: group
-   photo as a "scene" — masked into the page so the
-   wall blends into --paper, with hover zones and a
-   tooltip card that appears only on hover/focus.
+   Three-column grid: copy LEFT, photo CENTER spanning
+   the full wrap, hover-controlled aside card RIGHT.
+   Section bg is the brighter cream set inline in
+   AboutUs.tsx (#e8dec8).
    ============================================ */
 .about-wrap {
-  /* Three columns: copy LEFT, image CENTER, tooltip aside RIGHT.
-     Wider container than the rest of the site so the photo dominates
-     on large monitors (1440px+) — the 1280px default leaves the photo
-     looking small on a 2560 display. align-items: start lets the photo
-     grow downward and dictate the section's bottom edge. */
+  /* Wider container than the rest of the site so the photo dominates
+     on large monitors (1440px+). Two grid rows: content + aside in
+     row 1; horizontal trust ribbon in row 2. The stage is absolutely
+     positioned over the whole wrap and uses this as its positioning
+     ancestor. */
+  position: relative;
   max-width: 1640px;
   margin: 0 auto;
   padding: 0 var(--gutter);
   display: grid;
-  grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.7fr) minmax(0, 0.5fr);
-  gap: 40px;
-  /* stretch — copy column's natural height (text wrap + padding) defines
-     the wrap height; stage stretches to match so the photo always fills
-     the section bottom-to-top. */
+  grid-template-columns: minmax(300px, 1.05fr) minmax(0, 1.55fr) minmax(290px, 0.55fr);
+  column-gap: 40px;
   align-items: stretch;
 }
 
-/* Copy column carries the vertical breathing room that used to live on
-   the section itself, so the photo column can extend edge-to-edge. */
+/* Copy column carries the vertical breathing room. */
 .about-content {
-  padding: 160px 0;
+  padding: 72px 0px 122px;
   grid-column: 1;
   grid-row: 1;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  /* The copy column sits visually atop the masked photo. Let pointer
+     events fall through to the photo's hover zones; re-enable on text
+     elements above the photo's founder zone (kicker, headline, body)
+     so they remain selectable. Bullets sit lower in the column where
+     they overlap founder hover zones, so they stay transparent. */
+  pointer-events: none;
+}
+
+.about-content > .about-kicker,
+.about-content > .about-title,
+.about-content > .about-intro,
+.about-content > .about-bullets {
+  pointer-events: auto;
 }
 
 .about-kicker {
-  display: block;
-  font-family: var(--font-quicksand, var(--font-sans));
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0;
-  text-transform: none;
+  display: inline-block;
+  font-family: var(--font-jakarta), var(--font-sans);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--red);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
+/* H2: "Vi byggde det vi själva *saknade.*" — Fraunces italic display
+   per the original Brand Kit treatment. The base `em` rule in globals.css
+   applies italic + red color; we adjust weight here. */
 .about-title {
-  letter-spacing: -.034em;
-  margin: 0 0 22px;
-  font-size: clamp(32px, 3.4vw, 54px);
-  line-height: 1.04;
   font-family: var(--font-italic);
   font-style: italic;
   font-weight: 500;
+  font-size: clamp(40px, 4.6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+  margin: 0 0 24px;
+  max-width: 14ch;
 }
 
 .about-title em {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .about-intro {
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--n-700);
-  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(17, 17, 17, 0.72);
+  margin: 0 0 24px;
   max-width: 42ch;
 }
 
+/* --- Bullet cards (left column, top group) ------------------------ */
 .about-bullets {
-  margin: 28px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  /* Capped so the cards never reach Jimmy's hover zone (starts at 34% of
+     the stage). Keeps bullet hover and founder hover from colliding. */
+  max-width: 360px;
 }
 
+/* Lifted paper cards — soft single-layer shadow per DESIGN.md, rounded,
+   icon in a circular badge. Hover lifts a touch higher. */
 .about-bullet {
   display: flex;
   gap: 14px;
-  align-items: baseline;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--n-700);
+  align-items: center;
+  padding: 15px 18px;
+  border-radius: 16px;
+  cursor: default;
+  /* Just a step up from the beige section bg (#d5cbc2) — a warm, lightly
+     lifted tone, not pure card-white. */
+  background: #e4ddd2;
+  box-shadow:
+    0 14px 30px -22px rgba(17, 17, 17, 0.22),
+    0 1px 0 rgba(17, 17, 17, 0.03);
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.about-bullet-mark {
-  font-family: var(--font-mono);
-  color: var(--n-400);
+.about-bullet:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 26px 46px -24px rgba(17, 17, 17, 0.26),
+    0 1px 0 rgba(17, 17, 17, 0.03);
+}
+
+.about-bullet-icon {
   flex-shrink: 0;
-  user-select: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.05);
+  color: rgba(17, 17, 17, 0.82);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* --- Stage --------------------------------------------------------- */
+.about-bullet:hover .about-bullet-icon {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.about-bullet-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.about-bullet-text { min-width: 0; }
+
+.about-bullet-title {
+  font-family: var(--font-jakarta), var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0 0 2px;
+  line-height: 1.3;
+}
+
+.about-bullet-sub {
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(17, 17, 17, 0.58);
+  margin: 0;
+}
+
+/* --- Stage (group photo spans the full wrap) ---------------------- */
 
 .about-stage {
-  position: relative;
+  /* Out of grid flow: absolutely positioned over the whole wrap so the
+     photo bleeds to the section bottom edge. Trust ribbon, copy column,
+     and aside sit on top via their own stacking contexts (the stage's
+     isolation: isolate confines the photo's own z-indexed children to
+     its local stacking context). */
+  position: absolute;
   width: 100%;
-  /* Span all three columns so the photo fills the full wrap width; copy
-     and aside sit on top via higher z-index. The photo's mask fades the
-     left edge so the copy area reads on --paper, not on the wall. */
-  grid-column: 1 / -1;
-  grid-row: 1;
-  z-index: 1;
-  /* No aspect-ratio — let grid stretch dictate the height so the photo
-     always fills the section. min-height is a floor for cases where the
-     copy column ends up shorter than this. */
-  min-height: 600px;
+  height: 100%;
+  min-height: 520px;
   isolation: isolate;
 }
 
 .about-stage-img {
   position: absolute;
   inset: 0;
+  left: 230px;
 }
 
 .about-stage-img-el {
-  /* Override next/image fill defaults: pin image to bottom 95% of the
-     stage so the top 5% breathes, and the founders' heads sit further
-     down (more room above for names + arrows). */
-  height: 95% !important;
+  /* Pin image to bottom 96% of stage so top 4% breathes and labels above
+     each founder have air. Object-position centred since the container
+     itself is now offset 230px right. */
+  height: 96% !important;
   top: auto !important;
   bottom: 0 !important;
   object-fit: cover;
   object-position: center 38%;
-  /* Stage now spans the full wrap. The copy column lives in the photo's
-     left ~26%, so the mask fades the photo to transparent across that
-     zone — copy sits mostly on --paper with a soft photo bleed at the
-     last few percent (the "little overlap" we want). Right edge fades
-     out under the tooltip area. Bottom edge stays crisp. */
   -webkit-mask-image:
-    linear-gradient(to right,  transparent 0%, transparent 15%, #000 24%, #000 92%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 8%, #000 100%);
+    linear-gradient(to right, #0000 0% 8%, #000 10% 90%, #0000 100%),
+    linear-gradient(#0000 0%, #000 8% 100%),
+    radial-gradient(30% 58% at 0 100%, #0000 0% 34%, #000 78%);
   -webkit-mask-composite: source-in;
           mask-image:
-    linear-gradient(to right,  transparent 0%, transparent 15%, #000 24%, #000 92%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 8%, #000 100%);
+    linear-gradient(to right, #0000 0% 8%, #000 10% 90%, #0000 100%),
+    linear-gradient(#0000 0%, #000 8% 100%),
+    radial-gradient(30% 58% at 0 100%, #0000 0% 34%, #000 78%);
           mask-composite: intersect;
 }
 
@@ -620,38 +689,39 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-quicksand, var(--font-sans));
+  font-family: var(--font-jakarta), var(--font-sans);
   letter-spacing: -0.005em;
   transform: translateX(-50%);
   pointer-events: none;
   line-height: 1.2;
-  color: #7a7a7a;
 }
 
-.about-label[data-align="left"]  { transform: translateX(-15%); align-items: flex-start; }
-.about-label[data-align="right"] { transform: translateX(-85%); align-items: flex-end; }
+.about-label[data-align="left"]  { transform: translateX(-25%); align-items: flex-start; }
+.about-label[data-align="right"] { transform: translateX(-75%); align-items: flex-end; }
 
 .about-label-name {
   font-weight: 600;
-  color: #6a6a6a;
-  font-size: 17px;
-  letter-spacing: -0.008em;
+  color: rgba(17, 17, 17, 0.82);
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
 }
 
 .about-label-role {
   font-weight: 400;
-  color: #9a9a9a;
-  font-size: 13.5px;
-  letter-spacing: 0;
-  text-transform: none;
+  color: rgba(17, 17, 17, 0.5);
+  font-size: 11.5px;
   margin-top: 2px;
 }
 
-.about-label-arrow {
-  width: 44px;
+.about-label-doodle {
+  width: 40px;
   height: 56px;
-  margin-top: 4px;
-  color: #8a8a8a;
+  margin-top: 8px;
+  color: rgba(17, 17, 17, 0.4);
+}
+
+.about-label[data-align="center"] .about-label-doodle {
+  width: 14px;
 }
 
 /* --- Hover zones --------------------------------------------------- */
@@ -664,7 +734,6 @@ textarea::placeholder {
   cursor: pointer;
   padding: 0;
   border-radius: 6px;
-  transition: background-color var(--duration-base) var(--ease);
 }
 
 .about-zone:focus-visible {
@@ -672,7 +741,7 @@ textarea::placeholder {
   outline-offset: 4px;
 }
 
-/* --- Tooltip aside column ----------------------------------------- */
+/* --- Hover-controlled aside card ---------------------------------- */
 
 .about-aside {
   position: relative;
@@ -680,18 +749,10 @@ textarea::placeholder {
   grid-column: 3;
   grid-row: 1;
   z-index: 2;
-  /* Center the tooltip vertically inside the aside column. The aside
-     stretches to wrap height (via grid align-items: stretch), so this
-     lands the card around the middle of the photo. */
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-
-/* Founder card — editorial dossier. Sequence number, hairline divider,
-   mono-tracked role, heavy sans name, italic Fraunces lead-word + signature.
-   Density and italic accent are baked from live-mode accept (density=snug,
-   italic=0.7 → opacity .82). */
 
 .about-card {
   position: relative;
@@ -699,7 +760,7 @@ textarea::placeholder {
   max-width: 300px;
   background: var(--paper-card);
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow:
     0 22px 50px -28px rgba(17, 17, 17, 0.22),
     0 1px 0 rgba(17, 17, 17, 0.04);
@@ -716,40 +777,69 @@ textarea::placeholder {
 .about-aside[data-visible="true"] .about-card {
   opacity: 1;
   transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.about-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+}
+
+.about-card-eyebrow {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--n-700);
+}
+
+.about-card-seq {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--n-600);
+  line-height: 1;
+}
+
+.about-card-seq-sep {
+  color: var(--n-400);
+  margin: 0 2px;
 }
 
 .about-card-photo {
   position: relative;
-  width: 100%;
+  /* Inset from the card's side + top edges so the photo floats inside a
+     paper frame rather than running flush to the edges. width:auto lets
+     the block fill the card minus the side margins. */
+  margin: 2px 16px 0;
   aspect-ratio: 1 / 1;
   background: var(--warm);
   overflow: hidden;
+  border-radius: 8px;
 }
 
-.about-card-photo img {
+.about-card-photo-el {
   object-fit: cover;
-  object-position: center 30%;
-}
-
-.about-card-seq {
-  position: absolute;
-  top: 12px;
-  left: 14px;
-  z-index: 2;
-  font-family: var(--font-jetbrains-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.about-card-divider {
-  height: 1px;
-  background: var(--line-strong);
+  object-position: center 26%;
 }
 
 .about-card-body {
-  padding: 18px 20px 20px;
+  padding: 16px 16px 18px;
+}
+
+.about-card-name {
+  /* Italic Fraunces — the brand signature voice for the founder name,
+     matching the earlier card treatment the headline italic echoes. */
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 6px;
 }
 
 .about-card-role {
@@ -758,164 +848,288 @@ textarea::placeholder {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--n-600);
-  margin: 0 0 8px;
-}
-
-.about-card-name {
-  font-family: var(--font-jakarta);
-  font-weight: 800;
-  font-size: 19px;
-  letter-spacing: -0.018em;
-  line-height: 1.15;
-  color: var(--ink);
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .about-card-bio {
   font-family: var(--font-inter);
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.55;
   color: var(--n-700);
-  margin: 0 0 14px;
-}
-
-.about-card-lead {
-  font-family: var(--font-fraunces);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--ink);
-  opacity: 0.82;
-}
-
-.about-card-sig {
-  font-family: var(--font-fraunces);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 15px;
-  color: var(--ink);
   margin: 0;
-  text-align: right;
-  opacity: 0.82;
-  letter-spacing: 0.01em;
 }
 
-.about-card-sig::before {
-  content: "— ";
-  font-style: normal;
-  color: var(--n-400);
-  letter-spacing: 0;
-}
+/* --- Mobile founder block (carousel) — shown only ≤820px ---------- */
 
-/* --- Hint strip --------------------------------------------------- */
-
-.about-stage-hint {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: 5%;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--n-700);
-  background: rgba(250, 250, 247, 0.92);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 9px 18px 9px 14px;
-  margin: 0;
-  pointer-events: none;
-  white-space: nowrap;
-  opacity: 1;
-  transition:
-    opacity 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.about-stage-hint-icon {
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-  color: var(--n-600);
-}
-
-.about-stage[data-active]:not([data-active="none"]) .about-stage-hint {
-  opacity: 0;
-  transform: translateX(-50%) translateY(6px);
-}
-
-/* --- Mobile roster (shown only on small screens) ------------------ */
-
-.about-mobile-roster { display: none; }
+.about-fm { display: none; }
 
 @media (max-width: 820px) {
   .about-wrap {
     /* minmax(0, 1fr) — not bare 1fr — so the track can shrink below
-       its content's min-content size. Otherwise next/image's intrinsic
-       width forces the column wide on narrow viewports. */
+       its content's min-content size. */
     grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
+    gap: 28px;
     padding: 0 var(--gutter);
     max-width: var(--container);
     margin: 0 auto;
+    align-items: stretch;
   }
-  .about-stage {
-    aspect-ratio: 4 / 3;
-    min-height: 0;
+  .about-content {
+    grid-column: 1;
+    padding: 24px 0 0;
   }
+  .about-title { font-size: clamp(34px, 8vw, 48px); }
+
+  /* Don't stack five tall rows and don't scroll horizontally: a contained
+     2-column grid (last item spans full width). Stays inside the page
+     gutters — no edge-flush, no right-side clipping — and lands in ~3 rows. */
+  .about-bullets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    max-width: none;
+    margin-top: 12px;
+  }
+  .about-bullet {
+    background: #e4ddd2;
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 13px 13px;
+    gap: 11px;
+    align-items: flex-start;
+  }
+  .about-bullet:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .about-bullet:hover .about-bullet-icon {
+    background: rgba(17, 17, 17, 0.06);
+    color: rgba(17, 17, 17, 0.82);
+  }
+  .about-bullet-icon { width: 32px; height: 32px; }
+  .about-bullet-icon svg { width: 16px; height: 16px; }
+  .about-bullet-title { font-size: 13px; margin-bottom: 2px; line-height: 1.25; }
+  .about-bullet-sub { font-size: 11.5px; line-height: 1.35; }
+
+  /* Desktop stage + hover aside are replaced by the founder block. */
+  .about-stage,
   .about-aside,
   .about-label,
-  .about-zone,
-  .about-stage-hint {
+  .about-zone {
     display: none;
   }
-  .about-mobile-roster {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-width: var(--container);
-    margin: 28px auto 0;
-    padding: 0 var(--gutter);
+
+  /* Founder block: the group photo sits flush to the top of a single
+     founder card and feathers into the card bg at its bottom edge. The
+     card carries one founder at a time with prev/next + a pager. */
+  .about-fm {
+    /* Full-bleed: photo runs edge-to-edge; the card below insets itself. */
+    display: block;
+    margin: 30px 0 0;
+    padding-bottom: 4rem;
   }
-  .about-mobile-row {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .about-mobile-thumb {
+  .about-fm-photo {
     position: relative;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: var(--warm);
+    width: 100%;
+    aspect-ratio: 4 / 3.3;
+    /* Feather the bottom so the photo melts into the section bg, where the
+       inset card then overlaps it. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0 78%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0 78%, transparent 100%);
   }
-  .about-mobile-thumb-el { object-fit: cover; }
-  .about-mobile-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 17px;
-    margin: 0;
+  .about-fm-photo-el {
+    object-fit: cover;
+    object-position: center 20%;
   }
-  .about-mobile-role {
-    font-size: 12.5px;
+  .about-fm-card {
+    position: relative;
+    /* Inset panel that overlaps the photo's feathered tail. A soft single
+       shadow + warm hairline reads nicer than a hard grey border and keeps
+       to the one-shadow rule. */
+    margin: -20px 16px 0;
+    padding: 20px 22px;
+    background: #e7e1dc;
+    border-radius: 14px;
+    border: 1px solid rgba(17, 17, 17, 0.09);
+    box-shadow: 0 18px 40px -24px rgba(17, 17, 17, 0.34);
+  }
+  .about-fm-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .about-fm-eyebrow {
+    font-family: var(--font-jetbrains-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .about-fm-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .about-fm-seq {
+    font-family: var(--font-jetbrains-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
     color: var(--n-600);
-    margin: 4px 0 6px;
   }
-  .about-mobile-bio {
+  .about-fm-seq-sep { color: var(--n-400); margin: 0 1px; }
+  .about-fm-arrow {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(17, 17, 17, 0.2);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition:
+      background-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      color 200ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .about-fm-arrow:active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+  /* Name + role span the full card width (so the name stays on one line);
+     the bio and the photo then share a row below, photo on the right,
+     vertically centred against the bio (ref layout). */
+  .about-fm-body { display: block; }
+  .about-fm-lower {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .about-fm-lower .about-fm-bio {
+    flex: 1;
+    min-width: 0;
+  }
+  .about-fm-name {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: -0.01em;
+    line-height: 1.04;
+    color: var(--ink);
+    margin: 0 0 5px;
+  }
+  .about-fm-role {
+    font-family: var(--font-jetbrains-mono);
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--n-600);
+    margin: 0 0 12px;
+  }
+  .about-fm-thumb {
+    position: relative;
+    width: 152px;
+    height: 152px;
+    margin-top: -32px;
+    flex-shrink: 0;
+    align-self: center;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--warm);
+    box-shadow: 0 6px 16px -10px rgba(17, 17, 17, 0.4);
+  }
+  .about-fm-thumb-el { object-fit: cover; }
+  .about-fm-bio {
+    font-family: var(--font-inter);
     font-size: 13.5px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--n-700);
     margin: 0;
   }
+}
+
+/* ============================================
+   FEATURES · "Allt ingår" catalog accordion
+   --------------------------------------------
+   Desktop (≥lg) keeps the 5-column catalog with every group expanded.
+   Below lg the ten groups collapse into a tappable accordion so the
+   section isn't an endless mobile scroll. The panel animates via
+   grid-template-rows (0fr→1fr) — no layout-property animation.
+   ============================================ */
+
+.feat-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  position: relative;
+}
+
+.feat-head .font-mono { margin-bottom: 1rem; }
+
+.feat-chevron {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: none;
+  color: var(--n-600);
+  transition: transform 360ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.feat-group[data-open='true'] .feat-chevron { transform: rotate(180deg); }
+
+/* Collapsible panel: grid-rows trick. Inner clips so the bullets hide
+   cleanly when the row collapses to 0fr. */
+.feat-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 380ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.feat-group[data-open='true'] .feat-panel { grid-template-rows: 1fr; }
+.feat-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.feat-bullets { padding: 0 1.5rem 1.5rem; }
+
+@media (min-width: 1024px) {
+  /* Desktop: header is not a toggle, every panel stays open. */
+  .feat-head {
+    padding-bottom: 1.25rem !important;
+    cursor: default;
+    pointer-events: none;
+  }
+  .feat-head .font-mono { margin-bottom: 1rem; }
+  .feat-chevron { display: none; }
+  .feat-panel { grid-template-rows: 1fr; }
+  .feat-bullets { padding: 0 1.75rem 1.75rem; }
+}
+
+@media (max-width: 1023px) {
+  /* Mobile/tablet: single-column accordion. */
+  .feat-head {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 1.5rem;
+    cursor: pointer;
+  }
+  .feat-head .font-mono {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .feat-title { flex: 1; min-width: 0; }
+  .feat-chevron {
+    display: inline-flex;
+    position: static;
+  }
+  .feat-group[data-open='true'] .feat-head { padding-bottom: 0; }
 }
 
 /* ============================================
