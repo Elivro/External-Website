@@ -96,6 +96,7 @@ export default function Hero() {
                   width={1200}
                   height={1200}
                   priority
+                  quality={92}
                   sizes="(min-width: 1536px) 730px, (min-width: 1024px) 50vw, 100vw"
                   className="elv-float h-auto w-full 2xl:w-[122%] 2xl:max-w-none 2xl:-mx-[11%]"
                 />

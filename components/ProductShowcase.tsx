@@ -202,7 +202,7 @@ export default function ProductShowcase() {
           <div className="relative aspect-[16/10] w-full">
             {TOOLS.map((t, i) => (
               <div key={t.key} aria-hidden={i !== activeIndex} className="absolute inset-0" style={{ opacity: i === activeIndex ? 1 : 0, transform: i === activeIndex ? 'translateY(0)' : 'translateY(6px)', transition: 'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1)', pointerEvents: i === activeIndex ? 'auto' : 'none' }}>
-                <Image src={t.image.src} alt={t.image.alt} fill sizes="(min-width: 1280px) 1216px, (min-width: 1024px) 92vw, 100vw" className="object-contain" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 89%, transparent 100%)', WebkitMaskComposite: 'source-in', maskImage: 'linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 89%, transparent 100%)', maskComposite: 'intersect' }} />
+                <Image src={t.image.src} alt={t.image.alt} fill quality={92} sizes="(min-width: 1280px) 1216px, (min-width: 1024px) 92vw, 100vw" className="object-contain" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 89%, transparent 100%)', WebkitMaskComposite: 'source-in', maskImage: 'linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 89%, transparent 100%)', maskComposite: 'intersect' }} />
               </div>
             ))}
           </div>

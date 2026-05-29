@@ -270,6 +270,7 @@ export default function AboutUs() {
                     alt=""
                     fill
                     sizes="320px"
+                    quality={92}
                     className="about-card-photo-el"
                     style={{ objectPosition: displayed.photoPosition ?? 'center 26%' }}
                   />
@@ -341,7 +342,8 @@ export default function AboutUs() {
                       src={f.photo}
                       alt=""
                       fill
-                      sizes="120px"
+                      sizes="160px"
+                      quality={92}
                       className="about-fm-thumb-el"
                       style={{ objectPosition: f.photoPosition ?? 'center 26%' }}
                     />
