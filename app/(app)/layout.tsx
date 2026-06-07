@@ -3,6 +3,7 @@ import { Inter, Fraunces, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/go
 import '../globals.css'
 import CookieConsent from '@/components/CookieConsent'
 import { FAQS } from '@/lib/faq-data'
+import { Analytics } from '@vercel/analytics/next'
 
 /* =============================================================
    FONT LOADING — Brand Kit v4
@@ -276,6 +277,7 @@ export default function AppLayout({
         </a>
         {children}
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   )

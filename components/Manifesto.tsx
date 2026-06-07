@@ -57,7 +57,10 @@ export default function Manifesto() {
         >
           Det viktigaste när man bygger ett verksamhetssystem är inte att kunna
           allt. Det viktigaste är att{' '}
-          <em className="font-serif italic text-accent">
+          <em
+            className="font-serif italic"
+            style={{ color: 'var(--red)' }}
+          >
             våga fråga om hjälp
           </em>{' '}
           när det behövs.
@@ -75,7 +78,12 @@ export default function Manifesto() {
           Det är ni som varje dag gör jobbet. Innan vi ens började bygga
           Elivro pratade vi med 100+ personer om vad som faktiskt behövs.
           Tack vare feedback från{' '}
-          <em className="font-serif italic text-fg">2U Assistans</em>,
+          <em
+            className="font-serif italic"
+            style={{ color: 'var(--red)' }}
+          >
+            2U Assistans
+          </em>,
           Västerås-grundade assistansanordnare — med målet att alltid erbjuda
           er mindre admin, tryggare regelefterlevnad och snabbare rekrytering.
         </p>
