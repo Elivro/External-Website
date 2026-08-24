@@ -1,0 +1,158 @@
+---
+# Staging artifact, not a source of truth. Import with
+#   PUBLISH=1 npx payload run scripts/import-underlag.ts <den här filen>
+# after every [VERIFIERA] is resolved.
+#
+# NOTE on the slug: no year in it, deliberately. This page is rewritten every
+# January when regeringen sets the new belopp — same URL, new numbers, new
+# dateModified. A dated slug would force a new page every year and split the
+# link equity five ways in five years. The year lives in the title, which can
+# change; the slug cannot.
+status: UTKAST — ej granskat, ej publicerat
+kind: underlag
+category: ersattning
+slug: schablonbelopp-assistansersattning
+title: "Schablonbeloppet 2026 — vad summan ska *räcka* till"
+dek: >-
+  Schablonbeloppet för assistansersättning är 347,70 kronor per timme 2026, en
+  höjning med 1,49 procent. Här är vad summan ska täcka, vad det förhöjda
+  timbeloppet kräver, och hur du räknar på om höjningen håller jämna steg med
+  dina kostnader.
+seo:
+  metaTitle: "Schablonbelopp assistansersättning 2026"
+  noindex: false
+---
+
+Schablonbeloppet är den enda intäkten de flesta assistansverksamheter har. Allt
+annat — löner, OB, utbildning, administration, lokaler, vinst — ska rymmas inom
+det. Därför är den årliga höjningen inte en nyhet utan en budgetförutsättning,
+och skillnaden mellan höjningen och din egen kostnadsökning är i praktiken hela
+marginalen.
+
+Den här sidan skrivs om varje gång regeringen fastställer ett nytt belopp.
+Datumet högst upp säger när det senast hände.
+
+## Beloppen för 2026
+
+Försäkringskassan anger två belopp per assistanstimme:
+
+- 2026: 347,70 kronor fastställt, 389,42 kronor som högst
+- 2025: 342,60 kronor fastställt, 383,71 kronor som högst
+
+Höjningen från 2025 till 2026 är 5,10 kronor per timme, eller 1,49 procent. Det
+högsta beloppet steg med 5,71 kronor — samma 1,49 procent.
+
+Timbeloppet fastställs av regeringen varje år. Försäkringskassan publicerar det
+i sin beloppstabell, som också redovisar nivåerna bakåt till 1994.
+
+## Det förhöjda timbeloppet — tolv procent, inte mer
+
+Det högre beloppet är inget du får automatiskt. Det söks särskilt, och det
+beviljas när det finns särskilda skäl som ger särskilda kostnader som schablonen
+inte täcker.
+
+Taket är hårt: det förhöjda timbeloppet får inte överstiga schablonen med mer än
+tolv procent. Det syns direkt i siffrorna — 347,70 gånger 1,12 blir 389,42, på
+öret. Utrymmet mellan de två beloppen är alltså 41,72 kronor per timme för 2026,
+varken mer eller mindre.
+
+Ansökan görs på [VERIFIERA: blankettnummer och exakt titel — kontrollera på
+forsakringskassan.se innan publicering].
+
+## De fem kostnadsslagen
+
+När ersättningen redovisas ska kostnaderna fördelas på fem slag:
+
+1. Lön och lönebikostnader
+2. Assistansomkostnader
+3. Utbildningskostnader
+4. Arbetsmiljöinsatser och personalomkostnader
+5. Administrationskostnader
+
+Uppdelningen är inte bara en redovisningsteknikalitet. Den är också den ram
+inom vilken ersättningen anses använd på rätt sätt, och den styr vilka
+underlag du behöver kunna visa upp i efterhand.
+
+Om din ekonomiuppföljning inte redan är byggd kring de här fem posterna
+kommer du att göra om samma översättning varje redovisningsperiod, för hand.
+
+## Räkna på höjningen innan du budgeterar
+
+Den enda uträkning som betyder något är den här: *steg schablonen mer eller
+mindre än din egen kostnad per timme.*
+
+Gör den i den ordningen:
+
+1. Ta löneökningen enligt ert kollektivavtal för perioden, i procent.
+2. Lägg på förändringen i lönebikostnader.
+3. Jämför summan med schablonens 1,49 procent.
+
+Ligger din kostnadsökning över 1,49 procent krymper marginalen per timme, även
+om intäkten i kronor blev högre. Det är inget ovanligt utfall, och det är därför
+uträkningen bör göras före budgeten och inte efter första kvartalet.
+
+Vi anger medvetet ingen siffra för avtalens löneökningar här. Den skiljer sig åt
+mellan avtalsområden och avtalsperioder, och en generell siffra vore fel för de
+flesta som läser. Hämta er egen ur ert eget avtal.
+
+## Redovisning och återbetalningsansvar
+
+Hur ofta du redovisar beror på hur ersättningen betalas ut:
+
+- Betalas ersättningen i efterskott lämnas räkning varje månad.
+- Betalas den i förskott redovisas kostnaderna under den sista månaden i varje
+  beviljandeperiod, och då för hela perioden.
+
+Ansvaret för att betala tillbaka ersättning som betalats ut med för högt belopp
+ligger hos den ersättningen betalats till. Det är den meningen som gör
+löpande kostnadsuppföljning till något annat än en administrativ vana — en
+avvikelse som upptäcks vid periodens slut är redan en skuld.
+
+## Vad du gör nu
+
+- Lägg in 347,70 kronor som timintäkt i budgeten för 2026, inte fjolårets siffra.
+- Gör uträkningen ovan mot ert eget kollektivavtal innan budgeten fastställs.
+- Kontrollera att er kostnadsuppföljning är uppdelad på de fem kostnadsslagen.
+- Gå igenom om någon av era brukare har särskilda kostnader som skulle kunna
+  motivera förhöjt timbelopp. Utrymmet är 41,72 kronor per timme.
+- Sätt en påminnelse i december. Beloppet för nästa år brukar vara publicerat då.
+
+---
+
+## Källor
+
+- Försäkringskassan, "Timbelopp för assistansersättning" — beloppstabell,
+  sidan senast uppdaterad 11 december 2025 (läst 2026-08-25)
+- Försäkringskassan, "Redovisa kostnader för personliga assistenter" —
+  kostnadsslag, redovisningsperioder och återbetalningsansvar (läst 2026-08-25)
+
+Beloppen är hämtade direkt ur Försäkringskassans beloppstabell. Procenttalen
+och tolvprocentskontrollen är uträknade på de beloppen.
+
+<!--
+ÖPPNA PUNKTER FÖRE PUBLICERING
+
+1. [VERIFIERA] blankettnumret för ansökan om förhöjt timbelopp. En sökning
+   pekar mot 3051 "Ansök om assistansersättning – högre timbelopp", men jag
+   har inte öppnat blanketten. Sökträffar är tier 3 enligt kallor.md — öppna
+   sidan hos Försäkringskassan och bekräfta nummer och titel, eller stryk
+   meningen och skriv "ansökan görs hos Försäkringskassan".
+
+2. Verifierat direkt ur primärkällan och säkert att publicera:
+   347,70 / 389,42 (2026), 342,60 / 383,71 (2025), de fem kostnadsslagen,
+   redovisningskadensen och återbetalningsansvaret. Procenttalen 1,49 % och
+   differensen 41,72 kr är uträknade på de beloppen, och 347,70 x 1,12 =
+   389,42 bekräftar tolvprocentstaket mot primärkällan.
+
+3. Domänkoll som bara ni kan göra: stämmer beskrivningen av vad de fem
+   kostnadsslagen används till mot hur 2u faktiskt redovisar? Om ni ser något
+   som inte stämmer med praktiken är det avsnittet som ska skrivas om.
+
+4. Årlig rutin: sidan skrivs om i januari när nytt belopp fastställs.
+   Samma slug, ny titel, nya siffror, nytt dateModified. Skapa aldrig en ny
+   sida för nästa år.
+
+5. Importeraren stöder ännu inte markdown-tabeller — beloppen är därför en
+   lista. Om ni vill ha tabell här behöver scripts/import-underlag.ts
+   utökas med Lexical-tabellnoder.
+-->
