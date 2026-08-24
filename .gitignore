@@ -25,3 +25,6 @@ tsconfig.tsbuildinfo
 # Responsive audit output (scripts kept, output not)
 audit/screenshots/
 audit/*.json
+
+# omvärldsbevakning: locally-held "already seen" ledger
+.omvarld-state.json
