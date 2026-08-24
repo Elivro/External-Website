@@ -1,0 +1,223 @@
+/* ============================================================
+   Long-form prose — /underlag
+   ------------------------------------------------------------
+   globals.css sets bare h1–h6 rules OUTSIDE any @layer, at display
+   scale. An <h2> coming out of the Lexical editor would otherwise land
+   at clamp(36px, 4.5vw, 64px)/800 in the middle of running text.
+
+   These selectors are unlayered too and strictly more specific, so they
+   win regardless of file order — the same reason a Tailwind utility
+   would NOT have worked here.
+
+   Type follows DESIGN.md §3: Inter 17/1.55 body, Jakarta headings,
+   measure held in the 65–75ch band, italic-not-bold for emphasis.
+   ============================================================ */
+
+.underlag-prose {
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--n-700);
+  max-width: 68ch;
+}
+
+.underlag-prose > * + * {
+  margin-top: 1.25em;
+}
+
+/* ---- headings ---- */
+.underlag-prose h2 {
+  font-size: clamp(26px, 2.4vw, 32px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.021em;
+  color: var(--ink);
+  margin-top: 2.4em;
+  margin-bottom: 0;
+}
+
+.underlag-prose h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+.underlag-prose h4 {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-top: 1.8em;
+  margin-bottom: 0;
+}
+
+.underlag-prose h2 + *,
+.underlag-prose h3 + *,
+.underlag-prose h4 + * {
+  margin-top: 0.7em;
+}
+
+/* ---- inline ---- */
+/* Italic-not-bold: <strong> stays structural weight, never a shout. */
+.underlag-prose strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.underlag-prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+
+.underlag-prose a:hover {
+  text-decoration-color: var(--red);
+}
+
+/* ---- lists ---- */
+.underlag-prose ul,
+.underlag-prose ol {
+  padding-left: 0;
+  list-style: none;
+}
+
+.underlag-prose li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.underlag-prose li + li {
+  margin-top: 0.55em;
+}
+
+/* A hairline dash, not a bullet glyph — matches the rest of the page. */
+.underlag-prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 10px;
+  height: 1px;
+  background: var(--n-400);
+}
+
+.underlag-prose ol {
+  counter-reset: underlag-ol;
+}
+
+.underlag-prose ol > li {
+  counter-increment: underlag-ol;
+}
+
+.underlag-prose ol > li::before {
+  content: counter(underlag-ol) '.';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--n-400);
+}
+
+.underlag-prose li > ul,
+.underlag-prose li > ol {
+  margin-top: 0.55em;
+}
+
+/* ---- block quotes ---- */
+.underlag-prose blockquote {
+  margin-left: 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--line-strong);
+  color: var(--n-600);
+}
+
+/* ---- rules + tables ---- */
+.underlag-prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-top: 2.4em;
+  margin-bottom: 2.4em;
+}
+
+/* Tables scroll inside their own box; the page never scrolls sideways. */
+.underlag-prose table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.underlag-prose th,
+.underlag-prose td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 16px 10px 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.underlag-prose th {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--line-strong);
+}
+
+/* Payload's JSX converter wraps output in a container div; neutralise it
+   so the spacing rules above apply to the real blocks. */
+.underlag-prose > div:only-child {
+  display: contents;
+}
+
+@media (max-width: 640px) {
+  .underlag-prose {
+    font-size: 16px;
+  }
+}
+
+/* ============================================================
+   Index list + shared editorial marks
+   ------------------------------------------------------------
+   Same unlayered-specificity reasoning as above: a list row title is
+   semantically an <h2> (it sits under the page <h1>), but the bare h2
+   rule is a section-opener at up to 64px/800.
+   ============================================================ */
+
+.underlag-row-title {
+  font-size: clamp(21px, 1.9vw, 26px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+
+.underlag-row:hover .underlag-row-title {
+  text-decoration-color: var(--line-strong);
+}
+
+/* Section kicker — DESIGN.md §5. Plus Jakarta 500 / 12px / 0.18em / red.
+   Note this is NOT mono: v4 reserves JetBrains for code, URLs and paths. */
+.underlag-kicker {
+  font-family: var(--font-display), -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.underlag-meta {
+  font-size: 13px;
+  color: var(--n-400);
+  font-variant-numeric: tabular-nums;
+}

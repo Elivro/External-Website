@@ -17,6 +17,7 @@ const PRODUKT: LinkItem[] = [
 
 const FORETAG: LinkItem[] = [
   { label: 'Om oss', section: 'about-us' },
+  { label: 'Underlag', href: '/underlag' },
   { label: 'Kontakt', href: 'mailto:hello@elivro.se' },
 ]
 

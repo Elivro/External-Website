@@ -68,6 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    articles: Article;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,6 +77,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -144,6 +146,72 @@ export interface User {
   collection: 'users';
 }
 /**
+ * Redaktionellt underlag. Publicerade sidor når /underlag — utkast syns bara här.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: number;
+  /**
+   * Sätts som <h1> och som <title>. Meningsform — inga VERSALER. Ett kursiverat ord får emfas i mallen.
+   */
+  title: string;
+  /**
+   * Två till tre meningar. Används som ingress, i listan på /underlag och som meta description när ingen egen är satt.
+   */
+  dek: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Blir /underlag/<slug>. Ändra aldrig på en publicerad sida utan omdirigering.
+   */
+  slug: string;
+  /**
+   * Omvärld är förberett men har ingen publik yta ännu.
+   */
+  kind: 'underlag' | 'omvarld';
+  /**
+   * Visas som etikett över rubriken.
+   */
+  category: 'regelverk' | 'ersattning' | 'schemalaggning' | 'dokumentation' | 'systembyte';
+  publishedAt: string;
+  /**
+   * Faller tillbaka på Elivro-redaktionen om tom.
+   */
+  author?: (number | null) | User;
+  seo?: {
+    /**
+     * Valfri. Faller tillbaka på rubriken. Sikta på under 60 tecken.
+     */
+    metaTitle?: string | null;
+    /**
+     * Valfri. Faller tillbaka på ingressen. Sikta på 140–160 tecken.
+     */
+    metaDescription?: string | null;
+    /**
+     * Sätter noindex och håller sidan utanför sitemap. För sidor som publiceras men inte ska sökas upp ännu.
+     */
+    noindex?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -166,10 +234,15 @@ export interface PayloadKv {
  */
 export interface PayloadLockedDocument {
   id: number;
-  document?: {
-    relationTo: 'users';
-    value: number | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'articles';
+        value: number | Article;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -236,6 +309,30 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  dek?: T;
+  content?: T;
+  slug?: T;
+  kind?: T;
+  category?: T;
+  publishedAt?: T;
+  author?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        noindex?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
