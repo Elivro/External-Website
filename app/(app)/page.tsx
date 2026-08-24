@@ -9,6 +9,13 @@ import CaseProof from '@/components/CaseProof'
 import AboutUs from '@/components/AboutUs'
 import StartupOffer from '@/components/StartupOffer'
 import Footer from '@/components/Footer'
+import type { Metadata } from 'next'
+
+// Canonical is declared per page, never in the shared layout — see the note
+// in app/(app)/layout.tsx. Title/description still inherit from the layout.
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 /**
  * Landing-page composition — Brand Kit v4

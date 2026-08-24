@@ -19,6 +19,14 @@ const nextConfig = {
   // Compress output
   compress: true,
 
+  // /privacy was a thin, orphaned stub duplicating /integritetspolicy.
+  // 308 keeps any stray inbound link and consolidates the signal.
+  async redirects() {
+    return [
+      { source: '/privacy', destination: '/integritetspolicy', permanent: true },
+    ]
+  },
+
   // Mark Payload packages as external to avoid bundling issues with Turbopack
   serverExternalPackages: ['payload', '@payloadcms/db-postgres', 'pino', 'thread-stream'],
 }

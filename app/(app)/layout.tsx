@@ -80,12 +80,6 @@ export const metadata: Metadata = {
   creator: 'Elivro',
   publisher: 'Elivro',
   applicationName: 'Elivro',
-  alternates: {
-    canonical: '/',
-    languages: {
-      'sv-SE': '/',
-    },
-  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },

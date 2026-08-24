@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/quiz' },
   title: 'Är Elivro rätt för er? | Kvalificeringsquiz',
   description: 'Svara på sex frågor och få en personlig bedömning av hur Elivro kan hjälpa er assistansverksamhet med rekrytering, schemaläggning och kvalitetsledning.',
   openGraph: {
