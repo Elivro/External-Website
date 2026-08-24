@@ -145,12 +145,12 @@ fråga 7 har gett dig mer information än någon jämförelsetabell hade gjort.
 
 ## Källor
 
-- Aiai — egen positionering, aiai.se (läst 2026-08-25)
-- Primass — egen positionering, primass.se (läst 2026-08-25)
-- Coordinare — egen positionering, coordinare.se (läst 2026-08-25)
-- Sonika — egen positionering, sonika.se (läst 2026-08-25)
-- Alfa eCare — egen positionering, alfaecare.se (läst 2026-08-25)
-- Tidvis — egen positionering, tidvis.se (läst 2026-08-25)
+- [Aiai](https://www.aiai.se) — egen positionering, aiai.se (läst 2026-08-25)
+- [Primass](https://www.primass.se) — egen positionering, primass.se (läst 2026-08-25)
+- [Coordinare](https://www.coordinare.se) — egen positionering, coordinare.se (läst 2026-08-25)
+- [Sonika](https://www.sonika.se) — egen positionering, sonika.se (läst 2026-08-25)
+- [Alfa eCare](https://www.alfaecare.se) — egen positionering, alfaecare.se (läst 2026-08-25)
+- [Tidvis](https://tidvis.se) — egen positionering, tidvis.se (läst 2026-08-25)
 
 Beskrivningarna av andra leverantörer bygger uteslutande på vad de själva
 skriver publikt. Vi har inte testat systemen och gör inga påståenden om vad

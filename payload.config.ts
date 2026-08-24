@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { EXPERIMENTAL_TableFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -19,7 +19,12 @@ export default buildConfig({
     Users,
     Articles,
   ],
-  editor: lexicalEditor({}),
+  // Tables are not in Payload's default feature set. /underlag leans on them
+  // for belopp and comparisons — a table is more useful than a paragraph of
+  // numbers, and LLMs cite tables readily. Links are a default feature already.
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [...defaultFeatures, EXPERIMENTAL_TableFeature()],
+  }),
   secret: process.env.PAYLOAD_SECRET || 'your-secret-key-here',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

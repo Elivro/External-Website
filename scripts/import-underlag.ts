@@ -81,16 +81,40 @@ const textNode = (text: string, italic = false) => ({
   version: 1,
 })
 
-/** Splits `*så här*` into italic runs. Deliberately the only inline syntax. */
-function inline(text: string) {
+const linkNode = (label: string, url: string) => ({
+  type: 'link',
+  format: '',
+  indent: 0,
+  version: 3,
+  direction: 'ltr',
+  fields: {
+    linkType: 'custom',
+    url,
+    // External citations open in a new tab so the reader keeps their place;
+    // Payload's JSX converter adds rel="noopener noreferrer" when newTab is set.
+    newTab: /^https?:\/\//i.test(url),
+  },
+  children: inline(label),
+})
+
+/**
+ * Inline syntax, and deliberately only these two:
+ *   *så här*        Fraunces italic emphasis
+ *   [text](url)     link
+ * Bold is not supported on purpose — DESIGN.md forbids it for emphasis.
+ */
+function inline(text: string): unknown[] {
   return text
-    .split(/(\*[^*]+\*)/g)
+    .split(/(\[[^\]]+\]\([^)]+\)|\*[^*]+\*)/g)
     .filter(Boolean)
-    .map((part) =>
-      part.length > 2 && part.startsWith('*') && part.endsWith('*')
-        ? textNode(part.slice(1, -1), true)
-        : textNode(part),
-    )
+    .map((part) => {
+      const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+      if (link) return linkNode(link[1], link[2])
+      if (part.length > 2 && part.startsWith('*') && part.endsWith('*')) {
+        return textNode(part.slice(1, -1), true)
+      }
+      return textNode(part)
+    })
 }
 
 const block = (type: string, children: unknown[], extra: Record<string, unknown> = {}) => ({
@@ -103,6 +127,45 @@ const block = (type: string, children: unknown[], extra: Record<string, unknown>
   ...extra,
 })
 
+/**
+ * Markdown pipe table -> Lexical table.
+ *
+ *   | Rubrik | Rubrik |
+ *   |---|---|
+ *   | a | b |
+ *
+ * Cell children must be paragraphs, not bare text. headerState > 0 makes the
+ * converter emit <th>; any positive value works, 1 is the row-header state.
+ */
+function tableNode(rows: string[]) {
+  const cells = (row: string) =>
+    row
+      .replace(/^\||\|$/g, '')
+      .split('|')
+      .map((c) => c.trim())
+
+  const isDivider = (row: string) => /^\|[\s|:-]+\|?$/.test(row.trim())
+  const hasHeader = rows.length > 1 && isDivider(rows[1])
+  const bodyRows = rows.filter((row, i) => !(hasHeader && i === 1))
+
+  return block(
+    'table',
+    bodyRows.map((row, rowIndex) =>
+      block(
+        'tablerow',
+        cells(row).map((cell) =>
+          block('tablecell', [block('paragraph', inline(cell), { textFormat: 0 })], {
+            headerState: hasHeader && rowIndex === 0 ? 1 : 0,
+            colSpan: 1,
+            rowSpan: 1,
+            backgroundColor: null,
+          }),
+        ),
+      ),
+    ),
+  )
+}
+
 function markdownToLexical(markdown: string) {
   // Drop the editorial HTML comment — it is a note to the author, not content.
   const clean = markdown.replace(/<!--[\s\S]*?-->/g, '').trim()
@@ -111,6 +174,7 @@ function markdownToLexical(markdown: string) {
 
   let paragraph: string[] = []
   let list: { type: 'bullet' | 'number'; items: string[] } | null = null
+  let table: string[] | null = null
 
   const flushParagraph = () => {
     if (!paragraph.length) return
@@ -132,9 +196,16 @@ function markdownToLexical(markdown: string) {
     list = null
   }
 
+  const flushTable = () => {
+    if (!table) return
+    children.push(tableNode(table))
+    table = null
+  }
+
   const flushAll = () => {
     flushParagraph()
     flushList()
+    flushTable()
   }
 
   for (const line of lines) {
@@ -144,6 +215,15 @@ function markdownToLexical(markdown: string) {
       flushAll()
       continue
     }
+
+    if (trimmed.startsWith('|')) {
+      flushParagraph()
+      flushList()
+      if (!table) table = []
+      table.push(trimmed)
+      continue
+    }
+    flushTable()
 
     const heading = trimmed.match(/^(#{2,4})\s+(.*)$/)
     if (heading) {

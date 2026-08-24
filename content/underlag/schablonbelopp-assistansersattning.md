@@ -36,8 +36,10 @@ Datumet högst upp säger när det senast hände.
 
 Försäkringskassan anger två belopp per assistanstimme:
 
-- 2026: 347,70 kronor fastställt, 389,42 kronor som högst
-- 2025: 342,60 kronor fastställt, 383,71 kronor som högst
+| År | Fastställt timbelopp | Högsta timbelopp |
+|---|---|---|
+| 2026 | 347,70 kr | 389,42 kr |
+| 2025 | 342,60 kr | 383,71 kr |
 
 Höjningen från 2025 till 2026 är 5,10 kronor per timme, eller 1,49 procent. Det
 högsta beloppet steg med 5,71 kronor — samma 1,49 procent.
@@ -121,10 +123,8 @@ avvikelse som upptäcks vid periodens slut är redan en skuld.
 
 ## Källor
 
-- Försäkringskassan, "Timbelopp för assistansersättning" — beloppstabell,
-  sidan senast uppdaterad 11 december 2025 (läst 2026-08-25)
-- Försäkringskassan, "Redovisa kostnader för personliga assistenter" —
-  kostnadsslag, redovisningsperioder och återbetalningsansvar (läst 2026-08-25)
+- [Försäkringskassan, "Timbelopp för assistansersättning"](https://www.forsakringskassan.se/privatperson/e-tjanster-blanketter-och-informationsmaterial/aktuella-belopp/timbelopp-for-assistansersattning) — beloppstabell, sidan senast uppdaterad 11 december 2025 (läst 2026-08-25)
+- [Försäkringskassan, "Redovisa kostnader för personliga assistenter"](https://www.forsakringskassan.se/privatperson/vuxen-med-funktionsnedsattning/assistansersattning/redovisa-kostnader-for-personliga-assistenter) — kostnadsslag, redovisningsperioder och återbetalningsansvar (läst 2026-08-25)
 
 Beloppen är hämtade direkt ur Försäkringskassans beloppstabell. Procenttalen
 och tolvprocentskontrollen är uträknade på de beloppen.
@@ -152,7 +152,6 @@ och tolvprocentskontrollen är uträknade på de beloppen.
    Samma slug, ny titel, nya siffror, nytt dateModified. Skapa aldrig en ny
    sida för nästa år.
 
-5. Importeraren stöder ännu inte markdown-tabeller — beloppen är därför en
-   lista. Om ni vill ha tabell här behöver scripts/import-underlag.ts
-   utökas med Lexical-tabellnoder.
+5. Beloppen ligger i en tabell. Uppdatera raden för nästa år i januari och
+   låt föregående år ligga kvar — historiken är en del av nyttan.
 -->

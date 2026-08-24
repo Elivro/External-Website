@@ -146,27 +146,52 @@
   margin-bottom: 2.4em;
 }
 
-/* Tables scroll inside their own box; the page never scrolls sideways. */
-.underlag-prose table {
-  display: block;
+/* ---- tables ----
+   The scroll lives on the wrapper, not the table, so a wide table scrolls
+   inside its own box and the page never scrolls sideways. ArticleProse
+   overrides Payload's default converters, which would otherwise hardcode
+   `border: 1px solid #ccc` inline on every cell and beat these rules. */
+.underlag-table-scroll {
   overflow-x: auto;
+  max-width: 100%;
+  margin-top: 1.5em;
+  /* room for the scrollbar so it never sits on the last row's hairline */
+  padding-bottom: 2px;
+}
+
+.underlag-prose table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
+  /* wide enough that columns do not crush before the wrapper starts scrolling */
+  min-width: 26rem;
 }
 
 .underlag-prose th,
 .underlag-prose td {
   border-bottom: 1px solid var(--line);
-  padding: 10px 16px 10px 0;
+  padding: 11px 20px 11px 0;
   text-align: left;
   vertical-align: top;
+  font-variant-numeric: tabular-nums;
 }
 
 .underlag-prose th {
   color: var(--ink);
   font-weight: 600;
   border-bottom-color: var(--line-strong);
+  white-space: nowrap;
+}
+
+.underlag-prose th:last-child,
+.underlag-prose td:last-child {
+  padding-right: 0;
+}
+
+/* Cell content arrives as paragraphs; they must not carry block spacing. */
+.underlag-prose td > p,
+.underlag-prose th > p {
+  margin: 0;
 }
 
 /* Payload's JSX converter wraps output in a container div; neutralise it
