@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 
@@ -46,8 +47,16 @@ async function client() {
   return getPayload({ config })
 }
 
-/** Published articles of one kind, newest first. Never throws. */
-export async function getArticles(kind: 'underlag' | 'omvarld' = 'underlag'): Promise<Article[]> {
+/**
+ * Published articles of one kind, newest first. Never throws.
+ *
+ * Wrapped in React.cache: each route reads this twice per render — once in
+ * generateMetadata, once in the component — and without deduping that is two
+ * round-trips for identical data.
+ */
+export const getArticles = cache(async function getArticles(
+  kind: 'underlag' | 'omvarld' = 'underlag',
+): Promise<Article[]> {
   try {
     const payload = await client()
     const res = await payload.find({
@@ -65,10 +74,12 @@ export async function getArticles(kind: 'underlag' | 'omvarld' = 'underlag'): Pr
     console.warn('[underlag] getArticles failed, rendering empty:', (err as Error).message)
     return []
   }
-}
+})
 
-/** One published article by slug, or null. Never throws. */
-export async function getArticleBySlug(slug: string): Promise<Article | null> {
+/** One published article by slug, or null. Never throws. Deduped per request. */
+export const getArticleBySlug = cache(async function getArticleBySlug(
+  slug: string,
+): Promise<Article | null> {
   try {
     const payload = await client()
     const res = await payload.find({
@@ -85,7 +96,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     console.warn('[underlag] getArticleBySlug failed:', (err as Error).message)
     return null
   }
-}
+})
 
 /** Swedish long date: "24 augusti 2026". */
 export function formatDate(iso: string): string {
