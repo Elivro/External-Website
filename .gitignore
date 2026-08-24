@@ -26,5 +26,8 @@ tsconfig.tsbuildinfo
 audit/screenshots/
 audit/*.json
 
+# ui-explore mockups + scratch (disposable, never commit)
+.tmp/
+
 # omvärldsbevakning: locally-held "already seen" ledger
 .omvarld-state.json
