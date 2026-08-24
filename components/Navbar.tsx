@@ -45,10 +45,11 @@ export default function Navbar() {
     <>
     <nav
       data-scrolled={scrolled}
+      /* No bottom rule in either state — the TopBanner's ink hairline is the
+         only horizontal line wanted at the top of the page. Scroll state is
+         carried by surface opacity alone. */
       className={`sticky top-0 inset-x-0 z-50 transition-colors duration-fast ease-out ${
-        scrolled
-          ? 'bg-paper/92 border-b border-line backdrop-blur-md'
-          : 'bg-paper/70 border-b border-transparent backdrop-blur-sm'
+        scrolled ? 'bg-paper/92 backdrop-blur-md' : 'bg-paper/70 backdrop-blur-sm'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">

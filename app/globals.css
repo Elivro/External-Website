@@ -212,7 +212,15 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-h1 { font-size: clamp(34px, 3.5vw, 54px); letter-spacing: -0.044em; }
+/* Hero-scale display. Tracking opened from -0.044em -> -0.024em: at this
+   size the tighter setting closed the counters and the three hero lines
+   read as one dense block. Max size trimmed 54px -> 50px so the longest
+   hero line ("Tryggare regelefterlevnad.") still sets on one line in the
+   left column at the looser tracking.
+   NOTE: this rule is UNLAYERED, so it beats Tailwind utilities -- a
+   `text-[...]`/`tracking-[...]` class on an <h1> is silently ignored.
+   Change the scale here, not in the component. */
+h1 { font-size: clamp(34px, 3.5vw, 50px); letter-spacing: -0.024em; }
 h2 { font-size: clamp(36px, 4.5vw, 64px); font-weight: 800; }
 h3 { font-size: clamp(22px, 2vw, 28px);  letter-spacing: -0.018em; line-height: 1.10; }
 h4 { font-size: 18px; letter-spacing: -0.010em; line-height: 1.18; font-weight: 600; }
@@ -279,7 +287,38 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
   to   { transform: scaleX(1); }
 }
 
+/* Hero entrance — the load-time counterpart to elvReveal.
+   elvReveal stays as-is for scroll reveals (slow, 20px, no filter); this one
+   is quicker, travels less, and resolves out of a blur. Parameterised rather
+   than duplicated: --rise-y / --rise-blur / --rise-scale / --rise-duration.
+
+   Kept separate from elvReveal on purpose: a `filter` in the keyframe creates
+   a stacking context for the whole animation, which would be an invisible
+   footgun for any future scroll-reveal element with fixed/absolute children. */
+@keyframes elvRise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise-y, 10px)) scale(var(--rise-scale, 1));
+    filter: blur(var(--rise-blur, 6px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 /* Utility classes */
+.elv-rise {
+  animation: elvRise var(--rise-duration, 560ms) var(--ease-out)
+             var(--reveal-delay, 0ms) both;
+}
+
+/* Headline lines are blocks so each can carry its own delay. */
+.elv-line {
+  display: block;
+}
+
 .elv-float {
   animation: elvFloat var(--float-duration) ease-in-out infinite;
   will-change: transform;
@@ -304,8 +343,18 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
   animation: elvPulse var(--pulse-duration) ease-in-out infinite;
 }
 
+/* `--reveal-delay` is the stagger slot: set it per element (inline style or
+   a wrapper) to sequence a group without defining a second animation.
+   Defaults to 0ms, so existing `.elv-reveal` usage is unchanged.
+
+   `both` fill mode holds the from-state before the delay elapses, which is
+   what makes a staggered group hold still instead of flashing in at once.
+   The global prefers-reduced-motion block kills the animation entirely and
+   the element falls back to its natural (visible) state — no extra guard
+   needed here. */
 .elv-reveal {
-  animation: elvReveal var(--reveal-duration) var(--ease-out) both;
+  animation: elvReveal var(--reveal-duration) var(--ease-out)
+             var(--reveal-delay, 0ms) both;
 }
 
 /* ============================================

@@ -29,10 +29,10 @@ colors:
 typography:
   display:
     fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', -apple-system, sans-serif"
-    fontSize: "clamp(34px, 3.5vw, 54px)"
+    fontSize: "clamp(34px, 3.5vw, 50px)"
     fontWeight: 700
     lineHeight: 1.08
-    letterSpacing: "-0.044em"
+    letterSpacing: "-0.024em"
   headline:
     fontFamily: "var(--font-jakarta), 'Plus Jakarta Sans', -apple-system, sans-serif"
     fontSize: "clamp(36px, 4.5vw, 64px)"
@@ -248,9 +248,12 @@ for emphasis; the italic carries it.
 
 ### Hierarchy
 
-- **Display / H1** (Plus Jakarta, 700, `clamp(34px, 3.5vw, 54px)`, line-height
-  1.08, letter-spacing −0.044em). The single page-defining headline. The tight
-  −0.044em tracking is deliberate and load-bearing.
+- **Display / H1** (Plus Jakarta, 700, `clamp(34px, 3.5vw, 50px)`, line-height
+  1.08, letter-spacing −0.024em). The single page-defining headline. Revised
+  2026-08-24 from 54px / −0.044em: at display size the tighter setting closed
+  the counters and the hero's three lines read as one dense block. The max size
+  came down with it so the longest hero line still sets on one line in the
+  left column at the looser tracking.
 - **Headline / H2** (Plus Jakarta, 800, `clamp(36px, 4.5vw, 64px)`, line-height
   1.08, −0.032em). Section openers, the heaviest weight in the system.
 - **Title / H3** (Plus Jakarta, 700, `clamp(22px, 2vw, 28px)`, line-height 1.10,
