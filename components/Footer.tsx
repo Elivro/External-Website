@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import ElivroLogo from './ElivroLogo'
 import { scrollToSection } from '@/lib/scroll-utils'
 
@@ -26,6 +27,14 @@ const REGELEFTERLEVNAD: LinkItem[] = [
 ]
 
 function FooterColumn({ eyebrow, items }: { eyebrow: string; items: LinkItem[] }) {
+  /**
+   * Section links resolve to elements on the landing page. Off the homepage
+   * those ids do not exist, so the click handler scrolled nowhere and
+   * preventDefault swallowed the navigation — the whole column was dead on
+   * /underlag and /integritetspolicy. Point them at /#section there instead.
+   */
+  const onHome = usePathname() === '/'
+
   return (
     <div>
       <p className="font-mono text-accent text-[10px] tracking-[0.18em] uppercase mb-5">
@@ -39,8 +48,9 @@ function FooterColumn({ eyebrow, items }: { eyebrow: string; items: LinkItem[] }
             return (
               <li key={item.label}>
                 <a
-                  href={`#${item.section}`}
+                  href={onHome ? `#${item.section}` : `/#${item.section}`}
                   onClick={(e) => {
+                    if (!onHome) return // follow the link to the landing page
                     e.preventDefault()
                     scrollToSection(item.section)
                   }}

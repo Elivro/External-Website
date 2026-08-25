@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import ElivroLogo from './ElivroLogo'
 import DemoModal from './DemoModal'
@@ -8,6 +9,17 @@ import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scr
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null)
+  /**
+   * The nav links point at sections of the landing page. On any other route
+   * those elements do not exist, so scrollToSection found nothing and did
+   * nothing — while preventDefault had already killed the anchor. Every nav
+   * link, and the logo, was inert on /underlag, /integritetspolicy and every
+   * future sub-page.
+   *
+   * Off the homepage they become real links to /#section instead.
+   */
+  const pathname = usePathname()
+  const onHome = pathname === '/'
   const triggerRef = useRef<HTMLButtonElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -51,15 +63,19 @@ export default function Navbar() {
   }, [mobileMenuOpen])
 
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    setMobileMenuOpen(false)
+    if (!onHome) return // let the browser follow /#id to the landing page
     e.preventDefault()
     scrollTo(id)
-    setMobileMenuOpen(false)
   }
 
   const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!onHome) return // let the browser follow / home
     e.preventDefault()
     scrollTop()
   }
+
+  const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`)
 
   const navLinks = [
     { label: 'Produkt', id: 'product' },
@@ -85,7 +101,7 @@ export default function Navbar() {
           {/* LEFT — Mark + wordmark */}
           <div className="flex flex-1 justify-start">
             <a
-              href="#top"
+              href={onHome ? '#top' : '/'}
               onClick={handleScrollToTop}
               className="flex items-center gap-3 group"
             >
@@ -98,7 +114,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <a
                 key={link.id}
-                href={`#${link.id}`}
+                href={sectionHref(link.id)}
                 onClick={(e) => handleScrollToSection(e, link.id)}
                 className="px-3 py-2 text-sm font-sans text-n-700 hover:text-ink transition-colors duration-fast ease-out"
               >
@@ -165,7 +181,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a
               key={link.id}
-              href={`#${link.id}`}
+              href={sectionHref(link.id)}
               onClick={(e) => handleScrollToSection(e, link.id)}
               className="block w-full px-4 py-2.5 text-base font-sans text-n-700 hover:bg-paper-soft hover:text-ink rounded-md transition-colors duration-fast ease-out"
             >

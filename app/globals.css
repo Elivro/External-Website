@@ -1423,3 +1423,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Arriving at /#section from another page is a native fragment jump, which
+   ignores the sticky nav and parks the heading underneath it. scroll-margin
+   is the CSS-native offset; the JS path in lib/scroll-utils applies its own. */
+section[id] {
+  scroll-margin-top: 96px;
+}
