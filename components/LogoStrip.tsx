@@ -98,7 +98,9 @@ export default function LogoStrip() {
                   Susanne Pettersson
                 </div>
                 <div
-                  className="mt-1 font-sans text-[9.5px] font-semibold uppercase tracking-[0.18em]"
+                  /* 11px, was 9.5px — DESIGN.md sets 12px for tracked
+                     uppercase labels and 9.5px is unreadable on a phone. */
+                  className="mt-1 font-sans text-[11px] font-semibold uppercase tracking-[0.14em]"
                   style={{ color: WHITE_70 }}
                 >
                   Arbetsmiljöansvarig

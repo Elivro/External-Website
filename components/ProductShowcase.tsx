@@ -139,7 +139,10 @@ export default function ProductShowcase() {
           {/* Sticky tab nav — stays at top of viewport while scrolling
               through the section. top-16 accounts for the sticky navbar. */}
           <div className="sticky top-16 z-20 flex border-y border-edge bg-ink mb-10 md:mb-12">
-            <div className="flex-1 flex min-w-0">
+            {/* 2x2 on mobile. Four across plus the 96px arrow pair left each
+                tab ~45px of text on a 390px screen, so every label but
+                "Kunder" was ellipsed ("Schema & Bemanning" needs 136px). */}
+            <div className="flex-1 grid grid-cols-2 sm:flex min-w-0">
               {TOOLS.map((t, i) => {
                 const isActive = i === activeIndex
                 return (
@@ -148,12 +151,14 @@ export default function ProductShowcase() {
                     type="button"
                     onClick={() => go(i)}
                     aria-pressed={isActive}
-                    className={`group relative flex-1 min-w-0 px-2 sm:px-4 py-4 md:py-5 text-left transition-colors duration-obs-md ease-obsidian hover:bg-paper/[0.03] ${
+                    className={`group relative min-w-0 sm:flex-1 px-3 sm:px-4 py-4 md:py-5 text-left transition-colors duration-obs-md ease-obsidian hover:bg-paper/[0.03] ${
                       isActive ? 'text-fg' : 'text-fg-muted hover:text-fg'
+                    } ${i < 2 ? 'border-b border-edge sm:border-b-0' : ''} ${
+                      i % 2 === 0 ? 'border-r border-edge sm:border-r-0' : ''
                     }`}
                   >
                     <span className="block font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-muted mb-1.5 transition-colors duration-obs-md ease-obsidian group-hover:text-fg-soft">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="block font-sans text-[13px] sm:text-[14px] md:text-[15px] font-medium leading-tight truncate">{t.category}</span>
+                    <span className="block font-sans text-[13px] sm:text-[14px] md:text-[15px] font-medium leading-tight sm:truncate">{t.category}</span>
                     {/* Hover preview underline (when not active) — short ember hint that anticipates the click */}
                     {!isActive && (
                       <span
@@ -180,7 +185,7 @@ export default function ProductShowcase() {
                 )
               })}
             </div>
-            <div className="flex items-stretch border-l border-edge shrink-0">
+            <div className="hidden sm:flex items-stretch border-l border-edge shrink-0">
               <button type="button" onClick={() => go(activeIndex - 1)} aria-label="Föregående" className="group flex items-center justify-center w-12 md:w-14 text-fg-muted hover:text-fg hover:bg-paper/[0.03] transition-colors duration-obs-md ease-obsidian">
                 <ChevronLeft className="w-4 h-4 transition-transform duration-obs-md ease-obsidian group-hover:-translate-x-0.5" strokeWidth={1.4} />
               </button>

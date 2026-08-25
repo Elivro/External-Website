@@ -1,12 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import ElivroLogo from './ElivroLogo'
 import DemoModal from './DemoModal'
 import { scrollToSection as scrollTo, scrollToTop as scrollTop } from '@/lib/scroll-utils'
 
 export default function Navbar() {
+  const navRef = useRef<HTMLElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -22,6 +24,31 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Dismiss the mobile menu on an outside tap or Escape. Listeners are only
+  // bound while it is open. `pointerdown` rather than `click` so the menu
+  // closes on touch-down like a native sheet, and so a tap that lands on a
+  // link still runs that link's own handler.
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (!navRef.current?.contains(e.target as Node)) setMobileMenuOpen(false)
+    }
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false)
+        triggerRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('pointerdown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [mobileMenuOpen])
 
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
@@ -44,6 +71,7 @@ export default function Navbar() {
   return (
     <>
     <nav
+      ref={navRef}
       data-scrolled={scrolled}
       /* No bottom rule in either state — the TopBanner's ink hairline is the
          only horizontal line wanted at the top of the page. Scroll state is
@@ -104,9 +132,11 @@ export default function Navbar() {
           <div className="flex md:hidden">
             <button
               type="button"
+              ref={triggerRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] rounded-md p-2 text-n-700 hover:text-ink hover:bg-paper-soft transition-colors duration-fast ease-out"
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <span className="sr-only">Öppna meny</span>
               {!mobileMenuOpen ? (
@@ -125,6 +155,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
+        id="mobile-menu"
+        inert={!mobileMenuOpen}
         className={`md:hidden bg-paper-card border-b border-line overflow-hidden transition-all ease-out ${
           mobileMenuOpen ? 'max-h-96 opacity-100 duration-base' : 'max-h-0 opacity-0 duration-fast'
         }`}
