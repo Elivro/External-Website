@@ -1,14 +1,13 @@
 ---
 # Staging artifact, not a source of truth. Import with
 #   PUBLISH=1 npx payload run scripts/import-underlag.ts <den här filen>
-# after every [VERIFIERA] is resolved.
 #
 # NOTE on the slug: no year in it, deliberately. This page is rewritten every
 # January when regeringen sets the new belopp — same URL, new numbers, new
 # dateModified. A dated slug would force a new page every year and split the
 # link equity five ways in five years. The year lives in the title, which can
 # change; the slug cannot.
-status: UTKAST — ej granskat, ej publicerat
+status: UTKAST — inga öppna kontroller, väntar domängranskning
 kind: underlag
 category: ersattning
 slug: schablonbelopp-assistansersattning
@@ -58,8 +57,9 @@ tolv procent. Det syns direkt i siffrorna — 347,70 gånger 1,12 blir 389,42, p
 öret. Utrymmet mellan de två beloppen är alltså 41,72 kronor per timme för 2026,
 varken mer eller mindre.
 
-Ansökan görs på [VERIFIERA: blankettnummer och exakt titel — kontrollera på
-forsakringskassan.se innan publicering].
+Ansökan görs på blankett 3051, "Ansök om assistansersättning – högre
+timbelopp". Det finns ingen e-tjänst för det — blanketten är en PDF som fylls i
+och skickas in, vilket är värt att veta när du planerar in ledtiden.
 
 ## De fem kostnadsslagen
 
@@ -125,6 +125,7 @@ avvikelse som upptäcks vid periodens slut är redan en skuld.
 
 - [Försäkringskassan, "Timbelopp för assistansersättning"](https://www.forsakringskassan.se/privatperson/e-tjanster-blanketter-och-informationsmaterial/aktuella-belopp/timbelopp-for-assistansersattning) — beloppstabell, sidan senast uppdaterad 11 december 2025 (läst 2026-08-25)
 - [Försäkringskassan, "Redovisa kostnader för personliga assistenter"](https://www.forsakringskassan.se/privatperson/vuxen-med-funktionsnedsattning/assistansersattning/redovisa-kostnader-for-personliga-assistenter) — kostnadsslag, redovisningsperioder och återbetalningsansvar (läst 2026-08-25)
+- [Försäkringskassan, "Du som har assistansersättning"](https://www.forsakringskassan.se/privatperson/vuxen-med-funktionsnedsattning/assistansersattning/du-som-har-assistansersattning) — villkoren för högre timbelopp, tolvprocentstaket och blankett 3051 (läst 2026-08-25)
 
 Beloppen är hämtade direkt ur Försäkringskassans beloppstabell. Procenttalen
 och tolvprocentskontrollen är uträknade på de beloppen.
@@ -132,17 +133,19 @@ och tolvprocentskontrollen är uträknade på de beloppen.
 <!--
 ÖPPNA PUNKTER FÖRE PUBLICERING
 
-1. [VERIFIERA] blankettnumret för ansökan om förhöjt timbelopp. En sökning
-   pekar mot 3051 "Ansök om assistansersättning – högre timbelopp", men jag
-   har inte öppnat blanketten. Sökträffar är tier 3 enligt kallor.md — öppna
-   sidan hos Försäkringskassan och bekräfta nummer och titel, eller stryk
-   meningen och skriv "ansökan görs hos Försäkringskassan".
+1. Inga öppna kontroller kvar. Blankett 3051 och dess exakta titel är avlästa
+   direkt på Försäkringskassans sida "Du som har assistansersättning"
+   2026-08-25, tillsammans med tolvprocentstaket. PDF-länken på den sidan
+   svarar 200 och är en application/pdf på 655 kB, men den innehåller ett
+   Sitevision-id och en tidsstämpel som byts vid varje ompublicering — därför
+   länkar Källor till sidan och inte till PDF:en.
 
 2. Verifierat direkt ur primärkällan och säkert att publicera:
    347,70 / 389,42 (2026), 342,60 / 383,71 (2025), de fem kostnadsslagen,
    redovisningskadensen och återbetalningsansvaret. Procenttalen 1,49 % och
    differensen 41,72 kr är uträknade på de beloppen, och 347,70 x 1,12 =
-   389,42 bekräftar tolvprocentstaket mot primärkällan.
+   389,42 bekräftar tolvprocentstaket, som nu också står uttryckligen i
+   Försäkringskassans egen text.
 
 3. Domänkoll som bara ni kan göra: stämmer beskrivningen av vad de fem
    kostnadsslagen används till mot hur 2u faktiskt redovisar? Om ni ser något
