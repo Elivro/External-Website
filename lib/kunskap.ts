@@ -156,7 +156,11 @@ export const getArticles = cache(async function getArticles(
 
   return articles
     .filter((a): a is Article => a !== null && a.kind === kind)
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    // Most recently revised first, not most recently written. On evergreen
+    // reference the useful signal is which page was last checked against its
+    // source — a 2024 page updated last month is more current than a 2026 one
+    // that has sat untouched.
+    .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
 })
 
 /** One published article by slug, or null. */

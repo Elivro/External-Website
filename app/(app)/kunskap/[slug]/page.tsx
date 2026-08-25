@@ -145,14 +145,25 @@ export default async function KunskapArticle({ params }: Props) {
             </p>
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 kunskap-meta border-t border-[var(--line)] pt-5">
+              {/* These pages are reference, not news. What a reader needs to
+                  know is when the facts were last checked against the source,
+                  so the revision date leads and the original publication date
+                  becomes the quiet second line. A piece never revised shows
+                  only "Publicerad". */}
               <span>{authorName(article)}</span>
               <span aria-hidden="true">·</span>
-              <span>Publicerad {formatDate(article.publishedAt)}</span>
-              {revised && (
+              {revised ? (
                 <>
+                  <span className="text-n-600">
+                    Uppdaterad {formatDate(article.updatedAt)}
+                  </span>
                   <span aria-hidden="true">·</span>
-                  <span>Uppdaterad {formatDate(article.updatedAt)}</span>
+                  <span>Publicerad {formatDate(article.publishedAt)}</span>
                 </>
+              ) : (
+                <span className="text-n-600">
+                  Publicerad {formatDate(article.publishedAt)}
+                </span>
               )}
             </div>
           </header>
