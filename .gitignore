@@ -20,7 +20,14 @@ screenshot.js
 tsconfig.tsbuildinfo
 
 # Claude Code project-local settings and plugins
-.claude/
+# Local agent config. Third-party skills stay out; the repo-specific
+# `underlag` skill is tracked so the whole team gets it. Git will not descend
+# into an excluded directory, so each level has to be re-included in turn —
+# `.claude/*` rather than `.claude/`.
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/underlag/
 
 # Responsive audit output (scripts kept, output not)
 audit/screenshots/
