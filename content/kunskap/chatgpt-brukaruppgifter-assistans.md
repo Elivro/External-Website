@@ -94,20 +94,40 @@ fast utan att du vet om det.
 
 ## Så har vi löst det i Elivro
 
-AI:n i Elivro arbetar i bakgrunden på uppgifter som redan finns i systemet. Du
-behöver inte klistra in något någon annanstans, och personalen behöver inte
-kunna skriva prompter.
+AI:n i Elivro arbetar på uppgifter som redan ligger i systemet. Ingen behöver
+klistra in något någon annanstans, och ingen behöver kunna skriva prompter.
 
-[VERIFIERA innan publicering — beskriv bara det som faktiskt gäller i dag:
-var modellerna körs, om leverantören tränar på kunddata, hur länge indata
-sparas, om personuppgiftsbiträdesavtal finns på plats, och om något lämnar
-EU/EES. Skriv inget som inte går att visa upp för en kund som frågar. Namnge
-ingen modell eller modellleverantör, enligt CLAUDE.md.]
+Det som gäller står i avtalet, inte i en broschyr. Bilaga 5, AI-villkoren:
 
-Det här är också den sida där vi har mest att vinna på att låta bra. Så: om du
-redan har ett verktyg med biträdesavtal, kontroll över lagringen och en
-konsekvensbedömning gjord, så har du löst det. Då behöver du inte oss för den
-här biten.
+- AI-bearbetningen sker via Berget AI AB i Sverige. Personuppgifter lämnar inte
+  Sverige under bearbetningen.
+- Kunddata används inte för att träna eller vidareutveckla modellerna. Det
+  kräver ditt uttryckliga skriftliga samtycke, och vi har inte bett om det.
+- Byter vi AI-leverantör eller underliggande modell så att beteendet ändras
+  väsentligt får du besked minst 30 dagar i förväg.
+- AI:n är beslutsstöd. Den fattar aldrig beslut om en kandidats lämplighet
+  eller anställning på egen hand.
+
+Personuppgiftsbiträdesavtalet är Bilaga 1. Underbiträdena listas i Bilaga 2,
+du har 30 dagar på dig att invända mot ett nytt, och vi svarar för deras
+efterlevnad som för vår egen. Vid en personuppgiftsincident hör vi av oss inom
+48 timmar.
+
+En sak till, som få leverantörer nämner. AI som används för rekrytering och
+urval klassas som högrisk enligt AI-förordningen, bilaga III punkt 4. Det för
+med sig krav på riskhantering, loggning, teknisk dokumentation och mänsklig
+övervakning. De kraven har vi åtagit oss i avtalet.
+
+Konsekvensbedömningen är däremot din. Du är personuppgiftsansvarig, och det är
+du som ska göra DPIA:n. Vårt jobb är att ge dig underlaget: beskrivning av
+behandlingen, säkerhetsåtgärder och riskbedömningar. Det står i punkt 9.
+
+Vill du läsa bilagorna innan du bestämmer dig, be om dem. De är skrivna för att
+läsas.
+
+Och om du redan har ett verktyg med biträdesavtal, kontroll över lagringen och
+en gjord konsekvensbedömning, då har du löst det här. Då behöver du inte oss
+för den biten.
 
 ---
 
@@ -116,22 +136,24 @@ här biten.
 - [IMY, "Känsliga personuppgifter"](https://www.imy.se/verksamhet/dataskydd/det-har-galler-enligt-gdpr/introduktion-till-gdpr/personuppgifter/kansliga-personuppgifter/) — de åtta kategorierna, definitionen av hälsouppgifter och huvudregeln. Sidan uppdaterad 15 juni 2026 (läst 2026-08-26)
 - [IMY, "Att tänka på när du använder AI-tjänster"](https://www.imy.se/privatperson/ai/att-tanka-pa-nar-du-anvander-ai-tjanster/) — träning på delade uppgifter, chatten som inte är ett stängt rum (läst 2026-08-26)
 - [IMY, "GDPR och AI"](https://www.imy.se/verksamhet/ai/gdpr-och-ai/) — rättslig grund, biträdesavtal och konsekvensbedömning vid AI-användning (läst 2026-08-26)
+- Elivros tjänsteavtal, Bilaga 1 (personuppgiftsbiträdesavtal) och Bilaga 5 (AI-villkor). Be oss om dem, så skickar vi dem.
+- [Berget AI](https://berget.ai) — leverantörens egna uppgifter om datalagring och träning (läst 2026-08-26)
 
 <!--
 ÖPPNA PUNKTER FÖRE PUBLICERING
 
-1. Hela avsnittet "Så har vi löst det i Elivro" är en [VERIFIERA]. Det är
-   Jimmys och Daniels uppgifter, inte mina. Jag vet inte var modellerna körs,
-   vilka avtal som finns, om indata sparas eller om något lämnar EU/EES.
-   Skriv bara det som går att styrka för en kund som frågar, och lova inget
-   som ligger på roadmapen.
+1. Elivro-avsnittet är inte längre en [VERIFIERA]. Allt i det är hämtat ur
+   docs/agreements/06-bilaga-5-ai-villkor.md och 02-bilaga-1-pub-avtal.md i
+   Elivro-repot, samt bekräftat i koden: src/lib/berget-ai/ och
+   .env.example ("All AI features use Berget as the single provider").
 
-   Frågor som behöver konkreta svar innan sidan går live:
-     - Var körs modellerna geografiskt?
-     - Tränar leverantören på kunddata? Finns zero retention?
-     - Finns personuppgiftsbiträdesavtal som kunden kan få se?
-     - Lämnar någon data EU/EES, och i så fall med vilket skydd?
-     - Har vi gjort en egen konsekvensbedömning kunden kan hänvisa till?
+   Punkterna som citeras: 5.2 Sverige, 5.1 ingen träning utan samtycke,
+   5.4 trettio dagars varsel, 1.2/3.1 beslutsstöd, 2.1 högrisk enligt
+   bilaga III p.4, 9.1-9.2 DPIA-underlag, samt PUB-avtalets 6.2-6.4 och 7.1.
+
+   Kvar att kontrollera för er: att avtalsversionen i repot är den som
+   faktiskt gäller mot kund, och att Bilaga 2 verkligen listar Berget AI AB
+   som underbiträde.
 
 2. Verifierat direkt hos IMY 2026-08-26 och säkert att publicera: de åtta
    kategorierna, citatet om hälsouppgifter inklusive funktionshinder,
