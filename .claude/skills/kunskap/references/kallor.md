@@ -61,5 +61,5 @@ not their suppliers, so Elivro does not get listed. It gets adjacent, through
 - **Vårdföretagarna / Fremia** — branch days and member content. Sponsorship and
   contributed expertise, not a listing.
 
-An `/underlag` page and a contributed article for one of these are the same
+An `/kunskap` page and a contributed article for one of these are the same
 work done once. Write the page first, then offer it.

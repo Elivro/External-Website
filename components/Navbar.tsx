@@ -13,7 +13,7 @@ export default function Navbar() {
    * The nav links point at sections of the landing page. On any other route
    * those elements do not exist, so scrollToSection found nothing and did
    * nothing — while preventDefault had already killed the anchor. Every nav
-   * link, and the logo, was inert on /underlag, /integritetspolicy and every
+   * link, and the logo, was inert on /kunskap, /integritetspolicy and every
    * future sub-page.
    *
    * Off the homepage they become real links to /#section instead.

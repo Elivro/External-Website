@@ -1,5 +1,5 @@
 /* ============================================================
-   Long-form prose — /underlag
+   Long-form prose — /kunskap
    ------------------------------------------------------------
    globals.css sets bare h1–h6 rules OUTSIDE any @layer, at display
    scale. An <h2> coming out of the Lexical editor would otherwise land
@@ -13,7 +13,7 @@
    measure held in the 65–75ch band, italic-not-bold for emphasis.
    ============================================================ */
 
-.underlag-prose {
+.kunskap-prose {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 17px;
   line-height: 1.55;
@@ -21,12 +21,12 @@
   max-width: 68ch;
 }
 
-.underlag-prose > * + * {
+.kunskap-prose > * + * {
   margin-top: 1.25em;
 }
 
 /* ---- headings ---- */
-.underlag-prose h2 {
+.kunskap-prose h2 {
   font-size: clamp(26px, 2.4vw, 32px);
   font-weight: 700;
   line-height: 1.14;
@@ -36,7 +36,7 @@
   margin-bottom: 0;
 }
 
-.underlag-prose h3 {
+.kunskap-prose h3 {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.22;
@@ -46,7 +46,7 @@
   margin-bottom: 0;
 }
 
-.underlag-prose h4 {
+.kunskap-prose h4 {
   font-size: 17px;
   font-weight: 600;
   line-height: 1.25;
@@ -56,20 +56,20 @@
   margin-bottom: 0;
 }
 
-.underlag-prose h2 + *,
-.underlag-prose h3 + *,
-.underlag-prose h4 + * {
+.kunskap-prose h2 + *,
+.kunskap-prose h3 + *,
+.kunskap-prose h4 + * {
   margin-top: 0.7em;
 }
 
 /* ---- inline ---- */
 /* Italic-not-bold: <strong> stays structural weight, never a shout. */
-.underlag-prose strong {
+.kunskap-prose strong {
   font-weight: 600;
   color: var(--ink);
 }
 
-.underlag-prose a {
+.kunskap-prose a {
   color: var(--ink);
   text-decoration: underline;
   text-decoration-color: var(--line-strong);
@@ -77,28 +77,28 @@
   transition: text-decoration-color 200ms var(--ease-out);
 }
 
-.underlag-prose a:hover {
+.kunskap-prose a:hover {
   text-decoration-color: var(--red);
 }
 
 /* ---- lists ---- */
-.underlag-prose ul,
-.underlag-prose ol {
+.kunskap-prose ul,
+.kunskap-prose ol {
   padding-left: 0;
   list-style: none;
 }
 
-.underlag-prose li {
+.kunskap-prose li {
   position: relative;
   padding-left: 1.5rem;
 }
 
-.underlag-prose li + li {
+.kunskap-prose li + li {
   margin-top: 0.55em;
 }
 
 /* A hairline dash, not a bullet glyph — matches the rest of the page. */
-.underlag-prose ul > li::before {
+.kunskap-prose ul > li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -108,16 +108,16 @@
   background: var(--n-400);
 }
 
-.underlag-prose ol {
-  counter-reset: underlag-ol;
+.kunskap-prose ol {
+  counter-reset: kunskap-ol;
 }
 
-.underlag-prose ol > li {
-  counter-increment: underlag-ol;
+.kunskap-prose ol > li {
+  counter-increment: kunskap-ol;
 }
 
-.underlag-prose ol > li::before {
-  content: counter(underlag-ol) '.';
+.kunskap-prose ol > li::before {
+  content: counter(kunskap-ol) '.';
   position: absolute;
   left: 0;
   top: 0;
@@ -125,13 +125,13 @@
   color: var(--n-400);
 }
 
-.underlag-prose li > ul,
-.underlag-prose li > ol {
+.kunskap-prose li > ul,
+.kunskap-prose li > ol {
   margin-top: 0.55em;
 }
 
 /* ---- block quotes ---- */
-.underlag-prose blockquote {
+.kunskap-prose blockquote {
   margin-left: 0;
   padding-left: 1.25rem;
   border-left: 1px solid var(--line-strong);
@@ -139,7 +139,7 @@
 }
 
 /* ---- rules + tables ---- */
-.underlag-prose hr {
+.kunskap-prose hr {
   border: 0;
   border-top: 1px solid var(--line);
   margin-top: 2.4em;
@@ -151,7 +151,7 @@
    inside its own box and the page never scrolls sideways. ArticleProse
    overrides Payload's default converters, which would otherwise hardcode
    `border: 1px solid #ccc` inline on every cell and beat these rules. */
-.underlag-table-scroll {
+.kunskap-table-scroll {
   overflow-x: auto;
   max-width: 100%;
   margin-top: 1.5em;
@@ -159,7 +159,7 @@
   padding-bottom: 2px;
 }
 
-.underlag-prose table {
+.kunskap-prose table {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
@@ -167,8 +167,8 @@
   min-width: 26rem;
 }
 
-.underlag-prose th,
-.underlag-prose td {
+.kunskap-prose th,
+.kunskap-prose td {
   border-bottom: 1px solid var(--line);
   padding: 11px 20px 11px 0;
   text-align: left;
@@ -176,32 +176,32 @@
   font-variant-numeric: tabular-nums;
 }
 
-.underlag-prose th {
+.kunskap-prose th {
   color: var(--ink);
   font-weight: 600;
   border-bottom-color: var(--line-strong);
   white-space: nowrap;
 }
 
-.underlag-prose th:last-child,
-.underlag-prose td:last-child {
+.kunskap-prose th:last-child,
+.kunskap-prose td:last-child {
   padding-right: 0;
 }
 
 /* Cell content arrives as paragraphs; they must not carry block spacing. */
-.underlag-prose td > p,
-.underlag-prose th > p {
+.kunskap-prose td > p,
+.kunskap-prose th > p {
   margin: 0;
 }
 
 /* Payload's JSX converter wraps output in a container div; neutralise it
    so the spacing rules above apply to the real blocks. */
-.underlag-prose > div:only-child {
+.kunskap-prose > div:only-child {
   display: contents;
 }
 
 @media (max-width: 640px) {
-  .underlag-prose {
+  .kunskap-prose {
     font-size: 16px;
   }
 }
@@ -214,7 +214,7 @@
    rule is a section-opener at up to 64px/800.
    ============================================================ */
 
-.underlag-row-title {
+.kunskap-row-title {
   font-size: clamp(21px, 1.9vw, 26px);
   font-weight: 700;
   line-height: 1.18;
@@ -226,13 +226,13 @@
   transition: text-decoration-color 200ms var(--ease-out);
 }
 
-.underlag-row:hover .underlag-row-title {
+.kunskap-row:hover .kunskap-row-title {
   text-decoration-color: var(--line-strong);
 }
 
 /* Section kicker — DESIGN.md §5. Plus Jakarta 500 / 12px / 0.18em / red.
    Note this is NOT mono: v4 reserves JetBrains for code, URLs and paths. */
-.underlag-kicker {
+.kunskap-kicker {
   font-family: var(--font-display), -apple-system, sans-serif;
   font-weight: 500;
   font-size: 12px;
@@ -241,7 +241,7 @@
   color: var(--red);
 }
 
-.underlag-meta {
+.kunskap-meta {
   font-size: 13px;
   color: var(--n-400);
   font-variant-numeric: tabular-nums;

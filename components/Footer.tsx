@@ -18,7 +18,7 @@ const PRODUKT: LinkItem[] = [
 
 const FORETAG: LinkItem[] = [
   { label: 'Om oss', section: 'about-us' },
-  { label: 'Underlag', href: '/underlag' },
+  { label: 'Kunskap', href: '/kunskap' },
   { label: 'Kontakt', href: 'mailto:hello@elivro.se' },
 ]
 
@@ -31,7 +31,7 @@ function FooterColumn({ eyebrow, items }: { eyebrow: string; items: LinkItem[] }
    * Section links resolve to elements on the landing page. Off the homepage
    * those ids do not exist, so the click handler scrolled nowhere and
    * preventDefault swallowed the navigation — the whole column was dead on
-   * /underlag and /integritetspolicy. Point them at /#section there instead.
+   * /kunskap and /integritetspolicy. Point them at /#section there instead.
    */
   const onHome = usePathname() === '/'
 

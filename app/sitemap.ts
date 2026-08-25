@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getArticles } from '@/lib/underlag'
+import { getArticles } from '@/lib/kunskap'
 
 const BASE = 'https://elivro.se'
 
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Articles flagged noindex stay out — a URL that is in the sitemap and
   // noindex at the same time is a contradictory signal to a crawler.
-  const articles = (await getArticles('underlag')).filter((a) => !a.seo?.noindex && !a.draft)
+  const articles = (await getArticles('kunskap')).filter((a) => !a.seo?.noindex && !a.draft)
 
   // The index only enters the sitemap once it has something on it. An empty
   // hub submitted for crawling is a thin page, not a landing surface.
@@ -41,13 +41,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes,
     {
-      url: `${BASE}/underlag`,
+      url: `${BASE}/kunskap`,
       lastModified: articles[0]?.updatedAt ? new Date(articles[0].updatedAt) : now,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     ...articles.map((article) => ({
-      url: `${BASE}/underlag/${article.slug}`,
+      url: `${BASE}/kunskap/${article.slug}`,
       lastModified: new Date(article.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.6,

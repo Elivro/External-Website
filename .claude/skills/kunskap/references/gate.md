@@ -14,7 +14,7 @@ catches the real failures.
 ### Intent and ownership
 
 - [ ] The page has **one** primary intent, expressible in a single sentence.
-- [ ] No existing `/underlag` page owns that intent. If one does, this is an
+- [ ] No existing `/kunskap` page owns that intent. If one does, this is an
       IMPROVE on that page, not a new URL.
 - [ ] It is decision support, not news. A reader can *do* something differently
       after reading it.
@@ -57,7 +57,7 @@ catches the real failures.
 - [ ] Exactly one `<h1>`, and it is the article title.
 - [ ] `slug` is lowercase kebab. If this page was already published, the slug is
       **unchanged** — changing it without a redirect discards the URL's history.
-- [ ] `category` set. `kind` is `underlag`.
+- [ ] `category` set. `kind` is `kunskap`.
 - [ ] `publishedAt` is the real date; `updatedAt` added if this is a revision.
 - [ ] `draft: true` is removed — that line is what keeps it off production.
 - [ ] At least one internal link **in** (from another article or a hub) and one
@@ -68,10 +68,10 @@ Local verification before deploying:
 ```bash
 npm run build
 grep -oiE '<title>[^<]*|rel="canonical"[^>]*|<meta name="robots"[^>]*' \
-  ".next/server/app/underlag/<slug>.html"
+  ".next/server/app/kunskap/<slug>.html"
 ```
 
-Expect: unique title, `canonical → https://elivro.se/underlag/<slug>`,
+Expect: unique title, `canonical → https://elivro.se/kunskap/<slug>`,
 `robots → index, follow`.
 
 ---
@@ -98,7 +98,7 @@ real failure mode in this repo — it is what shipped the canonical bug that had
 precisely because the source read fine.
 
 ```bash
-u="https://elivro.se/underlag/<slug>"
+u="https://elivro.se/kunskap/<slug>"
 echo "HTTP: $(curl -s -o /dev/null -w '%{http_code}' "$u")"
 curl -s "$u" | grep -oiE '<title>[^<]*|rel="canonical" href="[^"]*"|<meta name="robots" content="[^"]*"|<h1[^>]*>.{0,80}'
 curl -s https://elivro.se/sitemap.xml | grep "<slug>"
@@ -110,7 +110,7 @@ curl -s https://elivro.se/sitemap.xml | grep "<slug>"
 - [ ] Robots is `index, follow`.
 - [ ] `<h1>` is the article title.
 - [ ] The URL appears in `sitemap.xml`.
-- [ ] `/underlag` links to it, and it links back out.
+- [ ] `/kunskap` links to it, and it links back out.
 
 Then request indexing in Search Console. Do not wait for organic discovery on
 the first few pages — there is not enough crawl budget flowing through this site

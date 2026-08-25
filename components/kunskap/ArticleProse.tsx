@@ -1,7 +1,7 @@
 /**
  * Renders an article body.
  *
- * The HTML comes from `lib/underlag.ts`, which runs repo-committed markdown
+ * The HTML comes from `lib/kunskap.ts`, which runs repo-committed markdown
  * through remark/rehype at build time. It is never user input and never
  * reaches this component from a request — it is source code that went through
  * review like any other file — so injecting it as HTML carries no more risk
@@ -17,7 +17,7 @@ export default function ArticleProse({ html }: { html: string }) {
 
   return (
     <div
-      className="underlag-prose"
+      className="kunskap-prose"
       dangerouslySetInnerHTML={{ __html: wrapTables(html) }}
     />
   )
@@ -26,6 +26,6 @@ export default function ArticleProse({ html }: { html: string }) {
 function wrapTables(html: string): string {
   return html.replace(
     /<table>([\s\S]*?)<\/table>/g,
-    '<div class="underlag-table-scroll"><table>$1</table></div>',
+    '<div class="kunskap-table-scroll"><table>$1</table></div>',
   )
 }

@@ -154,13 +154,13 @@ second strong colour at the very top of a one-accent page.
   nothing**. Dead dependency; safe to remove.
 - **GSAP + ScrollTrigger** for the unmounted `HowItWorks` scroll-pinning
 - **Resend** for `/api/demo` and `/api/quiz` submissions
-- **remark/rehype** renders `/underlag` articles from markdown at build time
+- **remark/rehype** renders `/kunskap` articles from markdown at build time
 
 **There is no database and no CMS.** Payload was removed on 2026-08-25: it
 served an admin login nothing used, its Nhost database had gone dead, its
 public `/admin` route was returning 500, and `PAYLOAD_SECRET` fell back to a
 string committed in the repo. Articles are markdown files under
-`content/underlag/`, which are version-controlled, statically rendered, and
+`content/kunskap/`, which are version-controlled, statically rendered, and
 have no runtime dependency. Removing it also cleared every npm audit finding.
 
 ## Commands
@@ -184,10 +184,10 @@ migrate the script to `eslint .`.
 - `app/(app)/` — public marketing surface. Layout renders `<html>`, `<body>`,
   mounts `next/font` variable classes, attaches `DisplayFontSwitcher` in dev.
   Canonical URLs are declared **per page**, never in the shared layout.
-- Articles live in `content/underlag/*.md`, read by `lib/underlag.ts` and
-  rendered by `app/(app)/underlag/[slug]/page.tsx`. `draft: true` in the
+- Articles live in `content/kunskap/*.md`, read by `lib/kunskap.ts` and
+  rendered by `app/(app)/kunskap/[slug]/page.tsx`. `draft: true` in the
   frontmatter hides a piece from the production deployment while keeping it
-  visible locally and on Vercel previews. See `.claude/skills/underlag/`.
+  visible locally and on Vercel previews. See `.claude/skills/kunskap/`.
 
 ### Page composition
 

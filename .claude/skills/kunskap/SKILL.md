@@ -1,11 +1,11 @@
 ---
-name: underlag
+name: kunskap
 description: |
-  Write, review and publish articles for the /underlag editorial surface —
+  Write, review and publish articles for the /kunskap editorial surface —
   the evergreen decision-support pages for Swedish assistansanordnare
   (regelverk, ersättning, schemaläggning, dokumentation, systembyte).
 
-  Use when: drafting or revising an underlag article, deciding whether a
+  Use when: drafting or revising a kunskap article, deciding whether a
   topic deserves a new page at all, running omvärldsbevakning to find topic
   candidates, or running the pre-publish gate before something ships.
 
@@ -13,12 +13,12 @@ description: |
   (draft) → granska (gate) → publicera (publish).
 ---
 
-# Underlag — the editorial loop
+# Kunskap — the editorial loop
 
-The surface lives at `/underlag`. **An article is a markdown file in
-`content/underlag/`** — there is no CMS and no database. `lib/underlag.ts`
+The surface lives at `/kunskap`. **An article is a markdown file in
+`content/kunskap/`** — there is no CMS and no database. `lib/kunskap.ts`
 reads the directory and renders the body through remark/rehype at build time;
-`app/(app)/underlag/[slug]/page.tsx` is the template.
+`app/(app)/kunskap/[slug]/page.tsx` is the template.
 
 The file is the article. Editing it and committing is publishing.
 
@@ -60,7 +60,7 @@ Vårdföretagarna, Regeringen. See `references/kallor.md` for what each is worth
 and for the four important sources that publish **no** feed and must be checked
 by hand.
 
-Reading the output: most items are news, and **news is not an underlag topic**.
+Reading the output: most items are news, and **news is not an kunskap topic**.
 An item earns a topic candidate only when it changes something a verksamhetschef
 must now *do* differently — a changed belopp, a new föreskrift, a shifted
 tillsynsfokus, a kollektivavtal outcome. "Debate about LSS" is not a topic.
@@ -78,13 +78,13 @@ Run before writing a single sentence. Classify the topic:
 
 - **CREATE** — no existing page owns this intent, and it is a question a
   verksamhetschef would actually type or ask.
-- **IMPROVE** — an existing `/underlag` page already covers this intent. Revise
+- **IMPROVE** — an existing `/kunskap` page already covers this intent. Revise
   that page in place and update `dateModified`. Do **not** create a sibling.
 - **REJECT** — it is news, not decision support; or it duplicates the landing
   page's job; or we cannot source it honestly.
 
 To check what exists: read the titles and deks of every published article
-(`npm run dev` then `/underlag`, or query Payload). With fewer than ~15 pages
+(`npm run dev` then `/kunskap`, or read content/kunskap/). With fewer than ~15 pages
 this is a read, not a search problem.
 
 Two pages competing for the same intent is the failure mode this whole surface
@@ -162,7 +162,7 @@ Frontmatter drives everything:
 | `dek` | 2–3 sentences, doubles as meta description |
 | `slug` | lowercase kebab, **never change after publish** without a redirect |
 | `category` | regelverk · ersattning · schemalaggning · dokumentation · systembyte |
-| `kind` | `underlag` (evergreen). `omvarld` is reserved, no public surface |
+| `kind` | `kunskap` (evergreen). `omvarld` is reserved, no public surface |
 | `publishedAt` | `"YYYY-MM-DD"` |
 | `updatedAt` | add on revision; omit and no "Uppdaterad" line shows |
 | `draft` | `true` hides it from production only — see below |
@@ -184,13 +184,13 @@ preview URL, and send that link to whoever has to check the facts. They read
 the real page, not a CMS approximation, and nothing is public.
 
 Drafts are also `noindex` and out of `sitemap.xml` even on preview, and they do
-not count toward `/underlag` being non-empty.
+not count toward `/kunskap` being non-empty.
 
 Publishing is deleting the `draft: true` line and merging.
 
 ### Three things happen automatically
 
-- `/underlag` is `noindex` while it has no non-draft articles, and becomes
+- `/kunskap` is `noindex` while it has no non-draft articles, and becomes
   indexable when the first one publishes.
 - `sitemap.ts` picks up published articles and skips drafts and `noindex`.
 - Every article prerenders at build. There is no runtime data fetch to fail.
@@ -201,7 +201,7 @@ what shipped the canonical bug that had `/quiz` reporting itself as a duplicate
 of the homepage.
 
 ```bash
-curl -s https://elivro.se/underlag/<slug> | grep -oiE   '<title>[^<]*|rel="canonical" href="[^"]*"|<meta name="robots" content="[^"]*"'
+curl -s https://elivro.se/kunskap/<slug> | grep -oiE   '<title>[^<]*|rel="canonical" href="[^"]*"|<meta name="robots" content="[^"]*"'
 ```
 
 At three published articles, three manual steps come due: add the article index

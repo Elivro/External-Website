@@ -3,8 +3,8 @@ import { Fragment } from 'react'
 /**
  * Renders `*ett*` in a CMS title as the Fraunces italic accent word.
  *
- * DESIGN.md wants one italic word per heading, but a Payload text field
- * holds plain text. This keeps the brand signature available to editors
+ * DESIGN.md wants one italic word per heading, but frontmatter holds plain
+ * text. This keeps the brand signature available to editors
  * without opening the title up to arbitrary markup — the `<em>` picks up
  * the red heading-accent rule from globals.css on its own.
  */

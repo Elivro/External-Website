@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import ArticleProse from '@/components/underlag/ArticleProse'
-import EmphasisTitle, { plainTitle } from '@/components/underlag/EmphasisTitle'
+import ArticleProse from '@/components/kunskap/ArticleProse'
+import EmphasisTitle, { plainTitle } from '@/components/kunskap/EmphasisTitle'
 import {
   CATEGORY_LABEL,
   authorName,
@@ -14,7 +14,7 @@ import {
   isRevised,
   metaDescription,
   metaTitle,
-} from '@/lib/underlag'
+} from '@/lib/kunskap'
 
 const BASE = 'https://elivro.se'
 
@@ -23,7 +23,7 @@ export const revalidate = 1800
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-  const articles = await getArticles('underlag')
+  const articles = await getArticles('kunskap')
   return articles.map((a) => ({ slug: a.slug }))
 }
 
@@ -39,12 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = plainTitle(metaTitle(article))
   const description = metaDescription(article)
-  const url = `${BASE}/underlag/${article.slug}`
+  const url = `${BASE}/kunskap/${article.slug}`
   const noindex = Boolean(article.seo?.noindex) || article.draft
 
   return {
     // Declared per page, never in the layout — see app/(app)/layout.tsx.
-    alternates: { canonical: `/underlag/${article.slug}` },
+    alternates: { canonical: `/kunskap/${article.slug}` },
     title,
     description,
     robots: noindex
@@ -63,13 +63,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function UnderlagArticle({ params }: Props) {
+export default async function KunskapArticle({ params }: Props) {
   const { slug } = await params
   const article = await getArticleBySlug(slug)
 
   if (!article) notFound()
 
-  const url = `${BASE}/underlag/${article.slug}`
+  const url = `${BASE}/kunskap/${article.slug}`
   const title = plainTitle(article.title)
   const revised = isRevised(article.publishedAt, article.updatedAt)
   const category = CATEGORY_LABEL[article.category] ?? article.category
@@ -98,7 +98,7 @@ export default async function UnderlagArticle({ params }: Props) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Elivro', item: BASE },
-      { '@type': 'ListItem', position: 2, name: 'Underlag', item: `${BASE}/underlag` },
+      { '@type': 'ListItem', position: 2, name: 'Kunskap', item: `${BASE}/kunskap` },
       { '@type': 'ListItem', position: 3, name: title, item: url },
     ],
   }
@@ -121,10 +121,10 @@ export default async function UnderlagArticle({ params }: Props) {
           {/* ---- breadcrumb ---- */}
           <nav aria-label="Brödsmulor" className="mb-10 text-[13px] text-n-400">
             <Link
-              href="/underlag"
+              href="/kunskap"
               className="hover:text-ink transition-colors duration-200"
             >
-              Underlag
+              Kunskap
             </Link>
             <span aria-hidden="true" className="mx-2">
               /
@@ -134,7 +134,7 @@ export default async function UnderlagArticle({ params }: Props) {
 
           {/* ---- header ---- */}
           <header className="max-w-3xl mb-12 md:mb-16">
-            <p className="underlag-kicker mb-6">{category}</p>
+            <p className="kunskap-kicker mb-6">{category}</p>
 
             <h1 className="mb-6">
               <EmphasisTitle text={article.title} />
@@ -144,7 +144,7 @@ export default async function UnderlagArticle({ params }: Props) {
               {article.dek}
             </p>
 
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 underlag-meta border-t border-[var(--line)] pt-5">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 kunskap-meta border-t border-[var(--line)] pt-5">
               <span>{authorName(article)}</span>
               <span aria-hidden="true">·</span>
               <span>Publicerad {formatDate(article.publishedAt)}</span>
@@ -162,7 +162,7 @@ export default async function UnderlagArticle({ params }: Props) {
 
           {/* ---- close ---- */}
           <aside className="max-w-[68ch] mt-20 pt-10 border-t border-[var(--line-strong)]">
-            <p className="underlag-kicker mb-5">Elivro</p>
+            <p className="kunskap-kicker mb-5">Elivro</p>
             <p className="text-[17px] leading-[1.55] text-n-700 mb-7 max-w-[58ch]">
               Elivro är verksamhetssystemet som håller ihop schema, tid, rekrytering och
               kvalitetsledning i samma data. Byggt tillsammans med 2u Assistans i Västerås.
@@ -175,10 +175,10 @@ export default async function UnderlagArticle({ params }: Props) {
                 Boka demo
               </Link>
               <Link
-                href="/underlag"
+                href="/kunskap"
                 className="text-[15px] text-n-700 underline underline-offset-[3px] decoration-[var(--line-strong)] hover:text-ink hover:decoration-[var(--red)] transition-colors duration-200"
               >
-                Fler underlag
+                Mer kunskap
               </Link>
             </div>
           </aside>

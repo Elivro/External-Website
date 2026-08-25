@@ -1,4 +1,4 @@
-import './underlag-prose.css'
+import './kunskap-prose.css'
 
 /**
  * Deliberately exports NO metadata. Anything declared here — canonical
@@ -6,6 +6,6 @@ import './underlag-prose.css'
  * the bug that had /quiz reporting itself as a duplicate of the homepage.
  * Canonical belongs to the page. See app/(app)/layout.tsx.
  */
-export default function UnderlagLayout({ children }: { children: React.ReactNode }) {
+export default function KunskapLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }

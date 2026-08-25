@@ -10,9 +10,9 @@ import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 
 /**
- * Read layer for the /underlag editorial surface.
+ * Read layer for the /kunskap editorial surface.
  *
- * Articles are markdown files in content/underlag/, rendered at build time.
+ * Articles are markdown files in content/kunskap/, rendered at build time.
  * There is no database and no CMS: the content is version-controlled, the
  * pages are fully static, and the only thing that can break a deploy is a
  * malformed file — which shows up in the build, not in production.
@@ -22,7 +22,7 @@ import rehypeStringify from 'rehype-stringify'
  * preview could.
  */
 
-const CONTENT_DIR = join(process.cwd(), 'content', 'underlag')
+const CONTENT_DIR = join(process.cwd(), 'content', 'kunskap')
 
 /**
  * Drafts are hidden on the production deployment and visible everywhere else —
@@ -54,7 +54,7 @@ export type Article = {
   title: string
   dek: string
   category: ArticleCategory
-  kind: 'underlag' | 'omvarld'
+  kind: 'kunskap' | 'omvarld'
   /** Rendered HTML for the body. */
   html: string
   publishedAt: string
@@ -74,7 +74,7 @@ type Frontmatter = {
   title?: string
   dek?: string
   category?: ArticleCategory
-  kind?: 'underlag' | 'omvarld'
+  kind?: 'kunskap' | 'omvarld'
   publishedAt?: string
   updatedAt?: string
   author?: string
@@ -112,7 +112,7 @@ async function readArticle(filename: string): Promise<Article | null> {
     title: front.title,
     dek: front.dek ?? '',
     category: (front.category ?? 'regelverk') as ArticleCategory,
-    kind: front.kind ?? 'underlag',
+    kind: front.kind ?? 'kunskap',
     html: await renderMarkdown(content),
     publishedAt: front.publishedAt ?? new Date(0).toISOString(),
     // No updatedAt in frontmatter means the page has not been revised since
@@ -131,7 +131,7 @@ async function readArticle(filename: string): Promise<Article | null> {
  * generateMetadata and once in the component.
  */
 export const getArticles = cache(async function getArticles(
-  kind: 'underlag' | 'omvarld' = 'underlag',
+  kind: 'kunskap' | 'omvarld' = 'kunskap',
 ): Promise<Article[]> {
   let files: string[]
   try {
@@ -148,7 +148,7 @@ export const getArticles = cache(async function getArticles(
       } catch (err) {
         // One malformed file must not take the whole index down. It is loud in
         // the build log and simply absent from the page.
-        console.warn(`[underlag] kunde inte läsa ${file}:`, (err as Error).message)
+        console.warn(`[kunskap] kunde inte läsa ${file}:`, (err as Error).message)
         return null
       }
     }),
@@ -163,7 +163,7 @@ export const getArticles = cache(async function getArticles(
 export const getArticleBySlug = cache(async function getArticleBySlug(
   slug: string,
 ): Promise<Article | null> {
-  const articles = await getArticles('underlag')
+  const articles = await getArticles('kunskap')
   return articles.find((a) => a.slug === slug) ?? null
 })
 

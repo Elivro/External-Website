@@ -1,5 +1,5 @@
 ---
-# This file IS the article. It renders at /underlag/<slug> at build time.
+# This file IS the article. It renders at /kunskap/<slug> at build time.
 # `draft: true` keeps it off the production deployment while it still shows on
 # preview deployments and locally. Remove the flag to publish.
 #
@@ -10,7 +10,7 @@
 # change; the slug cannot.
 draft: true            # ligger ute i preview, inte i produktion
 publishedAt: "2026-08-25"
-kind: underlag
+kind: kunskap
 category: ersattning
 slug: schablonbelopp-assistansersattning
 title: "Schablonbeloppet 2026 — vad summan ska *räcka* till"

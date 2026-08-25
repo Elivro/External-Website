@@ -1,10 +1,10 @@
 ---
-# This file IS the article. It renders at /underlag/<slug> at build time.
+# This file IS the article. It renders at /kunskap/<slug> at build time.
 # `draft: true` keeps it off the production deployment while it still shows on
 # preview deployments and locally. Remove the flag to publish.
 draft: true            # ligger ute i preview, inte i produktion
 publishedAt: "2026-08-25"
-kind: underlag
+kind: kunskap
 category: systembyte
 slug: verksamhetssystem-personlig-assistans-oversikt
 title: "Verksamhetssystem för personlig assistans — vad som *finns*"
