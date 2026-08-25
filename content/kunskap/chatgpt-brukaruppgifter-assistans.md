@@ -113,6 +113,17 @@ du har 30 dagar på dig att invända mot ett nytt, och vi svarar för deras
 efterlevnad som för vår egen. Vid en personuppgiftsincident hör vi av oss inom
 48 timmar.
 
+En precisering, så att du inte läser in mer än det står. Det är
+AI-bearbetningen som stannar i Sverige. Resten av plattformen körs inom EU, och
+några av våra underbiträden är amerikanskägda bolag med lagring i EU. Serverdrift
+och lagring ligger hos DigitalOcean i Amsterdam och Frankfurt. E-post går via
+Resend i Irland, felövervakning via Sentry i Frankfurt. Alla tre omfattas av
+EU-US Data Privacy Framework, och avtalet har en beredskapsklausul om ramverket
+skulle falla: då gäller standardavtalsklausuler i stället.
+
+Hela listan står i Bilaga 2. Vi säger det här för att du ska kunna svara på
+frågan om någon ställer den, inte för att det är en detalj.
+
 En sak till, som få leverantörer nämner. AI som används för rekrytering och
 urval klassas som högrisk enligt AI-förordningen, bilaga III punkt 4. Det för
 med sig krav på riskhantering, loggning, teknisk dokumentation och mänsklig
@@ -151,9 +162,14 @@ för den biten.
    5.4 trettio dagars varsel, 1.2/3.1 beslutsstöd, 2.1 högrisk enligt
    bilaga III p.4, 9.1-9.2 DPIA-underlag, samt PUB-avtalets 6.2-6.4 och 7.1.
 
-   Kvar att kontrollera för er: att avtalsversionen i repot är den som
-   faktiskt gäller mot kund, och att Bilaga 2 verkligen listar Berget AI AB
-   som underbiträde.
+   Bekräftat: avtalsversionen i repot är den som gäller mot kund, och
+   Bilaga 2 listar Berget AI AB (Sverige, datalagring Sverige) för
+   "AI-modeller för kandidatmatchning och textanalys".
+
+   Bilaga 2 gav också skälet till stycket om övriga underbiträden.
+   DigitalOcean, Resend och Sentry är amerikanskägda med EU-lagring under
+   Data Privacy Framework. Utan den preciseringen hade AI-avsnittet kunnat
+   läsas som att hela plattformen ligger i Sverige. Det gör den inte.
 
 2. Verifierat direkt hos IMY 2026-08-26 och säkert att publicera: de åtta
    kategorierna, citatet om hälsouppgifter inklusive funktionshinder,
