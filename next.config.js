@@ -1,5 +1,3 @@
-import { withPayload } from '@payloadcms/next/withPayload'
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -26,9 +24,6 @@ const nextConfig = {
       { source: '/privacy', destination: '/integritetspolicy', permanent: true },
     ]
   },
-
-  // Mark Payload packages as external to avoid bundling issues with Turbopack
-  serverExternalPackages: ['payload', '@payloadcms/db-postgres', 'pino', 'thread-stream'],
 }
 
-export default withPayload(nextConfig)
+export default nextConfig

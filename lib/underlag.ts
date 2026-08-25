@@ -1,15 +1,38 @@
+import { readdir, readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { cache } from 'react'
-import { getPayload } from 'payload'
-import config from '@/payload.config'
+import matter from 'gray-matter'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeSlug from 'rehype-slug'
+import rehypeStringify from 'rehype-stringify'
 
 /**
  * Read layer for the /underlag editorial surface.
  *
- * Every call is fail-soft. A build with no DATABASE_URL reachable (CI, a
- * fresh clone, a Vercel preview without the env wired) renders an empty
- * index instead of failing the build — the surface degrades, the deploy
- * does not.
+ * Articles are markdown files in content/underlag/, rendered at build time.
+ * There is no database and no CMS: the content is version-controlled, the
+ * pages are fully static, and the only thing that can break a deploy is a
+ * malformed file — which shows up in the build, not in production.
+ *
+ * A page rewritten every January wants a diff history more than it wants an
+ * admin UI, and Vercel preview deployments give a truer preview than any CMS
+ * preview could.
  */
+
+const CONTENT_DIR = join(process.cwd(), 'content', 'underlag')
+
+/**
+ * Drafts are hidden on the production deployment and visible everywhere else —
+ * local dev, a local production build, and Vercel preview deployments.
+ *
+ * That is the point of the flag: a piece can be read in its real rendered form,
+ * and shared as a preview URL for domain review, without being public. Only
+ * `VERCEL_ENV === 'production'` is the real site.
+ */
+const HIDE_DRAFTS = process.env.VERCEL_ENV === 'production'
 
 export type ArticleCategory =
   | 'regelverk'
@@ -27,15 +50,18 @@ export const CATEGORY_LABEL: Record<ArticleCategory, string> = {
 }
 
 export type Article = {
-  id: string | number
-  title: string
   slug: string
+  title: string
   dek: string
   category: ArticleCategory
-  content: unknown
+  kind: 'underlag' | 'omvarld'
+  /** Rendered HTML for the body. */
+  html: string
   publishedAt: string
   updatedAt: string
-  author?: { displayName?: string | null; email?: string | null } | null
+  author?: string | null
+  /** True while the piece is still pending review. Never true in production. */
+  draft: boolean
   seo?: {
     metaTitle?: string | null
     metaDescription?: string | null
@@ -43,59 +69,102 @@ export type Article = {
   } | null
 }
 
-async function client() {
-  return getPayload({ config })
+type Frontmatter = {
+  slug?: string
+  title?: string
+  dek?: string
+  category?: ArticleCategory
+  kind?: 'underlag' | 'omvarld'
+  publishedAt?: string
+  updatedAt?: string
+  author?: string
+  draft?: boolean
+  seo?: { metaTitle?: string; metaDescription?: string; noindex?: boolean }
+}
+
+const processor = unified()
+  .use(remarkParse)
+  // GFM for pipe tables, which these pages lean on for belopp and comparisons.
+  .use(remarkGfm)
+  .use(remarkRehype)
+  // Stable heading ids, so a section can be linked to directly.
+  .use(rehypeSlug)
+  .use(rehypeStringify)
+
+async function renderMarkdown(body: string): Promise<string> {
+  // Editorial notes to the author never reach the page.
+  const clean = body.replace(/<!--[\s\S]*?-->/g, '').trim()
+  const file = await processor.process(clean)
+  return String(file)
+}
+
+async function readArticle(filename: string): Promise<Article | null> {
+  const raw = await readFile(join(CONTENT_DIR, filename), 'utf8')
+  const { data, content } = matter(raw)
+  const front = data as Frontmatter
+
+  // A file without a slug is not an article — README.md lives here too.
+  if (!front.slug || !front.title) return null
+  if (front.draft === true && HIDE_DRAFTS) return null
+
+  return {
+    slug: front.slug,
+    title: front.title,
+    dek: front.dek ?? '',
+    category: (front.category ?? 'regelverk') as ArticleCategory,
+    kind: front.kind ?? 'underlag',
+    html: await renderMarkdown(content),
+    publishedAt: front.publishedAt ?? new Date(0).toISOString(),
+    // No updatedAt in frontmatter means the page has not been revised since
+    // publication, so the two dates are the same and no "Uppdaterad" shows.
+    updatedAt: front.updatedAt ?? front.publishedAt ?? new Date(0).toISOString(),
+    author: front.author ?? null,
+    draft: front.draft === true,
+    seo: front.seo ?? null,
+  }
 }
 
 /**
- * Published articles of one kind, newest first. Never throws.
+ * Published articles of one kind, newest first.
  *
- * Wrapped in React.cache: each route reads this twice per render — once in
- * generateMetadata, once in the component — and without deduping that is two
- * round-trips for identical data.
+ * Cached per request: each route reads this twice per render, once in
+ * generateMetadata and once in the component.
  */
 export const getArticles = cache(async function getArticles(
   kind: 'underlag' | 'omvarld' = 'underlag',
 ): Promise<Article[]> {
+  let files: string[]
   try {
-    const payload = await client()
-    const res = await payload.find({
-      collection: 'articles',
-      where: {
-        and: [{ kind: { equals: kind } }, { _status: { equals: 'published' } }],
-      },
-      sort: '-publishedAt',
-      limit: 200,
-      depth: 1,
-      draft: false,
-    })
-    return res.docs as unknown as Article[]
-  } catch (err) {
-    console.warn('[underlag] getArticles failed, rendering empty:', (err as Error).message)
+    files = (await readdir(CONTENT_DIR)).filter((f) => f.endsWith('.md'))
+  } catch {
+    // No content directory yet is a valid state, not an error.
     return []
   }
+
+  const articles = await Promise.all(
+    files.map(async (file) => {
+      try {
+        return await readArticle(file)
+      } catch (err) {
+        // One malformed file must not take the whole index down. It is loud in
+        // the build log and simply absent from the page.
+        console.warn(`[underlag] kunde inte läsa ${file}:`, (err as Error).message)
+        return null
+      }
+    }),
+  )
+
+  return articles
+    .filter((a): a is Article => a !== null && a.kind === kind)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 })
 
-/** One published article by slug, or null. Never throws. Deduped per request. */
+/** One published article by slug, or null. */
 export const getArticleBySlug = cache(async function getArticleBySlug(
   slug: string,
 ): Promise<Article | null> {
-  try {
-    const payload = await client()
-    const res = await payload.find({
-      collection: 'articles',
-      where: {
-        and: [{ slug: { equals: slug } }, { _status: { equals: 'published' } }],
-      },
-      limit: 1,
-      depth: 1,
-      draft: false,
-    })
-    return (res.docs[0] as unknown as Article) ?? null
-  } catch (err) {
-    console.warn('[underlag] getArticleBySlug failed:', (err as Error).message)
-    return null
-  }
+  const articles = await getArticles('underlag')
+  return articles.find((a) => a.slug === slug) ?? null
 })
 
 /** Swedish long date: "24 augusti 2026". */
@@ -121,8 +190,7 @@ export function isRevised(publishedAt: string, updatedAt: string): boolean {
 }
 
 export function authorName(article: Article): string {
-  const name = article.author?.displayName
-  return name && name.trim() ? name : 'Elivro'
+  return article.author?.trim() ? article.author : 'Elivro'
 }
 
 export function metaTitle(article: Article): string {

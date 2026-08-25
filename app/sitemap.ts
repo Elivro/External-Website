@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Articles flagged noindex stay out — a URL that is in the sitemap and
   // noindex at the same time is a contradictory signal to a crawler.
-  const articles = (await getArticles('underlag')).filter((a) => !a.seo?.noindex)
+  const articles = (await getArticles('underlag')).filter((a) => !a.seo?.noindex && !a.draft)
 
   // The index only enters the sitemap once it has something on it. An empty
   // hub submitted for crawling is a thin page, not a landing surface.

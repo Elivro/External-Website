@@ -58,7 +58,8 @@ catches the real failures.
 - [ ] `slug` is lowercase kebab. If this page was already published, the slug is
       **unchanged** — changing it without a redirect discards the URL's history.
 - [ ] `category` set. `kind` is `underlag`.
-- [ ] `publishedAt` is the real date.
+- [ ] `publishedAt` is the real date; `updatedAt` added if this is a revision.
+- [ ] `draft: true` is removed — that line is what keeps it off production.
 - [ ] At least one internal link **in** (from another article or a hub) and one
       **out**. An orphan page is the anti-pattern this surface exists to avoid.
 

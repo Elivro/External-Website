@@ -16,7 +16,8 @@ export const revalidate = 1800
  */
 export async function generateMetadata(): Promise<Metadata> {
   const articles = await getArticles('underlag')
-  const empty = articles.length === 0
+  // Drafts do not count as content for indexing purposes.
+  const empty = articles.filter((a) => !a.draft).length === 0
 
   return {
     alternates: { canonical: '/underlag' },
@@ -79,7 +80,7 @@ export default async function UnderlagIndex() {
               {articles.map((article) => {
                 const revised = isRevised(article.publishedAt, article.updatedAt)
                 return (
-                  <li key={article.id} className="border-b border-[var(--line)]">
+                  <li key={article.slug} className="border-b border-[var(--line)]">
                     <Link
                       href={`/underlag/${article.slug}`}
                       className="underlag-row group block py-8 md:py-10"

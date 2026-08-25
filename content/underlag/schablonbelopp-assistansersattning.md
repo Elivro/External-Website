@@ -1,13 +1,15 @@
 ---
-# Staging artifact, not a source of truth. Import with
-#   PUBLISH=1 npx payload run scripts/import-underlag.ts <den här filen>
+# This file IS the article. It renders at /underlag/<slug> at build time.
+# `draft: true` keeps it off the production deployment while it still shows on
+# preview deployments and locally. Remove the flag to publish.
 #
 # NOTE on the slug: no year in it, deliberately. This page is rewritten every
 # January when regeringen sets the new belopp — same URL, new numbers, new
 # dateModified. A dated slug would force a new page every year and split the
 # link equity five ways in five years. The year lives in the title, which can
 # change; the slug cannot.
-status: UTKAST — inga öppna kontroller, väntar domängranskning
+draft: true            # ligger ute i preview, inte i produktion
+publishedAt: "2026-08-25"
 kind: underlag
 category: ersattning
 slug: schablonbelopp-assistansersattning

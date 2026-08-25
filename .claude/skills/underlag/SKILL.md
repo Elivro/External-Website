@@ -15,8 +15,12 @@ description: |
 
 # Underlag — the editorial loop
 
-The surface lives at `/underlag`. Content is Payload (`collections/Articles.ts`),
-rendered by `app/(app)/underlag/[slug]/page.tsx`.
+The surface lives at `/underlag`. **An article is a markdown file in
+`content/underlag/`** — there is no CMS and no database. `lib/underlag.ts`
+reads the directory and renders the body through remark/rehype at build time;
+`app/(app)/underlag/[slug]/page.tsx` is the template.
+
+The file is the article. Editing it and committing is publishing.
 
 ## The one rule that outranks everything here
 
@@ -150,26 +154,46 @@ fails any hard check does not ship. No exceptions, no "we'll fix it after."
 
 ## Mode 5 — `publicera`
 
-Fields map to `collections/Articles.ts`:
+Frontmatter drives everything:
 
 | Field | Notes |
 |---|---|
 | `title` | `*ett*` marks the italic accent word |
-| `dek` | max 260 chars, doubles as meta description |
-| `content` | Lexical rich text |
+| `dek` | 2–3 sentences, doubles as meta description |
 | `slug` | lowercase kebab, **never change after publish** without a redirect |
 | `category` | regelverk · ersattning · schemalaggning · dokumentation · systembyte |
-| `kind` | `underlag` (evergreen). `omvarld` exists but has no public surface yet |
-| `publishedAt` | the real date |
-| `seo.metaTitle` | only if the rubrik is over ~60 chars |
+| `kind` | `underlag` (evergreen). `omvarld` is reserved, no public surface |
+| `publishedAt` | `"YYYY-MM-DD"` |
+| `updatedAt` | add on revision; omit and no "Uppdaterad" line shows |
+| `draft` | `true` hides it from production only — see below |
+| `author` | falls back to "Elivro" |
+| `seo.metaTitle` | only if the rubrik runs past ~60 chars |
 | `seo.metaDescription` | only if the dek does not work as one |
-| `seo.noindex` | for a page that must exist but not be found yet |
+| `seo.noindex` | published but deliberately unfindable |
 
-Two things happen automatically, so do not hand-manage them:
+Body syntax is deliberately narrow: `*kursiv*`, `[text](url)`, GFM pipe tables,
+headings, lists, `---`. **Bold is not supported** — `DESIGN.md` forbids it for
+emphasis, so the pipeline cannot produce it. An `<!-- -->` comment block is
+stripped before rendering, which is where open questions to the author live.
 
-- `/underlag` is `noindex` while empty and becomes indexable the moment the
-  first article publishes.
-- `sitemap.ts` picks up published articles and skips any flagged `noindex`.
+### draft: true is the review mechanism
+
+A draft renders on **preview deployments and locally**, and is absent from the
+**production deployment**. That is the point: push the branch, open the Vercel
+preview URL, and send that link to whoever has to check the facts. They read
+the real page, not a CMS approximation, and nothing is public.
+
+Drafts are also `noindex` and out of `sitemap.xml` even on preview, and they do
+not count toward `/underlag` being non-empty.
+
+Publishing is deleting the `draft: true` line and merging.
+
+### Three things happen automatically
+
+- `/underlag` is `noindex` while it has no non-draft articles, and becomes
+  indexable when the first one publishes.
+- `sitemap.ts` picks up published articles and skips drafts and `noindex`.
+- Every article prerenders at build. There is no runtime data fetch to fail.
 
 **After publishing, verify production HTML — not the source.** Source that looks
 right and HTML that is wrong is a real failure mode in this repo; it is exactly
@@ -177,8 +201,7 @@ what shipped the canonical bug that had `/quiz` reporting itself as a duplicate
 of the homepage.
 
 ```bash
-curl -s https://elivro.se/underlag/<slug> | grep -oiE \
-  '<title>[^<]*|rel="canonical" href="[^"]*"|<meta name="robots" content="[^"]*"'
+curl -s https://elivro.se/underlag/<slug> | grep -oiE   '<title>[^<]*|rel="canonical" href="[^"]*"|<meta name="robots" content="[^"]*"'
 ```
 
 At three published articles, three manual steps come due: add the article index

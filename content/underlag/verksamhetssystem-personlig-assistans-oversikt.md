@@ -1,7 +1,9 @@
 ---
-# Staging artifact, not a source of truth. Paste into Payload when the DB is
-# up; after that, the Payload document is canonical and this file is history.
-status: UTKAST — inga öppna kontroller, väntar domängranskning
+# This file IS the article. It renders at /underlag/<slug> at build time.
+# `draft: true` keeps it off the production deployment while it still shows on
+# preview deployments and locally. Remove the flag to publish.
+draft: true            # ligger ute i preview, inte i produktion
+publishedAt: "2026-08-25"
 kind: underlag
 category: systembyte
 slug: verksamhetssystem-personlig-assistans-oversikt

@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = plainTitle(metaTitle(article))
   const description = metaDescription(article)
   const url = `${BASE}/underlag/${article.slug}`
-  const noindex = Boolean(article.seo?.noindex)
+  const noindex = Boolean(article.seo?.noindex) || article.draft
 
   return {
     // Declared per page, never in the layout — see app/(app)/layout.tsx.
@@ -158,7 +158,7 @@ export default async function UnderlagArticle({ params }: Props) {
           </header>
 
           {/* ---- body ---- */}
-          <ArticleProse content={article.content} />
+          <ArticleProse html={article.html} />
 
           {/* ---- close ---- */}
           <aside className="max-w-[68ch] mt-20 pt-10 border-t border-[var(--line-strong)]">

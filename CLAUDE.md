@@ -6,7 +6,7 @@ Guidance for Claude Code working in this repo.
 
 Elivro landing page — Swedish B2B for an AI platform that serves
 assistansbolag (personal-care companies). Single repo, Next.js 16 +
-Payload CMS (admin only) + Tailwind v4. Pre-launch — no testimonials,
+Tailwind v4. Pre-launch — no testimonials,
 no customer logos beyond 2u Assistans, no case studies.
 
 ## Design system: Brand Kit v4 — "Vaken pondus"
@@ -42,9 +42,9 @@ quickstart, not a source of truth.
 
 ### Dependency notes
 
-- **`graphql` is pinned to 16.x on purpose.** `payload@3.88` declares
-  `peerDependencies: { graphql: "^16.8.1" }`, so graphql 17 is unsupported
-  and would need `--force`. Leave it until Payload widens the range.
+- **`graphql` is now an orphan.** It was pinned to 16.x for Payload's peer
+  range; Payload is gone, so nothing should need it. Check before removing —
+  if nothing imports it, drop it.
 - **`tsconfig.json` has no `baseUrl`** — TypeScript 7 removed the option
   (`error TS5102`). `paths` resolve relative to the tsconfig's directory on
   their own, so `"@/*": ["./*"]` works unchanged. Don't add it back.
@@ -154,8 +154,14 @@ second strong colour at the very top of a one-accent page.
   nothing**. Dead dependency; safe to remove.
 - **GSAP + ScrollTrigger** for the unmounted `HowItWorks` scroll-pinning
 - **Resend** for `/api/demo` and `/api/quiz` submissions
-- **Payload CMS** (admin login only — no content collections wire to the
-  marketing surface)
+- **remark/rehype** renders `/underlag` articles from markdown at build time
+
+**There is no database and no CMS.** Payload was removed on 2026-08-25: it
+served an admin login nothing used, its Nhost database had gone dead, its
+public `/admin` route was returning 500, and `PAYLOAD_SECRET` fell back to a
+string committed in the repo. Articles are markdown files under
+`content/underlag/`, which are version-controlled, statically rendered, and
+have no runtime dependency. Removing it also cleared every npm audit finding.
 
 ## Commands
 
@@ -178,7 +184,10 @@ migrate the script to `eslint .`.
 - `app/(app)/` — public marketing surface. Layout renders `<html>`, `<body>`,
   mounts `next/font` variable classes, attaches `DisplayFontSwitcher` in dev.
   Canonical URLs are declared **per page**, never in the shared layout.
-- `app/(payload)/` — Payload admin (Users-only collection).
+- Articles live in `content/underlag/*.md`, read by `lib/underlag.ts` and
+  rendered by `app/(app)/underlag/[slug]/page.tsx`. `draft: true` in the
+  frontmatter hides a piece from the production deployment while keeping it
+  visible locally and on Vercel previews. See `.claude/skills/underlag/`.
 
 ### Page composition
 
