@@ -24,14 +24,15 @@ seo:
   noindex: false
 ---
 
-Schablonbeloppet är den enda intäkten de flesta assistansverksamheter har. Allt
-annat — löner, OB, utbildning, administration, lokaler, vinst — ska rymmas inom
-det. Därför är den årliga höjningen inte en nyhet utan en budgetförutsättning,
-och skillnaden mellan höjningen och din egen kostnadsökning är i praktiken hela
-marginalen.
+För de flesta assistansverksamheter är schablonbeloppet den enda intäkten.
+Löner, OB, utbildning, administration, lokaler och vinst ska rymmas i den
+summan.
 
-Den här sidan skrivs om varje gång regeringen fastställer ett nytt belopp.
-Datumet högst upp säger när det senast hände.
+Det gör den årliga höjningen till en budgetfråga. Höjs schablonen mindre än
+dina egna kostnader krymper marginalen, även om du får fler kronor per timme.
+
+Vi skriver om den här sidan varje gång regeringen fastställer ett nytt belopp.
+Datumet högst upp visar när det senast hände.
 
 ## Beloppen för 2026
 
@@ -42,26 +43,23 @@ Försäkringskassan anger två belopp per assistanstimme:
 | 2026 | 347,70 kr | 389,42 kr |
 | 2025 | 342,60 kr | 383,71 kr |
 
-Höjningen från 2025 till 2026 är 5,10 kronor per timme, eller 1,49 procent. Det
-högsta beloppet steg med 5,71 kronor — samma 1,49 procent.
+Höjningen från 2025 till 2026 är 5,10 kronor per timme. Det är 1,49 procent.
+Det högsta beloppet steg med 5,71 kronor, alltså lika mycket i procent.
 
-Timbeloppet fastställs av regeringen varje år. Försäkringskassan publicerar det
-i sin beloppstabell, som också redovisar nivåerna bakåt till 1994.
+Regeringen fastställer timbeloppet varje år. Försäkringskassan publicerar det i
+sin beloppstabell, där du också ser nivåerna bakåt till 1994.
 
 ## Det förhöjda timbeloppet — tolv procent, inte mer
 
-Det högre beloppet är inget du får automatiskt. Det söks särskilt, och det
-beviljas när det finns särskilda skäl som ger särskilda kostnader som schablonen
-inte täcker.
+Det högre beloppet får du inte automatiskt. Du ansöker om det, och det beviljas
+om brukaren har särskilda behov som ger kostnader schablonen inte täcker.
 
-Taket är hårt: det förhöjda timbeloppet får inte överstiga schablonen med mer än
-tolv procent. Det syns direkt i siffrorna — 347,70 gånger 1,12 blir 389,42, på
-öret. Utrymmet mellan de två beloppen är alltså 41,72 kronor per timme för 2026,
-varken mer eller mindre.
+Taket är tolv procent över schablonen. Det syns i siffrorna: 347,70 gånger 1,12
+blir 389,42. För 2026 finns det alltså 41,72 kronor per timme att söka.
 
-Ansökan görs på blankett 3051, "Ansök om assistansersättning – högre
-timbelopp". Det finns ingen e-tjänst för det — blanketten är en PDF som fylls i
-och skickas in, vilket är värt att veta när du planerar in ledtiden.
+Du ansöker på blankett 3051, "Ansök om assistansersättning – högre timbelopp".
+Det finns ingen e-tjänst. Blanketten är en PDF som du fyller i och skickar in,
+så räkna med handläggningstid.
 
 ## De fem kostnadsslagen
 
@@ -73,31 +71,31 @@ När ersättningen redovisas ska kostnaderna fördelas på fem slag:
 4. Arbetsmiljöinsatser och personalomkostnader
 5. Administrationskostnader
 
-Uppdelningen är inte bara en redovisningsteknikalitet. Den är också den ram
-inom vilken ersättningen anses använd på rätt sätt, och den styr vilka
-underlag du behöver kunna visa upp i efterhand.
+Uppdelningen är mer än bokföring. Den avgör om pengarna räknas som rätt
+använda, och den styr vilka underlag du behöver kunna visa upp om
+Försäkringskassan frågar.
 
-Om din ekonomiuppföljning inte redan är byggd kring de här fem posterna
-kommer du att göra om samma översättning varje redovisningsperiod, för hand.
+Följer du inte upp ekonomin på de här fem posterna redan i dag får du göra om
+samma översättning för hand varje redovisningsperiod.
 
 ## Räkna på höjningen innan du budgeterar
 
-Den enda uträkning som betyder något är den här: *steg schablonen mer eller
-mindre än din egen kostnad per timme.*
+Frågan du behöver svar på är enkel: *steg schablonen mer eller mindre än din
+egen kostnad per timme?*
 
-Gör den i den ordningen:
+Räkna så här:
 
 1. Ta löneökningen enligt ert kollektivavtal för perioden, i procent.
 2. Lägg på förändringen i lönebikostnader.
 3. Jämför summan med schablonens 1,49 procent.
 
-Ligger din kostnadsökning över 1,49 procent krymper marginalen per timme, även
-om intäkten i kronor blev högre. Det är inget ovanligt utfall, och det är därför
-uträkningen bör göras före budgeten och inte efter första kvartalet.
+Hamnar du över 1,49 procent krymper marginalen per timme. Det händer ofta. Gör
+därför uträkningen innan du lägger budgeten, inte när första kvartalet redan är
+passerat.
 
-Vi anger medvetet ingen siffra för avtalens löneökningar här. Den skiljer sig åt
-mellan avtalsområden och avtalsperioder, och en generell siffra vore fel för de
-flesta som läser. Hämta er egen ur ert eget avtal.
+Vi skriver medvetet inte ut någon siffra för löneökningarna. Den skiljer sig
+mellan avtalsområden och avtalsperioder, så en generell siffra skulle bli fel
+för de flesta. Ta er egen ur ert eget avtal.
 
 ## Redovisning och återbetalningsansvar
 
@@ -107,10 +105,10 @@ Hur ofta du redovisar beror på hur ersättningen betalas ut:
 - Betalas den i förskott redovisas kostnaderna under den sista månaden i varje
   beviljandeperiod, och då för hela perioden.
 
-Ansvaret för att betala tillbaka ersättning som betalats ut med för högt belopp
-ligger hos den ersättningen betalats till. Det är den meningen som gör
-löpande kostnadsuppföljning till något annat än en administrativ vana — en
-avvikelse som upptäcks vid periodens slut är redan en skuld.
+Har du fått för mycket utbetalt är det du som ska betala tillbaka.
+
+Det är skälet att följa kostnaderna löpande och inte bara vid periodens slut.
+En avvikelse du upptäcker först då är redan en skuld.
 
 ## Vad du gör nu
 

@@ -128,6 +128,35 @@ a length is how these pages start reading like everyone else's.
   relevant.** The page earns trust by being useful about the regulation. A
   page that pivots to product mid-argument fails at its only job.
 
+### Skriv så en människa skriver
+
+Jimmy and Daniel both flagged the first two drafts as obviously AI-written —
+"otydligt/onaturligt", "skriver så man inte förstår". They were right, and the
+cause was a specific set of tics. Avoid all of them:
+
+- **The antithesis.** "Det är inte X. Det är Y." / "inte en nyhet utan en
+  budgetförutsättning." It reads as clever rather than clear, and it showed up
+  five times in one 764-word article. Say the thing once.
+- **Em-dash asides.** "Allt annat — löner, OB, utbildning — ska rymmas." Use a
+  full stop or a comma. The first draft ran six em-dashes in 471 words; the
+  rewrite has none.
+- **Closing epigrams.** "En avvikelse som upptäcks vid periodens slut är redan
+  en skuld." Aphorism is the strongest AI tell there is. End on the practical
+  point instead.
+- **Abstract scaffolding.** "den ram inom vilken ersättningen anses använd",
+  "en redovisningsteknikalitet". Write "det avgör om pengarna räknas som rätt
+  använda".
+- **Two independent clauses joined by "och".** Break them. Two short sentences
+  beat one balanced one.
+- **Sentences that only work in writing.** Read it aloud. If you would not say
+  it to a verksamhetschef across a table, rewrite it.
+
+Measurable targets, checked in `gate.md`: median sentence at or under 13 words,
+nothing over 30, and zero em-dashes in running text.
+
+Plain does not mean thin. Keep the specifics, the numbers and the named
+sources. It is the sentence construction that changes, never the substance.
+
 ### On images
 
 **Default to none.** `DESIGN.md` rejects decorative imagery — "icons earn their

@@ -50,6 +50,30 @@ catches the real failures.
       seamless.
 - [ ] Headings are sentence case. No ALL CAPS outside the 12px kicker.
 
+### Reads like a person wrote it
+
+The first two drafts failed here and both founders said so. Measure, do not
+eyeball:
+
+```bash
+python - <<'EOF'
+import io,re,statistics,sys
+s=io.open(sys.argv[1] if len(sys.argv)>1 else 'content/kunskap/FIL.md',encoding='utf-8').read().split('---',2)[2]
+s=re.sub(r'<!--[\s\S]*?-->','',s); s=re.sub(r'^[#|\-\d].*$','',s,flags=re.M)
+p=' '.join(s.split()); se=[x for x in re.split(r'(?<=[.!?])\s+',p) if len(x.split())>3]
+l=[len(x.split()) for x in se]
+print('median',statistics.median(l),'max',max(l),'>25:',sum(1 for x in l if x>25),'emdash',p.count('—'))
+EOF
+```
+
+- [ ] Median sentence length at or under 13 words.
+- [ ] No sentence over 30 words.
+- [ ] Zero em-dashes in running text.
+- [ ] No "det är inte X, det är Y" antithesis anywhere.
+- [ ] No aphorism closing a section.
+- [ ] Read one section aloud. If you would not say it across a table to a
+      verksamhetschef, rewrite it.
+
 ### Technical
 
 - [ ] `title` unique across the site, roughly under 60 chars.
