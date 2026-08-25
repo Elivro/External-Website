@@ -1,7 +1,7 @@
 ---
 # Staging artifact, not a source of truth. Paste into Payload when the DB is
 # up; after that, the Payload document is canonical and this file is history.
-status: UTKAST — ej granskat, ej publicerat
+status: UTKAST — inga öppna kontroller, väntar domängranskning
 kind: underlag
 category: systembyte
 slug: verksamhetssystem-personlig-assistans-oversikt
@@ -50,13 +50,25 @@ FK-räkningen, schablonen, tvådygnsregeln — sällan är systemets huvudsak.
 
 ### Sammansatta lösningar
 
-Den vanligaste "lösningen" i branschen är ingen
-produkt alls: ett schemaverktyg, ett lönesystem, ett tidsystem, ett antal
-Excel-filer och en mailkorg. Den fungerar längre än folk tror och slutar
-fungera snabbare än de hinner reagera — oftast när verksamheten passerar
-[VERIFIERA: rimlig storleksgräns, gärna underbyggd med egen erfarenhet från
-2u — annars stryk siffran och skriv kvalitativt] och en person inte längre
-har hela bilden i huvudet.
+Den vanligaste "lösningen" i branschen är ingen produkt alls: ett schemaverktyg,
+ett lönesystem, ett tidsystem, ett antal Excel-filer och en mailkorg. Den
+fungerar längre än folk tror, och slutar fungera snabbare än någon hinner
+reagera.
+
+Brytpunkten är ingen viss storlek. Den märks på annat:
+
+- Schemat finns egentligen i en persons huvud. Kalkylbladet är en avskrift.
+- Ett sjukfall klockan sex på morgonen kräver uppgifter ur tre filer innan
+  någon kan ringa rätt vikarie.
+- Två personer har redigerat samma vecka, och ingen vet säkert vilken version
+  som gäller.
+- Frågan "varför fick just den assistenten de här passen" tar mer än en minut
+  att svara på.
+- Underlaget till FK-räkningen sätts ihop för hand ur system som inte känner
+  till varandra.
+
+Känner du igen tre av fem har verksamheten redan passerat gränsen, oavsett hur
+många brukare den har.
 
 ## Vad som faktiskt skiljer systemen åt
 
@@ -159,8 +171,17 @@ de kan eller inte kan.
 <!--
 ÖPPNA PUNKTER FÖRE PUBLICERING
 
-1. [VERIFIERA] i avsnittet "Sammansatta lösningar" — storleksgränsen. Antingen
-   underbygg med 2u:s egen erfarenhet eller stryk siffran helt.
+1. Storleksgränsen i "Sammansatta lösningar" är struken och ersatt med fem
+   symptom. Skälet: en siffra hade varit n=1 förklädd till branschregel, och
+   varje tal vi valt hade varit fel för de flesta läsare. En verksamhetschef
+   som driver 25 brukare på kalkylblad och läser "det slutar fungera vid 15"
+   slutar läsa. Symptomlistan går att pröva mot den egna vardagen i stället,
+   och den känns igen i stället för att bestridas.
+
+   Om ni ändå vill ha ett tal: det enda ärliga vore Susannes eget svar på
+   "när slutade det fungera för er", uttryckligen som 2u:s erfarenhet och
+   inte som en gräns för branschen. 2u:s nuvarande 80 brukare svarar inte på
+   frågan — det är var 2u står i dag, inte var det brast.
 2. Beslut som behöver tas av grundarna, inte av mig:
    - Ska konkurrenter namnges alls? CLAUDE.md förbjuder jämförelsetabeller.
      Den här sidan har ingen tabell och ingen rangordning, men den namnger
