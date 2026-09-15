@@ -36,7 +36,7 @@ export default function Hero() {
 
         <div className="hero-shell relative z-10 flex flex-1 items-start pb-16 pt-6 lg:items-center lg:pb-20 lg:pt-16">
           <div className="w-full max-w-[780px]">
-            <h1 className="relative z-10 hero-title mb-6 max-w-none text-ink lg:mb-7 lg:max-w-[11ch]">
+            <h1 className="relative z-10 hero-title mb-6 max-w-none text-ink lg:mb-7 lg:max-w-[10.5ch]">
               <span style={rise(0, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise">
                 Framtidens
               </span>
