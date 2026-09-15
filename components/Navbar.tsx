@@ -125,7 +125,7 @@ export default function Navbar() {
               href="https://login.elivro.se"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/login inline-flex items-center gap-2 rounded-pill border border-line-strong bg-paper-card/45 px-4 py-2.5 font-display text-[15px] font-medium text-ink hover:bg-paper-card hover:border-ink transition-colors duration-fast ease-out"
+              className="group/login inline-flex items-center gap-2.5 rounded-pill border border-line-strong bg-paper-card/45 px-5 py-3 font-display text-[16px] font-medium text-ink hover:bg-paper-card hover:border-ink transition-colors duration-fast ease-out"
             >
               Logga in
               <span aria-hidden="true" className="text-[16px] leading-none transition-transform duration-fast ease-out group-hover/login:translate-x-0.5">↗</span>
@@ -134,10 +134,13 @@ export default function Navbar() {
             <button
               type="button"
               onClick={openDemo}
-              className="ml-2 inline-flex items-center px-6 py-3 text-[15px] font-sans font-semibold bg-ink hover:bg-n-900 rounded-pill transition-colors duration-fast ease-out shadow-[0_8px_24px_-8px_rgba(220,38,38,0.55)]"
+              className="group/header-demo ml-2 inline-flex items-center gap-3 rounded-pill bg-ink px-8 py-3.5 text-[16px] font-sans font-semibold transition-colors duration-fast ease-out shadow-[0_8px_24px_-8px_rgba(220,38,38,0.55)] hover:bg-n-900"
               style={{ color: '#FAFAF7' }}
             >
-              Boka demo
+              <span>Boka demo</span>
+              <span aria-hidden="true" className="inline-block transition-transform duration-fast ease-out group-hover/header-demo:translate-x-1">
+                →
+              </span>
             </button>
           </div>
 
@@ -196,10 +199,11 @@ export default function Navbar() {
           <button
             type="button"
             onClick={openDemo}
-            className="block w-full px-4 py-2.5 mt-2 text-base font-sans font-semibold bg-ink hover:bg-n-900 rounded-pill text-center transition-colors duration-fast ease-out"
+            className="mt-2 flex w-full items-center justify-center gap-3 rounded-pill bg-ink px-5 py-3 text-base font-sans font-semibold text-center transition-colors duration-fast ease-out hover:bg-n-900"
             style={{ color: '#FAFAF7' }}
           >
-            Boka demo
+            <span>Boka demo</span>
+            <span aria-hidden="true">→</span>
           </button>
         </div>
       </div>

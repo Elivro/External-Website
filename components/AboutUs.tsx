@@ -48,6 +48,7 @@ const FOUNDERS: Founder[] = [
 ]
 
 const GROUP_PHOTO = '/founders/group.webp'
+const CARD_SWITCH_MS = 280
 
 const INTRO =
   'Vi byggde Elivro under sex månader, parallellt med arbete som personlig assistent. Tre olika bakgrunder — assistans, utveckling och kundsupport — samma frustration över systemen vi själva använt.'
@@ -123,9 +124,23 @@ export default function AboutUs() {
       return
     }
 
-    setDisplayed(target)
-    setShow(true)
-  }, [active])
+    if (!displayed || displayed.slug === target.slug) {
+      setDisplayed(target)
+      setShow(true)
+      return
+    }
+
+    // Fade the old card out completely before swapping its portrait and copy.
+    // This keeps the transition smooth without briefly showing the previous
+    // founder inside the new card.
+    setShow(false)
+    const timer = window.setTimeout(() => {
+      setDisplayed(target)
+      setShow(true)
+    }, CARD_SWITCH_MS)
+
+    return () => window.clearTimeout(timer)
+  }, [active, displayed])
 
   return (
     <section

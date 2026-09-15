@@ -21,16 +21,18 @@ export default function Hero() {
         {/* The supplied illustration carries the light, red-tinted atmosphere and
             leaves the left side intentionally quiet for the message. */}
         <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block" aria-hidden="true">
-          <Image
-            src="/brand-assets/hero-illustration.png"
-            alt=""
-            fill
-            priority
-            quality={95}
-            unoptimized
-            sizes="100vw"
-            className="hero-illustration-drift object-cover object-center"
-          />
+          <div className="hero-illustration-frame absolute inset-y-0 left-1/2 w-full max-w-[1536px] -translate-x-1/2 overflow-hidden">
+            <Image
+              src="/brand-assets/hero-illustration.png"
+              alt=""
+              fill
+              priority
+              quality={95}
+              unoptimized
+              sizes="1536px"
+              className="hero-illustration-drift object-cover object-center"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-r from-hero-bg/80 via-hero-bg/10 to-transparent lg:from-hero-bg/55" />
         </div>
 
@@ -50,7 +52,7 @@ export default function Hero() {
 
             <p
               style={rise(220)}
-              className="relative z-10 hero-copy elv-rise mb-0 max-w-[600px] text-[clamp(18px,1.5vw,22px)] leading-[1.42] tracking-[-0.012em] text-n-700 lg:mb-8"
+              className="relative z-10 hero-copy elv-rise mb-0 max-w-[600px] text-[clamp(18px,1.7vw,24px)] leading-[1.4] tracking-[-0.012em] text-n-700 lg:mb-8"
             >
               <span className="hidden md:inline">
                 Elivro samlar schema, rekrytering, kvalitet och uppföljning, och driver verksamheten framåt med AI.
