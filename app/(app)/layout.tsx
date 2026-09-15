@@ -20,11 +20,9 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-jakarta',
-  // 'optional' lets the H1 paint immediately in the system fallback; Jakarta
-  // swaps in only if it loads within ~100ms. Tradeoff: slow first-cold visits
-  // see fallback headings for that session. Mobile LCP win is real (text
-  // LCP no longer waits for the font to load).
-  display: 'optional',
+  // Swap in the display face once it loads so the heading has the same weight
+  // on cold production visits and on cached local visits.
+  display: 'swap',
 })
 
 const inter = Inter({

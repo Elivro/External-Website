@@ -20,8 +20,8 @@ const WHITE = '#FAFAF7'
 const WHITE_70 = 'rgba(255,255,255,0.70)'
 const WHITE_65 = 'rgba(255,255,255,0.65)'
 const WHITE_18 = 'rgba(255,255,255,0.18)'
-// Brighter red keeps the accent readable against the dark testimonial surface.
-const RED = '#F87171'
+// Use the same primary brand red as the hero and section accents.
+const RED = '#DC2626'
 
 export default function LogoStrip() {
   const [photoFailed, setPhotoFailed] = useState(false)
@@ -113,7 +113,7 @@ export default function LogoStrip() {
           {/* Quote + attribution */}
           <div>
             <p
-              className="mb-7 font-italic italic text-[clamp(22px,2.2vw,32px)] leading-[1.28] tracking-[-0.012em]"
+              className="mb-7 font-italic italic text-[clamp(24px,2.2vw,32px)] leading-[1.28] tracking-[-0.012em]"
               style={{ color: WHITE, fontWeight: 300 }}
             >
               &ldquo;Ett modernt system med snabb support och en lösning som{' '}
