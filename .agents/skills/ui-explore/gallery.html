@@ -1,0 +1,54 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>UI-varianter</title>
+<!-- manifest.js, not .json: file:// blocks fetch() but allows <script src>. -->
+<script src="manifest.js"></script>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; background:#191919; color:#e8e8e8;
+         font:14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding:28px 32px 4px; }
+  h1 { margin:0 0 6px; font-size:20px; letter-spacing:-.02em; }
+  .intent { margin:0; color:#9a9a9a; max-width:72ch; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(480px, 1fr));
+          gap:28px; padding:28px 32px 72px; }
+  figure { margin:0; }
+  figure img { width:100%; display:block; background:#fff;
+               border:1px solid #333; border-radius:8px; cursor:zoom-in; }
+  figcaption { padding-top:10px; }
+  .label { font-weight:600; }
+  .notes { color:#9a9a9a; }
+  .ref img { border-color:#d08050; }
+  .ref .label::after { content:" · NUVARANDE"; color:#d08050; font-weight:500; }
+  dialog { border:0; padding:0; background:transparent; max-width:98vw; max-height:98vh; }
+  dialog::backdrop { background:rgba(0,0,0,.88); }
+  dialog img { max-width:98vw; max-height:98vh; display:block; cursor:zoom-out; }
+</style>
+
+<header>
+  <h1 id="t"></h1>
+  <p class="intent" id="i"></p>
+</header>
+<div class="grid" id="g"></div>
+<dialog id="d"><img id="di" alt=""></dialog>
+
+<script>
+  const m = window.MOCKUPS || { title: 'manifest.js saknas', intent: '', variants: [] };
+  const esc = s => String(s ?? '').replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+
+  t.textContent = m.title || '';
+  i.textContent = m.intent || '';
+  g.innerHTML = (m.variants || []).map(v => `
+    <figure class="${v.reference ? 'ref' : ''}">
+      <img src="${esc(v.file)}" alt="${esc(v.label)}">
+      <figcaption>
+        <div class="label">${esc(v.label)}</div>
+        <div class="notes">${esc(v.notes)}</div>
+      </figcaption>
+    </figure>`).join('');
+
+  g.addEventListener('click', e => {
+    if (e.target.tagName === 'IMG') { di.src = e.target.src; d.showModal(); }
+  });
+  d.addEventListener('click', () => d.close());
+</script>

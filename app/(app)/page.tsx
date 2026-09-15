@@ -4,8 +4,6 @@ import Hero from '@/components/Hero'
 import LogoStrip from '@/components/LogoStrip'
 import Features from '@/components/Features'
 import ProductShowcase from '@/components/ProductShowcase'
-import Manifesto from '@/components/Manifesto'
-import CaseProof from '@/components/CaseProof'
 import AboutUs from '@/components/AboutUs'
 import StartupOffer from '@/components/StartupOffer'
 import Footer from '@/components/Footer'
@@ -21,8 +19,7 @@ export const metadata: Metadata = {
  * Landing-page composition — Brand Kit v4
  *
  * Light/dark alternation; Hero light, Susanne opens dark. StartupOffer
- * runs light per request (CaseProof light → StartupOffer light-soft gives
- * a quiet tone shift rather than a hard repeat). data-surface drives the
+ * runs light-soft after AboutUs to keep the decision path compact. data-surface drives the
  * v4 palette override layer.
  *
  *   Hero            light
@@ -30,12 +27,11 @@ export const metadata: Metadata = {
  *   Features        light
  *   ProductShowcase dark   ← carousel
  *   AboutUs         light
- *   Manifesto       dark
- *   CaseProof       light
  *   StartupOffer    light-soft
  *   Footer          dark
  *
- * Hidden for now: FAQSection. Removed earlier: QuizCTA, standalone CTA.
+ * Hidden for now: Manifesto, CaseProof, FAQSection. Removed earlier: QuizCTA,
+ * standalone CTA.
  */
 export default function Home() {
   return (
@@ -61,14 +57,6 @@ export default function Home() {
 
       <div data-surface="light">
         <AboutUs />
-      </div>
-
-      <div data-surface="dark">
-        <Manifesto />
-      </div>
-
-      <div data-surface="light">
-        <CaseProof />
       </div>
 
       <div data-surface="light-soft">

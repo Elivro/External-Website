@@ -39,10 +39,10 @@ const GROUPS: Group[] = [
     bullets: [
       'Schemaläggning (kalender och lista)',
       'Grundschema',
-      'Automatiskt grundschema (baserat på budget och anställningsgrad)',
+      'Vikarie-agenten',
       'Identifiering av dubbelassistans',
       'Pass-byten med godkännande',
-      'Budgetprognoser per period',
+      'Budget per kund',
     ],
   },
   {
@@ -51,7 +51,7 @@ const GROUPS: Group[] = [
     bullets: [
       'Tidrapportering med attestering',
       'Frånvarohantering',
-      'E-RÄK (FK-räkning)',
+      'FK-RÄK',
       'Lönefil-export',
       'Kostnadsavstämning',
     ],
@@ -60,9 +60,9 @@ const GROUPS: Group[] = [
     index: '04',
     title: 'Kunder',
     bullets: [
-      'Delaktighet i rekrytering',
+      'Kundportal för rekrytering och schema',
       'Kundregister med detaljvy',
-      'LSS-beslut och vårdplan',
+      'LSS-beslut och genomförandeplan',
       'Kontaktpersoner och team',
       'Daganteckningar',
       'Journal med röst-till-text',
@@ -86,7 +86,7 @@ const GROUPS: Group[] = [
     index: '06',
     title: 'Avvikelser & Förbättring',
     bullets: [
-      'Avvikelser med utredning',
+      'Strukturerad avvikelseprocess med ärendenummer',
       'Lex Sarah-anmälan',
       'Klagomål och synpunkter',
       'Publik synpunktsform',
@@ -96,14 +96,14 @@ const GROUPS: Group[] = [
   },
   {
     index: '07',
-    title: 'Processer & Årshjul',
+    title: 'Processer & dokument',
     bullets: [
       'Processkarta och process-editor',
       'Process-tavla (kanban)',
       'Process-mallar',
       'Årshjul för återkommande uppgifter',
       'Uppgifts-feed per användare',
-      'Bilagor till processer',
+      'Dokumentbibliotek med mallar och arkiv',
     ],
   },
   {
@@ -120,13 +120,11 @@ const GROUPS: Group[] = [
   },
   {
     index: '09',
-    title: 'AI-assistent',
+    title: 'Insikter & AI',
     bullets: [
-      'Chat mot er egna kunskapsbas',
+      'Prata med din data om er verksamhet',
       'AI-granskning av rutiner och policyer',
       'Källhänvisning i alla AI-svar',
-      'Egna prompts, skills och agenter',
-      'AI-genererade rapport-utkast',
       'Svensk hosting via Berget AI',
     ],
   },

@@ -52,28 +52,29 @@ export default function StartupOffer() {
                 aria-hidden="true"
                 className="elv-pulse h-[7px] w-[7px] rounded-full bg-moss"
               />
-              Uppstartskampanj 2026 · Fyra platser kvar
+              Uppstartskampanj 2026 · En plats kvar
             </div>
 
-            {/* Headline — display, italic accent on "formar systemet" */}
+            {/* Headline — display, italic accent on "forma systemet" */}
             <h2
               id="startup-offer-title"
               className="mx-auto mb-6 max-w-[820px] font-display text-[clamp(42px,5.6vw,72px)] font-bold leading-[1.03] tracking-[-0.032em] text-balance"
             >
-              Bli en av fyra som{' '}
+              En plats kvar för att{' '}
               <em
                 className="font-italic font-bold italic"
                 style={{ color: '#FAFAF7' }}
               >
-                formar systemet
+                forma systemet
               </em>
               .
             </h2>
 
             {/* Sub */}
             <p className="mx-auto mb-10 max-w-[580px] text-[17px] text-[rgba(250,250,247,0.88)]">
-              Vi söker fyra assistansanordnare som vill vara med och forma
-              systemet under 2026. Vi bygger med er, inte åt er.
+              Vi har kapacitet att ta in ett assistansbolag till under 2026.
+              Det är den enda öppna platsen just nu — vi bygger med er, inte åt
+              er.
             </p>
 
             {/* CTA — white pill on red surface, ink text */}
@@ -93,7 +94,7 @@ export default function StartupOffer() {
 
             {/* Fineprint */}
             <div className="mt-5 text-[13px] text-[rgba(250,250,247,0.55)]">
-              Stänger 2026-09-30 · Pilot 90 dagar med pengarna tillbaka
+              En öppen plats just nu · Pilot 90 dagar med pengarna tillbaka
             </div>
           </div>
         </div>

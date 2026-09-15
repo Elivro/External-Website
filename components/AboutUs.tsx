@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 interface Founder {
@@ -50,14 +50,14 @@ const FOUNDERS: Founder[] = [
 const GROUP_PHOTO = '/founders/group.webp'
 
 const INTRO =
-  'Vi byggde Elivro tillsammans under sex månader. Jimmy har arbetat tio månader som personlig assistent. Filiph har tio år som utvecklare för det offentliga, i system med höga krav på säkerhet och tillgänglighet. Daniel är expert på kundsupport och utbildad utvecklare. Tre olika bakgrunder, samma frustration över systemen vi själva använt.'
+  'Vi byggde Elivro under sex månader, parallellt med arbete som personlig assistent. Tre olika bakgrunder — assistans, utveckling och kundsupport — samma frustration över systemen vi själva använt.'
 
-type BulletIconKind = 'calendar' | 'building' | 'handshake' | 'shield'
+type BulletIconKind = 'calendar' | 'building' | 'handshake'
 
 const BULLETS: { title: string; sub: string; icon: BulletIconKind }[] = [
   {
-    title: 'Sex månader.',
-    sub: 'Byggt parallellt med dagligt arbete som personlig assistent.',
+    title: 'Byggt från vardagen.',
+    sub: 'Sex månader parallellt med arbete som personlig assistent.',
     icon: 'calendar',
   },
   {
@@ -66,14 +66,9 @@ const BULLETS: { title: string; sub: string; icon: BulletIconKind }[] = [
     icon: 'building',
   },
   {
-    title: 'Du pratar med en grundare.',
-    sub: 'Inte en supportkö.',
+    title: 'Direkt kontakt med grundarna.',
+    sub: 'Ingen supportkö.',
     icon: 'handshake',
-  },
-  {
-    title: 'Säkerhet först',
-    sub: 'GDPR i kod, inte i PDF. Stabilt, tillgängligt och ansvarsfullt.',
-    icon: 'shield',
   },
 ]
 
@@ -100,14 +95,18 @@ const LABELS: Record<string, { left: number; top: number; align: 'left' | 'cente
  */
 export default function AboutUs() {
   const [active, setActive] = useState<string | null>(null)
-  // `displayed` lags `active` so the tooltip's inner content stays
-  // rendered through the fade-out animation. `show` is the visibility
-  // flag the CSS reads — separating it from `active` lets us drop
-  // visibility for ~120ms when switching between founders, so the old
-  // card fades out before the new one fades in (sequential crossfade).
   const [displayed, setDisplayed] = useState<Founder | null>(null)
   const [show, setShow] = useState(false)
-  const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Load the three small founder portraits before the first hover switch so
+  // changing zones does not expose a stale portrait while the next one decodes.
+  useEffect(() => {
+    FOUNDERS.forEach(({ photo }) => {
+      const image = new window.Image()
+      image.decoding = 'async'
+      image.src = photo
+    })
+  }, [])
 
   // Mobile-only founder carousel: one founder at a time below the group
   // photo. The full bio is always shown (no expand affordance).
@@ -117,11 +116,6 @@ export default function AboutUs() {
   }
 
   useEffect(() => {
-    if (swapTimer.current) {
-      clearTimeout(swapTimer.current)
-      swapTimer.current = null
-    }
-
     const target = active ? FOUNDERS.find((f) => f.slug === active) ?? null : null
 
     if (!target) {
@@ -129,26 +123,9 @@ export default function AboutUs() {
       return
     }
 
-    if (!displayed || displayed.slug === target.slug) {
-      setDisplayed(target)
-      setShow(true)
-      return
-    }
-
-    setShow(false)
-    swapTimer.current = setTimeout(() => {
-      setDisplayed(target)
-      setShow(true)
-      swapTimer.current = null
-    }, 120)
-
-    return () => {
-      if (swapTimer.current) {
-        clearTimeout(swapTimer.current)
-        swapTimer.current = null
-      }
-    }
-  }, [active, displayed])
+    setDisplayed(target)
+    setShow(true)
+  }, [active])
 
   return (
     <section
@@ -179,6 +156,15 @@ export default function AboutUs() {
               </li>
             ))}
           </ul>
+
+          <a
+            href="tel:+46790573695"
+            className="about-direct-contact"
+            aria-label="Ring Jimmy på +46 79 057 36 95"
+          >
+            <span className="about-direct-contact-label">Prata direkt med Jimmy</span>
+            <span className="about-direct-contact-number">+46 79 057 36 95</span>
+          </a>
         </div>
 
         {/* MIDDLE — group photo + labels + hover zones. Spans the full wrap;
@@ -414,14 +400,6 @@ function BulletIcon({ kind }: { kind: BulletIconKind }) {
           <path d="m13 17 3-3 1 1 3-3-4-4-2 2" />
           <path d="m11 17 2 2 1-1 2 2" />
           <path d="m11 12 2 2" />
-        </svg>
-      )
-    case 'shield':
-      // Shield with a check — security and GDPR baked in
-      return (
-        <svg {...iconProps}>
-          <path d="M12 3 4 6v6c0 5 3.5 7.5 8 9 4.5-1.5 8-4 8-9V6l-8-3z" />
-          <path d="m9 12 2 2 4-4" />
         </svg>
       )
   }

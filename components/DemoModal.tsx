@@ -141,6 +141,16 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                 <p className="text-fg-soft text-sm leading-[1.55]">
                   Fyll i, så hör vi av oss inom 24 timmar.
                 </p>
+                <p className="mt-3 text-fg-muted text-[13px] leading-[1.5]">
+                  Vill du hellre prata direkt?{' '}
+                  <a
+                    href="tel:+46790573695"
+                    className="text-ink underline underline-offset-4 transition-colors duration-200 hover:text-red"
+                  >
+                    Ring Jimmy på +46 79 057 36 95
+                  </a>
+                  .
+                </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">

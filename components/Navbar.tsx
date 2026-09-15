@@ -81,7 +81,6 @@ export default function Navbar() {
     { label: 'Produkt', id: 'product' },
     { label: 'Funktioner', id: 'features' },
     { label: 'Om oss', id: 'about-us' },
-    { label: 'Case', id: 'case-proof' },
   ]
 
   return (
@@ -89,15 +88,12 @@ export default function Navbar() {
     <nav
       ref={navRef}
       data-scrolled={scrolled}
-      /* No bottom rule in either state — the TopBanner's ink hairline is the
-         only horizontal line wanted at the top of the page. Scroll state is
-         carried by surface opacity alone. */
       className={`sticky top-0 inset-x-0 z-50 transition-colors duration-fast ease-out ${
-        scrolled ? 'bg-paper/92 backdrop-blur-md' : 'bg-paper/70 backdrop-blur-sm'
+        scrolled ? 'bg-paper/92 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-        <div className="flex h-16 items-center">
+        <div className="flex h-20 items-center lg:h-[84px]">
           {/* LEFT — Mark + wordmark */}
           <div className="flex flex-1 justify-start">
             <a
@@ -105,7 +101,7 @@ export default function Navbar() {
               onClick={handleScrollToTop}
               className="flex items-center gap-3 group"
             >
-              <ElivroLogo className="h-9 w-auto text-ink" ariaLabel="Elivro" />
+              <ElivroLogo className="h-10 w-auto text-ink lg:h-11" ariaLabel="Elivro" />
             </a>
           </div>
 
@@ -116,7 +112,7 @@ export default function Navbar() {
                 key={link.id}
                 href={sectionHref(link.id)}
                 onClick={(e) => handleScrollToSection(e, link.id)}
-                className="px-3 py-2 text-sm font-sans text-n-700 hover:text-ink transition-colors duration-fast ease-out"
+                className="px-3 py-2 font-display text-[16px] font-medium text-n-700 hover:text-ink transition-colors duration-fast ease-out"
               >
                 {link.label}
               </a>
@@ -129,15 +125,16 @@ export default function Navbar() {
               href="https://login.elivro.se"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-3 py-2 text-sm font-sans text-n-700 hover:text-ink transition-colors duration-fast ease-out"
+              className="group/login inline-flex items-center gap-2 rounded-pill border border-line-strong bg-paper-card/45 px-4 py-2.5 font-display text-[15px] font-medium text-ink hover:bg-paper-card hover:border-ink transition-colors duration-fast ease-out"
             >
               Logga in
+              <span aria-hidden="true" className="text-[16px] leading-none transition-transform duration-fast ease-out group-hover/login:translate-x-0.5">↗</span>
             </a>
 
             <button
               type="button"
               onClick={openDemo}
-              className="ml-2 inline-flex items-center px-5 py-2 text-sm font-sans font-semibold bg-ink hover:bg-n-900 rounded-pill transition-colors duration-fast ease-out shadow-cta"
+              className="ml-2 inline-flex items-center px-6 py-3 text-[15px] font-sans font-semibold bg-ink hover:bg-n-900 rounded-pill transition-colors duration-fast ease-out shadow-[0_8px_24px_-8px_rgba(220,38,38,0.55)]"
               style={{ color: '#FAFAF7' }}
             >
               Boka demo

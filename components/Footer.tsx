@@ -12,7 +12,6 @@ type LinkItem =
 const PRODUKT: LinkItem[] = [
   { label: 'Produkt', section: 'product' },
   { label: 'Funktioner', section: 'features' },
-  { label: 'Case', section: 'case-proof' },
   { label: 'Uppstartskampanj', section: 'startup-offer' },
 ]
 
