@@ -118,7 +118,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
       <div
         ref={modalRef}
         data-surface="light"
-        className="relative z-10 w-full max-w-md bg-ink-card rounded-obs-lg border border-edge-strong shadow-obs-hero"
+        className="relative z-10 w-full max-w-lg bg-ink-card rounded-obs-lg border border-edge-strong shadow-obs-hero"
       >
         <button
           onClick={onClose}
@@ -145,7 +145,7 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   Vill du hellre prata direkt?{' '}
                   <a
                     href="tel:+46790573695"
-                    className="text-ink underline underline-offset-4 transition-colors duration-200 hover:text-red"
+                    className="whitespace-nowrap text-ink underline underline-offset-4 transition-colors duration-200 hover:text-red"
                   >
                     Ring Jimmy på +46 79 057 36 95
                   </a>
