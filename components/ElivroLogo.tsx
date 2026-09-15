@@ -1,16 +1,31 @@
 /**
- * ElivroLogo — inline SVG so the wordmark text can take any color via
- * `currentColor` (set by the parent's CSS `color`). The "E" hexagon mark
- * stays red across all uses; only the text recolors. Source asset:
- * public/brand-assets/elivro_logo.svg.
+ * ElivroLogo — color-adaptive inline SVG for dark surfaces, with an optional
+ * reference lockup for the light header. The reference lockup is a transparent
+ * crop of the supplied brand artwork.
  */
 export default function ElivroLogo({
   className,
   ariaLabel = 'Elivro',
+  reference = false,
+  referenceTone = 'dark',
 }: {
   className?: string
   ariaLabel?: string
+  reference?: boolean
+  referenceTone?: 'dark' | 'light'
 }) {
+  if (reference) {
+    return (
+      <img
+        src={`/brand-assets/elivro-logo-reference${referenceTone === 'light' ? '-white' : ''}.webp`}
+        alt={ariaLabel}
+        width={1181}
+        height={377}
+        className={className}
+      />
+    )
+  }
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -227,19 +227,46 @@ h1 { font-size: clamp(34px, 3.5vw, 50px); letter-spacing: -0.024em; }
   line-height: 0.98;
   font-weight: 800;
 }
-.hero-title-accent {
-  color: var(--red);
-  font-style: normal;
-  font-weight: 800;
+.hero-title-gradient {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  color: transparent;
+  background: linear-gradient(102deg, #d72a69 0%, #e52f52 34%, #f8454b 67%, #fa746b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .hero-copy {
   max-width: 560px;
 }
+.site-container-wide,
 .hero-shell {
   width: 100%;
   max-width: 1536px;
   margin: 0 auto;
   padding-inline: 5.5vw;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+  left: 12px;
+  height: 1px;
+  content: '';
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
 }
 .hero-banner {
   color: var(--paper);
@@ -395,7 +422,60 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
   filter: saturate(1.1) contrast(1.02);
 }
 
+/* Between phone and wide desktop, keep the artwork full-bleed and vivid while
+   feathering only the edge that meets the copy. Stack proof points in this
+   band so they never run across the 3D mark. */
+@media (min-width: 768px) and (max-width: 1365px) {
+  .hero-illustration-frame {
+    max-width: none;
+  }
+  .hero-illustration-drift {
+    object-fit: cover;
+    object-position: right center;
+    opacity: 1;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(0, 0, 0, 0.72) 66%,
+      #000 86%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(0, 0, 0, 0.72) 66%,
+      #000 86%
+    );
+  }
+  .hero-illustration-wash {
+    background: linear-gradient(
+      90deg,
+      rgba(249, 247, 246, 0.96) 0%,
+      rgba(249, 247, 246, 0.78) 48%,
+      rgba(249, 247, 246, 0.2) 78%,
+      rgba(249, 247, 246, 0.08) 100%
+    );
+  }
+  .hero-proof-list {
+    display: grid !important;
+    max-width: 320px;
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-cta-row {
+    margin-top: 28px;
+  }
+}
+
 @media (max-width: 767px) {
+  .site-container-wide {
+    padding-inline: 22px;
+  }
+
   .hero-title {
     font-size: clamp(42px, 12.3vw, 48px);
     letter-spacing: -0.055em;
@@ -434,16 +514,34 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
        broad radial mask lets that canvas dissolve into the hero while keeping
        the red object and its ground shadow intact. */
     -webkit-mask-image: radial-gradient(
-      ellipse at 56% 52%,
-      #000 42%,
-      rgba(0, 0, 0, 0.96) 60%,
-      transparent 98%
+      ellipse at 60% 52%,
+      #000 32%,
+      rgba(0, 0, 0, 0.92) 48%,
+      transparent 84%
     );
     mask-image: radial-gradient(
-      ellipse at 56% 52%,
-      #000 42%,
-      rgba(0, 0, 0, 0.96) 60%,
-      transparent 98%
+      ellipse at 60% 52%,
+      #000 32%,
+      rgba(0, 0, 0, 0.92) 48%,
+      transparent 84%
+    );
+  }
+  /* Extend the dissolve across the artwork's left canvas edge. The source
+     image includes a paper-toned margin that otherwise reads as a hard
+     rectangle against the hero background on narrow screens. */
+  .hero-mobile-art::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0 auto 0 -22px;
+    width: 40%;
+    content: '';
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      #f9f7f6 0%,
+      rgba(249, 247, 246, 0.88) 24%,
+      rgba(249, 247, 246, 0.38) 58%,
+      rgba(249, 247, 246, 0) 100%
     );
   }
   .hero-proof-list {
@@ -561,19 +659,45 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
   margin-top: 1px;
 }
 .hero-scroll-cue {
-  animation: elvFloat var(--float-duration) ease-in-out infinite;
+  animation: elvFloat 6.5s ease-in-out infinite;
   animation-delay: 900ms;
 }
-.hero-cta {
+.hero-scroll-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 60px;
+  overflow: hidden;
+  background: transparent;
+}
+.hero-scroll-line-glow {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: linear-gradient(to bottom, rgba(220, 38, 38, 0.95) 50%, transparent 50%);
+  background-size: 100% 200%;
+  background-position: 0 100%;
+  animation: heroScrollLine 2.2s cubic-bezier(0.76, 0, 0.3, 1) infinite;
+}
+@keyframes heroScrollLine {
+  0% { background-position: 0 100%; }
+  75% { background-position: 0 0; }
+  100% { background-position: 0 -100%; }
+}
+.cta-hover-sweep {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid var(--red);
-  background: var(--ink);
-  color: var(--paper);
-  box-shadow: 0 8px 24px -8px rgba(220, 38, 38, 0.55);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
-.hero-cta::before {
+.cta-hover-sweep > * {
+  position: relative;
+  z-index: 1;
+}
+.cta-hover-sweep::before {
   position: absolute;
   inset: 0;
   content: "";
@@ -582,7 +706,7 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
   transition: transform 900ms var(--ease-out);
   pointer-events: none;
 }
-.hero-cta::after {
+.cta-hover-sweep::after {
   position: absolute;
   right: 0;
   bottom: -1px;
@@ -595,12 +719,18 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
   transition: transform 700ms var(--ease-out);
   pointer-events: none;
 }
-.hero-cta:hover::before { transform: translateX(100%); }
-.hero-cta:hover::after { transform: scaleX(1); }
-.hero-cta:hover {
+.cta-hover-sweep:hover::before { transform: translateX(100%); }
+.cta-hover-sweep:hover::after { transform: scaleX(1); }
+.cta-hover-sweep:hover {
   transform: translateY(-1px);
-  background: var(--n-900);
+  background: var(--ink);
   box-shadow: 0 12px 28px -8px rgba(220, 38, 38, 0.68);
+}
+.hero-cta {
+  border: 1px solid var(--red);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 8px 24px -8px rgba(220, 38, 38, 0.55);
 }
 .hero-secondary {
   border: 1px solid var(--n-400);
@@ -1061,8 +1191,8 @@ textarea::placeholder {
   opacity: 0;
   transform: translateY(14px) scale(0.985);
   transition:
-    opacity 280ms var(--ease-out),
-    transform 360ms var(--ease-out);
+    opacity 220ms var(--ease-out),
+    transform 300ms var(--ease-out);
   pointer-events: none;
   will-change: opacity, transform;
 }

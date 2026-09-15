@@ -21,9 +21,9 @@ export default function Hero() {
         {/* The supplied illustration carries the light, red-tinted atmosphere and
             leaves the left side intentionally quiet for the message. */}
         <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block" aria-hidden="true">
-          <div className="hero-illustration-frame absolute inset-y-0 left-1/2 w-full max-w-[1536px] -translate-x-1/2 overflow-hidden">
+          <div className="hero-illustration-frame absolute inset-y-0 right-0 w-full max-w-[1536px] overflow-hidden">
             <Image
-              src="/brand-assets/hero-illustration.png"
+              src="/brand-assets/hero-illustration.jpg"
               alt=""
               fill
               priority
@@ -33,7 +33,7 @@ export default function Hero() {
               className="hero-illustration-drift object-cover object-center"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-hero-bg/80 via-hero-bg/10 to-transparent lg:from-hero-bg/55" />
+          <div className="hero-illustration-wash absolute inset-0 bg-gradient-to-r from-hero-bg/80 via-hero-bg/10 to-transparent lg:from-hero-bg/55" />
         </div>
 
         <div className="hero-shell relative z-10 flex flex-1 items-start pb-16 pt-6 lg:items-center lg:pb-20 lg:pt-16">
@@ -45,8 +45,8 @@ export default function Hero() {
               <span style={rise(70, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise">
                 assistansbolag
               </span>
-              <span style={rise(140, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise">
-                byggs med <span className="hero-title-accent">AI.</span>
+              <span style={rise(140, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise hero-title-gradient">
+                byggs med AI.
               </span>
             </h1>
 
@@ -69,7 +69,7 @@ export default function Hero() {
               aria-hidden="true"
             >
               <Image
-                src="/brand-assets/hero-mobile-illustration.png"
+                src="/brand-assets/hero-mobile-illustration.jpg"
                 alt=""
                 fill
                 unoptimized
@@ -85,14 +85,14 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="hero-cta group w-full justify-center sm:w-auto sm:justify-start"
+                className="hero-cta cta-hover-sweep group w-full justify-center sm:w-auto md:justify-start"
               >
                 <span className="relative z-[1]">Boka demo</span>
                 <span aria-hidden="true" className="relative z-[1] inline-block transition-transform duration-fast ease-out group-hover:translate-x-1">
                   →
                 </span>
               </button>
-              <Link href="#features" className="hero-secondary group w-full justify-center sm:w-auto sm:justify-start">
+              <Link href="#features" className="hero-secondary group w-full justify-center sm:w-auto md:justify-start">
                 Upptäck elivro
               </Link>
             </div>
@@ -107,9 +107,11 @@ export default function Hero() {
 
         <a
           href="#features"
-          className="hero-scroll-cue relative z-10 mx-auto mb-5 hidden flex-col items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-n-700 transition-colors hover:text-ink lg:flex"
+          className="hero-scroll-cue relative z-10 mx-auto mb-5 flex flex-col items-center gap-2 text-[12px] font-medium uppercase tracking-[0.2em] text-n-700 transition-colors hover:text-ink"
         >
-          <span className="h-8 w-px bg-n-700/60" />
+          <span className="hero-scroll-line" aria-hidden="true">
+            <span className="hero-scroll-line-glow" />
+          </span>
           Utforska mer
           <span aria-hidden="true" className="hero-scroll-chevron" />
         </a>

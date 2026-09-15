@@ -144,7 +144,7 @@ export default function ProductShowcase() {
       aria-labelledby="product-title"
       className="relative w-full bg-ink py-24 md:py-32"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-6 lg:px-12">
+      <div className="site-container-wide relative z-10">
         <header className="mb-12 max-w-4xl md:mb-14">
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.12em] text-fg-muted">Produkten</p>
           <h2 id="product-title" className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.021em] text-fg">

@@ -92,7 +92,12 @@ export default function Footer() {
 
           {/* Brand block — small mark, lowercase wordmark, tagline, location. */}
           <div className="col-span-2 md:col-span-4">
-            <ElivroLogo className="h-10 w-auto mb-5 text-paper" ariaLabel="Elivro" />
+            <ElivroLogo
+              className="h-10 w-auto mb-5 text-paper"
+              ariaLabel="Elivro"
+              reference
+              referenceTone="light"
+            />
             <p className="text-fg-soft text-[15px] leading-[1.55] max-w-[20rem]">
               Verksamhetssystem för svenska assistansanordnare. Byggt inifrån, med AI-stöd och svensk infrastruktur.
             </p>

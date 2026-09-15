@@ -92,7 +92,7 @@ export default function Navbar() {
         scrolled ? 'bg-paper/92 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+      <div className="site-container-wide">
         <div className="flex h-20 items-center lg:h-[84px]">
           {/* LEFT — Mark + wordmark */}
           <div className="flex flex-1 justify-start">
@@ -101,7 +101,7 @@ export default function Navbar() {
               onClick={handleScrollToTop}
               className="flex items-center gap-3 group"
             >
-              <ElivroLogo className="h-10 w-auto text-ink lg:h-11" ariaLabel="Elivro" />
+              <ElivroLogo className="h-10 w-auto text-ink lg:h-11" ariaLabel="Elivro" reference />
             </a>
           </div>
 
@@ -112,7 +112,7 @@ export default function Navbar() {
                 key={link.id}
                 href={sectionHref(link.id)}
                 onClick={(e) => handleScrollToSection(e, link.id)}
-                className="px-3 py-2 font-display text-[16px] font-medium text-n-700 hover:text-ink transition-colors duration-fast ease-out"
+                className="nav-link relative shrink-0 whitespace-nowrap px-3 py-2 font-display text-[16px] font-medium text-n-700 transition-colors duration-fast ease-out hover:text-ink"
               >
                 {link.label}
               </a>
@@ -125,7 +125,7 @@ export default function Navbar() {
               href="https://login.elivro.se"
               target="_blank"
               rel="noopener noreferrer"
-              className="group/login inline-flex items-center gap-2.5 rounded-pill border border-line-strong bg-paper-card/45 px-5 py-3 font-display text-[16px] font-medium text-ink hover:bg-paper-card hover:border-ink transition-colors duration-fast ease-out"
+              className="group/login inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-pill border border-line-strong bg-paper-card/45 px-5 py-3 font-display text-[16px] font-medium text-ink hover:bg-paper-card hover:border-ink transition-colors duration-fast ease-out"
             >
               Logga in
               <span aria-hidden="true" className="text-[16px] leading-none transition-transform duration-fast ease-out group-hover/login:translate-x-0.5">↗</span>
@@ -134,7 +134,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={openDemo}
-              className="group/header-demo ml-2 inline-flex items-center gap-3 rounded-pill bg-ink px-8 py-3.5 text-[16px] font-sans font-semibold transition-colors duration-fast ease-out shadow-[0_8px_24px_-8px_rgba(220,38,38,0.55)] hover:bg-n-900"
+              className="cta-hover-sweep group/header-demo ml-2 inline-flex shrink-0 items-center gap-3 whitespace-nowrap rounded-pill bg-ink px-8 py-3.5 text-[16px] font-sans font-semibold transition-colors duration-fast ease-out shadow-[0_8px_24px_-8px_rgba(220,38,38,0.55)] hover:bg-ink"
               style={{ color: '#FAFAF7' }}
             >
               <span>Boka demo</span>
@@ -199,7 +199,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={openDemo}
-            className="mt-2 flex w-full items-center justify-center gap-3 rounded-pill bg-ink px-5 py-3 text-base font-sans font-semibold text-center transition-colors duration-fast ease-out hover:bg-n-900"
+            className="mt-2 flex w-full items-center justify-center gap-3 rounded-pill bg-ink px-5 py-3 text-base font-sans font-semibold text-center transition-colors duration-fast ease-out hover:bg-ink"
             style={{ color: '#FAFAF7' }}
           >
             <span>Boka demo</span>

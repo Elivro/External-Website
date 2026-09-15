@@ -19,9 +19,9 @@ const FOUNDERS: Founder[] = [
     slug: 'jimmy',
     name: 'Jimmy Södermark',
     role: 'Sälj & verksamhet',
-    shortBio: 'Ex-säljchef. Tio månader som personlig assistent.',
+    shortBio: 'Ex-säljchef. Tre år som personlig assistent.',
     longBio:
-      'Tio månader som personlig assistent. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
+      'Tre år som personlig assistent. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
     photo: '/founders/jimmy.webp',
     // Jimmy's head sits high in his source frame — pin to the top so the
     // square card crop keeps his face, not headroom.
@@ -48,7 +48,7 @@ const FOUNDERS: Founder[] = [
 ]
 
 const GROUP_PHOTO = '/founders/group.webp'
-const CARD_SWITCH_MS = 280
+const CARD_SWITCH_MS = 220
 
 const INTRO =
   'Vi byggde Elivro under sex månader, parallellt med arbete som personlig assistent. Tre olika bakgrunder — assistans, utveckling och kundsupport — samma frustration över systemen vi själva använt.'

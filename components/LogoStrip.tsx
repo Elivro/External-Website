@@ -31,7 +31,7 @@ export default function LogoStrip() {
       aria-label="Referens — 2U Assistans"
       className="w-full pt-24 pb-20"
     >
-      <div className="mx-auto max-w-[1200px] px-7">
+      <div className="site-container-wide">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[380px_1fr] md:gap-[72px]">
 
           {/* Visual stack — relative box, two overlapping tiles */}

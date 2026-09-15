@@ -144,10 +144,10 @@ const GROUPS: Group[] = [
 
 export default function Features() {
   const { ref, isVisible } = useIntersectionObserver(0.05)
-  // Mobile-only accordion: which groups are expanded. First open by default
-  // so the disclosure pattern is obvious. State is ignored ≥lg (CSS forces
-  // every panel open and hides the toggle chevron).
-  const [openGroups, setOpenGroups] = useState<Set<string>>(() => new Set(['01']))
+  // Mobile-only accordion: start compact and let the visitor choose a group.
+  // State is ignored ≥lg (CSS forces every panel open and hides the toggle
+  // chevron).
+  const [openGroups, setOpenGroups] = useState<Set<string>>(() => new Set())
   const toggleGroup = (index: string) =>
     setOpenGroups((prev) => {
       const next = new Set(prev)
@@ -162,7 +162,7 @@ export default function Features() {
       aria-labelledby="features-title"
       className="w-full bg-ink-lift py-20 md:py-24 relative"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+      <div className="site-container-wide relative z-10">
 
         {/* Header — claim first, then the work that earns it. */}
         <header className="mx-auto max-w-3xl mb-12 md:mb-16 text-center">
