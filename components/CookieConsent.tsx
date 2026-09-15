@@ -10,7 +10,11 @@ export default function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent')
     if (!consent) {
-      setTimeout(() => setShowBanner(true), 1000)
+      // Let the hero paint and settle before adding the consent surface. This
+      // keeps the banner from becoming the mobile LCP candidate while still
+      // presenting it promptly for visitors who need to choose.
+      const timer = window.setTimeout(() => setShowBanner(true), 4000)
+      return () => window.clearTimeout(timer)
     } else if (consent === 'accepted') {
       setHasConsent(true)
     }
@@ -44,7 +48,7 @@ export default function CookieConsent() {
                 href="/integritetspolicy"
                 className="text-fg hover:text-accent underline underline-offset-2 transition-colors ease-obsidian duration-obs-sm"
               >
-                Läs mer
+                Läs mer om integritetspolicy
               </a>
             </p>
             <div className="flex gap-3">

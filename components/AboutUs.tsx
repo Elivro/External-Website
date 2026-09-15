@@ -175,7 +175,6 @@ export default function AboutUs() {
           <a
             href="tel:+46790573695"
             className="about-direct-contact"
-            aria-label="Ring Jimmy på +46 79 057 36 95"
           >
             <span className="about-direct-contact-label">Prata direkt med Jimmy</span>
             <span className="about-direct-contact-number">+46 79 057 36 95</span>

@@ -20,7 +20,8 @@ const WHITE = '#FAFAF7'
 const WHITE_70 = 'rgba(255,255,255,0.70)'
 const WHITE_65 = 'rgba(255,255,255,0.65)'
 const WHITE_18 = 'rgba(255,255,255,0.18)'
-const RED = '#DC2626'
+// Brighter red keeps the accent readable against the dark testimonial surface.
+const RED = '#F87171'
 
 export default function LogoStrip() {
   const [photoFailed, setPhotoFailed] = useState(false)

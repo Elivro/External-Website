@@ -23,12 +23,11 @@ export default function Hero() {
         <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-hidden md:block" aria-hidden="true">
           <div className="hero-illustration-frame absolute inset-y-0 right-0 w-full max-w-[1536px] overflow-hidden">
             <Image
-              src="/brand-assets/hero-illustration.jpg"
+              src="/brand-assets/hero-illustration-upscaled-3072.webp"
               alt=""
               fill
               priority
               quality={95}
-              unoptimized
               sizes="1536px"
               className="hero-illustration-drift object-cover object-center"
             />
@@ -42,10 +41,10 @@ export default function Hero() {
               <span style={rise(0, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise">
                 Framtidens
               </span>
-              <span style={rise(70, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise">
+              <span style={rise(0, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise">
                 assistansbolag
               </span>
-              <span style={rise(140, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise hero-title-gradient">
+              <span style={rise(70, { '--rise-blur': '12px', '--rise-y': '14px' })} className="elv-line elv-rise hero-title-gradient">
                 byggs med AI.
               </span>
             </h1>
@@ -72,8 +71,9 @@ export default function Hero() {
                 src="/brand-assets/hero-mobile-illustration.jpg"
                 alt=""
                 fill
-                unoptimized
-                sizes="100vw"
+                priority
+                quality={85}
+                sizes="(max-width: 480px) 100vw, 768px"
                 className="hero-mobile-art-image object-contain"
               />
             </div>
@@ -121,7 +121,6 @@ export default function Hero() {
     </>
   )
 }
-
 function ProofItem({ text }: { text: string }) {
   return (
     <div className="flex items-center gap-2.5 whitespace-nowrap">

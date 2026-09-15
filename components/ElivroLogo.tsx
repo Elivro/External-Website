@@ -3,24 +3,31 @@
  * reference lockup for the light header. The reference lockup is a transparent
  * crop of the supplied brand artwork.
  */
+import Image from 'next/image'
+
 export default function ElivroLogo({
   className,
   ariaLabel = 'Elivro',
   reference = false,
   referenceTone = 'dark',
+  priority = false,
 }: {
   className?: string
   ariaLabel?: string
   reference?: boolean
   referenceTone?: 'dark' | 'light'
+  priority?: boolean
 }) {
   if (reference) {
     return (
-      <img
+      <Image
         src={`/brand-assets/elivro-logo-reference${referenceTone === 'light' ? '-white' : ''}.webp`}
         alt={ariaLabel}
         width={1181}
         height={377}
+        sizes="180px"
+        quality={90}
+        priority={priority}
         className={className}
       />
     )

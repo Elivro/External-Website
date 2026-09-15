@@ -101,7 +101,7 @@ export default function Navbar() {
               onClick={handleScrollToTop}
               className="flex items-center gap-3 group"
             >
-              <ElivroLogo className="h-10 w-auto text-ink lg:h-11" ariaLabel="Elivro" reference />
+              <ElivroLogo className="h-10 w-auto text-ink lg:h-11" ariaLabel="Elivro" reference priority />
             </a>
           </div>
 
