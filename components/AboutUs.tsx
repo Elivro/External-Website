@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 interface Founder {
   slug: string
@@ -98,6 +99,7 @@ export default function AboutUs() {
   const [active, setActive] = useState<string | null>(null)
   const [displayed, setDisplayed] = useState<Founder | null>(null)
   const [show, setShow] = useState(false)
+  const { ref, isVisible } = useIntersectionObserver(0.1)
 
   // Load the three small founder portraits before the first hover switch so
   // changing zones does not expose a stale portrait while the next one decodes.
@@ -145,11 +147,12 @@ export default function AboutUs() {
   return (
     <section
       id="about-us"
+      ref={ref}
       aria-labelledby="about-title"
       className="w-full pt-16"
       style={{ backgroundColor: '#d5cbc2' }}
     >
-      <div className="about-wrap">
+      <div className="about-wrap" style={revealStyle(isVisible, 0, 14, 700)}>
         {/* LEFT — editorial copy */}
         <div className="about-content">
           <span className="about-kicker">Om oss</span>
@@ -294,7 +297,7 @@ export default function AboutUs() {
         const seq = String(mobileIdx + 1).padStart(2, '0')
         const total = String(FOUNDERS.length).padStart(2, '0')
         return (
-          <div className="about-fm" aria-roledescription="carousel" aria-label="Grundare">
+          <div className="about-fm" aria-roledescription="carousel" aria-label="Grundare" style={revealStyle(isVisible, 0, 14, 700)}>
             <div className="about-fm-photo">
               <Image
                 src={GROUP_PHOTO}

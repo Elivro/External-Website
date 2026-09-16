@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import ElivroLogo from './ElivroLogo'
 import { scrollToSection } from '@/lib/scroll-utils'
+import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 type LinkItem =
   | { label: string; href: string }
@@ -85,9 +86,11 @@ function FooterColumn({ eyebrow, items }: { eyebrow: string; items: LinkItem[] }
 }
 
 export default function Footer() {
+  const { ref, isVisible } = useIntersectionObserver(0.1)
+
   return (
-    <footer className="w-full bg-ink border-t border-edge">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 pt-20 pb-14">
+    <footer ref={ref} className="w-full bg-ink border-t border-edge">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 pt-20 pb-14" style={revealStyle(isVisible, 0, 10, 650)}>
         <div className="grid grid-cols-2 md:grid-cols-12 gap-y-12 gap-x-8 lg:gap-x-12 mb-16">
 
           {/* Brand block — small mark, lowercase wordmark, tagline, location. */}

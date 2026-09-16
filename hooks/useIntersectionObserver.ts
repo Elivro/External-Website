@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, RefObject } from 'react'
+import { useRef, useEffect, useState, RefObject, CSSProperties } from 'react'
 
 /**
  * Custom hook for observing element visibility with IntersectionObserver
@@ -44,4 +44,18 @@ export function useIntersectionObserver(threshold: number = 0.1): {
   }, [threshold, prefersReducedMotion])
 
   return { ref, isVisible }
+}
+
+/** Shared reveal treatment for content that enters with its section. */
+export function revealStyle(
+  isVisible: boolean,
+  delay = 0,
+  distance = 12,
+  duration = 650,
+): CSSProperties {
+  return {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? 'translateY(0)' : `translateY(${distance}px)`,
+    transition: `opacity ${duration}ms var(--ease-out) ${delay}ms, transform ${duration}ms var(--ease-out) ${delay}ms`,
+  }
 }

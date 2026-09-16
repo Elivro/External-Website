@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 /**
  * Referens · 2U Assistans — single-customer credibility band.
@@ -25,10 +26,12 @@ const RED = '#DC2626'
 
 export default function LogoStrip() {
   const [photoFailed, setPhotoFailed] = useState(false)
+  const { ref, isVisible } = useIntersectionObserver(0.1)
 
   return (
     <section
       id="reference-customers"
+      ref={ref}
       aria-label="Referens — 2U Assistans"
       className="w-full pt-24 pb-20"
     >
@@ -36,7 +39,10 @@ export default function LogoStrip() {
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[380px_1fr] md:gap-[72px]">
 
           {/* Visual stack — relative box, two overlapping tiles */}
-          <div className="relative mx-auto h-[300px] w-[300px] md:h-[360px] md:w-[360px]">
+          <div
+            className="relative mx-auto h-[300px] w-[300px] md:h-[360px] md:w-[360px]"
+            style={revealStyle(isVisible, 0, 14, 650)}
+          >
             {/* Green 2U tile — bottom-left, behind */}
             <div
               className="absolute bottom-0 left-0 overflow-hidden rounded-[18px]"
@@ -111,7 +117,7 @@ export default function LogoStrip() {
           </div>
 
           {/* Quote + attribution */}
-          <div>
+          <div style={revealStyle(isVisible, 120, 14, 650)}>
             <p
               className="mb-7 font-italic italic text-[clamp(24px,2.2vw,32px)] leading-[1.28] tracking-[-0.012em]"
               style={{ color: WHITE, fontWeight: 300 }}

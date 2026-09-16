@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import DemoModal from './DemoModal'
+import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 /**
  * StartupOffer — Uppstartskampanj 2026 (Nystart)
@@ -16,17 +17,20 @@ import DemoModal from './DemoModal'
  */
 export default function StartupOffer() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { ref, isVisible } = useIntersectionObserver(0.1)
 
   return (
     <>
       <section
         id="startup-offer"
+        ref={ref}
         aria-labelledby="startup-offer-title"
         className="w-full px-7 pt-12 pb-28"
       >
         <div
           className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] px-7 py-20 text-center text-paper sm:px-14 sm:py-24 md:px-14 md:py-[96px]"
           style={{
+            ...revealStyle(isVisible, 0, 14, 700),
             background: `
               radial-gradient(ellipse at 85% 0%, rgba(30, 125, 89, 0.32), transparent 55%),
               radial-gradient(ellipse at 0% 100%, rgba(255, 255, 255, 0.12), transparent 50%),

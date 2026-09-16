@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
+import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 interface Group {
   index: string
@@ -143,7 +143,7 @@ const GROUPS: Group[] = [
 ]
 
 export default function Features() {
-  const { ref, isVisible } = useIntersectionObserver(0.05)
+  const { ref, isVisible } = useIntersectionObserver(0.1)
   // Mobile-only accordion: start compact and let the visitor choose a group.
   // State is ignored ≥lg (CSS forces every panel open and hides the toggle
   // chevron).
@@ -168,34 +168,21 @@ export default function Features() {
         <header className="mx-auto max-w-3xl mb-12 md:mb-16 text-center">
           <p
             className="font-mono text-[11px] tracking-[0.14em] uppercase text-accent mb-4"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition: 'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1)',
-            }}
+            style={revealStyle(isVisible, 0, 10, 600)}
           >
             Allt ingår
           </p>
           <h2
             id="features-title"
             className="font-serif text-fg tracking-[-0.021em] leading-[1.05] mb-5"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
-              transition:
-                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms',
-            }}
+            style={revealStyle(isVisible, 80, 12, 600)}
           >
             Ett levande företag kräver ett{' '}
             <em className="font-serif italic">levande verksamhetssystem.</em>
           </h2>
           <p
             className="text-fg-soft text-lg leading-[1.55] max-w-xl mx-auto"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
-              transition:
-                'opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms',
-            }}
+            style={revealStyle(isVisible, 160, 12, 600)}
           >
             Vi andas assistans och vet vad som krävs. Glöm moduler, krångel
             och extra avgifter.
@@ -205,10 +192,7 @@ export default function Features() {
         {/* Category bar — scope at a glance, before the catalog. */}
         <div
           className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 max-w-5xl mx-auto mb-12 md:mb-16 py-5 border-y border-edge"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transition: 'opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 240ms',
-          }}
+          style={revealStyle(isVisible, 240, 0, 700)}
         >
           {CATEGORIES.map((cat, i) => (
             <span key={cat} className="inline-flex items-center gap-x-5">
@@ -235,11 +219,7 @@ export default function Features() {
                 key={group.index}
                 className="feat-group bg-ink-card flex flex-col"
                 data-open={isOpen ? 'true' : 'false'}
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateY(0)' : 'translateY(8px)',
-                  transition: `opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1) ${120 + gi * 40}ms, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1) ${120 + gi * 40}ms`,
-                }}
+                style={revealStyle(isVisible, 120 + gi * 40, 8, 600)}
               >
                 <button
                   type="button"

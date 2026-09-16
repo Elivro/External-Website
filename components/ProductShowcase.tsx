@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
+import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 interface Tool {
   key: string
@@ -145,7 +145,7 @@ export default function ProductShowcase() {
       className="relative w-full bg-ink py-24 md:py-32"
     >
       <div className="site-container-wide relative z-10">
-        <header className="mb-12 max-w-4xl md:mb-14">
+        <header className="mb-12 max-w-4xl md:mb-14" style={revealStyle(isVisible, 0, 12, 650)}>
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.12em] text-fg-muted">Produkten</p>
           <h2 id="product-title" className="font-serif text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.05] tracking-[-0.021em] text-fg">
             Se vad AI kan <em className="font-serif italic">avlasta.</em>
@@ -156,7 +156,7 @@ export default function ProductShowcase() {
         </header>
 
         <div className="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12" aria-label="Produktverktyg">
-          <nav aria-label="Produktområden" className="lg:pt-1">
+          <nav aria-label="Produktområden" className="lg:pt-1" style={revealStyle(isVisible, 120, 12, 650)}>
             <div className="grid grid-cols-2 border-y border-edge lg:block lg:border-y-0">
               {TOOLS.map((tool, index) => {
                 const isActive = index === activeIndex
@@ -184,7 +184,7 @@ export default function ProductShowcase() {
             </div>
           </nav>
 
-          <div className="min-w-0" aria-live="polite">
+          <div className="min-w-0" aria-live="polite" style={revealStyle(isVisible, 200, 12, 700)}>
             <div className="mb-5 max-w-3xl md:mb-6">
               <p className="mb-3 font-mono text-[10.5px] uppercase tracking-[0.14em] text-fg-muted">{active.category}</p>
               <h3 className="font-serif text-[clamp(1.6rem,2.8vw,2.25rem)] font-bold leading-[1.1] text-fg">{active.heading}</h3>
