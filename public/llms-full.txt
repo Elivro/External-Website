@@ -6,7 +6,7 @@ Elivro är operativsystemet för svenska assistansbolag — ett AI-drivet verksa
 
 Målgrupp: assistansbolag och assistansanordnare i Sverige. En typisk kund har 30 brukare och 80 assistenter. Köpare är VD eller verksamhetschef — inte koordinator eller assistent.
 
-Status: pre-launch. Co-built tillsammans med 2u Assistans (Västerås största assistansanordnare). En namngiven referenskund. Inga falska kundlogos eller fabricerade testimonials.
+Status: pre-launch. Co-built tillsammans med 2u Assistans (en av Västerås största assistansanordnare). En namngiven referenskund. Inga falska kundlogos eller fabricerade testimonials.
 
 ## Den huvudsakliga värdeproposition
 

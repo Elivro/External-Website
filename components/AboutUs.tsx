@@ -64,7 +64,7 @@ const BULLETS: { title: string; sub: string; icon: BulletIconKind }[] = [
   },
   {
     title: 'Sambygget med 2U Assistans',
-    sub: 'Västerås största assistansanordnare.',
+    sub: 'En av Västerås största assistansanordnare.',
     icon: 'building',
   },
   {

@@ -74,8 +74,9 @@ export default function WhyPickUs() {
                 behövs.
               </p>
               <p>
-                Därför har vi, tillsammans med den största assistansanordnaren i
-                Västerås — <span className="text-fg">2U Assistans</span> — byggt
+                Därför har vi, tillsammans med en av Västerås största
+                assistansanordnare —
+                <span className="text-fg">2U Assistans</span> — byggt
                 ett system som har alla funktioner som en assistansanordnare
                 behöver.
               </p>
