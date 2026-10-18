@@ -20,9 +20,9 @@ const FOUNDERS: Founder[] = [
     slug: 'jimmy',
     name: 'Jimmy Södermark',
     role: 'Sälj & verksamhet',
-    shortBio: 'Ex-säljchef. Tre år som personlig assistent.',
+    shortBio: 'Tre år som personlig assistent.',
     longBio:
-      'Tre år som personlig assistent. Drev tidigare ett säljteam — vet vad som krävs för att en lösning ska användas, inte bara köpas in.',
+      'Tre år som personlig assistent. Drivs av att skapa lycka för de som arbetar med att hjälpa andra. ”Jag blev frustrerad över de digitala verktyg som jag själv använde varje dag, därför skapar vi en bättre framtid för alla som arbetar inom personlig assistans.”',
     photo: '/founders/jimmy.webp',
     // Jimmy's head sits high in his source frame — pin to the top so the
     // square card crop keeps his face, not headroom.
