@@ -43,6 +43,7 @@ const GROUPS: Group[] = [
       'Identifiering av dubbelassistans',
       'Pass-byten med godkännande',
       'Budget per kund',
+      'Konfliktvarning (ATL m.m)',
     ],
   },
   {
@@ -54,6 +55,9 @@ const GROUPS: Group[] = [
       'FK-RÄK',
       'Lönefil-export',
       'Kostnadsavstämning',
+      'Utlägg',
+      'TUT-ansökan',
+      'Sjuklöneersättning',
     ],
   },
   {
@@ -98,10 +102,7 @@ const GROUPS: Group[] = [
     index: '07',
     title: 'Processer & dokument',
     bullets: [
-      'Processkarta och process-editor',
-      'Process-tavla (kanban)',
       'Process-mallar',
-      'Årshjul för återkommande uppgifter',
       'Uppgifts-feed per användare',
       'Dokumentbibliotek med mallar och arkiv',
     ],
