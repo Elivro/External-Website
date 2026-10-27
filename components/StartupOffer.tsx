@@ -76,7 +76,7 @@ export default function StartupOffer() {
 
             {/* Sub */}
             <p className="mx-auto mb-10 max-w-[580px] text-[17px] text-[rgba(250,250,247,0.88)]">
-              Elivro är byggt tillsammans med 2u Assistans, och vi fortsätter
+              Elivro är byggt tillsammans med 2U Assistans, och vi fortsätter
               bygga det med varje assistansanordnare som börjar använda det. Vi
               bygger med er, inte åt er.
             </p>
