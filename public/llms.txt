@@ -6,7 +6,7 @@ Elivro är en svensk B2B-plattform som riktar sig till verksamheter inom personl
 
 Tonal positionering: pondus — vaken kompetens, närvaro utan väsen. Inte startup-frenetisk, inte etablerad-aktör-trög.
 
-Affärsmodell: 30 dagars test, ingen bindningstid. Prissättning anpassas efter verksamhetens storlek.
+Affärsmodell: pilot i 90 dagar med pengarna tillbaka, inga uppstartsavgifter. Prissättning anpassas efter verksamhetens storlek.
 
 ## Produkten
 
@@ -27,7 +27,7 @@ Affärsmodell: 30 dagars test, ingen bindningstid. Prissättning anpassas efter 
 - [Om oss](https://elivro.se/#about-us): Grundarna — Jimmy (assistent på golvet), Filiph (utvecklare, 10+ år), Daniel (operativ).
 - [Filosofi](https://elivro.se/#manifesto): Levande system för levande verksamheter. Ett operativsystem för svenska assistansbolag.
 - [FAQ](https://elivro.se/#faq): Vanliga frågor om kostnad, GDPR, support, datauttag, uppstartstid.
-- [Uppstartserbjudande](https://elivro.se/#startup-offer): Flerårig rabatt för tidiga partner.
+- [Pilot](https://elivro.se/#startup-offer): Pilot i 90 dagar med pengarna tillbaka. Vi bygger systemet tillsammans med er.
 
 ## Optional
 

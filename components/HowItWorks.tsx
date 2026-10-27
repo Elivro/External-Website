@@ -24,19 +24,19 @@ export default function HowItWorks() {
       number: '01',
       title: 'Ett samtal',
       description:
-        'Vi lyssnar på er verksamhets rytm och behov. Inga säljpitcher, inga demos från en mall — vi visar bara hur Elivro kan stödja det ni redan gör.',
+        'Vi lyssnar på er verksamhets rytm och behov. Inga säljpitcher, inga demos från en mall. Vi visar bara hur Elivro kan stödja det ni redan gör.',
     },
     {
       number: '02',
       title: 'Vi formar systemet efter er',
       description:
-        'Vi anpassar Elivro till era processer, importerar er data, och bygger en grund som känns naturlig. Ni märker inte att tekniken är där — ni märker att tiden räcker till.',
+        'Vi anpassar Elivro till era processer, importerar er data, och bygger en grund som känns naturlig. Ni märker inte att tekniken är där. Ni märker att tiden räcker till.',
     },
     {
       number: '03',
-      title: 'Ni testar i 30 dagar',
+      title: 'Pilot i 90 dagar',
       description:
-        'Utbildning som ger trygghet. Aktivering utan stress. 30 dagar att uppleva skillnaden — utan bindningstid, utan risk.',
+        'Utbildning som ger trygghet. Aktivering utan stress. 90 dagar att uppleva skillnaden, med pengarna tillbaka om det inte fungerar för er.',
     },
   ]
 

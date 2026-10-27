@@ -200,9 +200,8 @@ export default function AppLayout({
               ],
               offers: {
                 '@type': 'Offer',
-                price: '0',
-                priceCurrency: 'SEK',
-                description: 'Pilot 90 dagar med pengarna tillbaka',
+                description:
+                  'Pilot i 90 dagar med pengarna tillbaka. Inga uppstartsavgifter.',
               },
             }),
           }}

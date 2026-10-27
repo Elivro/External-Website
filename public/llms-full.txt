@@ -80,7 +80,7 @@ Större aktörer i svensk assistansmjukvara: AIAI, Tidvis, Primass. Elivro posit
 - Kundinloggning: https://login.elivro.se
 - Kontakt: daniel@elivro.se
 - Adress: Stockholm, Sverige
-- Erbjudande: 30 dagars test, ingen bindningstid
+- Erbjudande: pilot i 90 dagar med pengarna tillbaka, inga uppstartsavgifter
 - GDPR-status: kompatibel, kryptering, rollbaserade behörigheter, servrar inom EU
 - Datauttag vid avslut: fullständig export i Excel/CSV, personuppgifter raderas inom 30 dagar
 - Uppstartstid: 2–4 veckor från första samtal till daglig drift

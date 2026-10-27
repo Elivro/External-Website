@@ -9,12 +9,12 @@ export const FAQS: readonly FAQ[] = [
   {
     question: 'Hur lång tid tar det att komma igång?',
     answer:
-      'Vanligtvis 2–4 veckor från första samtalet till att ni arbetar i systemet dagligen. Vi tar oss tid att göra det rätt — import av data, anpassning efter era rutiner, och utbildning som ger trygghet.',
+      'Vanligtvis 2–4 veckor från första samtalet till att ni arbetar i systemet dagligen. Vi tar oss tid att göra det rätt: import av data, anpassning efter era rutiner och utbildning som ger trygghet.',
   },
   {
     question: 'Finns det någon risk att testa Elivro?',
     answer:
-      'Nej. Testa systemet i 30 dagar utan förpliktelser. Passar det inte er verksamhet? Avsluta när som helst — inga bindningstider, inga frågor.',
+      'Ni börjar med en pilot i 90 dagar. Fungerar Elivro inte för er verksamhet får ni pengarna tillbaka, och det finns inga uppstartsavgifter. Villkoren går vi igenom i demon.',
   },
   {
     question: 'Vad kostar Elivro?',

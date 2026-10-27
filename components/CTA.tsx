@@ -9,7 +9,7 @@ import DemoModal from './DemoModal'
 const REASSURANCE = [
   'Ingen kostnad',
   'Svar inom 24h',
-  '30 dagars test',
+  'Pilot i 90 dagar med pengarna tillbaka',
 ] as const
 
 export default function CTA() {
@@ -81,7 +81,7 @@ export default function CTA() {
             }}
           >
             Ett samtal om er verksamhet, era utmaningar, och hur omsorgen kan
-            organiseras vackrare. Ingen demo-mall — bara äkta dialog.
+            organiseras vackrare. Ingen demo-mall, bara äkta dialog.
           </p>
 
           <div

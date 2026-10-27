@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 /**
- * Top banner — one remaining customer slot above the nav.
+ * Top banner: the 90-day pilot offer above the nav.
  *
  * Dark announcement strip at the top of the new hero. Red is reserved for
  * the status pill and the action link so the message reads as one unit.
@@ -15,18 +15,15 @@ export default function TopBanner() {
       className="hero-banner group relative block w-full overflow-hidden border-b border-white/10 bg-ink transition-colors duration-fast ease-out"
     >
       <p className="site-container-wide relative z-10 flex min-h-[44px] flex-nowrap items-center justify-center gap-x-2 py-1.5 text-center leading-[1.2] md:flex-wrap md:gap-x-3 md:gap-y-1 md:py-2 md:leading-[1.4]">
-        <span
-          aria-hidden="true"
-          className="inline-flex shrink-0 items-center rounded-full bg-red px-3 py-1 font-sans text-[10.5px] font-bold uppercase tracking-[0.14em] text-paper"
-        >
-          1 plats
+        <span className="inline-flex shrink-0 items-center rounded-full bg-red px-3 py-1 font-sans text-[10.5px] font-bold uppercase tracking-[0.14em] text-paper">
+          90 dagar
         </span>
         <span className="whitespace-nowrap text-[12.5px] font-semibold tracking-[-0.005em] sm:text-[14px]">
-          <span className="md:hidden">En kundplats kvar</span>
-          <span className="hidden md:inline">En kundplats kvar för 2026.</span>
+          <span className="md:hidden">Pengarna tillbaka</span>
+          <span className="hidden md:inline">Pilot med pengarna tillbaka.</span>
         </span>
         <span className="hidden max-w-[280px] text-center text-[12px] leading-[1.2] text-paper/70 md:inline md:max-w-none md:whitespace-nowrap md:text-[14px] md:leading-normal">
-          Vi tar in ett assistansbolag till just nu.
+          Vi bygger systemet tillsammans med er.
         </span>
         <span className="inline-flex items-center gap-1 whitespace-nowrap text-[13.5px] font-medium text-red">
           Boka demo

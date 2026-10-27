@@ -13,7 +13,7 @@ type LinkItem =
 const PRODUKT: LinkItem[] = [
   { label: 'Produkt', section: 'product' },
   { label: 'Funktioner', section: 'features' },
-  { label: 'Uppstartskampanj', section: 'startup-offer' },
+  { label: 'Pilot', section: 'startup-offer' },
 ]
 
 const FORETAG: LinkItem[] = [

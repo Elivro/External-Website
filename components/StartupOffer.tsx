@@ -5,7 +5,7 @@ import DemoModal from './DemoModal'
 import { revealStyle, useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 
 /**
- * StartupOffer — Uppstartskampanj 2026 (Nystart)
+ * StartupOffer: the 90-day pilot, built together with the customer (Nystart)
  *
  * Faithful port of elivro-landing-mockup-v2.html § NYSTART:
  *   single centered card on paper bg, red-gradient surface with subtle moss
@@ -50,13 +50,13 @@ export default function StartupOffer() {
           </span>
 
           <div className="relative">
-            {/* Tag pill — moss pulse dot signals "AI in service" / active campaign */}
+            {/* Tag pill — moss pulse dot signals "AI in service" / active pilot offer */}
             <div className="mb-8 inline-flex items-center gap-2.5 rounded-pill bg-[rgba(250,250,247,0.16)] px-4 py-[7px] font-display text-[12px] font-medium uppercase tracking-[0.14em] text-paper">
               <span
                 aria-hidden="true"
                 className="elv-pulse h-[7px] w-[7px] rounded-full bg-moss"
               />
-              Uppstartskampanj 2026 · En plats kvar
+              Pilot i 90 dagar
             </div>
 
             {/* Headline — display, italic accent on "forma systemet" */}
@@ -64,7 +64,7 @@ export default function StartupOffer() {
               id="startup-offer-title"
               className="mx-auto mb-6 max-w-[820px] font-display text-[clamp(42px,5.6vw,72px)] font-bold leading-[1.03] tracking-[-0.032em] text-balance"
             >
-              En plats kvar för att{' '}
+              Var med och{' '}
               <em
                 className="font-italic font-bold italic"
                 style={{ color: '#FAFAF7' }}
@@ -76,9 +76,9 @@ export default function StartupOffer() {
 
             {/* Sub */}
             <p className="mx-auto mb-10 max-w-[580px] text-[17px] text-[rgba(250,250,247,0.88)]">
-              Vi har kapacitet att ta in ett assistansbolag till under 2026.
-              Det är den enda öppna platsen just nu — vi bygger med er, inte åt
-              er.
+              Elivro är byggt tillsammans med 2u Assistans, och vi fortsätter
+              bygga det med varje assistansanordnare som börjar använda det. Vi
+              bygger med er, inte åt er.
             </p>
 
             {/* CTA — white pill on red surface, ink text */}
@@ -98,7 +98,7 @@ export default function StartupOffer() {
 
             {/* Fineprint */}
             <div className="mt-5 text-[13px] text-[rgba(250,250,247,0.55)]">
-              En öppen plats just nu · Pilot 90 dagar med pengarna tillbaka
+              Pengarna tillbaka om det inte fungerar för er · Inga uppstartsavgifter
             </div>
           </div>
         </div>
