@@ -144,7 +144,7 @@ We will apply intentional inversion to the category norms to define our visual t
 
 **Secondary CTA:** "Se hur det fungerar" (outlined button)
 
-**Reassurance:** "30 dagar att uppleva skillnaden"
+**Reassurance:** "Pilot i 90 dagar med pengarna tillbaka"
 
 **Why this is unmistakable:** It lacks a product screenshot, it uses a serif headline, and the color palette is completely foreign to the competitors' pastels and neons. The headline immediately establishes the brand positioning (human-first) while the eyebrow and three pillars provide concrete clarity.
 

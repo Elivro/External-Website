@@ -283,7 +283,7 @@ reflow on load.
   in red (`h1 em … h6 em { color: var(--red) }`). One italicized word per
   heading.
 - **Quantify in time, money, names:** "14 timmar per vecka per koordinator,"
-  "30 dagars test," "Anders L. på torsdag."
+  "90 dagars pilot," "Anders L. på torsdag."
 - **Forbidden vocabulary:** synergier, disrupta, revolutionera, transformera,
   empowerment, journey, solution, best-in-class, cutting-edge, next-gen,
   10x, unlock, seamless.
@@ -327,7 +327,9 @@ The page focuses on:
 - A single-customer credibility mark (`LogoStrip`) — do not list other names
   here; one honest customer beats five suggested ones.
 - Product completeness (`ProductShowcase` four tools, `Features` catalog).
-- De-risking (`StartupOffer` uppstartskampanj, 30-day test, no bindningstid).
+- De-risking (`StartupOffer`: 90-day pilot with money back, no start-up fee).
+  No scarcity or capacity claims ("en plats kvar") and no 30-day test:
+  both were dropped on 2026-10-27 (Elivro/Intranet#24).
 - Founder credibility (`AboutUs` — Jimmy / Filiph / Daniel as a team).
 
 Do NOT add testimonial quotes, case studies, "X% mindre tid" claims, or

@@ -211,7 +211,7 @@
       "kind": "chip",
       "refersTo": "pill",
       "description": "Mono-eyebrow type, 50px radius, ink-lift surface. Lives in metadata strips and feature labels.",
-      "html": "<span class=\"ds-pill\">30 dagars test</span>",
+      "html": "<span class=\"ds-pill\">Pilot i 90 dagar</span>",
       "css": ".ds-pill { display: inline-flex; align-items: center; background: #12100d; color: #bdb5a6; font-family: 'JetBrains Mono', Consolas, monospace; font-weight: 500; font-size: 0.6875rem; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 50px; padding: 6px 14px; border: 1px solid rgba(255, 240, 220, 0.07); }"
     },
     {

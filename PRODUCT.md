@@ -27,7 +27,7 @@ The landing page is the lead-generator. Pre-launch, with no customers and no soc
 
 - Product value demonstration (the `ProofOfLifeMock` is the elevator pitch in dashboard form).
 - Process clarity (`HowItWorks`, three steps, no mystique).
-- De-risking (30-day test, no bindningstid, named in copy).
+- De-risking (90-day pilot with money back, no start-up fee, named in copy). No scarcity claims.
 - Founder credibility (`FounderStory` — built-from-the-floor narrative, not a generic origin story).
 
 Success is a booked demo from someone who is genuinely the VD or verksamhetschef, not a curiosity click from a coordinator. The funnel after the page is small and operator-led, so volume matters less than fit.
@@ -36,7 +36,7 @@ Success is a booked demo from someone who is genuinely the VD or verksamhetschef
 
 Three words: **quiet · craftsman · inevitable.**
 
-- **Voice:** Swedish first, "du" form, never "Ni." Italic carries emphasis, never bold. No exclamation marks. No emoji. No model-name attribution ("Powered by GPT-X"). Quantify in time, money, named days: *"14 timmar per vecka per koordinator," "Anders L. på torsdag," "30 dagars test."*
+- **Voice:** Swedish first, "du" form, never "Ni." Italic carries emphasis, never bold. No exclamation marks. No emoji. No model-name attribution ("Powered by GPT-X"). Quantify in time, money, named days: *"14 timmar per vecka per koordinator," "Anders L. på torsdag," "90 dagars pilot."*
 - **Tone:** like a trusted colleague who has done care work and now builds tools for it. Confident without performance, warm without sentimentality. The reader should feel respected, not sold to.
 - **Emotional goals:** the page should leave the reader feeling that someone finally took this work seriously, that the system was built by people who understand vardagen, and that booking a demo is a low-stakes next step rather than a commitment.
 
@@ -78,7 +78,7 @@ Strategic posture, not visual rules. Visual rules live in `DESIGN.md` and `DESIG
 2. **Specifics over abstractions.** Hours, money, named people, named days. *"14 timmar per vecka per koordinator"* and *"Anders L. på torsdag"* are the unit of persuasion. If a sentence could appear unchanged on any other SaaS site, rewrite it until it couldn't.
 3. **Warmth without softness.** Care work is human; the page must respect that without going sentimental. Dark obsidian surfaces, warm ember light. No corporate sterility, no consumer-app cuteness, no "we're just like a friend."
 4. **AI in service of human work, never the other way around.** The product is AI; the surface must not be. No sparkle iconography, no orb, no streaming text, no model-name attribution. The AI's job is to free the human to do the human work; the page should communicate that hierarchy at a glance.
-5. **Show, don't tell.** Demonstrate the product over describing it. The `ProofOfLifeMock` is the elevator pitch; the `HowItWorks` is the proof of clarity; the de-risking facts (30-day test, no bindningstid) are falsifiable claims, not adjectives. Adjectives are the failure mode of pre-launch B2B copy.
+5. **Show, don't tell.** Demonstrate the product over describing it. The `ProofOfLifeMock` is the elevator pitch; the `HowItWorks` is the proof of clarity; the de-risking facts (90-day pilot with money back, no start-up fee) are falsifiable claims, not adjectives. Adjectives are the failure mode of pre-launch B2B copy.
 
 ## Accessibility & Inclusion
 

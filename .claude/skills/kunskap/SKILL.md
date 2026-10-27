@@ -119,7 +119,7 @@ a length is how these pages start reading like everyone else's.
   empowerment, journey, solution, best-in-class, cutting-edge, next-gen, 10x,
   unlock, seamless.
 - **Quantify in time, money, names** — "14 timmar per vecka per koordinator",
-  "30 dagars test". Never "betydande effektivisering".
+  "90 dagars pilot". Never "betydande effektivisering".
 - **No testimonials, no case studies, no "X% mindre tid" claims, no
   competitor comparison tables.** These are hard repo constraints from
   `CLAUDE.md`, and they apply here exactly as they do on the landing page.

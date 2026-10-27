@@ -191,7 +191,7 @@ browser when iterating).
   cutting-edge · next-gen · 10x · unlock · seamless. (Full list in
   `positionering.md` § 6.)
 - **Quantify in time/money/names:** "14 timmar per vecka per koordinator,"
-  "449 kr per brukare," "30 dagars test," "Anders L. på torsdag."
+  "449 kr per brukare," "90 dagars pilot," "Anders L. på torsdag."
 - **No emoji in product copy. Ever.**
 - **No exclamation marks anywhere.**
 
